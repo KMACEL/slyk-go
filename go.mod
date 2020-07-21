@@ -1,4 +1,4 @@
-module github.com/KMACEL/monoji
+module github.com/KMACEL/slyk-go
 
 go 1.14
 
