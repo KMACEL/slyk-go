@@ -40,7 +40,7 @@ func TestGetUsers(t *testing.T) {
 	returnValue, err := getClient().GetUser(CreateUserFilter().SetRole("owner"))
 	ReturnAndError(t, tst, returnValue, err)*/
 
-	returnValue, err := getClient().GetUser(CreateUserFilter().SetVerified(true))
+	returnValue, err := getClient().GetUser(CreateUserFilter().SetVerified(true).SetEmail("mert@monoji.io"), CreateUserFilter().SetVerified(true).SetReferralCode("RV2EXGMMVXG"))
 	ReturnAndError(t, tst, returnValue, err)
 }
 

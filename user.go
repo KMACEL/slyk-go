@@ -39,7 +39,7 @@ func (c Client) GetUser(filter ...*userFilter) (*Users, error) {
 
 	clientReq := resty.New().R()
 	if filter != nil {
-		clientReq.SetQueryParams(*filter[0])
+		clientReq.SetQueryParams(merge(filter))
 	}
 
 	resp, err := clientReq.
@@ -53,6 +53,7 @@ func (c Client) GetUser(filter ...*userFilter) (*Users, error) {
 	if resp.IsError() {
 		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
 	}
+
 	var users Users
 	errUnmarshal := json.Unmarshal(resp.Body(), &users)
 	if errUnmarshal != nil {
