@@ -35,8 +35,14 @@ type UserData struct {
 }
 
 // GetUser is
-func (c Client) GetUser() (*Users, error) {
-	resp, err := resty.New().R().
+func (c Client) GetUser(filter ...*userFilter) (*Users, error) {
+
+	clientReq := resty.New().R()
+	if filter != nil {
+		clientReq.SetQueryParams(*filter[0])
+	}
+
+	resp, err := clientReq.
 		SetHeader(headerApiKey, c.apiKey).
 		Get(linkGetUsers)
 
@@ -56,6 +62,7 @@ func (c Client) GetUser() (*Users, error) {
 	return &users, nil
 }
 
+// GetUserWithID is
 func (c Client) GetUserWithID(userID string) (*UserData, error) {
 	resp, err := resty.New().R().
 		SetHeader(headerApiKey, c.apiKey).
