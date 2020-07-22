@@ -9,11 +9,15 @@ import (
 )
 
 type Users struct {
-	Data  []UserData `json:"data"`
-	Total int        `json:"total"`
+	Data  []Data `json:"data"`
+	Total int    `json:"total"`
 }
 
-type UserData struct {
+type User struct {
+	Data `json:"data"`
+}
+
+type Data struct {
 	Approved   bool      `json:"approved"`
 	Blocked    bool      `json:"blocked"`
 	CreatedAt  time.Time `json:"createdAt"`
@@ -35,7 +39,7 @@ type UserData struct {
 }
 
 // GetUser is
-func (c Client) GetUser(filter ...*userFilter) (*Users, error) {
+func (c Client) GetUser(filter ...*getUserFilter) (*Users, error) {
 
 	clientReq := resty.New().R()
 	if filter != nil {
@@ -64,7 +68,7 @@ func (c Client) GetUser(filter ...*userFilter) (*Users, error) {
 }
 
 // GetUserWithID is
-func (c Client) GetUserWithID(userID string) (*UserData, error) {
+func (c Client) GetUserWithID(userID string) (*User, error) {
 	resp, err := resty.New().R().
 		SetHeader(headerApiKey, c.apiKey).
 		Get(linkGetUsers + "/" + userID)
@@ -77,7 +81,31 @@ func (c Client) GetUserWithID(userID string) (*UserData, error) {
 		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
 	}
 
-	var user UserData
+	var user User
+	errUnmarshal := json.Unmarshal(resp.Body(), &user)
+	if errUnmarshal != nil {
+		return nil, errUnmarshal
+	}
+
+	return &user, nil
+}
+
+// GetUserWithID is
+func (c Client) PatchUser(userID string, patchUser *PatchUser) (*User, error) {
+	resp, err := resty.New().R().
+		SetBody(*patchUser).
+		SetHeader(headerApiKey, c.apiKey).
+		Patch(linkGetUsers + "/" + userID)
+
+	if err != nil {
+		return nil, err
+	}
+
+	if resp.IsError() {
+		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
+	}
+
+	var user User
 	errUnmarshal := json.Unmarshal(resp.Body(), &user)
 	if errUnmarshal != nil {
 		return nil, errUnmarshal

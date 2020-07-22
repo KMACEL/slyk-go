@@ -5,96 +5,122 @@ import (
 	"strings"
 )
 
-type userFilter map[string]string
+type getUserFilter map[string]string
 
-func CreateUserFilter() *userFilter {
-	return &userFilter{}
+type PatchUser struct {
+	Name       string      `json:"name"`
+	Locale     string      `json:"locale"`
+	CustomData interface{} `json:"customData"`
 }
 
-func (u *userFilter) SetApproved(approved bool) *userFilter {
+func GetUserFilter() *getUserFilter {
+	return &getUserFilter{}
+}
+
+func (u *getUserFilter) SetApproved(approved bool) *getUserFilter {
 	(*u)["filter[approved]"] = strconv.FormatBool(approved)
 	return u
 }
 
-func (u *userFilter) SetBlocked(blocked bool) *userFilter {
+func (u *getUserFilter) SetBlocked(blocked bool) *getUserFilter {
 	(*u)["filter[blocked]"] = strconv.FormatBool(blocked)
 	return u
 }
 
-func (u *userFilter) SetEmail(email string) *userFilter {
+func (u *getUserFilter) SetEmail(email string) *getUserFilter {
 	(*u)["filter[email]"] = email
 	return u
 }
 
-func (u *userFilter) SetID(id ...string) *userFilter {
+func (u *getUserFilter) SetID(id ...string) *getUserFilter {
 	// TODO YANLIŞ OLAN VARSA HİÇ GELMİYOR
 	(*u)["filter[id]"] = "in:" + strings.Join(id, ",")
 	return u
 }
 
-func (u *userFilter) SetName(name string) *userFilter {
+func (u *getUserFilter) SetName(name string) *getUserFilter {
 	(*u)["filter[name]"] = name
 	return u
 }
 
-func (u *userFilter) SetPhone(phone string) *userFilter {
+func (u *getUserFilter) SetPhone(phone string) *getUserFilter {
 	(*u)["filter[phone]"] = phone
 	return u
 }
 
-func (u *userFilter) SetPrimaryWalletId(primaryWalletId string) *userFilter {
+func (u *getUserFilter) SetPrimaryWalletId(primaryWalletId string) *getUserFilter {
 	(*u)["filter[primaryWalletId]"] = primaryWalletId
 	return u
 }
 
-func (u *userFilter) SetReferralCode(referralCode string) *userFilter {
+func (u *getUserFilter) SetReferralCode(referralCode string) *getUserFilter {
 	(*u)["filter[referralCode]"] = referralCode
 	return u
 }
 
-func (u *userFilter) SetReferralUserID(referralUserId string) *userFilter {
+func (u *getUserFilter) SetReferralUserID(referralUserId string) *getUserFilter {
 	(*u)["filter[referralUserId]"] = referralUserId
 	return u
 }
 
-func (u *userFilter) SetRole(role string) *userFilter {
+func (u *getUserFilter) SetRole(role string) *getUserFilter {
 	(*u)["filter[role]"] = role
 	return u
 }
 
-func (u *userFilter) SetVerified(verified bool) *userFilter {
+func (u *getUserFilter) SetVerified(verified bool) *getUserFilter {
 	(*u)["filter[verified]"] = strconv.FormatBool(verified)
 	return u
 }
 
-func (u *userFilter) SetSortWithCreatedAt() *userFilter {
+func (u *getUserFilter) SetSortWithCreatedAt() *getUserFilter {
 	(*u)["sort"] = "createdAt"
 	return u
 }
 
-func (u *userFilter) SetSortWithCreatedAtReverse() *userFilter {
+func (u *getUserFilter) SetSortWithCreatedAtReverse() *getUserFilter {
 	(*u)["sort"] = "-createdAt"
 	return u
 }
 
-func (u *userFilter) SetSortWithUpdatedAt() *userFilter {
+func (u *getUserFilter) SetSortWithUpdatedAt() *getUserFilter {
 	(*u)["sort"] = "updatedAt"
 	return u
 }
 
-func (u *userFilter) SetSortWithUpdatedAtReverse() *userFilter {
+func (u *getUserFilter) SetSortWithUpdatedAtReverse() *getUserFilter {
 	(*u)["sort"] = "-updatedAt"
 	return u
 }
 
 // Defines the number of results per page. Default = 30.
-func (u *userFilter) SetPageSize(size int) *userFilter {
+func (u *getUserFilter) SetPageSize(size int) *getUserFilter {
 	(*u)["page[size]"] = strconv.Itoa(size)
 	return u
 }
 
 // Defines the number of the page to retrieve. Default = 1
-func (u *userFilter) SetPageNumber(number int) *userFilter {
+func (u *getUserFilter) SetPageNumber(number int) *getUserFilter {
 	(*u)["page[number]"] = strconv.Itoa(number)
 	return u
+}
+
+func CreatePatchData() *PatchUser {
+	return &PatchUser{}
+}
+
+func (p *PatchUser) SetName(name string) *PatchUser {
+	p.Name = name
+	return p
+}
+
+func (p *PatchUser) SetLocale(locale string) *PatchUser {
+	p.Locale = locale
+	return p
+}
+
+// TODO Çalışmıyor bakılacak
+func (p *PatchUser) SetCustomData(customData interface{}) *PatchUser {
+	p.CustomData = customData
+	return p
 }

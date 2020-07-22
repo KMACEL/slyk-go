@@ -4,7 +4,7 @@ package slyk
 func merge(m interface{}) map[string]string {
 	mmap := make(map[string]string)
 	switch getMap := m.(type) {
-	case []*userFilter:
+	case []*getUserFilter:
 		for i := range getMap {
 			for k, v := range *getMap[i] {
 				mmap[k] = v
