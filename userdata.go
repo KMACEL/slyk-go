@@ -38,13 +38,13 @@ type Data struct {
 
 type getUserFilter map[string]string
 
-type PatchUser struct {
+type UpdateUserData struct {
 	Name       string      `json:"name"`
 	Locale     string      `json:"locale"`
 	CustomData interface{} `json:"customData"`
 }
 
-type CreateUser struct {
+type CreateUserData struct {
 	Email    string `json:"email"`
 	Locale   string `json:"locale"`
 	Name     string `json:"name"`
@@ -143,46 +143,46 @@ func (u *getUserFilter) SetPageNumber(number int) *getUserFilter {
 	return u
 }
 
-func CreatePatchData() *PatchUser {
-	return &PatchUser{}
+func CreateUpdateData() *UpdateUserData {
+	return &UpdateUserData{}
 }
 
-func (p *PatchUser) SetName(name string) *PatchUser {
+func (p *UpdateUserData) SetName(name string) *UpdateUserData {
 	p.Name = name
 	return p
 }
 
-func (p *PatchUser) SetLocale(locale string) *PatchUser {
+func (p *UpdateUserData) SetLocale(locale string) *UpdateUserData {
 	p.Locale = locale
 	return p
 }
 
 // TODO Çalışmıyor bakılacak
-func (p *PatchUser) SetCustomData(customData interface{}) *PatchUser {
+func (p *UpdateUserData) SetCustomData(customData interface{}) *UpdateUserData {
 	p.CustomData = customData
 	return p
 }
 
-func CreatePostUser() *CreateUser {
-	return &CreateUser{}
+func CreateUserParam() *CreateUserData {
+	return &CreateUserData{}
 }
 
-func (c *CreateUser) SetName(name string) *CreateUser {
+func (c *CreateUserData) SetName(name string) *CreateUserData {
 	c.Name = name
 	return c
 }
 
-func (c *CreateUser) SetEmail(email string) *CreateUser {
+func (c *CreateUserData) SetEmail(email string) *CreateUserData {
 	c.Email = email
 	return c
 }
 
-func (c *CreateUser) SetPassword(password string) *CreateUser {
+func (c *CreateUserData) SetPassword(password string) *CreateUserData {
 	c.Password = password
 	return c
 }
 
-func (c *CreateUser) SetLocale(locale string) *CreateUser {
+func (c *CreateUserData) SetLocale(locale string) *CreateUserData {
 	c.Locale = locale
 	return c
 }

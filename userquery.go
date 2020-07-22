@@ -60,9 +60,9 @@ func (c Client) GetUserWithID(userID string) (*User, error) {
 }
 
 // GetUserWithID is
-func (c Client) PatchUser(userID string, patchUser *PatchUser) (*User, error) {
+func (c Client) UpdateUser(userID string, updateUserData *UpdateUserData) (*User, error) {
 	resp, err := resty.New().R().
-		SetBody(*patchUser).
+		SetBody(*updateUserData).
 		SetHeader(headerApiKey, c.apiKey).
 		Patch(linkUsers + "/" + userID)
 
@@ -85,9 +85,10 @@ func (c Client) PatchUser(userID string, patchUser *PatchUser) (*User, error) {
 
 // GetUserWithID is
 // TODO Diğer parametrelere bakılacak
-func (c Client) PostCreateUser(createUser *CreateUser) (*User, error) {
+// TODO Password tipi kontrol edilecek
+func (c Client) CreateUser(createUserdata *CreateUserData) (*User, error) {
 	resp, err := resty.New().R().
-		SetBody(*createUser).
+		SetBody(*createUserdata).
 		SetHeader(headerApiKey, c.apiKey).
 		Post(linkUsers)
 
@@ -109,7 +110,7 @@ func (c Client) PostCreateUser(createUser *CreateUser) (*User, error) {
 }
 
 // PostUserApprove is
-func (c Client) PostUserApprove(userID string) error {
+func (c Client) SetUserApprove(userID string) error {
 	resp, err := resty.New().R().
 		SetHeader(headerApiKey, c.apiKey).
 		Post(linkUsers + "/" + userID + approve)
@@ -126,7 +127,7 @@ func (c Client) PostUserApprove(userID string) error {
 }
 
 // PostUserBlock is
-func (c Client) PostUserBlock(userID string) error {
+func (c Client) SetUserBlock(userID string) error {
 	resp, err := resty.New().R().
 		SetHeader(headerApiKey, c.apiKey).
 		Post(linkUsers + "/" + userID + block)
@@ -143,7 +144,7 @@ func (c Client) PostUserBlock(userID string) error {
 }
 
 // PostUserUnblock is
-func (c Client) PostUserUnblock(userID string) error {
+func (c Client) SetUserUnblock(userID string) error {
 	resp, err := resty.New().R().
 		SetHeader(headerApiKey, c.apiKey).
 		Post(linkUsers + "/" + userID + unblock)

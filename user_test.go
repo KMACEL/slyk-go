@@ -55,7 +55,7 @@ func TestGetUserWithID(t *testing.T) {
 func TestPatchUser(t *testing.T) {
 	tst := "TestPatchUser"
 
-	returnValue, err := getClient().PatchUser("cf99e4d8-bc64-4a5c-80a4-dd1e25e2018d", CreatePatchData().SetName("Mert"))
+	returnValue, err := getClient().UpdateUser("cf99e4d8-bc64-4a5c-80a4-dd1e25e2018d", CreateUpdateData().SetName("Mert"))
 
 	ReturnAndError(t, tst, returnValue, err)
 }
@@ -63,7 +63,7 @@ func TestPatchUser(t *testing.T) {
 func TestCreateUser(t *testing.T) {
 	tst := "TestCreateUser"
 
-	returnValue, err := getClient().PostCreateUser(CreatePostUser().
+	returnValue, err := getClient().CreateUser(CreateUserParam().
 		SetName("Mert").
 		SetEmail("mertacel@gmail.com").
 		SetPassword("123456789..aA"))
@@ -74,7 +74,7 @@ func TestCreateUser(t *testing.T) {
 func TestPostUserApprove(t *testing.T) {
 	tst := "TestPostUserApprove"
 
-	err := getClient().PostUserApprove("debf8f0c-548b-4a35-833a-a5f33dc154ae")
+	err := getClient().SetUserApprove("debf8f0c-548b-4a35-833a-a5f33dc154ae")
 
 	OnlyError(t, tst, err)
 }
@@ -82,7 +82,7 @@ func TestPostUserApprove(t *testing.T) {
 func TestPostUserBlock(t *testing.T) {
 	tst := "TestPostUserBlock"
 
-	err := getClient().PostUserBlock("debf8f0c-548b-4a35-833a-a5f33dc154ae")
+	err := getClient().SetUserBlock("debf8f0c-548b-4a35-833a-a5f33dc154ae")
 
 	OnlyError(t, tst, err)
 }
@@ -90,7 +90,7 @@ func TestPostUserBlock(t *testing.T) {
 func TestPostUserUnblock(t *testing.T) {
 	tst := "TestPostUserUnblock"
 
-	err := getClient().PostUserUnblock("debf8f0c-548b-4a35-833a-a5f33dc154ae")
+	err := getClient().SetUserUnblock("debf8f0c-548b-4a35-833a-a5f33dc154ae")
 
 	OnlyError(t, tst, err)
 }
