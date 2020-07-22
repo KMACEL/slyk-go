@@ -52,8 +52,8 @@ func TestGetUserWithID(t *testing.T) {
 	ReturnAndError(t, tst, returnValue, err)
 }
 
-func TestPatchUser(t *testing.T) {
-	tst := "TestPatchUser"
+func TestUpdateUser(t *testing.T) {
+	tst := "TestUpdateUser"
 
 	returnValue, err := getClient().UpdateUser("cf99e4d8-bc64-4a5c-80a4-dd1e25e2018d", CreateUpdateData().SetName("Mert"))
 
@@ -71,26 +71,34 @@ func TestCreateUser(t *testing.T) {
 	ReturnAndError(t, tst, returnValue, err)
 }
 
-func TestPostUserApprove(t *testing.T) {
-	tst := "TestPostUserApprove"
+func TestSetUserApprove(t *testing.T) {
+	tst := "TestSetUserApprove"
 
 	err := getClient().SetUserApprove("debf8f0c-548b-4a35-833a-a5f33dc154ae")
 
 	OnlyError(t, tst, err)
 }
 
-func TestPostUserBlock(t *testing.T) {
-	tst := "TestPostUserBlock"
+func TestSetUserBlock(t *testing.T) {
+	tst := "TestSetUserBlock"
 
 	err := getClient().SetUserBlock("debf8f0c-548b-4a35-833a-a5f33dc154ae")
 
 	OnlyError(t, tst, err)
 }
 
-func TestPostUserUnblock(t *testing.T) {
-	tst := "TestPostUserUnblock"
+func TestSetUserUnblock(t *testing.T) {
+	tst := "TestSetUserUnblock"
 
 	err := getClient().SetUserUnblock("debf8f0c-548b-4a35-833a-a5f33dc154ae")
+
+	OnlyError(t, tst, err)
+}
+
+func TestChangePassword(t *testing.T) {
+	tst := "TestChangePassword"
+
+	err := getClient().ChangePassword("debf8f0c-548b-4a35-833a-a5f33dc154ae", "12345678..aA")
 
 	OnlyError(t, tst, err)
 }

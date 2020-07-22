@@ -159,3 +159,24 @@ func (c Client) SetUserUnblock(userID string) error {
 
 	return nil
 }
+
+func (c Client) ChangePassword(userID string, psw string) error {
+	resp, err := resty.New().R().
+		SetBody(struct {
+			Password string `json:"password"`
+		}{
+			Password: psw,
+		}).
+		SetHeader(headerApiKey, c.apiKey).
+		Post(linkUsers + "/" + userID + changePassword)
+
+	if err != nil {
+		return err
+	}
+
+	if resp.IsError() {
+		return fmt.Errorf("Status Code : %d", resp.StatusCode())
+	}
+
+	return nil
+}
