@@ -107,3 +107,20 @@ func (c Client) PostCreateUser(createUser *CreateUser) (*User, error) {
 
 	return &user, nil
 }
+
+// PostUserApprove is
+func (c Client) PostUserApprove(userID string) error {
+	resp, err := resty.New().R().
+		SetHeader(headerApiKey, c.apiKey).
+		Post(linkUsers + "/" + userID + approve)
+
+	if err != nil {
+		return err
+	}
+
+	if resp.IsError() {
+		return fmt.Errorf("Status Code : %d", resp.StatusCode())
+	}
+
+	return nil
+}

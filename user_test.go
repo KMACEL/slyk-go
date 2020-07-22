@@ -70,3 +70,11 @@ func TestCreateUser(t *testing.T) {
 
 	ReturnAndError(t, tst, returnValue, err)
 }
+
+func TestPostUserApprove(t *testing.T) {
+	tst := "TestPostUserApprove"
+
+	err := getClient().PostUserApprove("debf8f0c-548b-4a35-833a-a5f33dc154ae")
+
+	OnlyError(t, tst, err)
+}
