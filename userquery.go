@@ -124,3 +124,37 @@ func (c Client) PostUserApprove(userID string) error {
 
 	return nil
 }
+
+// PostUserBlock is
+func (c Client) PostUserBlock(userID string) error {
+	resp, err := resty.New().R().
+		SetHeader(headerApiKey, c.apiKey).
+		Post(linkUsers + "/" + userID + block)
+
+	if err != nil {
+		return err
+	}
+
+	if resp.IsError() {
+		return fmt.Errorf("Status Code : %d", resp.StatusCode())
+	}
+
+	return nil
+}
+
+// PostUserUnblock is
+func (c Client) PostUserUnblock(userID string) error {
+	resp, err := resty.New().R().
+		SetHeader(headerApiKey, c.apiKey).
+		Post(linkUsers + "/" + userID + unblock)
+
+	if err != nil {
+		return err
+	}
+
+	if resp.IsError() {
+		return fmt.Errorf("Status Code : %d", resp.StatusCode())
+	}
+
+	return nil
+}

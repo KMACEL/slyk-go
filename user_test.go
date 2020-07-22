@@ -78,3 +78,19 @@ func TestPostUserApprove(t *testing.T) {
 
 	OnlyError(t, tst, err)
 }
+
+func TestPostUserBlock(t *testing.T) {
+	tst := "TestPostUserBlock"
+
+	err := getClient().PostUserBlock("debf8f0c-548b-4a35-833a-a5f33dc154ae")
+
+	OnlyError(t, tst, err)
+}
+
+func TestPostUserUnblock(t *testing.T) {
+	tst := "TestPostUserUnblock"
+
+	err := getClient().PostUserUnblock("debf8f0c-548b-4a35-833a-a5f33dc154ae")
+
+	OnlyError(t, tst, err)
+}

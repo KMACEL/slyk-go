@@ -5,6 +5,8 @@ const (
 
 	linkUsers = apiSlyk + "/users"
 	approve   = "/approve"
+	block     = "/block"
+	unblock   = "/unblock"
 )
 
 const (
