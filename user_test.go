@@ -5,10 +5,10 @@ import "testing"
 func TestGetUsers(t *testing.T) {
 	tst := "TestGetUsers"
 
-	/*returnValue, err := getClient().GetUser()
+	returnValue, err := getClient().GetUser()
 	ReturnAndError(t, tst, returnValue, err)
 
-	returnValue, err = getClient().GetUser(GetUserFilter().SetEmail("mert@monoji.io"))
+	/*returnValue, err = getClient().GetUser(GetUserFilter().SetEmail("mert@monoji.io"))
 	ReturnAndError(t, tst, returnValue, err)
 
 	returnValue, err = getClient().GetUser(GetUserFilter().
@@ -38,10 +38,10 @@ func TestGetUsers(t *testing.T) {
 	ReturnAndError(t, tst, returnValue, err)
 
 	returnValue, err := getClient().GetUser(GetUserFilter().SetRole("owner"))
-	ReturnAndError(t, tst, returnValue, err)*/
+	ReturnAndError(t, tst, returnValue, err)
 
 	returnValue, err := getClient().GetUser(GetUserFilter().SetVerified(true).SetEmail("mert@monoji.io"), GetUserFilter().SetVerified(true).SetReferralCode("RV2EXGMMVXG"))
-	ReturnAndError(t, tst, returnValue, err)
+	ReturnAndError(t, tst, returnValue, err)*/
 }
 
 func TestGetUserWithID(t *testing.T) {
@@ -56,6 +56,17 @@ func TestPatchUser(t *testing.T) {
 	tst := "TestPatchUser"
 
 	returnValue, err := getClient().PatchUser("cf99e4d8-bc64-4a5c-80a4-dd1e25e2018d", CreatePatchData().SetName("Mert"))
+
+	ReturnAndError(t, tst, returnValue, err)
+}
+
+func TestCreateUser(t *testing.T) {
+	tst := "TestCreateUser"
+
+	returnValue, err := getClient().PostCreateUser(CreatePostUser().
+		SetName("Mert").
+		SetEmail("mertacel@gmail.com").
+		SetPassword("123456789..aA"))
 
 	ReturnAndError(t, tst, returnValue, err)
 }

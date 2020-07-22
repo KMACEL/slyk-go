@@ -3,7 +3,38 @@ package slyk
 import (
 	"strconv"
 	"strings"
+	"time"
 )
+
+type Users struct {
+	Data  []Data `json:"data"`
+	Total int    `json:"total"`
+}
+
+type User struct {
+	Data `json:"data"`
+}
+
+type Data struct {
+	Approved   bool      `json:"approved"`
+	Blocked    bool      `json:"blocked"`
+	CreatedAt  time.Time `json:"createdAt"`
+	CustomData struct {
+	} `json:"customData"`
+	Email           string      `json:"email"`
+	ID              string      `json:"id"`
+	Image           interface{} `json:"image"`
+	ImageURL        interface{} `json:"imageUrl"`
+	Locale          string      `json:"locale"`
+	Name            string      `json:"name"`
+	Phone           interface{} `json:"phone"`
+	PrimaryWalletID string      `json:"primaryWalletId"`
+	ReferralCode    string      `json:"referralCode"`
+	ReferralUserID  interface{} `json:"referralUserId"`
+	Roles           []string    `json:"roles"`
+	UpdatedAt       time.Time   `json:"updatedAt"`
+	Verified        bool        `json:"verified"`
+}
 
 type getUserFilter map[string]string
 
@@ -11,6 +42,13 @@ type PatchUser struct {
 	Name       string      `json:"name"`
 	Locale     string      `json:"locale"`
 	CustomData interface{} `json:"customData"`
+}
+
+type CreateUser struct {
+	Email    string `json:"email"`
+	Locale   string `json:"locale"`
+	Name     string `json:"name"`
+	Password string `json:"password"`
 }
 
 func GetUserFilter() *getUserFilter {
@@ -123,4 +161,28 @@ func (p *PatchUser) SetLocale(locale string) *PatchUser {
 func (p *PatchUser) SetCustomData(customData interface{}) *PatchUser {
 	p.CustomData = customData
 	return p
+}
+
+func CreatePostUser() *CreateUser {
+	return &CreateUser{}
+}
+
+func (c *CreateUser) SetName(name string) *CreateUser {
+	c.Name = name
+	return c
+}
+
+func (c *CreateUser) SetEmail(email string) *CreateUser {
+	c.Email = email
+	return c
+}
+
+func (c *CreateUser) SetPassword(password string) *CreateUser {
+	c.Password = password
+	return c
+}
+
+func (c *CreateUser) SetLocale(locale string) *CreateUser {
+	c.Locale = locale
+	return c
 }
