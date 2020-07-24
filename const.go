@@ -8,6 +8,8 @@ const (
 	block          = "/block"
 	unblock        = "/unblock"
 	changePassword = "/change-password"
+
+	linkWallets = apiSlyk + "/wallets"
 )
 
 const (

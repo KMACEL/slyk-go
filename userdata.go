@@ -6,16 +6,18 @@ import (
 	"time"
 )
 
+type getUserFilter map[string]string
+
 type Users struct {
-	Data  []Data `json:"data"`
-	Total int    `json:"total"`
+	Data  []UserData `json:"data"`
+	Total int        `json:"total"`
 }
 
 type User struct {
-	Data `json:"data"`
+	UserData `json:"data"`
 }
 
-type Data struct {
+type UserData struct {
 	Approved   bool      `json:"approved"`
 	Blocked    bool      `json:"blocked"`
 	CreatedAt  time.Time `json:"createdAt"`
@@ -35,8 +37,6 @@ type Data struct {
 	UpdatedAt       time.Time   `json:"updatedAt"`
 	Verified        bool        `json:"verified"`
 }
-
-type getUserFilter map[string]string
 
 type UpdateUserData struct {
 	Name       string      `json:"name"`
