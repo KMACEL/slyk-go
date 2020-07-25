@@ -34,3 +34,26 @@ func (c Client) GetWallets(filter ...*getWalletFilter) (*Wallets, error) {
 
 	return &wallets, nil
 }
+
+// GetWalletWithID is
+func (c Client) GetWalletWithID(walletID string) (*Wallet, error) {
+	resp, err := resty.New().R().
+		SetHeader(headerApiKey, c.apiKey).
+		Get(linkWallets + "/" + walletID)
+
+	if err != nil {
+		return nil, err
+	}
+
+	if resp.IsError() {
+		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
+	}
+
+	var wallet Wallet
+	errUnmarshal := json.Unmarshal(resp.Body(), &wallet)
+	if errUnmarshal != nil {
+		return nil, errUnmarshal
+	}
+
+	return &wallet, nil
+}

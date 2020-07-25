@@ -13,6 +13,10 @@ type Wallets struct {
 	Total int          `json:"total"`
 }
 
+type Wallet struct {
+	Data WalletData `json:"data"`
+}
+
 type WalletData struct {
 	CreatedAt  time.Time `json:"createdAt"`
 	CustomData struct {
