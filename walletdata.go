@@ -7,6 +7,7 @@ import (
 )
 
 type getWalletFilter map[string]string
+type getWalletActivityFilter map[string]string
 
 type Wallets struct {
 	Data  []WalletData `json:"data"`
@@ -18,30 +19,105 @@ type Wallet struct {
 }
 
 type WalletData struct {
-	CreatedAt  time.Time `json:"createdAt"`
-	CustomData struct {
-	} `json:"customData"`
+	CreatedAt   time.Time   `json:"createdAt"`
+	CustomData  struct{}    `json:"customData"`
 	Description interface{} `json:"description"`
 	ID          string      `json:"id"`
 	Locked      bool        `json:"locked"`
-	Metadata    struct {
-	} `json:"metadata"`
-	Name      string    `json:"name"`
-	OwnerID   string    `json:"ownerId"`
-	Reference string    `json:"reference"`
-	UpdatedAt time.Time `json:"updatedAt"`
+	Metadata    struct{}    `json:"metadata"`
+	Name        string      `json:"name"`
+	OwnerID     string      `json:"ownerId"`
+	Reference   string      `json:"reference"`
+	UpdatedAt   time.Time   `json:"updatedAt"`
+}
+
+type WalletActivities struct {
+	Data  []WalletActivityData `json:"data"`
+	Total int                  `json:"total"`
+}
+
+type WalletActivityData struct {
+	Amount             string      `json:"amount"`
+	AssetCode          string      `json:"assetCode"`
+	Code               string      `json:"code"`
+	CreatedAt          time.Time   `json:"createdAt"`
+	CustomData         struct{}    `json:"customData"`
+	DestinationAddress interface{} `json:"destinationAddress,omitempty"`
+	DestinationWallet  struct {
+		CreatedAt  time.Time `json:"createdAt"`
+		CustomData struct{}  `json:"customData"`
+		ID         string    `json:"id"`
+		Locked     bool      `json:"locked"`
+		Metadata   struct{}  `json:"metadata"`
+		Name       string    `json:"name"`
+		OwnerID    string    `json:"ownerId"`
+		Reference  string    `json:"reference"`
+		UpdatedAt  time.Time `json:"updatedAt"`
+	} `json:"destinationWallet,omitempty"`
+	DestinationWalletID   string `json:"destinationWalletId"`
+	DestinationWalletUser struct {
+		Approved        bool      `json:"approved"`
+		Blocked         bool      `json:"blocked"`
+		CreatedAt       time.Time `json:"createdAt"`
+		CustomData      struct{}  `json:"customData"`
+		Email           string    `json:"email"`
+		ID              string    `json:"id"`
+		Locale          string    `json:"locale"`
+		Name            string    `json:"name"`
+		Phone           string    `json:"phone"`
+		PrimaryWalletID string    `json:"primaryWalletId"`
+		ReferralCode    string    `json:"referralCode"`
+		Roles           []string  `json:"roles"`
+		UpdatedAt       time.Time `json:"updatedAt"`
+		Verified        bool      `json:"verified"`
+	} `json:"destinationWalletUser,omitempty"`
+	ExternalID     interface{} `json:"externalId"`
+	ID             string      `json:"id"`
+	Metadata       struct{}    `json:"metadata"`
+	OriginAddress  interface{} `json:"originAddress,omitempty"`
+	OriginWalletID interface{} `json:"originWalletId"`
+	Status         string      `json:"status"`
+	Type           string      `json:"type"`
+	UpdatedAt      time.Time   `json:"updatedAt"`
+	OriginWallet   struct {
+		CreatedAt  time.Time `json:"createdAt"`
+		CustomData struct{}  `json:"customData"`
+		ID         string    `json:"id"`
+		Locked     bool      `json:"locked"`
+		Metadata   struct{}  `json:"metadata"`
+		Name       string    `json:"name"`
+		OwnerID    string    `json:"ownerId"`
+		Reference  string    `json:"reference"`
+		UpdatedAt  time.Time `json:"updatedAt"`
+	} `json:"originWallet,omitempty"`
+	OriginWalletUser struct {
+		Approved        bool      `json:"approved"`
+		Blocked         bool      `json:"blocked"`
+		CreatedAt       time.Time `json:"createdAt"`
+		CustomData      struct{}  `json:"customData"`
+		Email           string    `json:"email"`
+		ID              string    `json:"id"`
+		Locale          string    `json:"locale"`
+		Name            string    `json:"name"`
+		Phone           string    `json:"phone"`
+		PrimaryWalletID string    `json:"primaryWalletId"`
+		ReferralCode    string    `json:"referralCode"`
+		Roles           []string  `json:"roles"`
+		UpdatedAt       time.Time `json:"updatedAt"`
+		Verified        bool      `json:"verified"`
+	} `json:"originWalletUser,omitempty"`
 }
 
 func GetWalletFilter() *getWalletFilter {
 	return &getWalletFilter{}
 }
 
-func (g *getWalletFilter) SetIDForIN(id ...string) *getWalletFilter {
+func (g *getWalletFilter) SetIDWithIN(id ...string) *getWalletFilter {
 	(*g)["filter[id]"] = "in:" + strings.Join(id, ",")
 	return g
 }
 
-func (g *getWalletFilter) SetIDForNIN(id ...string) *getWalletFilter {
+func (g *getWalletFilter) SetIDWithNIN(id ...string) *getWalletFilter {
 	(*g)["filter[id]"] = "nin:" + strings.Join(id, ",")
 	return g
 }
@@ -73,5 +149,79 @@ func (g *getWalletFilter) SetSortWithCreatedAt() *getWalletFilter {
 
 func (g *getWalletFilter) SetSortWithCreatedAtReverse() *getWalletFilter {
 	(*g)["sort"] = "-createdAt"
+	return g
+}
+
+func GetWalletActivityFilter() *getWalletActivityFilter {
+	return &getWalletActivityFilter{}
+}
+
+func (g *getWalletActivityFilter) SetAssetCodeWithIN(assetCode string) *getWalletActivityFilter {
+	(*g)["filter[assetCode]"] = "in:" + assetCode
+	return g
+}
+
+func (g *getWalletActivityFilter) SetAssetCodeWithNIN(assetCode string) *getWalletActivityFilter {
+	(*g)["filter[assetCode]"] = "nin:" + assetCode
+	return g
+}
+
+func (g *getWalletActivityFilter) SetCodeWithIN(code string) *getWalletActivityFilter {
+	(*g)["filter[code]"] = "in:" + code
+	return g
+}
+
+func (g *getWalletActivityFilter) SetCodeWithNIN(code string) *getWalletActivityFilter {
+	(*g)["filter[code]"] = "nin:" + code
+	return g
+}
+
+func (g *getWalletActivityFilter) SetStatusWithIN(status string) *getWalletActivityFilter {
+	(*g)["filter[status]"] = "in:" + status
+	return g
+}
+
+func (g *getWalletActivityFilter) SetStatusWithNIN(status string) *getWalletActivityFilter {
+	(*g)["filter[status]"] = "nin:" + status
+	return g
+}
+
+func (g *getWalletActivityFilter) SetTypeWithIN(getType string) *getWalletActivityFilter {
+	(*g)["filter[type]"] = "in:" + getType
+	return g
+}
+
+func (g *getWalletActivityFilter) SetTypeWithNIN(getType string) *getWalletActivityFilter {
+	(*g)["filter[type]"] = "nin:" + getType
+	return g
+}
+
+func (g *getWalletActivityFilter) SetSortWithAmount(amount string) *getWalletActivityFilter {
+	(*g)["filter[amount]"] = "amount"
+	return g
+}
+
+func (g *getWalletActivityFilter) SetSortWithAmountReverse(amount string) *getWalletActivityFilter {
+	(*g)["filter[amount]"] = "-amount"
+	return g
+}
+
+func (g *getWalletActivityFilter) SetSortWithCreatedAt() *getWalletActivityFilter {
+	(*g)["sort"] = "createdAt"
+	return g
+}
+
+func (g *getWalletActivityFilter) SetSortWithCreatedAtReverse() *getWalletActivityFilter {
+	(*g)["sort"] = "-createdAt"
+	return g
+}
+
+func (g *getWalletActivityFilter) SetAvailableIncludeWithUser() *getWalletActivityFilter {
+	(*g)["include"] = "users"
+	return g
+}
+
+func (g *getWalletActivityFilter) SetAvailableIncludeWithWallets() *getWalletActivityFilter {
+	(*g)["include"] = "wallets"
 	return g
 }

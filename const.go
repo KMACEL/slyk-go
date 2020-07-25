@@ -10,6 +10,7 @@ const (
 	changePassword = "/change-password"
 
 	linkWallets = apiSlyk + "/wallets"
+	activity    = "/activity"
 )
 
 const (
