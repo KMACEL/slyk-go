@@ -9,6 +9,7 @@ import (
 type getWalletFilter map[string]string
 type getWalletActivityFilter map[string]string
 type getWalletBalanceFilter map[string]string
+type getWalletMovementFilter map[string]string
 
 type Wallets struct {
 	Data  []WalletData `json:"data"`
@@ -118,6 +119,52 @@ type WalletBalanceData struct {
 	Amount    string `json:"amount"`
 }
 
+type WalletMovements struct {
+	Data  []WalletMovementData `json:"data"`
+	Total int                  `json:"total"`
+}
+
+type WalletMovementData struct {
+	Amount      string    `json:"amount"`
+	AssetCode   string    `json:"assetCode"`
+	Code        string    `json:"code"`
+	CreatedAt   time.Time `json:"createdAt"`
+	ID          string    `json:"id"`
+	Transaction struct {
+		Amount              string      `json:"amount"`
+		AssetCode           string      `json:"assetCode"`
+		Code                string      `json:"code"`
+		CreatedAt           time.Time   `json:"createdAt"`
+		CustomData          struct{}    `json:"customData"`
+		Description         string      `json:"description"`
+		DestinationAddress  interface{} `json:"destinationAddress"`
+		DestinationWalletID string      `json:"destinationWalletId"`
+		ExternalID          interface{} `json:"externalId"`
+		ID                  string      `json:"id"`
+		Metadata            struct {
+		} `json:"metadata"`
+		OriginAddress  interface{} `json:"originAddress"`
+		OriginWalletID interface{} `json:"originWalletId"`
+		Status         string      `json:"status"`
+		Type           string      `json:"type"`
+		UpdatedAt      time.Time   `json:"updatedAt"`
+	} `json:"transaction"`
+	TransactionID string    `json:"transactionId"`
+	UpdatedAt     time.Time `json:"updatedAt"`
+	WalletID      string    `json:"walletId"`
+}
+
+//=============================================================================================
+
+/*
+ ██████╗ ███████╗████████╗        ██╗    ██╗ █████╗ ██╗     ██╗     ███████╗████████╗        ███████╗██╗██╗  ████████╗███████╗██████╗
+██╔════╝ ██╔════╝╚══██╔══╝        ██║    ██║██╔══██╗██║     ██║     ██╔════╝╚══██╔══╝        ██╔════╝██║██║  ╚══██╔══╝██╔════╝██╔══██╗
+██║  ███╗█████╗     ██║           ██║ █╗ ██║███████║██║     ██║     █████╗     ██║           █████╗  ██║██║     ██║   █████╗  ██████╔╝
+██║   ██║██╔══╝     ██║           ██║███╗██║██╔══██║██║     ██║     ██╔══╝     ██║           ██╔══╝  ██║██║     ██║   ██╔══╝  ██╔══██╗
+╚██████╔╝███████╗   ██║           ╚███╔███╔╝██║  ██║███████╗███████╗███████╗   ██║           ██║     ██║███████╗██║   ███████╗██║  ██║
+ ╚═════╝ ╚══════╝   ╚═╝            ╚══╝╚══╝ ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝   ╚═╝           ╚═╝     ╚═╝╚══════╝╚═╝   ╚══════╝╚═╝  ╚═╝
+*/
+
 func GetWalletFilter() *getWalletFilter {
 	return &getWalletFilter{}
 }
@@ -161,6 +208,15 @@ func (g *getWalletFilter) SetSortWithCreatedAtReverse() *getWalletFilter {
 	(*g)["sort"] = "-createdAt"
 	return g
 }
+
+/*
+ ██████╗ ███████╗████████╗        ██╗    ██╗ █████╗ ██╗     ██╗     ███████╗████████╗         █████╗  ██████╗████████╗██╗██╗   ██╗██╗████████╗██╗   ██╗        ███████╗██╗██╗  ████████╗███████╗██████╗
+██╔════╝ ██╔════╝╚══██╔══╝        ██║    ██║██╔══██╗██║     ██║     ██╔════╝╚══██╔══╝        ██╔══██╗██╔════╝╚══██╔══╝██║██║   ██║██║╚══██╔══╝╚██╗ ██╔╝        ██╔════╝██║██║  ╚══██╔══╝██╔════╝██╔══██╗
+██║  ███╗█████╗     ██║           ██║ █╗ ██║███████║██║     ██║     █████╗     ██║           ███████║██║        ██║   ██║██║   ██║██║   ██║    ╚████╔╝         █████╗  ██║██║     ██║   █████╗  ██████╔╝
+██║   ██║██╔══╝     ██║           ██║███╗██║██╔══██║██║     ██║     ██╔══╝     ██║           ██╔══██║██║        ██║   ██║╚██╗ ██╔╝██║   ██║     ╚██╔╝          ██╔══╝  ██║██║     ██║   ██╔══╝  ██╔══██╗
+╚██████╔╝███████╗   ██║           ╚███╔███╔╝██║  ██║███████╗███████╗███████╗   ██║           ██║  ██║╚██████╗   ██║   ██║ ╚████╔╝ ██║   ██║      ██║           ██║     ██║███████╗██║   ███████╗██║  ██║
+ ╚═════╝ ╚══════╝   ╚═╝            ╚══╝╚══╝ ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝   ╚═╝           ╚═╝  ╚═╝ ╚═════╝   ╚═╝   ╚═╝  ╚═══╝  ╚═╝   ╚═╝      ╚═╝           ╚═╝     ╚═╝╚══════╝╚═╝   ╚══════╝╚═╝  ╚═╝
+*/
 
 func GetWalletActivityFilter() *getWalletActivityFilter {
 	return &getWalletActivityFilter{}
@@ -238,6 +294,15 @@ func (g *getWalletActivityFilter) SetAvailableIncludeWithWallets() *getWalletAct
 	return g
 }
 
+/*
+ ██████╗ ███████╗████████╗        ██╗    ██╗ █████╗ ██╗     ██╗     ███████╗████████╗        ██████╗  █████╗ ██╗      █████╗ ███╗   ██╗ ██████╗███████╗        ███████╗██╗██╗  ████████╗███████╗██████╗
+██╔════╝ ██╔════╝╚══██╔══╝        ██║    ██║██╔══██╗██║     ██║     ██╔════╝╚══██╔══╝        ██╔══██╗██╔══██╗██║     ██╔══██╗████╗  ██║██╔════╝██╔════╝        ██╔════╝██║██║  ╚══██╔══╝██╔════╝██╔══██╗
+██║  ███╗█████╗     ██║           ██║ █╗ ██║███████║██║     ██║     █████╗     ██║           ██████╔╝███████║██║     ███████║██╔██╗ ██║██║     █████╗          █████╗  ██║██║     ██║   █████╗  ██████╔╝
+██║   ██║██╔══╝     ██║           ██║███╗██║██╔══██║██║     ██║     ██╔══╝     ██║           ██╔══██╗██╔══██║██║     ██╔══██║██║╚██╗██║██║     ██╔══╝          ██╔══╝  ██║██║     ██║   ██╔══╝  ██╔══██╗
+╚██████╔╝███████╗   ██║           ╚███╔███╔╝██║  ██║███████╗███████╗███████╗   ██║           ██████╔╝██║  ██║███████╗██║  ██║██║ ╚████║╚██████╗███████╗        ██║     ██║███████╗██║   ███████╗██║  ██║
+ ╚═════╝ ╚══════╝   ╚═╝            ╚══╝╚══╝ ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝   ╚═╝           ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝╚══════╝        ╚═╝     ╚═╝╚══════╝╚═╝   ╚══════╝╚═╝  ╚═╝
+*/
+
 func GetWalletBalanceFilter() *getWalletBalanceFilter {
 	return &getWalletBalanceFilter{}
 }
@@ -251,5 +316,54 @@ func (g *getWalletBalanceFilter) SetAssetCodeWithIN(assetCode string) *getWallet
 // asset btc,eth,ltc
 func (g *getWalletBalanceFilter) SetAssetCodeWithNIN(assetCode string) *getWalletBalanceFilter {
 	(*g)["filter[assetCode]"] = "nin:" + assetCode
+	return g
+}
+
+/*
+ ██████╗ ███████╗████████╗        ██╗    ██╗ █████╗ ██╗     ██╗     ███████╗████████╗        ███╗   ███╗ ██████╗ ██╗   ██╗███████╗███╗   ███╗███████╗███╗   ██╗████████╗        ███████╗██╗██╗  ████████╗███████╗██████╗
+██╔════╝ ██╔════╝╚══██╔══╝        ██║    ██║██╔══██╗██║     ██║     ██╔════╝╚══██╔══╝        ████╗ ████║██╔═══██╗██║   ██║██╔════╝████╗ ████║██╔════╝████╗  ██║╚══██╔══╝        ██╔════╝██║██║  ╚══██╔══╝██╔════╝██╔══██╗
+██║  ███╗█████╗     ██║           ██║ █╗ ██║███████║██║     ██║     █████╗     ██║           ██╔████╔██║██║   ██║██║   ██║█████╗  ██╔████╔██║█████╗  ██╔██╗ ██║   ██║           █████╗  ██║██║     ██║   █████╗  ██████╔╝
+██║   ██║██╔══╝     ██║           ██║███╗██║██╔══██║██║     ██║     ██╔══╝     ██║           ██║╚██╔╝██║██║   ██║╚██╗ ██╔╝██╔══╝  ██║╚██╔╝██║██╔══╝  ██║╚██╗██║   ██║           ██╔══╝  ██║██║     ██║   ██╔══╝  ██╔══██╗
+╚██████╔╝███████╗   ██║           ╚███╔███╔╝██║  ██║███████╗███████╗███████╗   ██║           ██║ ╚═╝ ██║╚██████╔╝ ╚████╔╝ ███████╗██║ ╚═╝ ██║███████╗██║ ╚████║   ██║           ██║     ██║███████╗██║   ███████╗██║  ██║
+ ╚═════╝ ╚══════╝   ╚═╝            ╚══╝╚══╝ ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝   ╚═╝           ╚═╝     ╚═╝ ╚═════╝   ╚═══╝  ╚══════╝╚═╝     ╚═╝╚══════╝╚═╝  ╚═══╝   ╚═╝           ╚═╝     ╚═╝╚══════╝╚═╝   ╚══════╝╚═╝  ╚═╝
+*/
+
+func GetWalletMovementFilter() *getWalletMovementFilter {
+	return &getWalletMovementFilter{}
+}
+
+func (g *getWalletMovementFilter) SetAssetCodeWithIN(assetCode string) *getWalletMovementFilter {
+	(*g)["filter[assetCode]"] = "in:" + assetCode
+	return g
+}
+
+// asset btc,eth,ltc
+func (g *getWalletMovementFilter) SetAssetCodeWithNIN(assetCode string) *getWalletMovementFilter {
+	(*g)["filter[assetCode]"] = "nin:" + assetCode
+	return g
+}
+
+func (g *getWalletMovementFilter) SetSortWithAmount(amount string) *getWalletMovementFilter {
+	(*g)["filter[amount]"] = "amount"
+	return g
+}
+
+func (g *getWalletMovementFilter) SetSortWithAmountReverse(amount string) *getWalletMovementFilter {
+	(*g)["filter[amount]"] = "-amount"
+	return g
+}
+
+func (g *getWalletMovementFilter) SetSortWithCreatedAt() *getWalletMovementFilter {
+	(*g)["sort"] = "createdAt"
+	return g
+}
+
+func (g *getWalletMovementFilter) SetSortWithCreatedAtReverse() *getWalletMovementFilter {
+	(*g)["sort"] = "-createdAt"
+	return g
+}
+
+func (g *getWalletMovementFilter) SetAvailableTransactionWithUser() *getWalletMovementFilter {
+	(*g)["include"] = "transaction"
 	return g
 }

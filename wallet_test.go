@@ -41,3 +41,11 @@ func TestGetWalletBalance(t *testing.T) {
 
 	ReturnAndError(t, tst, returnValue, err)
 }
+
+func TestGetWalletMovements(t *testing.T) {
+	tst := "TestGetWalletMovements"
+
+	returnValue, err := getClient().GetWalletMovements("73fb8803-bd14-4127-bdb3-8a71b030d4bd")
+
+	ReturnAndError(t, tst, returnValue, err)
+}
