@@ -8,6 +8,7 @@ import (
 
 type getWalletFilter map[string]string
 type getWalletActivityFilter map[string]string
+type getWalletBalanceFilter map[string]string
 
 type Wallets struct {
 	Data  []WalletData `json:"data"`
@@ -108,6 +109,15 @@ type WalletActivityData struct {
 	} `json:"originWalletUser,omitempty"`
 }
 
+type WalletBalance struct {
+	Data []WalletBalanceData `json:"data"`
+}
+
+type WalletBalanceData struct {
+	AssetCode string `json:"assetCode"`
+	Amount    string `json:"amount"`
+}
+
 func GetWalletFilter() *getWalletFilter {
 	return &getWalletFilter{}
 }
@@ -156,11 +166,13 @@ func GetWalletActivityFilter() *getWalletActivityFilter {
 	return &getWalletActivityFilter{}
 }
 
+// asset btc,eth,ltc
 func (g *getWalletActivityFilter) SetAssetCodeWithIN(assetCode string) *getWalletActivityFilter {
 	(*g)["filter[assetCode]"] = "in:" + assetCode
 	return g
 }
 
+// asset btc,eth,ltc
 func (g *getWalletActivityFilter) SetAssetCodeWithNIN(assetCode string) *getWalletActivityFilter {
 	(*g)["filter[assetCode]"] = "nin:" + assetCode
 	return g
@@ -223,5 +235,21 @@ func (g *getWalletActivityFilter) SetAvailableIncludeWithUser() *getWalletActivi
 
 func (g *getWalletActivityFilter) SetAvailableIncludeWithWallets() *getWalletActivityFilter {
 	(*g)["include"] = "wallets"
+	return g
+}
+
+func GetWalletBalanceFilter() *getWalletBalanceFilter {
+	return &getWalletBalanceFilter{}
+}
+
+// asset btc,eth,ltc
+func (g *getWalletBalanceFilter) SetAssetCodeWithIN(assetCode string) *getWalletBalanceFilter {
+	(*g)["filter[assetCode]"] = "in:" + assetCode
+	return g
+}
+
+// asset btc,eth,ltc
+func (g *getWalletBalanceFilter) SetAssetCodeWithNIN(assetCode string) *getWalletBalanceFilter {
+	(*g)["filter[assetCode]"] = "nin:" + assetCode
 	return g
 }

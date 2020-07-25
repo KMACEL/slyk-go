@@ -33,3 +33,11 @@ func TestGetWalletActivity(t *testing.T) {
 
 	ReturnAndError(t, tst, returnValue, err)
 }
+
+func TestGetWalletBalance(t *testing.T) {
+	tst := "TestGetWalletBalance"
+
+	returnValue, err := getClient().GetWalletBalance("73fb8803-bd14-4127-bdb3-8a71b030d4bd")
+
+	ReturnAndError(t, tst, returnValue, err)
+}

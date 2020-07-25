@@ -80,3 +80,26 @@ func (c Client) GetWalletActivity(walletID string, filter ...*getWalletActivityF
 
 	return &walletActivities, nil
 }
+
+// GetWaalletBalance is
+func (c Client) GetWalletBalance(walletID string, filter ...*getWalletBalanceFilter) (*WalletBalance, error) {
+	resp, err := resty.New().R().
+		SetHeader(headerApiKey, c.apiKey).
+		Get(linkWallets + "/" + walletID + balance)
+
+	if err != nil {
+		return nil, err
+	}
+
+	if resp.IsError() {
+		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
+	}
+
+	var walletBalance WalletBalance
+	errUnmarshal := json.Unmarshal(resp.Body(), &walletBalance)
+	if errUnmarshal != nil {
+		return nil, errUnmarshal
+	}
+
+	return &walletBalance, nil
+}

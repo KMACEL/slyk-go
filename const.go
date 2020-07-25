@@ -11,6 +11,7 @@ const (
 
 	linkWallets = apiSlyk + "/wallets"
 	activity    = "/activity"
+	balance     = "/balance"
 )
 
 const (
