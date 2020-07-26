@@ -60,7 +60,13 @@ func (c Client) GetWalletWithID(walletID string) (*Wallet, error) {
 
 // GetWalletActivity is
 func (c Client) GetWalletActivity(walletID string, filter ...*getWalletActivityFilter) (*WalletActivities, error) {
-	resp, err := resty.New().R().
+	clientReq := resty.New().R()
+
+	if filter != nil {
+		clientReq.SetQueryParams(merge(filter))
+	}
+
+	resp, err := clientReq.
 		SetHeader(headerApiKey, c.apiKey).
 		Get(linkWallets + "/" + walletID + activity)
 
@@ -83,7 +89,13 @@ func (c Client) GetWalletActivity(walletID string, filter ...*getWalletActivityF
 
 // GetWaalletBalance is
 func (c Client) GetWalletBalance(walletID string, filter ...*getWalletBalanceFilter) (*WalletBalance, error) {
-	resp, err := resty.New().R().
+	clientReq := resty.New().R()
+
+	if filter != nil {
+		clientReq.SetQueryParams(merge(filter))
+	}
+
+	resp, err := clientReq.
 		SetHeader(headerApiKey, c.apiKey).
 		Get(linkWallets + "/" + walletID + balance)
 
@@ -106,7 +118,13 @@ func (c Client) GetWalletBalance(walletID string, filter ...*getWalletBalanceFil
 
 // GetWalletMovements is
 func (c Client) GetWalletMovements(walletID string, filter ...*getWalletMovementFilter) (*WalletMovements, error) {
-	resp, err := resty.New().R().
+	clientReq := resty.New().R()
+
+	if filter != nil {
+		clientReq.SetQueryParams(merge(filter))
+	}
+
+	resp, err := clientReq.
 		SetHeader(headerApiKey, c.apiKey).
 		Get(linkWallets + "/" + walletID + movements)
 
@@ -125,4 +143,33 @@ func (c Client) GetWalletMovements(walletID string, filter ...*getWalletMovement
 	}
 
 	return &walletMovements, nil
+}
+
+// GetWalletTransactions is
+func (c Client) GetWalletTransactions(walletID string, filter ...*getWalletTransactionstFilter) (*WalletTransactions, error) {
+	clientReq := resty.New().R()
+
+	if filter != nil {
+		clientReq.SetQueryParams(merge(filter))
+	}
+
+	resp, err := clientReq.
+		SetHeader(headerApiKey, c.apiKey).
+		Get(linkWallets + "/" + walletID + transactions)
+
+	if err != nil {
+		return nil, err
+	}
+
+	if resp.IsError() {
+		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
+	}
+
+	var walletTransactions WalletTransactions
+	errUnmarshal := json.Unmarshal(resp.Body(), &walletTransactions)
+	if errUnmarshal != nil {
+		return nil, errUnmarshal
+	}
+
+	return &walletTransactions, nil
 }

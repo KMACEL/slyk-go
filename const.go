@@ -9,10 +9,11 @@ const (
 	unblock        = "/unblock"
 	changePassword = "/change-password"
 
-	linkWallets = apiSlyk + "/wallets"
-	activity    = "/activity"
-	balance     = "/balance"
-	movements   = "/movements"
+	linkWallets  = apiSlyk + "/wallets"
+	activity     = "/activity"
+	balance      = "/balance"
+	movements    = "/movements"
+	transactions = "/transactions"
 )
 
 const (
