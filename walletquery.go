@@ -7,6 +7,7 @@ import (
 	"github.com/go-resty/resty/v2"
 )
 
+// GetWallets is
 func (c Client) GetWallets(filter ...*getWalletFilter) (*Wallets, error) {
 
 	clientReq := resty.New().R()
@@ -59,7 +60,7 @@ func (c Client) GetWalletWithID(walletID string) (*Wallet, error) {
 }
 
 // GetWalletActivity is
-func (c Client) GetWalletActivity(walletID string, filter ...*getWalletActivityFilter) (*WalletActivities, error) {
+func (c Client) GetWalletActivityWithID(walletID string, filter ...*getWalletActivityFilter) (*WalletActivities, error) {
 	clientReq := resty.New().R()
 
 	if filter != nil {
@@ -172,4 +173,32 @@ func (c Client) GetWalletTransactions(walletID string, filter ...*getWalletTrans
 	}
 
 	return &walletTransactions, nil
+}
+
+func (c Client) GetWalletActivity(filter ...*getWalletActivityFilter) (*WalletActivities, error) {
+	clientReq := resty.New().R()
+
+	if filter != nil {
+		clientReq.SetQueryParams(merge(filter))
+	}
+
+	resp, err := clientReq.
+		SetHeader(headerApiKey, c.apiKey).
+		Get(linkWallets + activity)
+
+	if err != nil {
+		return nil, err
+	}
+
+	if resp.IsError() {
+		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
+	}
+
+	var walletActivities WalletActivities
+	errUnmarshal := json.Unmarshal(resp.Body(), &walletActivities)
+	if errUnmarshal != nil {
+		return nil, errUnmarshal
+	}
+
+	return &walletActivities, nil
 }
