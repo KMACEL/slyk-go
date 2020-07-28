@@ -34,10 +34,10 @@ func TestGetWalletActivityWithID(t *testing.T) {
 	ReturnAndError(t, tst, returnValue, err)
 }
 
-func TestGetWalletBalance(t *testing.T) {
-	tst := "TestGetWalletBalance"
+func TestGetWalletBalanceWithID(t *testing.T) {
+	tst := "TestGetWalletBalanceWithID"
 
-	returnValue, err := getClient().GetWalletBalance("73fb8803-bd14-4127-bdb3-8a71b030d4bd")
+	returnValue, err := getClient().GetWalletBalanceWithID("73fb8803-bd14-4127-bdb3-8a71b030d4bd")
 
 	ReturnAndError(t, tst, returnValue, err)
 }
@@ -62,6 +62,14 @@ func TestGetWalletActivity(t *testing.T) {
 	tst := "TestGetWalletActivity"
 
 	returnValue, err := getClient().GetWalletActivity(GetWalletActivityFilter().SetAssetCodeWithIN("usd"))
+
+	ReturnAndError(t, tst, returnValue, err)
+}
+
+func TestGetWalletBalance(t *testing.T) {
+	tst := "TestGetWalletBalance"
+
+	returnValue, err := getClient().GetWalletBalance()
 
 	ReturnAndError(t, tst, returnValue, err)
 }

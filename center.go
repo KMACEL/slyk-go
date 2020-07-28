@@ -22,7 +22,7 @@ func merge(m interface{}) map[string]string {
 				mmap[k] = v
 			}
 		}
-	case []*getWalletBalanceFilter:
+	case []*getWalletBalanceWithIDFilter:
 		for i := range getMap {
 			for k, v := range *getMap[i] {
 				mmap[k] = v
@@ -41,6 +41,12 @@ func merge(m interface{}) map[string]string {
 			}
 		}
 	case []*getWalletActivityFilter:
+		for i := range getMap {
+			for k, v := range *getMap[i] {
+				mmap[k] = v
+			}
+		}
+	case []*getWalletBalanceFilter:
 		for i := range getMap {
 			for k, v := range *getMap[i] {
 				mmap[k] = v

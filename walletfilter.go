@@ -7,10 +7,11 @@ import (
 
 type getWalletFilter map[string]string
 type getWalletActivityWithIDFilter map[string]string
-type getWalletBalanceFilter map[string]string
+type getWalletBalanceWithIDFilter map[string]string
 type getWalletMovementFilter map[string]string
 type getWalletTransactionstFilter map[string]string
 type getWalletActivityFilter map[string]string
+type getWalletBalanceFilter map[string]string
 
 //=============================================================================================
 
@@ -161,18 +162,18 @@ func (g *getWalletActivityWithIDFilter) SetAvailableIncludeWithWallets() *getWal
  ╚═════╝ ╚══════╝   ╚═╝            ╚══╝╚══╝ ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝   ╚═╝           ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝╚══════╝        ╚═╝     ╚═╝╚══════╝╚═╝   ╚══════╝╚═╝  ╚═╝
 */
 
-func GetWalletBalanceFilter() *getWalletBalanceFilter {
-	return &getWalletBalanceFilter{}
+func GetWalletBalanceWithIDFilter() *getWalletBalanceWithIDFilter {
+	return &getWalletBalanceWithIDFilter{}
 }
 
 // asset btc,eth,ltc
-func (g *getWalletBalanceFilter) SetAssetCodeWithIN(assetCode string) *getWalletBalanceFilter {
+func (g *getWalletBalanceWithIDFilter) SetAssetCodeWithIN(assetCode string) *getWalletBalanceWithIDFilter {
 	(*g)["filter[assetCode]"] = "in:" + assetCode
 	return g
 }
 
 // asset btc,eth,ltc
-func (g *getWalletBalanceFilter) SetAssetCodeWithNIN(assetCode string) *getWalletBalanceFilter {
+func (g *getWalletBalanceWithIDFilter) SetAssetCodeWithNIN(assetCode string) *getWalletBalanceWithIDFilter {
 	(*g)["filter[assetCode]"] = "nin:" + assetCode
 	return g
 }
@@ -382,5 +383,30 @@ func (g *getWalletActivityFilter) SetAvailableIncludeWithUser() *getWalletActivi
 
 func (g *getWalletActivityFilter) SetAvailableIncludeWithWallets() *getWalletActivityFilter {
 	(*g)["include"] = "wallets"
+	return g
+}
+
+/*
+ ██████╗ ███████╗████████╗        ██╗    ██╗ █████╗ ██╗     ██╗     ███████╗████████╗        ██████╗  █████╗ ██╗      █████╗ ███╗   ██╗ ██████╗███████╗        ███████╗██╗██╗  ████████╗███████╗██████╗
+██╔════╝ ██╔════╝╚══██╔══╝        ██║    ██║██╔══██╗██║     ██║     ██╔════╝╚══██╔══╝        ██╔══██╗██╔══██╗██║     ██╔══██╗████╗  ██║██╔════╝██╔════╝        ██╔════╝██║██║  ╚══██╔══╝██╔════╝██╔══██╗
+██║  ███╗█████╗     ██║           ██║ █╗ ██║███████║██║     ██║     █████╗     ██║           ██████╔╝███████║██║     ███████║██╔██╗ ██║██║     █████╗          █████╗  ██║██║     ██║   █████╗  ██████╔╝
+██║   ██║██╔══╝     ██║           ██║███╗██║██╔══██║██║     ██║     ██╔══╝     ██║           ██╔══██╗██╔══██║██║     ██╔══██║██║╚██╗██║██║     ██╔══╝          ██╔══╝  ██║██║     ██║   ██╔══╝  ██╔══██╗
+╚██████╔╝███████╗   ██║           ╚███╔███╔╝██║  ██║███████╗███████╗███████╗   ██║           ██████╔╝██║  ██║███████╗██║  ██║██║ ╚████║╚██████╗███████╗        ██║     ██║███████╗██║   ███████╗██║  ██║
+ ╚═════╝ ╚══════╝   ╚═╝            ╚══╝╚══╝ ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝   ╚═╝           ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝╚══════╝        ╚═╝     ╚═╝╚══════╝╚═╝   ╚══════╝╚═╝  ╚═╝
+*/
+
+// GetWalletBalanceFilter is
+func GetWalletBalanceFilter() *getWalletBalanceFilter {
+	return &getWalletBalanceFilter{}
+}
+
+func (g *getWalletBalanceFilter) SetAssetCodeWithIN(assetCode string) *getWalletBalanceFilter {
+	(*g)["filter[assetCode]"] = "in:" + assetCode
+	return g
+}
+
+// asset btc,eth,ltc
+func (g *getWalletBalanceFilter) SetAssetCodeWithNIN(assetCode string) *getWalletBalanceFilter {
+	(*g)["filter[assetCode]"] = "nin:" + assetCode
 	return g
 }

@@ -89,7 +89,7 @@ func (c Client) GetWalletActivityWithID(walletID string, filter ...*getWalletAct
 }
 
 // GetWaalletBalance is
-func (c Client) GetWalletBalance(walletID string, filter ...*getWalletBalanceFilter) (*WalletBalance, error) {
+func (c Client) GetWalletBalanceWithID(walletID string, filter ...*getWalletBalanceWithIDFilter) (*WalletBalance, error) {
 	clientReq := resty.New().R()
 
 	if filter != nil {
@@ -175,6 +175,7 @@ func (c Client) GetWalletTransactions(walletID string, filter ...*getWalletTrans
 	return &walletTransactions, nil
 }
 
+// GetWalletActivity is
 func (c Client) GetWalletActivity(filter ...*getWalletActivityFilter) (*WalletActivities, error) {
 	clientReq := resty.New().R()
 
@@ -201,4 +202,33 @@ func (c Client) GetWalletActivity(filter ...*getWalletActivityFilter) (*WalletAc
 	}
 
 	return &walletActivities, nil
+}
+
+// GetWalletBalance is
+func (c Client) GetWalletBalance(filter ...*getWalletBalanceFilter) (*WalletBalance, error) {
+	clientReq := resty.New().R()
+
+	if filter != nil {
+		clientReq.SetQueryParams(merge(filter))
+	}
+
+	resp, err := clientReq.
+		SetHeader(headerApiKey, c.apiKey).
+		Get(linkWallets + balance)
+
+	if err != nil {
+		return nil, err
+	}
+
+	if resp.IsError() {
+		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
+	}
+
+	var walletBalance WalletBalance
+	errUnmarshal := json.Unmarshal(resp.Body(), &walletBalance)
+	if errUnmarshal != nil {
+		return nil, errUnmarshal
+	}
+
+	return &walletBalance, nil
 }
