@@ -8,6 +8,7 @@ import (
 )
 
 // GetWallets is
+// https://developers.slyk.io/slyk/reference/endpoints#get-wallets
 func (c Client) GetWallets(filter ...*getWalletFilter) (*Wallets, error) {
 
 	clientReq := resty.New().R()
@@ -37,6 +38,7 @@ func (c Client) GetWallets(filter ...*getWalletFilter) (*Wallets, error) {
 }
 
 // GetWalletWithID is
+// https://developers.slyk.io/slyk/reference/endpoints#get-wallets-id
 func (c Client) GetWalletWithID(walletID string) (*Wallet, error) {
 	resp, err := resty.New().R().
 		SetHeader(headerApiKey, c.apiKey).
@@ -60,6 +62,7 @@ func (c Client) GetWalletWithID(walletID string) (*Wallet, error) {
 }
 
 // GetWalletActivity is
+// https://developers.slyk.io/slyk/reference/endpoints#get-wallets-id-activity
 func (c Client) GetWalletActivityWithID(walletID string, filter ...*getWalletActivityFilter) (*WalletActivities, error) {
 	clientReq := resty.New().R()
 
@@ -89,6 +92,7 @@ func (c Client) GetWalletActivityWithID(walletID string, filter ...*getWalletAct
 }
 
 // GetWaalletBalance is
+// https://developers.slyk.io/slyk/reference/endpoints#get-wallets-id-balance
 func (c Client) GetWalletBalanceWithID(walletID string, filter ...*getWalletBalanceWithIDFilter) (*WalletBalance, error) {
 	clientReq := resty.New().R()
 
@@ -118,6 +122,7 @@ func (c Client) GetWalletBalanceWithID(walletID string, filter ...*getWalletBala
 }
 
 // GetWalletMovements is
+// https://developers.slyk.io/slyk/reference/endpoints#get-wallets-id-movements
 func (c Client) GetWalletMovements(walletID string, filter ...*getWalletMovementFilter) (*WalletMovements, error) {
 	clientReq := resty.New().R()
 
@@ -147,6 +152,7 @@ func (c Client) GetWalletMovements(walletID string, filter ...*getWalletMovement
 }
 
 // GetWalletTransactions is
+// https://developers.slyk.io/slyk/reference/endpoints#get-wallets-id-transactions
 func (c Client) GetWalletTransactions(walletID string, filter ...*getWalletTransactionstFilter) (*WalletTransactions, error) {
 	clientReq := resty.New().R()
 
@@ -176,6 +182,7 @@ func (c Client) GetWalletTransactions(walletID string, filter ...*getWalletTrans
 }
 
 // GetWalletActivity is
+// https://developers.slyk.io/slyk/reference/endpoints#get-wallets-activity
 func (c Client) GetWalletActivity(filter ...*getWalletActivityFilter) (*WalletActivities, error) {
 	clientReq := resty.New().R()
 
@@ -205,6 +212,7 @@ func (c Client) GetWalletActivity(filter ...*getWalletActivityFilter) (*WalletAc
 }
 
 // GetWalletBalance is
+// https://developers.slyk.io/slyk/reference/endpoints#get-wallets-balance
 func (c Client) GetWalletBalance(filter ...*getWalletBalanceFilter) (*WalletBalance, error) {
 	clientReq := resty.New().R()
 
@@ -234,6 +242,7 @@ func (c Client) GetWalletBalance(filter ...*getWalletBalanceFilter) (*WalletBala
 }
 
 // UpdateWallet is
+// https://developers.slyk.io/slyk/reference/endpoints#patch-wallets-id
 // TODO : Çalışmıyror test edilecek
 func (c Client) UpdateWallet(walletID string, updateWallet *UpdateWalletData) (*Wallet, error) {
 	resp, err := resty.New().R().
@@ -259,6 +268,7 @@ func (c Client) UpdateWallet(walletID string, updateWallet *UpdateWalletData) (*
 }
 
 // CreateWallet is
+// https://developers.slyk.io/slyk/reference/endpoints#post-wallets
 // TODO Body ile çalışmıyor bakıalcak
 func (c Client) CreateWallet(createWallet *CreateWalletData) (*Wallet, error) {
 	resp, err := resty.New().R().

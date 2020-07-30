@@ -7,6 +7,8 @@ import (
 	"github.com/go-resty/resty/v2"
 )
 
+// GetTransactions is
+// https://developers.slyk.io/slyk/reference/endpoints#get-transactions
 func (c Client) GetTransactions(filter ...*geTransactionstFilter) (*Transactions, error) {
 
 	clientReq := resty.New().R()
@@ -36,6 +38,7 @@ func (c Client) GetTransactions(filter ...*geTransactionstFilter) (*Transactions
 }
 
 // GetTransactionsWithID is
+// https://developers.slyk.io/slyk/reference/endpoints#get-transactions-id
 func (c Client) GetTransactionsWithID(transactionID string) (*Transaction, error) {
 	resp, err := resty.New().R().
 		SetHeader(headerApiKey, c.apiKey).

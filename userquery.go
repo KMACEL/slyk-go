@@ -8,6 +8,7 @@ import (
 )
 
 // GetUser is
+// https://developers.slyk.io/slyk/reference/endpoints#get-users
 func (c Client) GetUser(filter ...*getUserFilter) (*Users, error) {
 
 	clientReq := resty.New().R()
@@ -37,6 +38,7 @@ func (c Client) GetUser(filter ...*getUserFilter) (*Users, error) {
 }
 
 // GetUserWithID is
+// https://developers.slyk.io/slyk/reference/endpoints#get-users-id
 func (c Client) GetUserWithID(userID string) (*User, error) {
 	resp, err := resty.New().R().
 		SetHeader(headerApiKey, c.apiKey).
@@ -59,7 +61,8 @@ func (c Client) GetUserWithID(userID string) (*User, error) {
 	return &user, nil
 }
 
-// GetUserWithID is
+// UpdateUser is
+// https://developers.slyk.io/slyk/reference/endpoints#patch-users-id
 func (c Client) UpdateUser(userID string, updateUserData *UpdateUserData) (*User, error) {
 	resp, err := resty.New().R().
 		SetBody(*updateUserData).
@@ -83,7 +86,8 @@ func (c Client) UpdateUser(userID string, updateUserData *UpdateUserData) (*User
 	return &user, nil
 }
 
-// GetUserWithID is
+// CreateUser is
+// https://developers.slyk.io/slyk/reference/endpoints#post-users
 // TODO Diğer parametrelere bakılacak
 // TODO Password tipi kontrol edilecek
 func (c Client) CreateUser(createUserdata *CreateUserData) (*User, error) {
@@ -109,7 +113,8 @@ func (c Client) CreateUser(createUserdata *CreateUserData) (*User, error) {
 	return &user, nil
 }
 
-// PostUserApprove is
+// SetUserApprove is
+// https://developers.slyk.io/slyk/reference/endpoints#post-users-id-approve
 func (c Client) SetUserApprove(userID string) error {
 	resp, err := resty.New().R().
 		SetHeader(headerApiKey, c.apiKey).
@@ -126,7 +131,8 @@ func (c Client) SetUserApprove(userID string) error {
 	return nil
 }
 
-// PostUserBlock is
+// SetUserBlock is
+// https://developers.slyk.io/slyk/reference/endpoints#post-users-id-block
 func (c Client) SetUserBlock(userID string) error {
 	resp, err := resty.New().R().
 		SetHeader(headerApiKey, c.apiKey).
@@ -143,7 +149,8 @@ func (c Client) SetUserBlock(userID string) error {
 	return nil
 }
 
-// PostUserUnblock is
+// SetUserUnblock is
+// https://developers.slyk.io/slyk/reference/endpoints#post-users-id-unblock
 func (c Client) SetUserUnblock(userID string) error {
 	resp, err := resty.New().R().
 		SetHeader(headerApiKey, c.apiKey).
@@ -160,6 +167,8 @@ func (c Client) SetUserUnblock(userID string) error {
 	return nil
 }
 
+// ChangePassword is
+// https://developers.slyk.io/slyk/reference/endpoints#post-users-id-change-password
 func (c Client) ChangePassword(userID string, psw string) error {
 	resp, err := resty.New().R().
 		SetBody(struct {
