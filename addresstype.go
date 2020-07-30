@@ -23,9 +23,9 @@ type AddressData struct {
 }
 
 type CreateAddressBody struct {
-	Address    string   `json:"address"`
-	AssetCode  string   `json:"assetCode"`
-	CustomData struct{} `json:"customData"`
-	Provider   string   `json:"provider"`
-	WalletID   string   `json:"walletId"`
+	Address    string   `json:"address,omitempty"`
+	AssetCode  string   `json:"assetCode,omitempty"`
+	CustomData struct{} `json:"customData,omitempty"`
+	Provider   string   `json:"provider,omitempty"`
+	WalletID   string   `json:"walletId,omitempty"`
 }

@@ -172,14 +172,14 @@ type WalletTransactionData struct {
 }
 
 type UpdateWalletData struct {
-	Locked     bool        `json:"locked"`
-	OwnerID    string      `json:"ownerId"`
-	CustomData interface{} `json:"customData"`
+	Locked     bool        `json:"locked,omitempty"`
+	OwnerID    string      `json:"ownerId,omitempty"`
+	CustomData interface{} `json:"customData,omitempty"`
 }
 
 type CreateWalletData struct {
-	Name       string      `json:"name"`
-	Locked     bool        `json:"locked"`
-	OwnerID    string      `json:"ownerId"`
-	CustomData interface{} `json:"customData"`
+	Name       string      `json:"name,omitempty"`
+	Locked     bool        `json:"locked,omitempty"`
+	OwnerID    string      `json:"ownerId,omitempty"`
+	CustomData interface{} `json:"customData,omitempty"`
 }

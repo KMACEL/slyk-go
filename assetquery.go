@@ -71,7 +71,6 @@ func (c Client) UpdateAssetsWithCode(assetCode string, updateAssetDataBody *Upda
 		SetBody(updateAssetDataBody).
 		Patch(linkAssets + "/" + assetCode)
 
-	fmt.Println(clientReq)
 	if err != nil {
 		return nil, err
 	}

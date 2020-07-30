@@ -33,14 +33,14 @@ type UserData struct {
 }
 
 type UpdateUserData struct {
-	Name       string      `json:"name"`
-	Locale     string      `json:"locale"`
-	CustomData interface{} `json:"customData"`
+	Name       string      `json:"name,omitempty"`
+	Locale     string      `json:"locale,omitempty"`
+	CustomData interface{} `json:"customData,omitempty"`
 }
 
 type CreateUserData struct {
-	Email    string `json:"email"`
-	Locale   string `json:"locale"`
-	Name     string `json:"name"`
-	Password string `json:"password"`
+	Email    string `json:"email,omitempty"`
+	Locale   string `json:"locale,omitempty"`
+	Name     string `json:"name,omitempty"`
+	Password string `json:"password,omitempty"`
 }

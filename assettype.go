@@ -28,11 +28,11 @@ type AssetData struct {
 }
 
 type UpdateAssetDataBody struct {
-	DecimalPlaces int      `json:"decimalPlaces"`
-	Name          string   `json:"name"`
-	Contract      struct{} `json:"contract"`
-	CustomData    struct{} `json:"customData"`
-	Enabled       bool     `json:"enabled"`
-	Logo          string   `json:"logo"`
-	Symbol        string   `json:"symbol"`
+	DecimalPlaces int      `json:"decimalPlaces,omitempty"`
+	Name          string   `json:"name,omitempty"`
+	Contract      struct{} `json:"contract,omitempty"`
+	CustomData    struct{} `json:"customData,omitempty"`
+	Enabled       bool     `json:"enabled,omitempty"`
+	Logo          string   `json:"logo,omitempty"`
+	Symbol        string   `json:"symbol,omitempty"`
 }
