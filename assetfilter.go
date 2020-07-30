@@ -146,3 +146,57 @@ func (u *UpdateAssetDataBody) SetSymbol(symbol string) *UpdateAssetDataBody {
 	u.Symbol = symbol
 	return u
 }
+
+/*
+ ██████╗██████╗ ███████╗ █████╗ ████████╗███████╗         █████╗ ███████╗███████╗███████╗████████╗        ██████╗  █████╗ ████████╗ █████╗         ███████╗ ██████╗ ██████╗         ██████╗  ██████╗ ██████╗ ██╗   ██╗
+██╔════╝██╔══██╗██╔════╝██╔══██╗╚══██╔══╝██╔════╝        ██╔══██╗██╔════╝██╔════╝██╔════╝╚══██╔══╝        ██╔══██╗██╔══██╗╚══██╔══╝██╔══██╗        ██╔════╝██╔═══██╗██╔══██╗        ██╔══██╗██╔═══██╗██╔══██╗╚██╗ ██╔╝
+██║     ██████╔╝█████╗  ███████║   ██║   █████╗          ███████║███████╗███████╗█████╗     ██║           ██║  ██║███████║   ██║   ███████║        █████╗  ██║   ██║██████╔╝        ██████╔╝██║   ██║██║  ██║ ╚████╔╝
+██║     ██╔══██╗██╔══╝  ██╔══██║   ██║   ██╔══╝          ██╔══██║╚════██║╚════██║██╔══╝     ██║           ██║  ██║██╔══██║   ██║   ██╔══██║        ██╔══╝  ██║   ██║██╔══██╗        ██╔══██╗██║   ██║██║  ██║  ╚██╔╝
+╚██████╗██║  ██║███████╗██║  ██║   ██║   ███████╗        ██║  ██║███████║███████║███████╗   ██║           ██████╔╝██║  ██║   ██║   ██║  ██║        ██║     ╚██████╔╝██║  ██║        ██████╔╝╚██████╔╝██████╔╝   ██║
+ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝        ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝   ╚═╝           ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝        ╚═╝      ╚═════╝ ╚═╝  ╚═╝        ╚═════╝  ╚═════╝ ╚═════╝    ╚═╝
+*/
+
+// CreateAssetDataForBody
+func CreateAssetDataForBody() *CreateAssetDataBody {
+	return &CreateAssetDataBody{}
+}
+
+func (c *CreateAssetDataBody) SetCode(code string) *CreateAssetDataBody {
+	c.Code = code
+	return c
+}
+
+func (c *CreateAssetDataBody) SetName(name string) *CreateAssetDataBody {
+	c.Name = name
+	return c
+}
+
+func (c *CreateAssetDataBody) SetContract(contract struct{}) *CreateAssetDataBody {
+	c.Contract = contract
+	return c
+}
+
+func (c *CreateAssetDataBody) SetCustomData(customData struct{}) *CreateAssetDataBody {
+	c.CustomData = customData
+	return c
+}
+
+func (c *CreateAssetDataBody) SetDecimalPlaces(decimalPlaces int) *CreateAssetDataBody {
+	c.DecimalPlaces = decimalPlaces
+	return c
+}
+
+func (c *CreateAssetDataBody) SetEnabled(enabled bool) *CreateAssetDataBody {
+	c.Enabled = enabled
+	return c
+}
+
+func (c *CreateAssetDataBody) SetSymbol(sysmbol string) *CreateAssetDataBody {
+	c.Symbol = sysmbol
+	return c
+}
+
+func (c *CreateAssetDataBody) SetType(typeParam string) *CreateAssetDataBody {
+	c.Type = typeParam
+	return c
+}

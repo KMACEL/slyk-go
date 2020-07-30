@@ -36,3 +36,14 @@ type UpdateAssetDataBody struct {
 	Logo          string   `json:"logo,omitempty"`
 	Symbol        string   `json:"symbol,omitempty"`
 }
+
+type CreateAssetDataBody struct {
+	Code          string   `json:"code"`
+	Contract      struct{} `json:"contract,omitempty"`
+	CustomData    struct{} `json:"customData,omitempty"`
+	DecimalPlaces int      `json:"decimalPlaces,omitempty"`
+	Enabled       bool     `json:"enabled,omitempty"`
+	Name          string   `json:"name"`
+	Symbol        string   `json:"symbol,omitempty"`
+	Type          string   `json:"type"`
+}

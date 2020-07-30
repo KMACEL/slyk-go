@@ -68,8 +68,34 @@ func (c Client) UpdateAssetsWithCode(assetCode string, updateAssetDataBody *Upda
 	clientReq := resty.New().R()
 	resp, err := clientReq.
 		SetHeader(headerApiKey, c.apiKey).
-		SetBody(updateAssetDataBody).
+		SetBody(*updateAssetDataBody).
 		Patch(linkAssets + "/" + assetCode)
+
+	if err != nil {
+		return nil, err
+	}
+
+	if resp.IsError() {
+		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
+	}
+
+	var asset Asset
+	errUnmarshal := json.Unmarshal(resp.Body(), &asset)
+	if errUnmarshal != nil {
+		return nil, errUnmarshal
+	}
+
+	return &asset, nil
+}
+
+// CreateAsset
+// https://developers.slyk.io/slyk/reference/endpoints#post-assets
+func (c Client) CreateAsset(createAssetDataBody *CreateAssetDataBody) (*Asset, error) {
+	clientReq := resty.New().R()
+	resp, err := clientReq.
+		SetHeader(headerApiKey, c.apiKey).
+		SetBody(*createAssetDataBody).
+		Post(linkAssets)
 
 	if err != nil {
 		return nil, err

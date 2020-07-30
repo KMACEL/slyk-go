@@ -27,3 +27,11 @@ func TestUpdateAssetsWithCode(t *testing.T) {
 
 	ReturnAndError(t, tst, returnValue, err)
 }
+
+func TestCreateAsset(t *testing.T) {
+	tst := "TestCreateAsset"
+
+	returnValue, err := getClient().CreateAsset(CreateAssetDataForBody().SetName("Acel").SetCode("ACL").SetType("custom"))
+
+	ReturnAndError(t, tst, returnValue, err)
+}
