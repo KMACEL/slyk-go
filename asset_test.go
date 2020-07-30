@@ -10,3 +10,12 @@ func TestGetAssets(t *testing.T) {
 
 	ReturnAndError(t, tst, returnValue, err)
 }
+
+func TestGetAssetsWithCode(t *testing.T) {
+	tst := "TestGetAssetsWithCode"
+
+	//returnValue, err := getClient().GetTransactions()
+	returnValue, err := getClient().GetAssetsWithCode("ltc")
+
+	ReturnAndError(t, tst, returnValue, err)
+}

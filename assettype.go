@@ -7,6 +7,10 @@ type Assests struct {
 	Total int         `json:"total"`
 }
 
+type Assest struct {
+	Data AssetData `json:"data"`
+}
+
 type AssetData struct {
 	Code          string      `json:"code"`
 	Contract      struct{}    `json:"contract"`

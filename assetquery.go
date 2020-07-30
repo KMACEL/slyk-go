@@ -36,3 +36,29 @@ func (c Client) GetAssets(filter ...*getassetFilter) (*Assests, error) {
 
 	return &assests, nil
 }
+
+// https://developers.slyk.io/slyk/reference/endpoints#get-assets-code
+func (c Client) GetAssetsWithCode(assetCode string) (*Assest, error) {
+
+	clientReq := resty.New().R()
+
+	resp, err := clientReq.
+		SetHeader(headerApiKey, c.apiKey).
+		Get(linkAssets + "/" + assetCode)
+
+	if err != nil {
+		return nil, err
+	}
+
+	if resp.IsError() {
+		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
+	}
+
+	var assest Assest
+	errUnmarshal := json.Unmarshal(resp.Body(), &assest)
+	if errUnmarshal != nil {
+		return nil, errUnmarshal
+	}
+
+	return &assest, nil
+}
