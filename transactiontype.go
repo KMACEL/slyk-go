@@ -2,9 +2,14 @@ package slyk
 
 import "time"
 
-type Transaction struct {
+type Transactions struct {
 	Data  []TransactionData `json:"data"`
 	Total int               `json:"total"`
+}
+
+type Transaction struct {
+	Data  TransactionData `json:"data"`
+	Total int             `json:"total"`
 }
 
 type TransactionData struct {
