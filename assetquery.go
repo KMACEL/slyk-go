@@ -37,12 +37,11 @@ func (c Client) GetAssets(filter ...*getassetFilter) (*Assests, error) {
 	return &assests, nil
 }
 
+// GetAssetsWithCode is
 // https://developers.slyk.io/slyk/reference/endpoints#get-assets-code
-func (c Client) GetAssetsWithCode(assetCode string) (*Assest, error) {
+func (c Client) GetAssetsWithCode(assetCode string) (*Asset, error) {
 
-	clientReq := resty.New().R()
-
-	resp, err := clientReq.
+	resp, err := resty.New().R().
 		SetHeader(headerApiKey, c.apiKey).
 		Get(linkAssets + "/" + assetCode)
 
@@ -54,11 +53,38 @@ func (c Client) GetAssetsWithCode(assetCode string) (*Assest, error) {
 		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
 	}
 
-	var assest Assest
-	errUnmarshal := json.Unmarshal(resp.Body(), &assest)
+	var asset Asset
+	errUnmarshal := json.Unmarshal(resp.Body(), &asset)
 	if errUnmarshal != nil {
 		return nil, errUnmarshal
 	}
 
-	return &assest, nil
+	return &asset, nil
+}
+
+// UpdateAssetsWithCode
+// https://developers.slyk.io/slyk/reference/endpoints#patch-assets-code
+func (c Client) UpdateAssetsWithCode(assetCode string, updateAssetDataBody *UpdateAssetDataBody) (*Asset, error) {
+	clientReq := resty.New().R()
+	resp, err := clientReq.
+		SetHeader(headerApiKey, c.apiKey).
+		SetBody(updateAssetDataBody).
+		Patch(linkAssets + "/" + assetCode)
+
+	fmt.Println(clientReq)
+	if err != nil {
+		return nil, err
+	}
+
+	if resp.IsError() {
+		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
+	}
+
+	var asset Asset
+	errUnmarshal := json.Unmarshal(resp.Body(), &asset)
+	if errUnmarshal != nil {
+		return nil, errUnmarshal
+	}
+
+	return &asset, nil
 }

@@ -97,3 +97,52 @@ func (u *getassetFilter) SetPageNumber(number int) *getassetFilter {
 	(*u)["page[number]"] = strconv.Itoa(number)
 	return u
 }
+
+/*
+██╗   ██╗██████╗ ██████╗  █████╗ ████████╗███████╗         █████╗ ███████╗███████╗███████╗████████╗        ██████╗  █████╗ ████████╗ █████╗         ███████╗ ██████╗ ██████╗         ██████╗  ██████╗ ██████╗ ██╗   ██╗
+██║   ██║██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝██╔════╝        ██╔══██╗██╔════╝██╔════╝██╔════╝╚══██╔══╝        ██╔══██╗██╔══██╗╚══██╔══╝██╔══██╗        ██╔════╝██╔═══██╗██╔══██╗        ██╔══██╗██╔═══██╗██╔══██╗╚██╗ ██╔╝
+██║   ██║██████╔╝██║  ██║███████║   ██║   █████╗          ███████║███████╗███████╗█████╗     ██║           ██║  ██║███████║   ██║   ███████║        █████╗  ██║   ██║██████╔╝        ██████╔╝██║   ██║██║  ██║ ╚████╔╝
+██║   ██║██╔═══╝ ██║  ██║██╔══██║   ██║   ██╔══╝          ██╔══██║╚════██║╚════██║██╔══╝     ██║           ██║  ██║██╔══██║   ██║   ██╔══██║        ██╔══╝  ██║   ██║██╔══██╗        ██╔══██╗██║   ██║██║  ██║  ╚██╔╝
+╚██████╔╝██║     ██████╔╝██║  ██║   ██║   ███████╗        ██║  ██║███████║███████║███████╗   ██║           ██████╔╝██║  ██║   ██║   ██║  ██║        ██║     ╚██████╔╝██║  ██║        ██████╔╝╚██████╔╝██████╔╝   ██║
+ ╚═════╝ ╚═╝     ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝        ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝   ╚═╝           ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝        ╚═╝      ╚═════╝ ╚═╝  ╚═╝        ╚═════╝  ╚═════╝ ╚═════╝    ╚═╝
+*/
+
+// GetAssetFilter is
+func UpdateAssetDataForBody() *UpdateAssetDataBody {
+	return &UpdateAssetDataBody{}
+}
+
+func (u *UpdateAssetDataBody) SetName(name string) *UpdateAssetDataBody {
+	u.Name = name
+	return u
+}
+
+func (u *UpdateAssetDataBody) SetDecimalPlaces(decimalPlaces int) *UpdateAssetDataBody {
+	u.DecimalPlaces = decimalPlaces
+	return u
+}
+
+func (u *UpdateAssetDataBody) SetContract(contract struct{}) *UpdateAssetDataBody {
+	u.Contract = contract
+	return u
+}
+
+func (u *UpdateAssetDataBody) SetCustomData(customData struct{}) *UpdateAssetDataBody {
+	u.CustomData = customData
+	return u
+}
+
+func (u *UpdateAssetDataBody) SetEnabled(enabled bool) *UpdateAssetDataBody {
+	u.Enabled = enabled
+	return u
+}
+
+func (u *UpdateAssetDataBody) SetLogo(logo string) *UpdateAssetDataBody {
+	u.Logo = logo
+	return u
+}
+
+func (u *UpdateAssetDataBody) SetSymbol(symbol string) *UpdateAssetDataBody {
+	u.Symbol = symbol
+	return u
+}

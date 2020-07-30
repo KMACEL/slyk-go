@@ -7,7 +7,7 @@ type Assests struct {
 	Total int         `json:"total"`
 }
 
-type Assest struct {
+type Asset struct {
 	Data AssetData `json:"data"`
 }
 
@@ -25,4 +25,14 @@ type AssetData struct {
 	System        bool        `json:"system"`
 	Type          string      `json:"type"`
 	UpdatedAt     time.Time   `json:"updatedAt"`
+}
+
+type UpdateAssetDataBody struct {
+	DecimalPlaces int      `json:"decimalPlaces"`
+	Name          string   `json:"name"`
+	Contract      struct{} `json:"contract"`
+	CustomData    struct{} `json:"customData"`
+	Enabled       bool     `json:"enabled"`
+	Logo          string   `json:"logo"`
+	Symbol        string   `json:"symbol"`
 }
