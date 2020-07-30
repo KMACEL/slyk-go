@@ -18,6 +18,8 @@ const (
 	linkTransactions = apiSlyk + "/transactions"
 
 	linkAddresses = apiSlyk + "/addresses"
+
+	linkAssets = apiSlyk + "/assets"
 )
 
 const (
