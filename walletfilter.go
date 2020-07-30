@@ -440,3 +440,37 @@ func (u *UpdateWalletData) SetCustomData(customData interface{}) *UpdateWalletDa
 	u.CustomData = customData
 	return u
 }
+
+/*
+ ██████╗██████╗ ███████╗ █████╗ ████████╗███████╗        ██╗    ██╗ █████╗ ██╗     ██╗     ███████╗████████╗        ██████╗  ██████╗ ██████╗ ██╗   ██╗
+██╔════╝██╔══██╗██╔════╝██╔══██╗╚══██╔══╝██╔════╝        ██║    ██║██╔══██╗██║     ██║     ██╔════╝╚══██╔══╝        ██╔══██╗██╔═══██╗██╔══██╗╚██╗ ██╔╝
+██║     ██████╔╝█████╗  ███████║   ██║   █████╗          ██║ █╗ ██║███████║██║     ██║     █████╗     ██║           ██████╔╝██║   ██║██║  ██║ ╚████╔╝
+██║     ██╔══██╗██╔══╝  ██╔══██║   ██║   ██╔══╝          ██║███╗██║██╔══██║██║     ██║     ██╔══╝     ██║           ██╔══██╗██║   ██║██║  ██║  ╚██╔╝
+╚██████╗██║  ██║███████╗██║  ██║   ██║   ███████╗        ╚███╔███╔╝██║  ██║███████╗███████╗███████╗   ██║           ██████╔╝╚██████╔╝██████╔╝   ██║
+ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝         ╚══╝╚══╝ ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝   ╚═╝           ╚═════╝  ╚═════╝ ╚═════╝    ╚═╝
+*/
+
+func CreateWalletBody() *CreateWalletData {
+	return &CreateWalletData{}
+}
+
+func (c *CreateWalletData) SetName(name string) *CreateWalletData {
+	c.Name = name
+	return c
+}
+
+func (c *CreateWalletData) SetOwnerID(ownerID string) *CreateWalletData {
+	c.OwnerID = ownerID
+	return c
+}
+
+func (c *CreateWalletData) SetLocked(locked bool) *CreateWalletData {
+	c.Locked = locked
+	return c
+}
+
+// TODO Çalışmıyor bakılacak
+func (c *CreateWalletData) SetCustomData(customData interface{}) *CreateWalletData {
+	c.CustomData = customData
+	return c
+}

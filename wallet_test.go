@@ -77,7 +77,16 @@ func TestGetWalletBalance(t *testing.T) {
 func TestUpdateWallet(t *testing.T) {
 	tst := "TestUpdateWallet"
 
-	returnValue, err := getClient().UpdateWallet("73fb8803-bd14-4127-bdb3-8a71b030d4bd", UpdateWalletBody().SetLocked(true))
+	returnValue, err := getClient().UpdateWallet("73fb8803-bd14-4127-bdb3-8a71b030d4bd", UpdateWalletBody().SetLocked(true).SetOwnerID("cf99e4d8-bc64-4a5c-80a4-dd1e25e2018d"))
+
+	ReturnAndError(t, tst, returnValue, err)
+}
+
+func TestCreateWallet(t *testing.T) {
+	tst := "TestCreateWallet"
+	returnValue, err := getClient().CreateWallet(CreateWalletBody().SetLocked(true).SetName("ACEL"))
+
+	//returnValue, err := getClient().CreateWallet(CreateWalletBody().SetLocked(true).SetName("ACEL").SetOwnerID("cf99e4d8-bc64-4a5c-80a4-dd1e25e2018d"))
 
 	ReturnAndError(t, tst, returnValue, err)
 }

@@ -257,3 +257,28 @@ func (c Client) UpdateWallet(walletID string, updateWallet *UpdateWalletData) (*
 
 	return &wallet, nil
 }
+
+// CreateWallet is
+// TODO Body ile çalışmıyor bakıalcak
+func (c Client) CreateWallet(createWallet *CreateWalletData) (*Wallet, error) {
+	resp, err := resty.New().R().
+		SetHeader(headerApiKey, c.apiKey).
+		//SetBody(*createWallet).
+		Post(linkWallets)
+
+	if err != nil {
+		return nil, err
+	}
+
+	if resp.IsError() {
+		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
+	}
+
+	var wallet Wallet
+	errUnmarshal := json.Unmarshal(resp.Body(), &wallet)
+	if errUnmarshal != nil {
+		return nil, errUnmarshal
+	}
+
+	return &wallet, nil
+}

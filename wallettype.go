@@ -177,3 +177,10 @@ type UpdateWalletData struct {
 	OwnerID    string      `json:"ownerId"`
 	CustomData interface{} `json:"customData"`
 }
+
+type CreateWalletData struct {
+	Name       string      `json:"name"`
+	Locked     bool        `json:"locked"`
+	OwnerID    string      `json:"ownerId"`
+	CustomData interface{} `json:"customData"`
+}
