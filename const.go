@@ -14,6 +14,8 @@ const (
 	balance      = "/balance"
 	movements    = "/movements"
 	transactions = "/transactions"
+
+	linkTransactions = apiSlyk + "/transactions"
 )
 
 const (

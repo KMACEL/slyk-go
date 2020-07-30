@@ -132,13 +132,12 @@ type WalletMovementData struct {
 		DestinationWalletID string      `json:"destinationWalletId"`
 		ExternalID          interface{} `json:"externalId"`
 		ID                  string      `json:"id"`
-		Metadata            struct {
-		} `json:"metadata"`
-		OriginAddress  interface{} `json:"originAddress"`
-		OriginWalletID interface{} `json:"originWalletId"`
-		Status         string      `json:"status"`
-		Type           string      `json:"type"`
-		UpdatedAt      time.Time   `json:"updatedAt"`
+		Metadata            struct{}    `json:"metadata"`
+		OriginAddress       interface{} `json:"originAddress"`
+		OriginWalletID      interface{} `json:"originWalletId"`
+		Status              string      `json:"status"`
+		Type                string      `json:"type"`
+		UpdatedAt           time.Time   `json:"updatedAt"`
 	} `json:"transaction"`
 	TransactionID string    `json:"transactionId"`
 	UpdatedAt     time.Time `json:"updatedAt"`
