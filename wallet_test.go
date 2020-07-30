@@ -73,3 +73,11 @@ func TestGetWalletBalance(t *testing.T) {
 
 	ReturnAndError(t, tst, returnValue, err)
 }
+
+func TestUpdateWallet(t *testing.T) {
+	tst := "TestUpdateWallet"
+
+	returnValue, err := getClient().UpdateWallet("73fb8803-bd14-4127-bdb3-8a71b030d4bd", UpdateWalletBody().SetLocked(true))
+
+	ReturnAndError(t, tst, returnValue, err)
+}

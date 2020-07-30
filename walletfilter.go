@@ -410,3 +410,33 @@ func (g *getWalletBalanceFilter) SetAssetCodeWithNIN(assetCode string) *getWalle
 	(*g)["filter[assetCode]"] = "nin:" + assetCode
 	return g
 }
+
+/*
+██╗   ██╗██████╗ ██████╗  █████╗ ████████╗███████╗        ██╗    ██╗ █████╗ ██╗     ██╗     ███████╗████████╗        ██████╗  ██████╗ ██████╗ ██╗   ██╗
+██║   ██║██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝██╔════╝        ██║    ██║██╔══██╗██║     ██║     ██╔════╝╚══██╔══╝        ██╔══██╗██╔═══██╗██╔══██╗╚██╗ ██╔╝
+██║   ██║██████╔╝██║  ██║███████║   ██║   █████╗          ██║ █╗ ██║███████║██║     ██║     █████╗     ██║           ██████╔╝██║   ██║██║  ██║ ╚████╔╝
+██║   ██║██╔═══╝ ██║  ██║██╔══██║   ██║   ██╔══╝          ██║███╗██║██╔══██║██║     ██║     ██╔══╝     ██║           ██╔══██╗██║   ██║██║  ██║  ╚██╔╝
+╚██████╔╝██║     ██████╔╝██║  ██║   ██║   ███████╗        ╚███╔███╔╝██║  ██║███████╗███████╗███████╗   ██║           ██████╔╝╚██████╔╝██████╔╝   ██║
+ ╚═════╝ ╚═╝     ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝         ╚══╝╚══╝ ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝   ╚═╝           ╚═════╝  ╚═════╝ ╚═════╝    ╚═╝
+*/
+
+// UpdateWalletBody is
+func UpdateWalletBody() *UpdateWalletData {
+	return &UpdateWalletData{}
+}
+
+func (u *UpdateWalletData) SetOwnerID(ownerID string) *UpdateWalletData {
+	u.OwnerID = ownerID
+	return u
+}
+
+func (u *UpdateWalletData) SetLocked(locked bool) *UpdateWalletData {
+	u.Locked = locked
+	return u
+}
+
+// TODO Çalışmıyor bakılacak
+func (u *UpdateWalletData) SetCustomData(customData interface{}) *UpdateWalletData {
+	u.CustomData = customData
+	return u
+}

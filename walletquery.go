@@ -232,3 +232,28 @@ func (c Client) GetWalletBalance(filter ...*getWalletBalanceFilter) (*WalletBala
 
 	return &walletBalance, nil
 }
+
+// UpdateWallet is
+// TODO : Çalışmıyror test edilecek
+func (c Client) UpdateWallet(walletID string, updateWallet *UpdateWalletData) (*Wallet, error) {
+	resp, err := resty.New().R().
+		SetHeader(headerApiKey, c.apiKey).
+		SetBody(*updateWallet).
+		Patch(linkWallets + "/" + walletID)
+
+	if err != nil {
+		return nil, err
+	}
+
+	if resp.IsError() {
+		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
+	}
+
+	var wallet Wallet
+	errUnmarshal := json.Unmarshal(resp.Body(), &wallet)
+	if errUnmarshal != nil {
+		return nil, errUnmarshal
+	}
+
+	return &wallet, nil
+}
