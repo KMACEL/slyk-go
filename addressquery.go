@@ -66,7 +66,7 @@ func (c Client) GetAddressWithID(addressID string) (*Address, error) {
 
 // CreateAddress is
 // https://developers.slyk.io/slyk/reference/endpoints#post-addresses
-// TODO : çalışmıyor bakılacak
+// TODO : Sadece coinbase, test edilecek
 func (c Client) CreateAddress(createAddressBody *CreateAddressBody) (*Address, error) {
 
 	resp, err := resty.New().R().

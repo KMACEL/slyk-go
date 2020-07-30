@@ -21,7 +21,7 @@ func TestGetAddressesWithID(t *testing.T) {
 func TestCreateAddress(t *testing.T) {
 	tst := "TestCreateAddress"
 
-	returnValue, err := getClient().CreateAddress(CreateAddressForBody())
+	returnValue, err := getClient().CreateAddress(CreateAddressForBody().SetAssetCode("ltc").SetProvider("coinbase").SetWalletID("73fb8803-bd14-4127-bdb3-8a71b030d4bd"))
 
 	ReturnAndError(t, tst, returnValue, err)
 }
