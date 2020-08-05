@@ -19,6 +19,7 @@ const (
 	linkAddresses    = apiSlyk + "/addresses"
 	linkAssets       = apiSlyk + "/assets"
 	linkRates        = apiSlyk + "/rates"
+	paymentMethods   = apiSlyk + "/payment-methods"
 )
 
 const (

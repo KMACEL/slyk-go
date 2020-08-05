@@ -36,7 +36,7 @@ func (c Client) CreateRate(rateBody *CreateRateBodyData) (*Rate, error) {
 
 // GetRates
 // https://developers.slyk.io/slyk/reference/endpoints#get-rates
-func (c Client) GetRates(filter ...*getassetFilter) (*Rates, error) {
+func (c Client) GetRates(filter ...*getRateFilter) (*Rates, error) {
 
 	clientReq := resty.New().R()
 	if filter != nil {
