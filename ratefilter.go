@@ -1,0 +1,91 @@
+package slyk
+
+import "strconv"
+
+type getRateFilter map[string]string
+
+/*
+ ██████╗ ███████╗████████╗        ██████╗  █████╗ ████████╗███████╗        ███████╗██╗██╗  ████████╗███████╗██████╗
+██╔════╝ ██╔════╝╚══██╔══╝        ██╔══██╗██╔══██╗╚══██╔══╝██╔════╝        ██╔════╝██║██║  ╚══██╔══╝██╔════╝██╔══██╗
+██║  ███╗█████╗     ██║           ██████╔╝███████║   ██║   █████╗          █████╗  ██║██║     ██║   █████╗  ██████╔╝
+██║   ██║██╔══╝     ██║           ██╔══██╗██╔══██║   ██║   ██╔══╝          ██╔══╝  ██║██║     ██║   ██╔══╝  ██╔══██╗
+╚██████╔╝███████╗   ██║           ██║  ██║██║  ██║   ██║   ███████╗        ██║     ██║███████╗██║   ███████╗██║  ██║
+ ╚═════╝ ╚══════╝   ╚═╝           ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚══════╝        ╚═╝     ╚═╝╚══════╝╚═╝   ╚══════╝╚═╝  ╚═╝
+*/
+
+// GetRateFilter is
+func GetRateFilter() *getRateFilter {
+	return &getRateFilter{}
+}
+
+func (g *getRateFilter) SetBaseAssetCode(baseAssetCode string) *getRateFilter {
+	(*g)["baseAssetCode"] = baseAssetCode
+	return g
+}
+
+func (g *getRateFilter) SetQuoteAssetCode(quoteAssetCode string) *getRateFilter {
+	(*g)["quoteAssetCode"] = quoteAssetCode
+	return g
+}
+
+func (g *getRateFilter) SetRateWithGT(rate string) *getRateFilter {
+	(*g)["rate"] = "gt:" + rate
+	return g
+}
+
+func (g *getRateFilter) SetRateWithGTE(rate string) *getRateFilter {
+	(*g)["rate"] = "gte:" + rate
+	return g
+}
+
+func (g *getRateFilter) SetRateWithLT(rate string) *getRateFilter {
+	(*g)["rate"] = "lt:" + rate
+	return g
+}
+
+func (g *getRateFilter) SetRateWithLTE(rate string) *getRateFilter {
+	(*g)["rate"] = "lte:" + rate
+	return g
+}
+
+func (g *getRateFilter) SetSortWithCreatedAt() *getRateFilter {
+	(*g)["sort"] = "createdAt"
+	return g
+}
+
+func (g *getRateFilter) SetSortWithCreatedAtReverse() *getRateFilter {
+	(*g)["sort"] = "-createdAt"
+	return g
+}
+
+func (g *getRateFilter) SetSortWithUpdatedAt() *getRateFilter {
+	(*g)["sort"] = "updatedAt"
+	return g
+}
+
+func (g *getRateFilter) SetSortWithUpdatedAtReverse() *getRateFilter {
+	(*g)["sort"] = "-updatedAt"
+	return g
+}
+
+func (g *getRateFilter) SetSortWitRate() *getRateFilter {
+	(*g)["sort"] = "rate"
+	return g
+}
+
+func (g *getRateFilter) SetSortWitRateReverse() *getRateFilter {
+	(*g)["sort"] = "-rate"
+	return g
+}
+
+// Defines the number of results per page. Default = 30.
+func (u *getRateFilter) SetPageSize(size int) *getRateFilter {
+	(*u)["page[size]"] = strconv.Itoa(size)
+	return u
+}
+
+// Defines the number of the page to retrieve. Default = 1
+func (u *getRateFilter) SetPageNumber(number int) *getRateFilter {
+	(*u)["page[number]"] = strconv.Itoa(number)
+	return u
+}
