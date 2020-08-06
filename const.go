@@ -15,11 +15,12 @@ const (
 	movements    = "/movements"
 	transactions = "/transactions"
 
-	linkTransactions = apiSlyk + "/transactions"
-	linkAddresses    = apiSlyk + "/addresses"
-	linkAssets       = apiSlyk + "/assets"
-	linkRates        = apiSlyk + "/rates"
-	paymentMethods   = apiSlyk + "/payment-methods"
+	linkTransactions   = apiSlyk + "/transactions"
+	linkAddresses      = apiSlyk + "/addresses"
+	linkAssets         = apiSlyk + "/assets"
+	linkRates          = apiSlyk + "/rates"
+	linkPaymentMethods = apiSlyk + "/payment-methods"
+	linkMovements      = apiSlyk + "/movements"
 )
 
 const (

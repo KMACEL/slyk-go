@@ -18,7 +18,7 @@ func (c Client) GetPaymentMethods(filter ...*getPaymentMethodFilter) (*PaymentMe
 
 	resp, err := clientReq.
 		SetHeader(headerApiKey, c.apiKey).
-		Get(paymentMethods)
+		Get(linkPaymentMethods)
 
 	if err != nil {
 		return nil, err
@@ -42,7 +42,7 @@ func (c Client) GetPaymentMethods(filter ...*getPaymentMethodFilter) (*PaymentMe
 func (c Client) GetPaymentMethodsWithSlug(slug string) (*PaymentMedhod, error) {
 	resp, err := resty.New().R().
 		SetHeader(headerApiKey, c.apiKey).
-		Get(paymentMethods + "/" + slug)
+		Get(linkPaymentMethods + "/" + slug)
 
 	if err != nil {
 		return nil, err
