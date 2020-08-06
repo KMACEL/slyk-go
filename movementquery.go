@@ -9,7 +9,7 @@ import (
 
 // GetMovements
 // https://developers.slyk.io/slyk/reference/endpoints#get-movements
-func (c Client) GetMovements(filter ...*getPaymentMethodFilter) (*Movements, error) {
+func (c Client) GetMovements(filter ...*getMovementFilter) (*Movements, error) {
 
 	clientReq := resty.New().R()
 	if filter != nil {
