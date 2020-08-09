@@ -23,13 +23,13 @@ type TransactionData struct {
 		AssetCode           string      `json:"assetCode"`
 		Code                string      `json:"code"`
 		CreatedAt           time.Time   `json:"createdAt"`
-		CustomData          struct{}    `json:"customData"`
+		CustomData          interface{} `json:"customData"`
 		Description         string      `json:"description"`
 		DestinationAddress  interface{} `json:"destinationAddress"`
 		DestinationWalletID string      `json:"destinationWalletId"`
 		ExternalID          interface{} `json:"externalId"`
 		ID                  string      `json:"id"`
-		Metadata            struct{}    `json:"metadata"`
+		Metadata            interface{} `json:"metadata"`
 		OriginAddress       interface{} `json:"originAddress"`
 		OriginWalletID      interface{} `json:"originWalletId"`
 		Status              string      `json:"status"`
@@ -50,10 +50,10 @@ type TransactionRejectDataBody struct {
 }
 
 type AddTransactionDepositDataBody struct {
-	Amount     string   `json:"amount"`
-	AssetCode  string   `json:"assetCode"`
-	Code       string   `json:"code"`
-	CustomData struct{} `json:"customData,omitempty"`
+	Amount     string      `json:"amount"`
+	AssetCode  string      `json:"assetCode"`
+	Code       string      `json:"code"`
+	CustomData interface{} `json:"customData,omitempty"`
 	Data       struct {
 		Description string `json:"description"`
 	} `json:"data"`
@@ -65,31 +65,31 @@ type AddTransactionDepositDataBody struct {
 }
 
 type CreateTransactionPayDataBody struct {
-	Amount         string   `json:"amount"`
-	AssetCode      string   `json:"assetCode"`
-	CustomData     struct{} `json:"customData,omitempty"`
-	Description    string   `json:"description,omitempty"`
-	OriginWalletID string   `json:"originWalletId"`
+	Amount         string      `json:"amount"`
+	AssetCode      string      `json:"assetCode"`
+	CustomData     interface{} `json:"customData,omitempty"`
+	Description    string      `json:"description,omitempty"`
+	OriginWalletID string      `json:"originWalletId"`
 }
 
 type CreateTransactionTransferDataBody struct {
-	Amount              string   `json:"amount"`
-	AssetCode           string   `json:"assetCode"`
-	Code                string   `json:"code"`
-	Commit              bool     `json:"commit"`
-	CustomData          struct{} `json:"customData"`
-	Description         string   `json:"description"`
-	DestinationAddress  string   `json:"destinationAddress"`
-	DestinationWalletID string   `json:"destinationWalletId"`
-	OriginAddress       string   `json:"originAddress"`
-	OriginWalletID      string   `json:"originWalletId"`
+	Amount              string      `json:"amount"`
+	AssetCode           string      `json:"assetCode"`
+	Code                string      `json:"code"`
+	Commit              bool        `json:"commit"`
+	CustomData          interface{} `json:"customData"`
+	Description         string      `json:"description"`
+	DestinationAddress  string      `json:"destinationAddress"`
+	DestinationWalletID string      `json:"destinationWalletId"`
+	OriginAddress       string      `json:"originAddress"`
+	OriginWalletID      string      `json:"originWalletId"`
 }
 
 type CreateTransactionWithdrawalDataBody struct {
-	Amount     string   `json:"amount"`
-	AssetCode  string   `json:"assetCode"`
-	Code       string   `json:"code"`
-	CustomData struct{} `json:"customData"`
+	Amount     string      `json:"amount"`
+	AssetCode  string      `json:"assetCode"`
+	Code       string      `json:"code"`
+	CustomData interface{} `json:"customData"`
 	Data       struct {
 		BankAddress string `json:"bankAddress"`
 		BankName    string `json:"bankName"`

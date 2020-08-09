@@ -36,7 +36,6 @@ func (u *getUserFilter) SetEmail(email string) *getUserFilter {
 }
 
 func (u *getUserFilter) SetID(id ...string) *getUserFilter {
-	// TODO YANLIŞ OLAN VARSA HİÇ GELMİYOR
 	(*u)["filter[id]"] = "in:" + strings.Join(id, ",")
 	return u
 }
@@ -117,7 +116,7 @@ func (u *getUserFilter) SetPageNumber(number int) *getUserFilter {
  ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝         ╚═════╝ ╚═╝     ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝        ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝
 */
 
-func CreateUpdateData() *UpdateUserData {
+func UpdateUserParam() *UpdateUserData {
 	return &UpdateUserData{}
 }
 
@@ -147,7 +146,7 @@ func (p *UpdateUserData) SetCustomData(customData interface{}) *UpdateUserData {
 */
 
 // CreateUserParam is
-func CreateUserParam() *CreateUserData {
+func CreateUserParameter() *CreateUserData {
 	return &CreateUserData{}
 }
 
@@ -168,5 +167,35 @@ func (c *CreateUserData) SetPassword(password string) *CreateUserData {
 
 func (c *CreateUserData) SetLocale(locale string) *CreateUserData {
 	c.Locale = locale
+	return c
+}
+
+func (c *CreateUserData) SetCustomData(customData interface{}) *CreateUserData {
+	c.CustomData = customData
+	return c
+}
+
+func (c *CreateUserData) SetApproved(approved bool) *CreateUserData {
+	c.Approved = approved
+	return c
+}
+
+func (c *CreateUserData) SetBlocked(blocked bool) *CreateUserData {
+	c.Blocked = blocked
+	return c
+}
+
+func (c *CreateUserData) SetCode(code string) *CreateUserData {
+	c.Code = code
+	return c
+}
+
+func (c *CreateUserData) SetPrimaryWalletID(primaryWalletID string) *CreateUserData {
+	c.PrimaryWalletID = primaryWalletID
+	return c
+}
+
+func (c *CreateUserData) SetVerified(verified bool) *CreateUserData {
+	c.Verified = verified
 	return c
 }

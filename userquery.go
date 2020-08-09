@@ -2,34 +2,18 @@ package slyk
 
 import (
 	"encoding/json"
-	"fmt"
-
-	"github.com/go-resty/resty/v2"
 )
 
-// GetUser is
+// GetUser is returns the Slyk user list.
 // https://developers.slyk.io/slyk/reference/endpoints#get-users
-func (c Client) GetUser(filter ...*getUserFilter) (*Users, error) {
-
-	clientReq := resty.New().R()
-	if filter != nil {
-		clientReq.SetQueryParams(merge(filter))
-	}
-
-	resp, err := clientReq.
-		SetHeader(headerApiKey, c.apiKey).
-		Get(linkUsers)
-
+func (c Client) GetUsers(filter ...*getUserFilter) (*Users, error) {
+	getBody, err := c.genericGetQuery(linkUsers, merge(filter))
 	if err != nil {
 		return nil, err
 	}
 
-	if resp.IsError() {
-		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
-	}
-
 	var users Users
-	errUnmarshal := json.Unmarshal(resp.Body(), &users)
+	errUnmarshal := json.Unmarshal(getBody, &users)
 	if errUnmarshal != nil {
 		return nil, errUnmarshal
 	}
@@ -40,20 +24,13 @@ func (c Client) GetUser(filter ...*getUserFilter) (*Users, error) {
 // GetUserWithID is
 // https://developers.slyk.io/slyk/reference/endpoints#get-users-id
 func (c Client) GetUserWithID(userID string) (*User, error) {
-	resp, err := resty.New().R().
-		SetHeader(headerApiKey, c.apiKey).
-		Get(linkUsers + "/" + userID)
-
+	getBody, err := c.genericGetQuery(linkUsers+"/"+userID, nil)
 	if err != nil {
 		return nil, err
 	}
 
-	if resp.IsError() {
-		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
-	}
-
 	var user User
-	errUnmarshal := json.Unmarshal(resp.Body(), &user)
+	errUnmarshal := json.Unmarshal(getBody, &user)
 	if errUnmarshal != nil {
 		return nil, errUnmarshal
 	}
@@ -64,21 +41,13 @@ func (c Client) GetUserWithID(userID string) (*User, error) {
 // UpdateUser is
 // https://developers.slyk.io/slyk/reference/endpoints#patch-users-id
 func (c Client) UpdateUser(userID string, updateUserData *UpdateUserData) (*User, error) {
-	resp, err := resty.New().R().
-		SetBody(*updateUserData).
-		SetHeader(headerApiKey, c.apiKey).
-		Patch(linkUsers + "/" + userID)
-
+	getBody, err := c.genericPatchQuery(linkUsers+"/"+userID, updateUserData)
 	if err != nil {
 		return nil, err
 	}
 
-	if resp.IsError() {
-		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
-	}
-
 	var user User
-	errUnmarshal := json.Unmarshal(resp.Body(), &user)
+	errUnmarshal := json.Unmarshal(getBody, &user)
 	if errUnmarshal != nil {
 		return nil, errUnmarshal
 	}
@@ -91,21 +60,13 @@ func (c Client) UpdateUser(userID string, updateUserData *UpdateUserData) (*User
 // TODO Diğer parametrelere bakılacak
 // TODO Password tipi kontrol edilecek
 func (c Client) CreateUser(createUserdata *CreateUserData) (*User, error) {
-	resp, err := resty.New().R().
-		SetBody(*createUserdata).
-		SetHeader(headerApiKey, c.apiKey).
-		Post(linkUsers)
-
+	getBody, err := c.genericPostQuery(linkUsers, createUserdata)
 	if err != nil {
 		return nil, err
 	}
 
-	if resp.IsError() {
-		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
-	}
-
 	var user User
-	errUnmarshal := json.Unmarshal(resp.Body(), &user)
+	errUnmarshal := json.Unmarshal(getBody, &user)
 	if errUnmarshal != nil {
 		return nil, errUnmarshal
 	}
@@ -116,76 +77,31 @@ func (c Client) CreateUser(createUserdata *CreateUserData) (*User, error) {
 // SetUserApprove is
 // https://developers.slyk.io/slyk/reference/endpoints#post-users-id-approve
 func (c Client) SetUserApprove(userID string) error {
-	resp, err := resty.New().R().
-		SetHeader(headerApiKey, c.apiKey).
-		Post(linkUsers + "/" + userID + approve)
-
-	if err != nil {
-		return err
-	}
-
-	if resp.IsError() {
-		return fmt.Errorf("Status Code : %d", resp.StatusCode())
-	}
-
-	return nil
+	_, err := c.genericPostQuery(linkUsers+"/"+userID+approve, nil)
+	return err
 }
 
 // SetUserBlock is
 // https://developers.slyk.io/slyk/reference/endpoints#post-users-id-block
 func (c Client) SetUserBlock(userID string) error {
-	resp, err := resty.New().R().
-		SetHeader(headerApiKey, c.apiKey).
-		Post(linkUsers + "/" + userID + block)
-
-	if err != nil {
-		return err
-	}
-
-	if resp.IsError() {
-		return fmt.Errorf("Status Code : %d", resp.StatusCode())
-	}
-
-	return nil
+	_, err := c.genericPostQuery(linkUsers+"/"+userID+block, nil)
+	return err
 }
 
 // SetUserUnblock is
 // https://developers.slyk.io/slyk/reference/endpoints#post-users-id-unblock
 func (c Client) SetUserUnblock(userID string) error {
-	resp, err := resty.New().R().
-		SetHeader(headerApiKey, c.apiKey).
-		Post(linkUsers + "/" + userID + unblock)
-
-	if err != nil {
-		return err
-	}
-
-	if resp.IsError() {
-		return fmt.Errorf("Status Code : %d", resp.StatusCode())
-	}
-
-	return nil
+	_, err := c.genericPostQuery(linkUsers+"/"+userID+unblock, nil)
+	return err
 }
 
 // ChangePassword is
 // https://developers.slyk.io/slyk/reference/endpoints#post-users-id-change-password
 func (c Client) ChangePassword(userID string, psw string) error {
-	resp, err := resty.New().R().
-		SetBody(struct {
-			Password string `json:"password"`
-		}{
-			Password: psw,
-		}).
-		SetHeader(headerApiKey, c.apiKey).
-		Post(linkUsers + "/" + userID + changePassword)
-
-	if err != nil {
-		return err
-	}
-
-	if resp.IsError() {
-		return fmt.Errorf("Status Code : %d", resp.StatusCode())
-	}
-
-	return nil
+	_, err := c.genericPostQuery(linkUsers+"/"+userID+changePassword, struct {
+		Password string `json:"password"`
+	}{
+		Password: psw,
+	})
+	return err
 }

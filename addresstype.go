@@ -13,19 +13,19 @@ type Address struct {
 }
 
 type AddressData struct {
-	Address    string    `json:"address"`
-	AssetCode  string    `json:"assetCode"`
-	CreatedAt  time.Time `json:"createdAt"`
-	CustomData struct{}  `json:"customData"`
-	Metadata   struct{}  `json:"metadata"`
-	UpdatedAt  time.Time `json:"updatedAt"`
-	WalletID   string    `json:"walletId"`
+	Address    string      `json:"address"`
+	AssetCode  string      `json:"assetCode"`
+	CreatedAt  time.Time   `json:"createdAt"`
+	CustomData interface{} `json:"customData"`
+	Metadata   interface{} `json:"metadata"`
+	UpdatedAt  time.Time   `json:"updatedAt"`
+	WalletID   string      `json:"walletId"`
 }
 
 type CreateAddressBody struct {
-	Address    string   `json:"address,omitempty"`
-	AssetCode  string   `json:"assetCode,omitempty"`
-	CustomData struct{} `json:"customData,omitempty"`
-	Provider   string   `json:"provider,omitempty"`
-	WalletID   string   `json:"walletId,omitempty"`
+	Address    string      `json:"address,omitempty"`
+	AssetCode  string      `json:"assetCode,omitempty"`
+	CustomData interface{} `json:"customData,omitempty"`
+	Provider   string      `json:"provider,omitempty"`
+	WalletID   string      `json:"walletId,omitempty"`
 }

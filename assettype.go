@@ -15,11 +15,11 @@ type AssetData struct {
 	Code          string      `json:"code"`
 	Contract      struct{}    `json:"contract"`
 	CreatedAt     time.Time   `json:"createdAt"`
-	CustomData    struct{}    `json:"customData,omitempty"`
+	CustomData    interface{} `json:"customData,omitempty"`
 	DecimalPlaces int         `json:"decimalPlaces"`
 	Enabled       bool        `json:"enabled"`
 	Logo          interface{} `json:"logo"`
-	Metadata      struct{}    `json:"metadata"`
+	Metadata      interface{} `json:"metadata"`
 	Name          string      `json:"name"`
 	Symbol        string      `json:"symbol"`
 	System        bool        `json:"system"`
@@ -28,22 +28,22 @@ type AssetData struct {
 }
 
 type UpdateAssetDataBody struct {
-	DecimalPlaces int      `json:"decimalPlaces,omitempty"`
-	Name          string   `json:"name,omitempty"`
-	Contract      struct{} `json:"contract,omitempty"`
-	CustomData    struct{} `json:"customData,omitempty"`
-	Enabled       bool     `json:"enabled,omitempty"`
-	Logo          string   `json:"logo,omitempty"`
-	Symbol        string   `json:"symbol,omitempty"`
+	DecimalPlaces int         `json:"decimalPlaces,omitempty"`
+	Name          string      `json:"name,omitempty"`
+	Contract      struct{}    `json:"contract,omitempty"`
+	CustomData    interface{} `json:"customData,omitempty"`
+	Enabled       bool        `json:"enabled,omitempty"`
+	Logo          string      `json:"logo,omitempty"`
+	Symbol        string      `json:"symbol,omitempty"`
 }
 
 type CreateAssetDataBody struct {
-	Code          string   `json:"code"`
-	Contract      struct{} `json:"contract,omitempty"`
-	CustomData    struct{} `json:"customData,omitempty"`
-	DecimalPlaces int      `json:"decimalPlaces,omitempty"`
-	Enabled       bool     `json:"enabled,omitempty"`
-	Name          string   `json:"name"`
-	Symbol        string   `json:"symbol,omitempty"`
-	Type          string   `json:"type"`
+	Code          string      `json:"code"`
+	Contract      struct{}    `json:"contract,omitempty"`
+	CustomData    interface{} `json:"customData,omitempty"`
+	DecimalPlaces int         `json:"decimalPlaces,omitempty"`
+	Enabled       bool        `json:"enabled,omitempty"`
+	Name          string      `json:"name"`
+	Symbol        string      `json:"symbol,omitempty"`
+	Type          string      `json:"type"`
 }

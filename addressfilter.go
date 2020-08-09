@@ -69,8 +69,7 @@ func (c *CreateAddressBody) SetAssetCode(assetCode string) *CreateAddressBody {
 	return c
 }
 
-func (c *CreateAddressBody) SetCustomData(customData struct{}) *CreateAddressBody {
-	// TODO DÜZENLE
+func (c *CreateAddressBody) SetCustomData(customData interface{}) *CreateAddressBody {
 	c.CustomData = customData
 	return c
 }

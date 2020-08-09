@@ -18,7 +18,7 @@ type InviteData struct {
 	InvitedEmail  string      `json:"invitedEmail"`
 	InvitedUserID interface{} `json:"invitedUserId"`
 	InviterUserID interface{} `json:"inviterUserId"`
-	Metadata      struct{}    `json:"metadata"`
+	Metadata      interface{} `json:"metadata"`
 	Status        string      `json:"status"`
 	Type          string      `json:"type"`
 	UpdatedAt     time.Time   `json:"updatedAt"`

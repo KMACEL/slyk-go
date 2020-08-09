@@ -127,7 +127,7 @@ func (u *UpdateAssetDataBody) SetContract(contract struct{}) *UpdateAssetDataBod
 	return u
 }
 
-func (u *UpdateAssetDataBody) SetCustomData(customData struct{}) *UpdateAssetDataBody {
+func (u *UpdateAssetDataBody) SetCustomData(customData interface{}) *UpdateAssetDataBody {
 	u.CustomData = customData
 	return u
 }
@@ -176,7 +176,7 @@ func (c *CreateAssetDataBody) SetContract(contract struct{}) *CreateAssetDataBod
 	return c
 }
 
-func (c *CreateAssetDataBody) SetCustomData(customData struct{}) *CreateAssetDataBody {
+func (c *CreateAssetDataBody) SetCustomData(customData interface{}) *CreateAssetDataBody {
 	c.CustomData = customData
 	return c
 }

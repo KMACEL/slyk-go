@@ -12,24 +12,23 @@ type User struct {
 }
 
 type UserData struct {
-	Approved   bool      `json:"approved"`
-	Blocked    bool      `json:"blocked"`
-	CreatedAt  time.Time `json:"createdAt"`
-	CustomData struct {
-	} `json:"customData"`
-	Email           string      `json:"email"`
-	ID              string      `json:"id"`
-	Image           interface{} `json:"image"`
-	ImageURL        interface{} `json:"imageUrl"`
-	Locale          string      `json:"locale"`
-	Name            string      `json:"name"`
-	Phone           interface{} `json:"phone"`
-	PrimaryWalletID string      `json:"primaryWalletId"`
-	ReferralCode    string      `json:"referralCode"`
-	ReferralUserID  interface{} `json:"referralUserId"`
-	Roles           []string    `json:"roles"`
-	UpdatedAt       time.Time   `json:"updatedAt"`
-	Verified        bool        `json:"verified"`
+	Approved        bool                   `json:"approved"`
+	Blocked         bool                   `json:"blocked"`
+	CreatedAt       time.Time              `json:"createdAt"`
+	CustomData      map[string]interface{} `json:"customData"`
+	Email           string                 `json:"email"`
+	ID              string                 `json:"id"`
+	Image           string                 `json:"image"`
+	ImageURL        string                 `json:"imageUrl"`
+	Locale          string                 `json:"locale"`
+	Name            string                 `json:"name"`
+	Phone           string                 `json:"phone"`
+	PrimaryWalletID string                 `json:"primaryWalletId"`
+	ReferralCode    string                 `json:"referralCode"`
+	ReferralUserID  string                 `json:"referralUserId"`
+	Roles           []string               `json:"roles"`
+	UpdatedAt       time.Time              `json:"updatedAt"`
+	Verified        bool                   `json:"verified"`
 }
 
 type UpdateUserData struct {
@@ -39,8 +38,14 @@ type UpdateUserData struct {
 }
 
 type CreateUserData struct {
-	Email    string `json:"email,omitempty"`
-	Locale   string `json:"locale,omitempty"`
-	Name     string `json:"name,omitempty"`
-	Password string `json:"password,omitempty"`
+	Email           string      `json:"email"`
+	Code            string      `json:"code,omitempty"`
+	Locale          string      `json:"locale,omitempty"`
+	Name            string      `json:"name,omitempty"`
+	Password        string      `json:"password,"`
+	Approved        bool        `json:"approved,omitempty"`
+	Blocked         bool        `json:"blocked,omitempty"`
+	CustomData      interface{} `json:"customData,omitempty"`
+	PrimaryWalletID string      `json:"primaryWalletId,omitempty"`
+	Verified        bool        `json:"verified,omitempty"`
 }
