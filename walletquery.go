@@ -2,34 +2,18 @@ package slyk
 
 import (
 	"encoding/json"
-	"fmt"
-
-	"github.com/go-resty/resty/v2"
 )
 
 // GetWallets is
 // https://developers.slyk.io/slyk/reference/endpoints#get-wallets
 func (c Client) GetWallets(filter ...*getWalletFilter) (*Wallets, error) {
-
-	clientReq := resty.New().R()
-	if filter != nil {
-		clientReq.SetQueryParams(merge(filter))
-	}
-
-	resp, err := clientReq.
-		SetHeader(headerApiKey, c.apiKey).
-		Get(linkWallets)
-
+	getBody, err := c.genericGetQuery(linkWallets, merge(filter))
 	if err != nil {
 		return nil, err
 	}
 
-	if resp.IsError() {
-		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
-	}
-
 	var wallets Wallets
-	errUnmarshal := json.Unmarshal(resp.Body(), &wallets)
+	errUnmarshal := json.Unmarshal(getBody, &wallets)
 	if errUnmarshal != nil {
 		return nil, errUnmarshal
 	}
@@ -40,20 +24,13 @@ func (c Client) GetWallets(filter ...*getWalletFilter) (*Wallets, error) {
 // GetWalletWithID is
 // https://developers.slyk.io/slyk/reference/endpoints#get-wallets-id
 func (c Client) GetWalletWithID(walletID string) (*Wallet, error) {
-	resp, err := resty.New().R().
-		SetHeader(headerApiKey, c.apiKey).
-		Get(linkWallets + "/" + walletID)
-
+	getBody, err := c.genericGetQuery(linkWallets+"/"+walletID, nil)
 	if err != nil {
 		return nil, err
 	}
 
-	if resp.IsError() {
-		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
-	}
-
 	var wallet Wallet
-	errUnmarshal := json.Unmarshal(resp.Body(), &wallet)
+	errUnmarshal := json.Unmarshal(getBody, &wallet)
 	if errUnmarshal != nil {
 		return nil, errUnmarshal
 	}
@@ -63,27 +40,14 @@ func (c Client) GetWalletWithID(walletID string) (*Wallet, error) {
 
 // GetWalletActivity is
 // https://developers.slyk.io/slyk/reference/endpoints#get-wallets-id-activity
-func (c Client) GetWalletActivityWithID(walletID string, filter ...*getWalletActivityFilter) (*WalletActivities, error) {
-	clientReq := resty.New().R()
-
-	if filter != nil {
-		clientReq.SetQueryParams(merge(filter))
-	}
-
-	resp, err := clientReq.
-		SetHeader(headerApiKey, c.apiKey).
-		Get(linkWallets + "/" + walletID + activity)
-
+func (c Client) GetWalletActivityWithID(walletID string, filter ...*getWalletActivityWithIDFilter) (*WalletActivities, error) {
+	getBody, err := c.genericGetQuery(linkWallets+"/"+walletID+activity, merge(filter))
 	if err != nil {
 		return nil, err
 	}
 
-	if resp.IsError() {
-		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
-	}
-
 	var walletActivities WalletActivities
-	errUnmarshal := json.Unmarshal(resp.Body(), &walletActivities)
+	errUnmarshal := json.Unmarshal(getBody, &walletActivities)
 	if errUnmarshal != nil {
 		return nil, errUnmarshal
 	}
@@ -94,26 +58,13 @@ func (c Client) GetWalletActivityWithID(walletID string, filter ...*getWalletAct
 // GetWaalletBalance is
 // https://developers.slyk.io/slyk/reference/endpoints#get-wallets-id-balance
 func (c Client) GetWalletBalanceWithID(walletID string, filter ...*getWalletBalanceWithIDFilter) (*WalletBalance, error) {
-	clientReq := resty.New().R()
-
-	if filter != nil {
-		clientReq.SetQueryParams(merge(filter))
-	}
-
-	resp, err := clientReq.
-		SetHeader(headerApiKey, c.apiKey).
-		Get(linkWallets + "/" + walletID + balance)
-
+	getBody, err := c.genericGetQuery(linkWallets+"/"+walletID+balance, merge(filter))
 	if err != nil {
 		return nil, err
 	}
 
-	if resp.IsError() {
-		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
-	}
-
 	var walletBalance WalletBalance
-	errUnmarshal := json.Unmarshal(resp.Body(), &walletBalance)
+	errUnmarshal := json.Unmarshal(getBody, &walletBalance)
 	if errUnmarshal != nil {
 		return nil, errUnmarshal
 	}
@@ -124,26 +75,13 @@ func (c Client) GetWalletBalanceWithID(walletID string, filter ...*getWalletBala
 // GetWalletMovements is
 // https://developers.slyk.io/slyk/reference/endpoints#get-wallets-id-movements
 func (c Client) GetWalletMovements(walletID string, filter ...*getWalletMovementFilter) (*WalletMovements, error) {
-	clientReq := resty.New().R()
-
-	if filter != nil {
-		clientReq.SetQueryParams(merge(filter))
-	}
-
-	resp, err := clientReq.
-		SetHeader(headerApiKey, c.apiKey).
-		Get(linkWallets + "/" + walletID + movements)
-
+	getBody, err := c.genericGetQuery(linkWallets+"/"+walletID+movements, merge(filter))
 	if err != nil {
 		return nil, err
 	}
 
-	if resp.IsError() {
-		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
-	}
-
 	var walletMovements WalletMovements
-	errUnmarshal := json.Unmarshal(resp.Body(), &walletMovements)
+	errUnmarshal := json.Unmarshal(getBody, &walletMovements)
 	if errUnmarshal != nil {
 		return nil, errUnmarshal
 	}
@@ -154,26 +92,13 @@ func (c Client) GetWalletMovements(walletID string, filter ...*getWalletMovement
 // GetWalletTransactions is
 // https://developers.slyk.io/slyk/reference/endpoints#get-wallets-id-transactions
 func (c Client) GetWalletTransactions(walletID string, filter ...*getWalletTransactionstFilter) (*WalletTransactions, error) {
-	clientReq := resty.New().R()
-
-	if filter != nil {
-		clientReq.SetQueryParams(merge(filter))
-	}
-
-	resp, err := clientReq.
-		SetHeader(headerApiKey, c.apiKey).
-		Get(linkWallets + "/" + walletID + transactions)
-
+	getBody, err := c.genericGetQuery(linkWallets+"/"+walletID+transactions, merge(filter))
 	if err != nil {
 		return nil, err
 	}
 
-	if resp.IsError() {
-		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
-	}
-
 	var walletTransactions WalletTransactions
-	errUnmarshal := json.Unmarshal(resp.Body(), &walletTransactions)
+	errUnmarshal := json.Unmarshal(getBody, &walletTransactions)
 	if errUnmarshal != nil {
 		return nil, errUnmarshal
 	}
@@ -184,26 +109,13 @@ func (c Client) GetWalletTransactions(walletID string, filter ...*getWalletTrans
 // GetWalletActivity is
 // https://developers.slyk.io/slyk/reference/endpoints#get-wallets-activity
 func (c Client) GetWalletActivity(filter ...*getWalletActivityFilter) (*WalletActivities, error) {
-	clientReq := resty.New().R()
-
-	if filter != nil {
-		clientReq.SetQueryParams(merge(filter))
-	}
-
-	resp, err := clientReq.
-		SetHeader(headerApiKey, c.apiKey).
-		Get(linkWallets + activity)
-
+	getBody, err := c.genericGetQuery(linkWallets+activity, merge(filter))
 	if err != nil {
 		return nil, err
 	}
 
-	if resp.IsError() {
-		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
-	}
-
 	var walletActivities WalletActivities
-	errUnmarshal := json.Unmarshal(resp.Body(), &walletActivities)
+	errUnmarshal := json.Unmarshal(getBody, &walletActivities)
 	if errUnmarshal != nil {
 		return nil, errUnmarshal
 	}
@@ -214,26 +126,13 @@ func (c Client) GetWalletActivity(filter ...*getWalletActivityFilter) (*WalletAc
 // GetWalletBalance is
 // https://developers.slyk.io/slyk/reference/endpoints#get-wallets-balance
 func (c Client) GetWalletBalance(filter ...*getWalletBalanceFilter) (*WalletBalance, error) {
-	clientReq := resty.New().R()
-
-	if filter != nil {
-		clientReq.SetQueryParams(merge(filter))
-	}
-
-	resp, err := clientReq.
-		SetHeader(headerApiKey, c.apiKey).
-		Get(linkWallets + balance)
-
+	getBody, err := c.genericGetQuery(linkWallets+balance, merge(filter))
 	if err != nil {
 		return nil, err
 	}
 
-	if resp.IsError() {
-		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
-	}
-
 	var walletBalance WalletBalance
-	errUnmarshal := json.Unmarshal(resp.Body(), &walletBalance)
+	errUnmarshal := json.Unmarshal(getBody, &walletBalance)
 	if errUnmarshal != nil {
 		return nil, errUnmarshal
 	}
@@ -245,21 +144,13 @@ func (c Client) GetWalletBalance(filter ...*getWalletBalanceFilter) (*WalletBala
 // https://developers.slyk.io/slyk/reference/endpoints#patch-wallets-id
 // TODO : Çalışmıyror test edilecek
 func (c Client) UpdateWallet(walletID string, updateWallet *UpdateWalletData) (*Wallet, error) {
-	resp, err := resty.New().R().
-		SetHeader(headerApiKey, c.apiKey).
-		SetBody(*updateWallet).
-		Patch(linkWallets + "/" + walletID)
-
+	getBody, err := c.genericPatchQuery(linkWallets+"/"+walletID, updateWallet)
 	if err != nil {
 		return nil, err
 	}
 
-	if resp.IsError() {
-		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
-	}
-
 	var wallet Wallet
-	errUnmarshal := json.Unmarshal(resp.Body(), &wallet)
+	errUnmarshal := json.Unmarshal(getBody, &wallet)
 	if errUnmarshal != nil {
 		return nil, errUnmarshal
 	}
@@ -271,21 +162,13 @@ func (c Client) UpdateWallet(walletID string, updateWallet *UpdateWalletData) (*
 // https://developers.slyk.io/slyk/reference/endpoints#post-wallets
 // TODO Body ile çalışmıyor bakıalcak
 func (c Client) CreateWallet(createWallet *CreateWalletData) (*Wallet, error) {
-	resp, err := resty.New().R().
-		SetHeader(headerApiKey, c.apiKey).
-		//SetBody(*createWallet).
-		Post(linkWallets)
-
+	getBody, err := c.genericPostQuery(linkWallets, createWallet)
 	if err != nil {
 		return nil, err
 	}
 
-	if resp.IsError() {
-		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
-	}
-
 	var wallet Wallet
-	errUnmarshal := json.Unmarshal(resp.Body(), &wallet)
+	errUnmarshal := json.Unmarshal(getBody, &wallet)
 	if errUnmarshal != nil {
 		return nil, errUnmarshal
 	}

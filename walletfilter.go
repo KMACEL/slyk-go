@@ -82,14 +82,14 @@ func GetWalletActivtyWithIDFilter() *getWalletActivityWithIDFilter {
 }
 
 // asset btc,eth,ltc
-func (g *getWalletActivityWithIDFilter) SetAssetCodeWithIN(assetCode string) *getWalletActivityWithIDFilter {
-	(*g)["filter[assetCode]"] = "in:" + assetCode
+func (g *getWalletActivityWithIDFilter) SetAssetCodeWithIN(assetCode ...string) *getWalletActivityWithIDFilter {
+	(*g)["filter[assetCode]"] = "in:" + strings.Join(assetCode, ",")
 	return g
 }
 
 // asset btc,eth,ltc
-func (g *getWalletActivityWithIDFilter) SetAssetCodeWithNIN(assetCode string) *getWalletActivityWithIDFilter {
-	(*g)["filter[assetCode]"] = "nin:" + assetCode
+func (g *getWalletActivityWithIDFilter) SetAssetCodeWithNIN(assetCode ...string) *getWalletActivityWithIDFilter {
+	(*g)["filter[assetCode]"] = "nin:" + strings.Join(assetCode, ",")
 	return g
 }
 
@@ -123,13 +123,13 @@ func (g *getWalletActivityWithIDFilter) SetTypeWithNIN(getType string) *getWalle
 	return g
 }
 
-func (g *getWalletActivityWithIDFilter) SetSortWithAmount(amount string) *getWalletActivityWithIDFilter {
-	(*g)["filter[amount]"] = "amount"
+func (g *getWalletActivityWithIDFilter) SetSortWithAmount() *getWalletActivityWithIDFilter {
+	(*g)["sort"] = "amount"
 	return g
 }
 
-func (g *getWalletActivityWithIDFilter) SetSortWithAmountReverse(amount string) *getWalletActivityWithIDFilter {
-	(*g)["filter[amount]"] = "-amount"
+func (g *getWalletActivityWithIDFilter) SetSortWithAmountReverse() *getWalletActivityWithIDFilter {
+	(*g)["sort"] = "-amount"
 	return g
 }
 
@@ -167,14 +167,14 @@ func GetWalletBalanceWithIDFilter() *getWalletBalanceWithIDFilter {
 }
 
 // asset btc,eth,ltc
-func (g *getWalletBalanceWithIDFilter) SetAssetCodeWithIN(assetCode string) *getWalletBalanceWithIDFilter {
-	(*g)["filter[assetCode]"] = "in:" + assetCode
+func (g *getWalletBalanceWithIDFilter) SetAssetCodeWithIN(assetCode ...string) *getWalletBalanceWithIDFilter {
+	(*g)["filter[assetCode]"] = "in:" + strings.Join(assetCode, ",")
 	return g
 }
 
 // asset btc,eth,ltc
-func (g *getWalletBalanceWithIDFilter) SetAssetCodeWithNIN(assetCode string) *getWalletBalanceWithIDFilter {
-	(*g)["filter[assetCode]"] = "nin:" + assetCode
+func (g *getWalletBalanceWithIDFilter) SetAssetCodeWithNIN(assetCode ...string) *getWalletBalanceWithIDFilter {
+	(*g)["filter[assetCode]"] = "nin:" + strings.Join(assetCode, ",")
 	return g
 }
 
@@ -191,23 +191,24 @@ func GetWalletMovementFilter() *getWalletMovementFilter {
 	return &getWalletMovementFilter{}
 }
 
-func (g *getWalletMovementFilter) SetAssetCodeWithIN(assetCode string) *getWalletMovementFilter {
-	(*g)["filter[assetCode]"] = "in:" + assetCode
+// asset btc,eth,ltc
+func (g *getWalletMovementFilter) SetAssetCodeWithIN(assetCode ...string) *getWalletMovementFilter {
+	(*g)["filter[assetCode]"] = "in:" + strings.Join(assetCode, ",")
 	return g
 }
 
 // asset btc,eth,ltc
-func (g *getWalletMovementFilter) SetAssetCodeWithNIN(assetCode string) *getWalletMovementFilter {
-	(*g)["filter[assetCode]"] = "nin:" + assetCode
+func (g *getWalletMovementFilter) SetAssetCodeWithNIN(assetCode ...string) *getWalletMovementFilter {
+	(*g)["filter[assetCode]"] = "nin:" + strings.Join(assetCode, ",")
 	return g
 }
 
-func (g *getWalletMovementFilter) SetSortWithAmount(amount string) *getWalletMovementFilter {
+func (g *getWalletMovementFilter) SetSortWithAmount() *getWalletMovementFilter {
 	(*g)["amount"] = "amount"
 	return g
 }
 
-func (g *getWalletMovementFilter) SetSortWithAmountReverse(amount string) *getWalletMovementFilter {
+func (g *getWalletMovementFilter) SetSortWithAmountReverse() *getWalletMovementFilter {
 	(*g)["amount"] = "-amount"
 	return g
 }
@@ -241,14 +242,15 @@ func GetWalletTransactionsFilter() *getWalletTransactionstFilter {
 	return &getWalletTransactionstFilter{}
 }
 
-func (g *getWalletTransactionstFilter) SetAssetCodeWithIN(assetCode string) *getWalletTransactionstFilter {
-	(*g)["filter[assetCode]"] = "in:" + assetCode
+// asset btc,eth,ltc
+func (g *getWalletTransactionstFilter) SetAssetCodeWithIN(assetCode ...string) *getWalletTransactionstFilter {
+	(*g)["filter[assetCode]"] = "in:" + strings.Join(assetCode, ",")
 	return g
 }
 
 // asset btc,eth,ltc
-func (g *getWalletTransactionstFilter) SetAssetCodeWithNIN(assetCode string) *getWalletTransactionstFilter {
-	(*g)["filter[assetCode]"] = "nin:" + assetCode
+func (g *getWalletTransactionstFilter) SetAssetCodeWithNIN(assetCode ...string) *getWalletTransactionstFilter {
+	(*g)["filter[assetCode]"] = "nin:" + strings.Join(assetCode, ",")
 	return g
 }
 
@@ -282,12 +284,12 @@ func (g *getWalletTransactionstFilter) SetTypeWithNIN(getType string) *getWallet
 	return g
 }
 
-func (g *getWalletTransactionstFilter) SetSortWithAmount(amount string) *getWalletTransactionstFilter {
+func (g *getWalletTransactionstFilter) SetSortWithAmount() *getWalletTransactionstFilter {
 	(*g)["amount"] = "amount"
 	return g
 }
 
-func (g *getWalletTransactionstFilter) SetSortWithAmountReverse(amount string) *getWalletTransactionstFilter {
+func (g *getWalletTransactionstFilter) SetSortWithAmountReverse() *getWalletTransactionstFilter {
 	(*g)["amount"] = "-amount"
 	return g
 }
@@ -315,14 +317,15 @@ func GetWalletActivityFilter() *getWalletActivityFilter {
 	return &getWalletActivityFilter{}
 }
 
-func (g *getWalletActivityFilter) SetAssetCodeWithIN(assetCode string) *getWalletActivityFilter {
-	(*g)["filter[assetCode]"] = "in:" + assetCode
+// asset btc,eth,ltc
+func (g *getWalletActivityFilter) SetAssetCodeWithIN(assetCode ...string) *getWalletActivityFilter {
+	(*g)["filter[assetCode]"] = "in:" + strings.Join(assetCode, ",")
 	return g
 }
 
 // asset btc,eth,ltc
-func (g *getWalletActivityFilter) SetAssetCodeWithNIN(assetCode string) *getWalletActivityFilter {
-	(*g)["filter[assetCode]"] = "nin:" + assetCode
+func (g *getWalletActivityFilter) SetAssetCodeWithNIN(assetCode ...string) *getWalletActivityFilter {
+	(*g)["filter[assetCode]"] = "nin:" + strings.Join(assetCode, ",")
 	return g
 }
 
@@ -356,12 +359,12 @@ func (g *getWalletActivityFilter) SetTypeWithNIN(getType string) *getWalletActiv
 	return g
 }
 
-func (g *getWalletActivityFilter) SetSortWithAmount(amount string) *getWalletActivityFilter {
+func (g *getWalletActivityFilter) SetSortWithAmount() *getWalletActivityFilter {
 	(*g)["amount"] = "amount"
 	return g
 }
 
-func (g *getWalletActivityFilter) SetSortWithAmountReverse(amount string) *getWalletActivityFilter {
+func (g *getWalletActivityFilter) SetSortWithAmountReverse() *getWalletActivityFilter {
 	(*g)["amount"] = "-amount"
 	return g
 }
@@ -400,14 +403,15 @@ func GetWalletBalanceFilter() *getWalletBalanceFilter {
 	return &getWalletBalanceFilter{}
 }
 
-func (g *getWalletBalanceFilter) SetAssetCodeWithIN(assetCode string) *getWalletBalanceFilter {
-	(*g)["filter[assetCode]"] = "in:" + assetCode
+// asset btc,eth,ltc
+func (g *getWalletBalanceFilter) SetAssetCodeWithIN(assetCode ...string) *getWalletBalanceFilter {
+	(*g)["filter[assetCode]"] = "in:" + strings.Join(assetCode, ",")
 	return g
 }
 
 // asset btc,eth,ltc
-func (g *getWalletBalanceFilter) SetAssetCodeWithNIN(assetCode string) *getWalletBalanceFilter {
-	(*g)["filter[assetCode]"] = "nin:" + assetCode
+func (g *getWalletBalanceFilter) SetAssetCodeWithNIN(assetCode ...string) *getWalletBalanceFilter {
+	(*g)["filter[assetCode]"] = "nin:" + strings.Join(assetCode, ",")
 	return g
 }
 
@@ -435,7 +439,6 @@ func (u *UpdateWalletData) SetLocked(locked bool) *UpdateWalletData {
 	return u
 }
 
-// TODO Çalışmıyor bakılacak
 func (u *UpdateWalletData) SetCustomData(customData interface{}) *UpdateWalletData {
 	u.CustomData = customData
 	return u

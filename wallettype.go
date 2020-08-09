@@ -12,16 +12,16 @@ type Wallet struct {
 }
 
 type WalletData struct {
-	CreatedAt   time.Time   `json:"createdAt"`
-	CustomData  interface{} `json:"customData"`
-	Description interface{} `json:"description"`
-	ID          string      `json:"id"`
-	Locked      bool        `json:"locked"`
-	Metadata    interface{} `json:"metadata"`
-	Name        string      `json:"name"`
-	OwnerID     string      `json:"ownerId"`
-	Reference   string      `json:"reference"`
-	UpdatedAt   time.Time   `json:"updatedAt"`
+	CreatedAt   time.Time              `json:"createdAt"`
+	CustomData  map[string]interface{} `json:"customData"`
+	Description string                 `json:"description"`
+	ID          string                 `json:"id"`
+	Locked      bool                   `json:"locked"`
+	Metadata    map[string]interface{} `json:"metadata"`
+	Name        string                 `json:"name"`
+	OwnerID     string                 `json:"ownerId"`
+	Reference   string                 `json:"reference"`
+	UpdatedAt   time.Time              `json:"updatedAt"`
 }
 
 type WalletActivities struct {
