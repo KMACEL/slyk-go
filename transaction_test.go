@@ -6,7 +6,10 @@ func TestGetTransactions(t *testing.T) {
 	tst := "TestGetTransactions"
 
 	//returnValue, err := getClient().GetTransactions()
-	returnValue, err := getClient().GetTransactions(GetTransactionsFilter().SetAssetCodeWithIN("usd"))
+	returnValue, err := getClient().GetTransactions(
+		GetTransactionsFilter().
+			SetAssetCode("usd").
+			SetDestinationWalletIdWithIN("d6f417be-59f8-4728-a782-b810215f0ef2", "73fb8803-bd14-4127-bdb3-8a71b030d4bd"))
 
 	ReturnAndError(t, tst, returnValue, err)
 }

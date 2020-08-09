@@ -13,32 +13,23 @@ type Transaction struct {
 }
 
 type TransactionData struct {
-	Amount      string    `json:"amount"`
-	AssetCode   string    `json:"assetCode"`
-	Code        string    `json:"code"`
-	CreatedAt   time.Time `json:"createdAt"`
-	ID          string    `json:"id"`
-	Transaction struct {
-		Amount              string      `json:"amount"`
-		AssetCode           string      `json:"assetCode"`
-		Code                string      `json:"code"`
-		CreatedAt           time.Time   `json:"createdAt"`
-		CustomData          interface{} `json:"customData"`
-		Description         string      `json:"description"`
-		DestinationAddress  interface{} `json:"destinationAddress"`
-		DestinationWalletID string      `json:"destinationWalletId"`
-		ExternalID          interface{} `json:"externalId"`
-		ID                  string      `json:"id"`
-		Metadata            interface{} `json:"metadata"`
-		OriginAddress       interface{} `json:"originAddress"`
-		OriginWalletID      interface{} `json:"originWalletId"`
-		Status              string      `json:"status"`
-		Type                string      `json:"type"`
-		UpdatedAt           time.Time   `json:"updatedAt"`
-	} `json:"transaction"`
-	TransactionID string    `json:"transactionId"`
-	UpdatedAt     time.Time `json:"updatedAt"`
-	WalletID      string    `json:"walletId"`
+	Amount              string                 `json:"amount"`
+	AssetCode           string                 `json:"assetCode"`
+	Code                string                 `json:"code"`
+	CreatedAt           time.Time              `json:"createdAt"`
+	CustomData          map[string]interface{} `json:"customData"`
+	Description         string                 `json:"description"`
+	DestinationAddress  string                 `json:"destinationAddress"`
+	DestinationWalletID string                 `json:"destinationWalletId"`
+	ExternalID          string                 `json:"externalId"`
+	ExternalReference   string                 `json:"externalReference"`
+	ID                  string                 `json:"id"`
+	Metadata            map[string]interface{} `json:"metadata,omitempty"`
+	OriginAddress       string                 `json:"originAddress"`
+	OriginWalletID      string                 `json:"originWalletId"`
+	Status              string                 `json:"status"`
+	Type                string                 `json:"type"`
+	UpdatedAt           time.Time              `json:"updatedAt"`
 }
 
 type TransactionFailDataBody struct {

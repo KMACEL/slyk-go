@@ -10,26 +10,13 @@ import (
 // GetTransactions is
 // https://developers.slyk.io/slyk/reference/endpoints#get-transactions
 func (c Client) GetTransactions(filter ...*geTransactionstFilter) (*Transactions, error) {
-
-	clientReq := resty.New().R()
-	if filter != nil {
-		clientReq.SetQueryParams(merge(filter))
-	}
-
-	resp, err := clientReq.
-		SetHeader(headerApiKey, c.apiKey).
-		Get(linkTransactions)
-
+	getBody, err := c.genericGetQuery(linkTransactions, merge(filter))
 	if err != nil {
 		return nil, err
 	}
 
-	if resp.IsError() {
-		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
-	}
-
 	var transactions Transactions
-	errUnmarshal := json.Unmarshal(resp.Body(), &transactions)
+	errUnmarshal := json.Unmarshal(getBody, &transactions)
 	if errUnmarshal != nil {
 		return nil, errUnmarshal
 	}
