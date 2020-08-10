@@ -41,7 +41,12 @@ func (u *getUserFilter) SetEmail(email string) *getUserFilter {
 	return u
 }
 
-func (u *getUserFilter) SetID(id ...string) *getUserFilter {
+func (u *getUserFilter) SetID(id string) *getUserFilter {
+	(*u)["filter[id]"] = id
+	return u
+}
+
+func (u *getUserFilter) SetIDWithIN(id ...string) *getUserFilter {
 	(*u)["filter[id]"] = "in:" + strings.Join(id, ",")
 	return u
 }
@@ -66,8 +71,13 @@ func (u *getUserFilter) SetReferralCode(referralCode string) *getUserFilter {
 	return u
 }
 
-func (u *getUserFilter) SetReferralUserID(referralUserId string) *getUserFilter {
-	(*u)["filter[referralUserId]"] = referralUserId
+func (u *getUserFilter) SetReferralUserID(referralUserID string) *getUserFilter {
+	(*u)["filter[referralUserId]"] = referralUserID
+	return u
+}
+
+func (u *getUserFilter) SetReferralUserIDWithIN(referralUserID ...string) *getUserFilter {
+	(*u)["filter[referralUserId]"] = "in:" + strings.Join(referralUserID, ",")
 	return u
 }
 

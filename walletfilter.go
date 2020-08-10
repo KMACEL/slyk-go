@@ -34,6 +34,11 @@ func (g *getWalletFilter) SetGenericQueryParameter(key string, value interface{}
 	return g
 }
 
+func (g *getWalletFilter) SetID(id string) *getWalletFilter {
+	(*g)["filter[id]"] = id
+	return g
+}
+
 func (g *getWalletFilter) SetIDWithIN(id ...string) *getWalletFilter {
 	(*g)["filter[id]"] = "in:" + strings.Join(id, ",")
 	return g
@@ -92,6 +97,11 @@ func (g *getWalletActivityWithIDFilter) SetGenericQueryParameter(key string, val
 	return g
 }
 
+func (g *getWalletActivityWithIDFilter) SetAssetCode(assetCode string) *getWalletActivityWithIDFilter {
+	(*g)["filter[assetCode]"] = assetCode
+	return g
+}
+
 // asset btc,eth,ltc
 func (g *getWalletActivityWithIDFilter) SetAssetCodeWithIN(assetCode ...string) *getWalletActivityWithIDFilter {
 	(*g)["filter[assetCode]"] = "in:" + strings.Join(assetCode, ",")
@@ -104,33 +114,48 @@ func (g *getWalletActivityWithIDFilter) SetAssetCodeWithNIN(assetCode ...string)
 	return g
 }
 
-func (g *getWalletActivityWithIDFilter) SetCodeWithIN(code string) *getWalletActivityWithIDFilter {
-	(*g)["filter[code]"] = "in:" + code
+func (g *getWalletActivityWithIDFilter) SetCode(code string) *getWalletActivityWithIDFilter {
+	(*g)["filter[code]"] = code
 	return g
 }
 
-func (g *getWalletActivityWithIDFilter) SetCodeWithNIN(code string) *getWalletActivityWithIDFilter {
-	(*g)["filter[code]"] = "nin:" + code
+func (g *getWalletActivityWithIDFilter) SetCodeWithIN(code ...string) *getWalletActivityWithIDFilter {
+	(*g)["filter[code]"] = "in:" + strings.Join(code, ",")
 	return g
 }
 
-func (g *getWalletActivityWithIDFilter) SetStatusWithIN(status string) *getWalletActivityWithIDFilter {
-	(*g)["filter[status]"] = "in:" + status
+func (g *getWalletActivityWithIDFilter) SetCodeWithNIN(code ...string) *getWalletActivityWithIDFilter {
+	(*g)["filter[code]"] = "nin:" + strings.Join(code, ",")
 	return g
 }
 
-func (g *getWalletActivityWithIDFilter) SetStatusWithNIN(status string) *getWalletActivityWithIDFilter {
-	(*g)["filter[status]"] = "nin:" + status
+func (g *getWalletActivityWithIDFilter) SetStatus(status string) *getWalletActivityWithIDFilter {
+	(*g)["filter[status]"] = status
 	return g
 }
 
-func (g *getWalletActivityWithIDFilter) SetTypeWithIN(getType string) *getWalletActivityWithIDFilter {
-	(*g)["filter[type]"] = "in:" + getType
+func (g *getWalletActivityWithIDFilter) SetStatusWithIN(status ...string) *getWalletActivityWithIDFilter {
+	(*g)["filter[status]"] = "in:" + strings.Join(status, ",")
 	return g
 }
 
-func (g *getWalletActivityWithIDFilter) SetTypeWithNIN(getType string) *getWalletActivityWithIDFilter {
-	(*g)["filter[type]"] = "nin:" + getType
+func (g *getWalletActivityWithIDFilter) SetStatusWithNIN(status ...string) *getWalletActivityWithIDFilter {
+	(*g)["filter[status]"] = "nin:" + strings.Join(status, ",")
+	return g
+}
+
+func (g *getWalletActivityWithIDFilter) SetType(getType string) *getWalletActivityWithIDFilter {
+	(*g)["filter[type]"] = getType
+	return g
+}
+
+func (g *getWalletActivityWithIDFilter) SetTypeWithIN(getType ...string) *getWalletActivityWithIDFilter {
+	(*g)["filter[type]"] = "in:" + strings.Join(getType, ",")
+	return g
+}
+
+func (g *getWalletActivityWithIDFilter) SetTypeWithNIN(getType ...string) *getWalletActivityWithIDFilter {
+	(*g)["filter[type]"] = "nin:" + strings.Join(getType, ",")
 	return g
 }
 
@@ -183,6 +208,12 @@ func (g *getWalletBalanceWithIDFilter) SetGenericQueryParameter(key string, valu
 }
 
 // asset btc,eth,ltc
+func (g *getWalletBalanceWithIDFilter) SetAssetCode(assetCode string) *getWalletBalanceWithIDFilter {
+	(*g)["filter[assetCode]"] = assetCode
+	return g
+}
+
+// asset btc,eth,ltc
 func (g *getWalletBalanceWithIDFilter) SetAssetCodeWithIN(assetCode ...string) *getWalletBalanceWithIDFilter {
 	(*g)["filter[assetCode]"] = "in:" + strings.Join(assetCode, ",")
 	return g
@@ -209,6 +240,12 @@ func GetWalletMovementFilter() *getWalletMovementFilter {
 
 func (g *getWalletMovementFilter) SetGenericQueryParameter(key string, value interface{}) *getWalletMovementFilter {
 	(*g)[key] = fmt.Sprintf("%v", value)
+	return g
+}
+
+// asset btc,eth,ltc
+func (g *getWalletMovementFilter) SetAssetCode(assetCode string) *getWalletMovementFilter {
+	(*g)["filter[assetCode]"] = assetCode
 	return g
 }
 
@@ -269,6 +306,12 @@ func (g *getWalletTransactionstFilter) SetGenericQueryParameter(key string, valu
 }
 
 // asset btc,eth,ltc
+func (g *getWalletTransactionstFilter) SetAssetCode(assetCode string) *getWalletTransactionstFilter {
+	(*g)["filter[assetCode]"] = assetCode
+	return g
+}
+
+// asset btc,eth,ltc
 func (g *getWalletTransactionstFilter) SetAssetCodeWithIN(assetCode ...string) *getWalletTransactionstFilter {
 	(*g)["filter[assetCode]"] = "in:" + strings.Join(assetCode, ",")
 	return g
@@ -280,33 +323,48 @@ func (g *getWalletTransactionstFilter) SetAssetCodeWithNIN(assetCode ...string) 
 	return g
 }
 
-func (g *getWalletTransactionstFilter) SetCodeWithIN(code string) *getWalletTransactionstFilter {
-	(*g)["filter[code]"] = "in:" + code
+func (g *getWalletTransactionstFilter) SetCode(code string) *getWalletTransactionstFilter {
+	(*g)["filter[code]"] = code
 	return g
 }
 
-func (g *getWalletTransactionstFilter) SetCodeWithNIN(code string) *getWalletTransactionstFilter {
-	(*g)["filter[code]"] = "nin:" + code
+func (g *getWalletTransactionstFilter) SetCodeWithIN(code ...string) *getWalletTransactionstFilter {
+	(*g)["filter[code]"] = "in:" + strings.Join(code, ",")
 	return g
 }
 
-func (g *getWalletTransactionstFilter) SetStatusWithIN(status string) *getWalletTransactionstFilter {
-	(*g)["filter[status]"] = "in:" + status
+func (g *getWalletTransactionstFilter) SetCodeWithNIN(code ...string) *getWalletTransactionstFilter {
+	(*g)["filter[code]"] = "nin:" + strings.Join(code, ",")
 	return g
 }
 
-func (g *getWalletTransactionstFilter) SetStatusWithNIN(status string) *getWalletTransactionstFilter {
-	(*g)["filter[status]"] = "nin:" + status
+func (g *getWalletTransactionstFilter) SetStatus(status string) *getWalletTransactionstFilter {
+	(*g)["filter[status]"] = status
 	return g
 }
 
-func (g *getWalletTransactionstFilter) SetTypeWithIN(getType string) *getWalletTransactionstFilter {
-	(*g)["filter[type]"] = "in:" + getType
+func (g *getWalletTransactionstFilter) SetStatusWithIN(status ...string) *getWalletTransactionstFilter {
+	(*g)["filter[status]"] = "in:" + strings.Join(status, ",")
 	return g
 }
 
-func (g *getWalletTransactionstFilter) SetTypeWithNIN(getType string) *getWalletTransactionstFilter {
-	(*g)["filter[type]"] = "nin:" + getType
+func (g *getWalletTransactionstFilter) SetStatusWithNIN(status ...string) *getWalletTransactionstFilter {
+	(*g)["filter[status]"] = "nin:" + strings.Join(status, ",")
+	return g
+}
+
+func (g *getWalletTransactionstFilter) SetType(getType string) *getWalletTransactionstFilter {
+	(*g)["filter[type]"] = getType
+	return g
+}
+
+func (g *getWalletTransactionstFilter) SetTypeWithIN(getType ...string) *getWalletTransactionstFilter {
+	(*g)["filter[type]"] = "in:" + strings.Join(getType, ",")
+	return g
+}
+
+func (g *getWalletTransactionstFilter) SetTypeWithNIN(getType ...string) *getWalletTransactionstFilter {
+	(*g)["filter[type]"] = "nin:" + strings.Join(getType, ",")
 	return g
 }
 
@@ -349,6 +407,12 @@ func (g *getWalletActivityFilter) SetGenericQueryParameter(key string, value int
 }
 
 // asset btc,eth,ltc
+func (g *getWalletActivityFilter) SetAssetCode(assetCode string) *getWalletActivityFilter {
+	(*g)["filter[assetCode]"] = assetCode
+	return g
+}
+
+// asset btc,eth,ltc
 func (g *getWalletActivityFilter) SetAssetCodeWithIN(assetCode ...string) *getWalletActivityFilter {
 	(*g)["filter[assetCode]"] = "in:" + strings.Join(assetCode, ",")
 	return g
@@ -360,33 +424,48 @@ func (g *getWalletActivityFilter) SetAssetCodeWithNIN(assetCode ...string) *getW
 	return g
 }
 
-func (g *getWalletActivityFilter) SetCodeWithIN(code string) *getWalletActivityFilter {
-	(*g)["filter[code]"] = "in:" + code
+func (g *getWalletActivityFilter) SetCode(code string) *getWalletActivityFilter {
+	(*g)["filter[code]"] = code
 	return g
 }
 
-func (g *getWalletActivityFilter) SetCodeWithNIN(code string) *getWalletActivityFilter {
-	(*g)["filter[code]"] = "nin:" + code
+func (g *getWalletActivityFilter) SetCodeWithIN(code ...string) *getWalletActivityFilter {
+	(*g)["filter[code]"] = "in:" + strings.Join(code, ",")
 	return g
 }
 
-func (g *getWalletActivityFilter) SetStatusWithIN(status string) *getWalletActivityFilter {
-	(*g)["filter[status]"] = "in:" + status
+func (g *getWalletActivityFilter) SetCodeWithNIN(code ...string) *getWalletActivityFilter {
+	(*g)["filter[code]"] = "nin:" + strings.Join(code, ",")
 	return g
 }
 
-func (g *getWalletActivityFilter) SetStatusWithNIN(status string) *getWalletActivityFilter {
-	(*g)["filter[status]"] = "nin:" + status
+func (g *getWalletActivityFilter) SetStatus(status string) *getWalletActivityFilter {
+	(*g)["filter[status]"] = status
 	return g
 }
 
-func (g *getWalletActivityFilter) SetTypeWithIN(getType string) *getWalletActivityFilter {
-	(*g)["filter[type]"] = "in:" + getType
+func (g *getWalletActivityFilter) SetStatusWithIN(status ...string) *getWalletActivityFilter {
+	(*g)["filter[status]"] = "in:" + strings.Join(status, ",")
 	return g
 }
 
-func (g *getWalletActivityFilter) SetTypeWithNIN(getType string) *getWalletActivityFilter {
-	(*g)["filter[type]"] = "nin:" + getType
+func (g *getWalletActivityFilter) SetStatusWithNIN(status ...string) *getWalletActivityFilter {
+	(*g)["filter[status]"] = "nin:" + strings.Join(status, ",")
+	return g
+}
+
+func (g *getWalletActivityFilter) SetType(getType string) *getWalletActivityFilter {
+	(*g)["filter[type]"] = getType
+	return g
+}
+
+func (g *getWalletActivityFilter) SetTypeWithIN(getType ...string) *getWalletActivityFilter {
+	(*g)["filter[type]"] = "in:" + strings.Join(getType, ",")
+	return g
+}
+
+func (g *getWalletActivityFilter) SetTypeWithNIN(getType ...string) *getWalletActivityFilter {
+	(*g)["filter[type]"] = "nin:" + strings.Join(getType, ",")
 	return g
 }
 
@@ -436,6 +515,12 @@ func GetWalletBalanceFilter() *getWalletBalanceFilter {
 
 func (g *getWalletBalanceFilter) SetGenericQueryParameter(key string, value interface{}) *getWalletBalanceFilter {
 	(*g)[key] = fmt.Sprintf("%v", value)
+	return g
+}
+
+// asset btc,eth,ltc
+func (g *getWalletBalanceFilter) SetAssetCode(assetCode string) *getWalletBalanceFilter {
+	(*g)["filter[assetCode]"] = assetCode
 	return g
 }
 
