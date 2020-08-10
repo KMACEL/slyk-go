@@ -41,7 +41,7 @@ type CreateAssetDataBody struct {
 	Code          string      `json:"code"`
 	Contract      struct{}    `json:"contract,omitempty"`
 	CustomData    interface{} `json:"customData,omitempty"`
-	DecimalPlaces int         `json:"decimalPlaces,omitempty"`
+	DecimalPlaces int         `json:"decimalPlaces"`
 	Enabled       bool        `json:"enabled,omitempty"`
 	Name          string      `json:"name"`
 	Symbol        string      `json:"symbol,omitempty"`

@@ -27,6 +27,11 @@ func (g *getassetFilter) SetGenericQueryParameter(key string, value interface{})
 	return g
 }
 
+func (g *getassetFilter) SetCode(code string) *getassetFilter {
+	(*g)["filter[code]"] = code
+	return g
+}
+
 func (g *getassetFilter) SetCodeWithIN(code ...string) *getassetFilter {
 	(*g)["filter[code]"] = "in:" + strings.Join(code, ",")
 	return g
@@ -49,6 +54,21 @@ func (g *getassetFilter) SetName(name string) *getassetFilter {
 
 func (g *getassetFilter) SetSystem(system bool) *getassetFilter {
 	(*g)["filter[system]"] = strconv.FormatBool(system)
+	return g
+}
+
+func (g *getassetFilter) SetType(getType string) *getassetFilter {
+	(*g)["filter[type]"] = getType
+	return g
+}
+
+func (g *getassetFilter) SetTypeWithIN(getType ...string) *getassetFilter {
+	(*g)["filter[type]"] = "in:" + strings.Join(getType, ",")
+	return g
+}
+
+func (g *getassetFilter) SetTypeWithNIN(getType ...string) *getassetFilter {
+	(*g)["filter[type]"] = "nin:" + strings.Join(getType, ",")
 	return g
 }
 
