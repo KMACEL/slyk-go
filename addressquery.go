@@ -2,34 +2,18 @@ package slyk
 
 import (
 	"encoding/json"
-	"fmt"
-
-	"github.com/go-resty/resty/v2"
 )
 
 // GetAddresses is
 // https://developers.slyk.io/slyk/reference/endpoints#get-addresses
 func (c Client) GetAddresses(filter ...*geTransactionstFilter) (*Addresses, error) {
-
-	clientReq := resty.New().R()
-	if filter != nil {
-		clientReq.SetQueryParams(merge(filter))
-	}
-
-	resp, err := clientReq.
-		SetHeader(headerApiKey, c.apiKey).
-		Get(linkAddresses)
-
+	getBody, err := c.genericGetQuery(linkAddresses, merge(filter))
 	if err != nil {
 		return nil, err
 	}
 
-	if resp.IsError() {
-		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
-	}
-
 	var addresses Addresses
-	errUnmarshal := json.Unmarshal(resp.Body(), &addresses)
+	errUnmarshal := json.Unmarshal(getBody, &addresses)
 	if errUnmarshal != nil {
 		return nil, errUnmarshal
 	}
@@ -40,23 +24,13 @@ func (c Client) GetAddresses(filter ...*geTransactionstFilter) (*Addresses, erro
 // GetAddressWithID is
 // https://developers.slyk.io/slyk/reference/endpoints#get-addresses-address
 func (c Client) GetAddressWithID(addressID string) (*Address, error) {
-
-	clientReq := resty.New().R()
-
-	resp, err := clientReq.
-		SetHeader(headerApiKey, c.apiKey).
-		Get(linkAddresses + ":" + addressID)
-
+	getBody, err := c.genericGetQuery(linkAddresses+"/"+addressID, nil)
 	if err != nil {
 		return nil, err
 	}
 
-	if resp.IsError() {
-		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
-	}
-
 	var address Address
-	errUnmarshal := json.Unmarshal(resp.Body(), &address)
+	errUnmarshal := json.Unmarshal(getBody, &address)
 	if errUnmarshal != nil {
 		return nil, errUnmarshal
 	}
@@ -68,22 +42,13 @@ func (c Client) GetAddressWithID(addressID string) (*Address, error) {
 // https://developers.slyk.io/slyk/reference/endpoints#post-addresses
 // TODO : Sadece coinbase, test edilecek
 func (c Client) CreateAddress(createAddressBody *CreateAddressBody) (*Address, error) {
-
-	resp, err := resty.New().R().
-		SetHeader(headerApiKey, c.apiKey).
-		SetBody(createAddressBody).
-		Post(linkAddresses)
-
+	getBody, err := c.genericPostQuery(linkAddresses, createAddressBody)
 	if err != nil {
 		return nil, err
 	}
 
-	if resp.IsError() {
-		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
-	}
-
 	var address Address
-	errUnmarshal := json.Unmarshal(resp.Body(), &address)
+	errUnmarshal := json.Unmarshal(getBody, &address)
 	if errUnmarshal != nil {
 		return nil, errUnmarshal
 	}

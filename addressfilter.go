@@ -32,14 +32,25 @@ func (g *getaddressFilter) SetAddress(address string) *getaddressFilter {
 }
 
 // asset btc,eth,ltc
-func (g *getaddressFilter) SetAssetCodeWithIN(assetCode string) *getaddressFilter {
-	(*g)["filter[assetCode]"] = "in:" + assetCode
+func (g *getaddressFilter) SetAssetCode(assetCode string) *getaddressFilter {
+	(*g)["filter[assetCode]"] = assetCode
 	return g
 }
 
 // asset btc,eth,ltc
-func (g *getaddressFilter) SetAssetCodeWithNIN(assetCode string) *getaddressFilter {
-	(*g)["filter[assetCode]"] = "nin:" + assetCode
+func (g *getaddressFilter) SetAssetCodeWithIN(assetCode ...string) *getaddressFilter {
+	(*g)["filter[assetCode]"] = "in:" + strings.Join(assetCode, ",")
+	return g
+}
+
+// asset btc,eth,ltc
+func (g *getaddressFilter) SetAssetCodeWithNIN(assetCode ...string) *getaddressFilter {
+	(*g)["filter[assetCode]"] = "nin:" + strings.Join(assetCode, ",")
+	return g
+}
+
+func (g *getaddressFilter) SetID(walletID string) *getaddressFilter {
+	(*g)["filter[walletId]"] = walletID
 	return g
 }
 
