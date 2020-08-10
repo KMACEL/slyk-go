@@ -26,13 +26,18 @@ func (g *getInviteFilter) SetGenericQueryParameter(key string, value interface{}
 	return g
 }
 
-func (g *getInviteFilter) SetCodeWithIN(code string) *getInviteFilter {
-	(*g)["filter[code]"] = "in:" + code
+func (g *getInviteFilter) SetCode(code string) *getInviteFilter {
+	(*g)["filter[code]"] = code
 	return g
 }
 
-func (g *getInviteFilter) SetCodeWithNIN(code string) *getInviteFilter {
-	(*g)["filter[code]"] = "nin:" + code
+func (g *getInviteFilter) SetCodeWithIN(code ...string) *getInviteFilter {
+	(*g)["filter[code]"] = "in:" + strings.Join(code, ",")
+	return g
+}
+
+func (g *getInviteFilter) SetCodeWithNIN(code ...string) *getInviteFilter {
+	(*g)["filter[code]"] = "nin:" + strings.Join(code, ",")
 	return g
 }
 
@@ -48,42 +53,67 @@ func (g *getMovementFilter) SetExpiredAtWithLTE(date string) *getMovementFilter 
 	return g
 }
 
-func (g *getInviteFilter) SetInvitedEmailWithIN(invitedEmail string) *getInviteFilter {
-	(*g)["filter[invitedEmail]"] = "in:" + invitedEmail
+func (g *getInviteFilter) SetInvitedEmail(invitedEmail string) *getInviteFilter {
+	(*g)["filter[invitedEmail]"] = invitedEmail
 	return g
 }
 
-func (g *getInviteFilter) SetInvitedEmailWithNIN(invitedEmail string) *getInviteFilter {
-	(*g)["filter[invitedEmail]"] = "nin:" + invitedEmail
+func (g *getInviteFilter) SetInvitedEmailWithIN(invitedEmail ...string) *getInviteFilter {
+	(*g)["filter[invitedEmail]"] = "in:" + strings.Join(invitedEmail, ",")
 	return g
 }
 
-func (g *getInviteFilter) SetınvitedUserID(invitedUserId ...string) *getInviteFilter {
-	(*g)["filter[invitedUserId]"] = strings.Join(invitedUserId, ",")
+func (g *getInviteFilter) SetInvitedEmailWithNIN(invitedEmail ...string) *getInviteFilter {
+	(*g)["filter[invitedEmail]"] = "nin:" + strings.Join(invitedEmail, ",")
 	return g
 }
 
-func (g *getInviteFilter) SetInviterUserIDWithIN(inviterUserId string) *getInviteFilter {
-	(*g)["filter[inviterUserId]"] = "in:" + inviterUserId
+func (g *getInviteFilter) SetInvitedUserID(invitedEmail string) *getInviteFilter {
+	(*g)["filter[invitedUserId]"] = invitedEmail
 	return g
 }
 
-func (g *getInviteFilter) SetInviterUserIDWithNIN(inviterUserId string) *getInviteFilter {
-	(*g)["filter[inviterUserId]"] = "nin:" + inviterUserId
+func (g *getInviteFilter) SetInvitedUserIDWithIN(invitedUserID ...string) *getInviteFilter {
+	(*g)["filter[invitedUserId]"] = "in:" + strings.Join(invitedUserID, ",")
 	return g
 }
 
-func (g *getInviteFilter) SetStatusWithIN(status string) *getInviteFilter {
-	(*g)["filter[status]"] = "in:" + status
+func (g *getInviteFilter) SetInvitedUserIDWithNIN(invitedUserID ...string) *getInviteFilter {
+	(*g)["filter[invitedUserId]"] = "nin:" + strings.Join(invitedUserID, ",")
 	return g
 }
 
-func (g *getInviteFilter) SetStatusWithNIN(status string) *getInviteFilter {
-	(*g)["filter[status]"] = "nin:" + status
+func (g *getInviteFilter) SetInviterUserID(inviterUserID string) *getInviteFilter {
+	(*g)["filter[inviterUserId]"] = inviterUserID
 	return g
 }
 
-func (g *getInviteFilter) SetTypeWithNIN(typeInvite string) *getInviteFilter {
+func (g *getInviteFilter) SetInviterUserIDWithIN(inviterUserID ...string) *getInviteFilter {
+	(*g)["filter[inviterUserId]"] = "in:" + strings.Join(inviterUserID, ",")
+	return g
+}
+
+func (g *getInviteFilter) SetInviterUserIDWithNIN(inviterUserID ...string) *getInviteFilter {
+	(*g)["filter[inviterUserId]"] = "nin:" + strings.Join(inviterUserID, ",")
+	return g
+}
+
+func (g *getInviteFilter) SetStatus(status string) *getInviteFilter {
+	(*g)["filter[status]"] = status
+	return g
+}
+
+func (g *getInviteFilter) SetStatusWithIN(status ...string) *getInviteFilter {
+	(*g)["filter[status]"] = "in:" + strings.Join(status, ",")
+	return g
+}
+
+func (g *getInviteFilter) SetStatusWithNIN(status ...string) *getInviteFilter {
+	(*g)["filter[status]"] = "nin:" + strings.Join(status, ",")
+	return g
+}
+
+func (g *getInviteFilter) SetType(typeInvite string) *getInviteFilter {
 	(*g)["filter[type]"] = typeInvite
 	return g
 }
