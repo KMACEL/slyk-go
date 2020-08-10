@@ -2,34 +2,18 @@ package slyk
 
 import (
 	"encoding/json"
-	"fmt"
-
-	"github.com/go-resty/resty/v2"
 )
 
 // GetPaymentMethods is
 // https://developers.slyk.io/slyk/reference/endpoints#get-payment-methods
 func (c Client) GetPaymentMethods(filter ...*getPaymentMethodFilter) (*PaymentMedhods, error) {
-
-	clientReq := resty.New().R()
-	if filter != nil {
-		clientReq.SetQueryParams(merge(filter))
-	}
-
-	resp, err := clientReq.
-		SetHeader(headerApiKey, c.apiKey).
-		Get(linkPaymentMethods)
-
+	getBody, err := c.genericGetQuery(linkPaymentMethods, merge(filter))
 	if err != nil {
 		return nil, err
 	}
 
-	if resp.IsError() {
-		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
-	}
-
 	var paymentMedhods PaymentMedhods
-	errUnmarshal := json.Unmarshal(resp.Body(), &paymentMedhods)
+	errUnmarshal := json.Unmarshal(getBody, &paymentMedhods)
 	if errUnmarshal != nil {
 		return nil, errUnmarshal
 	}
@@ -40,20 +24,13 @@ func (c Client) GetPaymentMethods(filter ...*getPaymentMethodFilter) (*PaymentMe
 // GetPaymentMethodsWithSlug is
 // https://developers.slyk.io/slyk/reference/endpoints#get-payment-methods-slug
 func (c Client) GetPaymentMethodsWithSlug(slug string) (*PaymentMedhod, error) {
-	resp, err := resty.New().R().
-		SetHeader(headerApiKey, c.apiKey).
-		Get(linkPaymentMethods + "/" + slug)
-
+	getBody, err := c.genericGetQuery(linkPaymentMethods+"/"+slug, nil)
 	if err != nil {
 		return nil, err
 	}
 
-	if resp.IsError() {
-		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
-	}
-
 	var paymentMedhod PaymentMedhod
-	errUnmarshal := json.Unmarshal(resp.Body(), &paymentMedhod)
+	errUnmarshal := json.Unmarshal(getBody, &paymentMedhod)
 	if errUnmarshal != nil {
 		return nil, errUnmarshal
 	}
