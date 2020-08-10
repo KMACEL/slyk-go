@@ -1,6 +1,9 @@
 package slyk
 
-import "strings"
+import (
+	"fmt"
+	"strings"
+)
 
 type getaddressFilter map[string]string
 
@@ -16,6 +19,11 @@ type getaddressFilter map[string]string
 // GetAddressFilter is
 func GetAddressFilter() *getaddressFilter {
 	return &getaddressFilter{}
+}
+
+func (g *getaddressFilter) SetGenericQueryParameter(key string, value interface{}) *getaddressFilter {
+	(*g)[key] = fmt.Sprintf("%v", value)
+	return g
 }
 
 func (g *getaddressFilter) SetAddress(address string) *getaddressFilter {

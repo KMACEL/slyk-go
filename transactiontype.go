@@ -41,18 +41,16 @@ type TransactionRejectDataBody struct {
 }
 
 type AddTransactionDepositDataBody struct {
-	Amount     string      `json:"amount"`
-	AssetCode  string      `json:"assetCode"`
-	Code       string      `json:"code"`
-	CustomData interface{} `json:"customData,omitempty"`
-	Data       struct {
-		Description string `json:"description"`
-	} `json:"data"`
-	Description         string `json:"description,omitempty"`
-	DestinationAddress  string `json:"destinationAddress,omitempty"`
-	DestinationWalletID string `json:"destinationWalletId"`
-	Commit              bool   `json:"commit,omitempty"`
-	ExternalReference   string `json:"externalReference,omitempty"`
+	Amount              string      `json:"amount"`
+	AssetCode           string      `json:"assetCode"`
+	Code                string      `json:"code"`
+	CustomData          interface{} `json:"customData,omitempty"`
+	Data                interface{} `json:"data"`
+	Description         string      `json:"description,omitempty"`
+	DestinationAddress  string      `json:"destinationAddress,omitempty"`
+	DestinationWalletID string      `json:"destinationWalletId"`
+	Commit              bool        `json:"commit,omitempty"`
+	ExternalReference   string      `json:"externalReference,omitempty"`
 }
 
 type CreateTransactionPayDataBody struct {
@@ -67,27 +65,25 @@ type CreateTransactionTransferDataBody struct {
 	Amount              string      `json:"amount"`
 	AssetCode           string      `json:"assetCode"`
 	Code                string      `json:"code"`
-	Commit              bool        `json:"commit"`
-	CustomData          interface{} `json:"customData"`
-	Description         string      `json:"description"`
-	DestinationAddress  string      `json:"destinationAddress"`
+	Commit              bool        `json:"commit,omitempty"`
+	CustomData          interface{} `json:"customData,omitempty"`
+	Description         string      `json:"description,omitempty"`
+	DestinationAddress  string      `json:"destinationAddress,omitempty"`
 	DestinationWalletID string      `json:"destinationWalletId"`
-	OriginAddress       string      `json:"originAddress"`
+	ExternalReference   string      `json:"externalReference,omitempty"`
+	OriginAddress       string      `json:"originAddress,omitempty"`
 	OriginWalletID      string      `json:"originWalletId"`
 }
 
 type CreateTransactionWithdrawalDataBody struct {
-	Amount     string      `json:"amount"`
-	AssetCode  string      `json:"assetCode"`
-	Code       string      `json:"code"`
-	CustomData interface{} `json:"customData"`
-	Data       struct {
-		BankAddress string `json:"bankAddress"`
-		BankName    string `json:"bankName"`
-		Country     string `json:"country"`
-		Iban        string `json:"iban"`
-		SwiftCode   string `json:"swiftCode"`
-	} `json:"data"`
-	Description    string `json:"description"`
-	OriginWalletID string `json:"originWalletId"`
+	Amount            string      `json:"amount"`
+	AssetCode         string      `json:"assetCode"`
+	Code              string      `json:"code"`
+	Commit            bool        `json:"commit,omitempty"`
+	CustomData        interface{} `json:"customData,omitempty"`
+	Data              interface{} `json:"data,omitempty"`
+	Description       string      `json:"description,omitempty"`
+	ExternalReference string      `json:"externalReference,omitempty"`
+	OriginAddress     string      `json:"originAddress,omitempty"`
+	OriginWalletID    string      `json:"originWalletId"`
 }

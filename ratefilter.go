@@ -1,6 +1,9 @@
 package slyk
 
-import "strconv"
+import (
+	"fmt"
+	"strconv"
+)
 
 type getRateFilter map[string]string
 
@@ -16,6 +19,11 @@ type getRateFilter map[string]string
 // GetRateFilter is
 func GetRateFilter() *getRateFilter {
 	return &getRateFilter{}
+}
+
+func (g *getRateFilter) SetGenericQueryParameter(key string, value interface{}) *getRateFilter {
+	(*g)[key] = fmt.Sprintf("%v", value)
+	return g
 }
 
 func (g *getRateFilter) SetBaseAssetCode(baseAssetCode string) *getRateFilter {

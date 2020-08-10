@@ -2,9 +2,6 @@ package slyk
 
 import (
 	"encoding/json"
-	"fmt"
-
-	"github.com/go-resty/resty/v2"
 )
 
 // GetTransactions is
@@ -27,20 +24,13 @@ func (c Client) GetTransactions(filter ...*geTransactionstFilter) (*Transactions
 // GetTransactionsWithID is
 // https://developers.slyk.io/slyk/reference/endpoints#get-transactions-id
 func (c Client) GetTransactionsWithID(transactionID string) (*Transaction, error) {
-	resp, err := resty.New().R().
-		SetHeader(headerApiKey, c.apiKey).
-		Get(linkTransactions + "/" + transactionID)
-
+	getBody, err := c.genericGetQuery(linkTransactions+"/"+transactionID, nil)
 	if err != nil {
 		return nil, err
 	}
 
-	if resp.IsError() {
-		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
-	}
-
 	var transaction Transaction
-	errUnmarshal := json.Unmarshal(resp.Body(), &transaction)
+	errUnmarshal := json.Unmarshal(getBody, &transaction)
 	if errUnmarshal != nil {
 		return nil, errUnmarshal
 	}
@@ -49,22 +39,16 @@ func (c Client) GetTransactionsWithID(transactionID string) (*Transaction, error
 }
 
 // CreateTransactionApproveWithID is
+// Its only possible to approve transactions that are pending.
 // https://developers.slyk.io/slyk/reference/endpoints#post-transactions-id-approve
 func (c Client) SetTransactionApproveWithID(transactionID string) (*Transaction, error) {
-	resp, err := resty.New().R().
-		SetHeader(headerApiKey, c.apiKey).
-		Post(linkTransactions + "/" + transactionID + "/approve")
-
+	getBody, err := c.genericPostQuery(linkTransactions+"/"+transactionID+"/approve", nil)
 	if err != nil {
 		return nil, err
 	}
 
-	if resp.IsError() {
-		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
-	}
-
 	var transaction Transaction
-	errUnmarshal := json.Unmarshal(resp.Body(), &transaction)
+	errUnmarshal := json.Unmarshal(getBody, &transaction)
 	if errUnmarshal != nil {
 		return nil, errUnmarshal
 	}
@@ -75,20 +59,13 @@ func (c Client) SetTransactionApproveWithID(transactionID string) (*Transaction,
 // CreateTransactionConfirmWithID is
 // https://developers.slyk.io/slyk/reference/endpoints#post-transactions-id-confirm
 func (c Client) SetTransactionConfirmWithID(transactionID string) (*Transaction, error) {
-	resp, err := resty.New().R().
-		SetHeader(headerApiKey, c.apiKey).
-		Post(linkTransactions + "/" + transactionID + "/confirm")
-
+	getBody, err := c.genericPostQuery(linkTransactions+"/"+transactionID+"/confirm", nil)
 	if err != nil {
 		return nil, err
 	}
 
-	if resp.IsError() {
-		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
-	}
-
 	var transaction Transaction
-	errUnmarshal := json.Unmarshal(resp.Body(), &transaction)
+	errUnmarshal := json.Unmarshal(getBody, &transaction)
 	if errUnmarshal != nil {
 		return nil, errUnmarshal
 	}
@@ -99,21 +76,14 @@ func (c Client) SetTransactionConfirmWithID(transactionID string) (*Transaction,
 // SetTransactionFailWithID is
 // https://developers.slyk.io/slyk/reference/endpoints#post-transactions-id-fail
 func (c Client) SetTransactionFailWithID(transactionID string, transactionFailDataBody *TransactionFailDataBody) (*Transaction, error) {
-	resp, err := resty.New().R().
-		SetHeader(headerApiKey, c.apiKey).
-		SetBody(transactionFailDataBody).
-		Post(linkTransactions + "/" + transactionID + "/fail")
-
+	// todo transactionFailDataBody çalışmıyor
+	getBody, err := c.genericPostQuery(linkTransactions+"/"+transactionID+"/fail", transactionFailDataBody)
 	if err != nil {
 		return nil, err
 	}
 
-	if resp.IsError() {
-		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
-	}
-
 	var transaction Transaction
-	errUnmarshal := json.Unmarshal(resp.Body(), &transaction)
+	errUnmarshal := json.Unmarshal(getBody, &transaction)
 	if errUnmarshal != nil {
 		return nil, errUnmarshal
 	}
@@ -124,21 +94,13 @@ func (c Client) SetTransactionFailWithID(transactionID string, transactionFailDa
 // SetTransactionRejectWithID is
 // https://developers.slyk.io/slyk/reference/endpoints#post-transactions-id-reject
 func (c Client) SetTransactionRejectWithID(transactionID string, transactionRejectDataBody *TransactionRejectDataBody) (*Transaction, error) {
-	resp, err := resty.New().R().
-		SetHeader(headerApiKey, c.apiKey).
-		SetBody(transactionRejectDataBody).
-		Post(linkTransactions + "/" + transactionID + "/reject")
-
+	getBody, err := c.genericPostQuery(linkTransactions+"/"+transactionID+"/reject", transactionRejectDataBody)
 	if err != nil {
 		return nil, err
 	}
 
-	if resp.IsError() {
-		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
-	}
-
 	var transaction Transaction
-	errUnmarshal := json.Unmarshal(resp.Body(), &transaction)
+	errUnmarshal := json.Unmarshal(getBody, &transaction)
 	if errUnmarshal != nil {
 		return nil, errUnmarshal
 	}
@@ -149,21 +111,13 @@ func (c Client) SetTransactionRejectWithID(transactionID string, transactionReje
 // AddTransactionDeposit is
 // https://developers.slyk.io/slyk/reference/endpoints#post-transactions-deposit is
 func (c Client) AddTransactionDeposit(transactionID string, addTransactionDepositDataBody *AddTransactionDepositDataBody) (*Transaction, error) {
-	resp, err := resty.New().R().
-		SetHeader(headerApiKey, c.apiKey).
-		SetBody(addTransactionDepositDataBody).
-		Post(linkTransactions + "/deposit")
-
+	getBody, err := c.genericPostQuery(linkTransactions+"/deposit", addTransactionDepositDataBody)
 	if err != nil {
 		return nil, err
 	}
 
-	if resp.IsError() {
-		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
-	}
-
 	var transaction Transaction
-	errUnmarshal := json.Unmarshal(resp.Body(), &transaction)
+	errUnmarshal := json.Unmarshal(getBody, &transaction)
 	if errUnmarshal != nil {
 		return nil, errUnmarshal
 	}
@@ -174,21 +128,13 @@ func (c Client) AddTransactionDeposit(transactionID string, addTransactionDeposi
 // CreateTransaction is
 // https://developers.slyk.io/slyk/reference/endpoints#post-transactions-pay
 func (c Client) CreateTransactionPay(createTransactionPayDataBody *CreateTransactionPayDataBody) (*Transaction, error) {
-	resp, err := resty.New().R().
-		SetHeader(headerApiKey, c.apiKey).
-		SetBody(createTransactionPayDataBody).
-		Post(linkTransactions + "/pay")
-
+	getBody, err := c.genericPostQuery(linkTransactions+"/pay", createTransactionPayDataBody)
 	if err != nil {
 		return nil, err
 	}
 
-	if resp.IsError() {
-		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
-	}
-
 	var transaction Transaction
-	errUnmarshal := json.Unmarshal(resp.Body(), &transaction)
+	errUnmarshal := json.Unmarshal(getBody, &transaction)
 	if errUnmarshal != nil {
 		return nil, errUnmarshal
 	}
@@ -199,21 +145,13 @@ func (c Client) CreateTransactionPay(createTransactionPayDataBody *CreateTransac
 // CreateTransactionTransfer
 // https://developers.slyk.io/slyk/reference/endpoints#post-transactions-transfer
 func (c Client) CreateTransactionTransfer(createTransactionTransferDataBody *CreateTransactionTransferDataBody) (*Transaction, error) {
-	resp, err := resty.New().R().
-		SetHeader(headerApiKey, c.apiKey).
-		SetBody(createTransactionTransferDataBody).
-		Post(linkTransactions + "/transfer")
-
+	getBody, err := c.genericPostQuery(linkTransactions+"/transfer", createTransactionTransferDataBody)
 	if err != nil {
 		return nil, err
 	}
 
-	if resp.IsError() {
-		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
-	}
-
 	var transaction Transaction
-	errUnmarshal := json.Unmarshal(resp.Body(), &transaction)
+	errUnmarshal := json.Unmarshal(getBody, &transaction)
 	if errUnmarshal != nil {
 		return nil, errUnmarshal
 	}
@@ -224,21 +162,13 @@ func (c Client) CreateTransactionTransfer(createTransactionTransferDataBody *Cre
 // CreateTransactionWithdrawal is
 // https://developers.slyk.io/slyk/reference/endpoints#post-transactions-withdrawal
 func (c Client) CreateTransactionWithdrawal(createTransactionWithdrawalDataBody *CreateTransactionWithdrawalDataBody) (*Transaction, error) {
-	resp, err := resty.New().R().
-		SetHeader(headerApiKey, c.apiKey).
-		SetBody(createTransactionWithdrawalDataBody).
-		Post(linkTransactions + "/withdrawal")
-
+	getBody, err := c.genericPostQuery(linkTransactions+"/withdrawal", createTransactionWithdrawalDataBody)
 	if err != nil {
 		return nil, err
 	}
 
-	if resp.IsError() {
-		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
-	}
-
 	var transaction Transaction
-	errUnmarshal := json.Unmarshal(resp.Body(), &transaction)
+	errUnmarshal := json.Unmarshal(getBody, &transaction)
 	if errUnmarshal != nil {
 		return nil, errUnmarshal
 	}

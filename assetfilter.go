@@ -1,6 +1,7 @@
 package slyk
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 )
@@ -19,6 +20,11 @@ type getassetFilter map[string]string
 // GetAssetFilter is
 func GetAssetFilter() *getassetFilter {
 	return &getassetFilter{}
+}
+
+func (g *getassetFilter) SetGenericQueryParameter(key string, value interface{}) *getassetFilter {
+	(*g)[key] = fmt.Sprintf("%v", value)
+	return g
 }
 
 func (g *getassetFilter) SetCodeWithIN(code ...string) *getassetFilter {

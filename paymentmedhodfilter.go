@@ -1,6 +1,7 @@
 package slyk
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 )
@@ -19,6 +20,11 @@ type getPaymentMethodFilter map[string]string
 // GetPaymentMedhodFilter is
 func GetPaymentMedhodFilter() *getPaymentMethodFilter {
 	return &getPaymentMethodFilter{}
+}
+
+func (g *getPaymentMethodFilter) SetGenericQueryParameter(key string, value interface{}) *getPaymentMethodFilter {
+	(*g)[key] = fmt.Sprintf("%v", value)
+	return g
 }
 
 // Format : 2019-07-21

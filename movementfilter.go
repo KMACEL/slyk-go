@@ -1,6 +1,7 @@
 package slyk
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 )
@@ -19,6 +20,11 @@ type getMovementFilter map[string]string
 // GetMovementFilter is
 func GetMovementFilter() *getMovementFilter {
 	return &getMovementFilter{}
+}
+
+func (g *getMovementFilter) SetGenericQueryParameter(key string, value interface{}) *getMovementFilter {
+	(*g)[key] = fmt.Sprintf("%v", value)
+	return g
 }
 
 // Format : 2019-07-21

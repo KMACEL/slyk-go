@@ -226,3 +226,263 @@ func (u *geTransactionstFilter) SetPageNumber(number int) *geTransactionstFilter
 	(*u)["page[number]"] = strconv.Itoa(number)
 	return u
 }
+
+/*
+███████╗███████╗████████╗        ████████╗██████╗  █████╗ ███╗   ██╗███████╗ █████╗  ██████╗████████╗██╗ ██████╗ ███╗   ██╗        ███████╗ █████╗ ██╗██╗             ██████╗  ██████╗ ██████╗ ██╗   ██╗
+██╔════╝██╔════╝╚══██╔══╝        ╚══██╔══╝██╔══██╗██╔══██╗████╗  ██║██╔════╝██╔══██╗██╔════╝╚══██╔══╝██║██╔═══██╗████╗  ██║        ██╔════╝██╔══██╗██║██║             ██╔══██╗██╔═══██╗██╔══██╗╚██╗ ██╔╝
+███████╗█████╗     ██║              ██║   ██████╔╝███████║██╔██╗ ██║███████╗███████║██║        ██║   ██║██║   ██║██╔██╗ ██║        █████╗  ███████║██║██║             ██████╔╝██║   ██║██║  ██║ ╚████╔╝
+╚════██║██╔══╝     ██║              ██║   ██╔══██╗██╔══██║██║╚██╗██║╚════██║██╔══██║██║        ██║   ██║██║   ██║██║╚██╗██║        ██╔══╝  ██╔══██║██║██║             ██╔══██╗██║   ██║██║  ██║  ╚██╔╝
+███████║███████╗   ██║              ██║   ██║  ██║██║  ██║██║ ╚████║███████║██║  ██║╚██████╗   ██║   ██║╚██████╔╝██║ ╚████║        ██║     ██║  ██║██║███████╗        ██████╔╝╚██████╔╝██████╔╝   ██║
+╚══════╝╚══════╝   ╚═╝              ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝ ╚═════╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝        ╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝        ╚═════╝  ╚═════╝ ╚═════╝    ╚═╝
+
+*/
+
+func SetTransactionFailBody() *TransactionFailDataBody {
+	return &TransactionFailDataBody{}
+}
+
+func (t *TransactionFailDataBody) SetReason(reason string) *TransactionFailDataBody {
+	t.Reason = reason
+	return t
+}
+
+/*
+███████╗███████╗████████╗        ████████╗██████╗  █████╗ ███╗   ██╗███████╗ █████╗  ██████╗████████╗██╗ ██████╗ ███╗   ██╗        ██████╗ ███████╗     ██╗███████╗ ██████╗████████╗        ██████╗  ██████╗ ██████╗ ██╗   ██╗
+██╔════╝██╔════╝╚══██╔══╝        ╚══██╔══╝██╔══██╗██╔══██╗████╗  ██║██╔════╝██╔══██╗██╔════╝╚══██╔══╝██║██╔═══██╗████╗  ██║        ██╔══██╗██╔════╝     ██║██╔════╝██╔════╝╚══██╔══╝        ██╔══██╗██╔═══██╗██╔══██╗╚██╗ ██╔╝
+███████╗█████╗     ██║              ██║   ██████╔╝███████║██╔██╗ ██║███████╗███████║██║        ██║   ██║██║   ██║██╔██╗ ██║        ██████╔╝█████╗       ██║█████╗  ██║        ██║           ██████╔╝██║   ██║██║  ██║ ╚████╔╝
+╚════██║██╔══╝     ██║              ██║   ██╔══██╗██╔══██║██║╚██╗██║╚════██║██╔══██║██║        ██║   ██║██║   ██║██║╚██╗██║        ██╔══██╗██╔══╝  ██   ██║██╔══╝  ██║        ██║           ██╔══██╗██║   ██║██║  ██║  ╚██╔╝
+███████║███████╗   ██║              ██║   ██║  ██║██║  ██║██║ ╚████║███████║██║  ██║╚██████╗   ██║   ██║╚██████╔╝██║ ╚████║        ██║  ██║███████╗╚█████╔╝███████╗╚██████╗   ██║           ██████╔╝╚██████╔╝██████╔╝   ██║
+╚══════╝╚══════╝   ╚═╝              ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝ ╚═════╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝        ╚═╝  ╚═╝╚══════╝ ╚════╝ ╚══════╝ ╚═════╝   ╚═╝           ╚═════╝  ╚═════╝ ╚═════╝    ╚═╝
+
+*/
+
+func SetTransactionRejectBody() *TransactionRejectDataBody {
+	return &TransactionRejectDataBody{}
+}
+
+func (t *TransactionRejectDataBody) SetReason(reason string) *TransactionRejectDataBody {
+	t.Reason = reason
+	return t
+}
+
+/*
+ █████╗ ██████╗ ██████╗         ████████╗██████╗  █████╗ ███╗   ██╗███████╗ █████╗  ██████╗████████╗██╗ ██████╗ ███╗   ██╗        ██████╗ ███████╗██████╗  ██████╗ ███████╗██╗████████╗        ██████╗  ██████╗ ██████╗ ██╗   ██╗
+██╔══██╗██╔══██╗██╔══██╗        ╚══██╔══╝██╔══██╗██╔══██╗████╗  ██║██╔════╝██╔══██╗██╔════╝╚══██╔══╝██║██╔═══██╗████╗  ██║        ██╔══██╗██╔════╝██╔══██╗██╔═══██╗██╔════╝██║╚══██╔══╝        ██╔══██╗██╔═══██╗██╔══██╗╚██╗ ██╔╝
+███████║██║  ██║██║  ██║           ██║   ██████╔╝███████║██╔██╗ ██║███████╗███████║██║        ██║   ██║██║   ██║██╔██╗ ██║        ██║  ██║█████╗  ██████╔╝██║   ██║███████╗██║   ██║           ██████╔╝██║   ██║██║  ██║ ╚████╔╝
+██╔══██║██║  ██║██║  ██║           ██║   ██╔══██╗██╔══██║██║╚██╗██║╚════██║██╔══██║██║        ██║   ██║██║   ██║██║╚██╗██║        ██║  ██║██╔══╝  ██╔═══╝ ██║   ██║╚════██║██║   ██║           ██╔══██╗██║   ██║██║  ██║  ╚██╔╝
+██║  ██║██████╔╝██████╔╝           ██║   ██║  ██║██║  ██║██║ ╚████║███████║██║  ██║╚██████╗   ██║   ██║╚██████╔╝██║ ╚████║        ██████╔╝███████╗██║     ╚██████╔╝███████║██║   ██║           ██████╔╝╚██████╔╝██████╔╝   ██║
+╚═╝  ╚═╝╚═════╝ ╚═════╝            ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝ ╚═════╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝        ╚═════╝ ╚══════╝╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═╝           ╚═════╝  ╚═════╝ ╚═════╝    ╚═╝
+*/
+
+func AddTransactionDepositBody() *AddTransactionDepositDataBody {
+	return &AddTransactionDepositDataBody{}
+}
+
+func (a *AddTransactionDepositDataBody) SetAmount(amount string) *AddTransactionDepositDataBody {
+	a.Amount = amount
+	return a
+}
+
+func (a *AddTransactionDepositDataBody) SetAssetCode(assetCode string) *AddTransactionDepositDataBody {
+	a.AssetCode = assetCode
+	return a
+}
+
+func (a *AddTransactionDepositDataBody) SetCode(code string) *AddTransactionDepositDataBody {
+	a.Code = code
+	return a
+}
+
+func (a *AddTransactionDepositDataBody) SetCommit(commit bool) *AddTransactionDepositDataBody {
+	a.Commit = commit
+	return a
+}
+
+func (a *AddTransactionDepositDataBody) SetCustomData(customData interface{}) *AddTransactionDepositDataBody {
+	a.CustomData = customData
+	return a
+}
+
+func (a *AddTransactionDepositDataBody) SetDescription(description string) *AddTransactionDepositDataBody {
+	a.Description = description
+	return a
+}
+
+func (a *AddTransactionDepositDataBody) SetDestinationAddress(destinationAddress string) *AddTransactionDepositDataBody {
+	a.DestinationAddress = destinationAddress
+	return a
+}
+
+func (a *AddTransactionDepositDataBody) SetDestinationWalletID(destinationWalletID string) *AddTransactionDepositDataBody {
+	a.DestinationWalletID = destinationWalletID
+	return a
+}
+
+func (a *AddTransactionDepositDataBody) SetExternalReference(externalReference string) *AddTransactionDepositDataBody {
+	a.ExternalReference = externalReference
+	return a
+}
+
+/*
+ ██████╗██████╗ ███████╗ █████╗ ████████╗███████╗        ████████╗██████╗  █████╗ ███╗   ██╗███████╗ █████╗  ██████╗████████╗██╗ ██████╗ ███╗   ██╗        ██████╗  █████╗ ██╗   ██╗        ██████╗  ██████╗ ██████╗ ██╗   ██╗
+██╔════╝██╔══██╗██╔════╝██╔══██╗╚══██╔══╝██╔════╝        ╚══██╔══╝██╔══██╗██╔══██╗████╗  ██║██╔════╝██╔══██╗██╔════╝╚══██╔══╝██║██╔═══██╗████╗  ██║        ██╔══██╗██╔══██╗╚██╗ ██╔╝        ██╔══██╗██╔═══██╗██╔══██╗╚██╗ ██╔╝
+██║     ██████╔╝█████╗  ███████║   ██║   █████╗             ██║   ██████╔╝███████║██╔██╗ ██║███████╗███████║██║        ██║   ██║██║   ██║██╔██╗ ██║        ██████╔╝███████║ ╚████╔╝         ██████╔╝██║   ██║██║  ██║ ╚████╔╝
+██║     ██╔══██╗██╔══╝  ██╔══██║   ██║   ██╔══╝             ██║   ██╔══██╗██╔══██║██║╚██╗██║╚════██║██╔══██║██║        ██║   ██║██║   ██║██║╚██╗██║        ██╔═══╝ ██╔══██║  ╚██╔╝          ██╔══██╗██║   ██║██║  ██║  ╚██╔╝
+╚██████╗██║  ██║███████╗██║  ██║   ██║   ███████╗           ██║   ██║  ██║██║  ██║██║ ╚████║███████║██║  ██║╚██████╗   ██║   ██║╚██████╔╝██║ ╚████║        ██║     ██║  ██║   ██║           ██████╔╝╚██████╔╝██████╔╝   ██║
+ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝           ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝ ╚═════╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝        ╚═╝     ╚═╝  ╚═╝   ╚═╝           ╚═════╝  ╚═════╝ ╚═════╝    ╚═╝
+*/
+
+func CreateTransactionPayBody() *CreateTransactionPayDataBody {
+	return &CreateTransactionPayDataBody{}
+}
+
+func (c *CreateTransactionPayDataBody) SetAmount(amount string) *CreateTransactionPayDataBody {
+	c.Amount = amount
+	return c
+}
+
+func (c *CreateTransactionPayDataBody) SetAssetCode(assetCode string) *CreateTransactionPayDataBody {
+	c.AssetCode = assetCode
+	return c
+}
+
+func (c *CreateTransactionPayDataBody) SetCustomData(customData interface{}) *CreateTransactionPayDataBody {
+	c.CustomData = customData
+	return c
+}
+
+func (c *CreateTransactionPayDataBody) SetDescription(description string) *CreateTransactionPayDataBody {
+	c.Description = description
+	return c
+}
+
+func (c *CreateTransactionPayDataBody) SetOriginWalletID(originWalletID string) *CreateTransactionPayDataBody {
+	c.OriginWalletID = originWalletID
+	return c
+}
+
+/*
+ ██████╗██████╗ ███████╗ █████╗ ████████╗███████╗        ████████╗██████╗  █████╗ ███╗   ██╗███████╗ █████╗  ██████╗████████╗██╗ ██████╗ ███╗   ██╗        ████████╗██████╗  █████╗ ███╗   ██╗███████╗███████╗███████╗██████╗         ██████╗  ██████╗ ██████╗ ██╗   ██╗
+██╔════╝██╔══██╗██╔════╝██╔══██╗╚══██╔══╝██╔════╝        ╚══██╔══╝██╔══██╗██╔══██╗████╗  ██║██╔════╝██╔══██╗██╔════╝╚══██╔══╝██║██╔═══██╗████╗  ██║        ╚══██╔══╝██╔══██╗██╔══██╗████╗  ██║██╔════╝██╔════╝██╔════╝██╔══██╗        ██╔══██╗██╔═══██╗██╔══██╗╚██╗ ██╔╝
+██║     ██████╔╝█████╗  ███████║   ██║   █████╗             ██║   ██████╔╝███████║██╔██╗ ██║███████╗███████║██║        ██║   ██║██║   ██║██╔██╗ ██║           ██║   ██████╔╝███████║██╔██╗ ██║███████╗█████╗  █████╗  ██████╔╝        ██████╔╝██║   ██║██║  ██║ ╚████╔╝
+██║     ██╔══██╗██╔══╝  ██╔══██║   ██║   ██╔══╝             ██║   ██╔══██╗██╔══██║██║╚██╗██║╚════██║██╔══██║██║        ██║   ██║██║   ██║██║╚██╗██║           ██║   ██╔══██╗██╔══██║██║╚██╗██║╚════██║██╔══╝  ██╔══╝  ██╔══██╗        ██╔══██╗██║   ██║██║  ██║  ╚██╔╝
+╚██████╗██║  ██║███████╗██║  ██║   ██║   ███████╗           ██║   ██║  ██║██║  ██║██║ ╚████║███████║██║  ██║╚██████╗   ██║   ██║╚██████╔╝██║ ╚████║           ██║   ██║  ██║██║  ██║██║ ╚████║███████║██║     ███████╗██║  ██║        ██████╔╝╚██████╔╝██████╔╝   ██║
+ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝           ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝ ╚═════╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝           ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝     ╚══════╝╚═╝  ╚═╝        ╚═════╝  ╚═════╝ ╚═════╝    ╚═╝
+*/
+
+func CreateTransactionTransferBody() *CreateTransactionTransferDataBody {
+	return &CreateTransactionTransferDataBody{}
+}
+
+func (c *CreateTransactionTransferDataBody) SetAmount(amount string) *CreateTransactionTransferDataBody {
+	c.Amount = amount
+	return c
+}
+
+func (c *CreateTransactionTransferDataBody) SetAssetCode(assetCode string) *CreateTransactionTransferDataBody {
+	c.AssetCode = assetCode
+	return c
+}
+
+func (c *CreateTransactionTransferDataBody) SetCode(code string) *CreateTransactionTransferDataBody {
+	c.Code = code
+	return c
+}
+
+func (c *CreateTransactionTransferDataBody) SetCommit(commit bool) *CreateTransactionTransferDataBody {
+	c.Commit = commit
+	return c
+}
+
+func (c *CreateTransactionTransferDataBody) SetCustomData(customData interface{}) *CreateTransactionTransferDataBody {
+	c.CustomData = customData
+	return c
+}
+
+func (c *CreateTransactionTransferDataBody) SetDescription(description string) *CreateTransactionTransferDataBody {
+	c.Description = description
+	return c
+}
+
+func (c *CreateTransactionTransferDataBody) SetDestinationAddress(destinationAddress string) *CreateTransactionTransferDataBody {
+	c.DestinationAddress = destinationAddress
+	return c
+}
+
+func (c *CreateTransactionTransferDataBody) SetDestinationWalletID(destinationWalletID string) *CreateTransactionTransferDataBody {
+	c.DestinationWalletID = destinationWalletID
+	return c
+}
+
+func (c *CreateTransactionTransferDataBody) SetExternalReference(externalReference string) *CreateTransactionTransferDataBody {
+	c.ExternalReference = externalReference
+	return c
+}
+
+func (c *CreateTransactionTransferDataBody) SetOriginWalletID(originWalletID string) *CreateTransactionTransferDataBody {
+	c.OriginWalletID = originWalletID
+	return c
+}
+
+func (c *CreateTransactionTransferDataBody) SetOriginAddress(originAddress string) *CreateTransactionTransferDataBody {
+	c.OriginAddress = originAddress
+	return c
+}
+
+/*
+ ██████╗██████╗ ███████╗ █████╗ ████████╗███████╗        ████████╗██████╗  █████╗ ███╗   ██╗███████╗ █████╗  ██████╗████████╗██╗ ██████╗ ███╗   ██╗        ██╗    ██╗██╗████████╗██╗  ██╗██████╗ ██████╗  █████╗ ██╗    ██╗ █████╗ ██╗             ██████╗  ██████╗ ██████╗ ██╗   ██╗
+██╔════╝██╔══██╗██╔════╝██╔══██╗╚══██╔══╝██╔════╝        ╚══██╔══╝██╔══██╗██╔══██╗████╗  ██║██╔════╝██╔══██╗██╔════╝╚══██╔══╝██║██╔═══██╗████╗  ██║        ██║    ██║██║╚══██╔══╝██║  ██║██╔══██╗██╔══██╗██╔══██╗██║    ██║██╔══██╗██║             ██╔══██╗██╔═══██╗██╔══██╗╚██╗ ██╔╝
+██║     ██████╔╝█████╗  ███████║   ██║   █████╗             ██║   ██████╔╝███████║██╔██╗ ██║███████╗███████║██║        ██║   ██║██║   ██║██╔██╗ ██║        ██║ █╗ ██║██║   ██║   ███████║██║  ██║██████╔╝███████║██║ █╗ ██║███████║██║             ██████╔╝██║   ██║██║  ██║ ╚████╔╝
+██║     ██╔══██╗██╔══╝  ██╔══██║   ██║   ██╔══╝             ██║   ██╔══██╗██╔══██║██║╚██╗██║╚════██║██╔══██║██║        ██║   ██║██║   ██║██║╚██╗██║        ██║███╗██║██║   ██║   ██╔══██║██║  ██║██╔══██╗██╔══██║██║███╗██║██╔══██║██║             ██╔══██╗██║   ██║██║  ██║  ╚██╔╝
+╚██████╗██║  ██║███████╗██║  ██║   ██║   ███████╗           ██║   ██║  ██║██║  ██║██║ ╚████║███████║██║  ██║╚██████╗   ██║   ██║╚██████╔╝██║ ╚████║        ╚███╔███╔╝██║   ██║   ██║  ██║██████╔╝██║  ██║██║  ██║╚███╔███╔╝██║  ██║███████╗        ██████╔╝╚██████╔╝██████╔╝   ██║
+ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝           ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝ ╚═════╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝         ╚══╝╚══╝ ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝ ╚══╝╚══╝ ╚═╝  ╚═╝╚══════╝        ╚═════╝  ╚═════╝ ╚═════╝    ╚═╝
+*/
+
+func CreateTransactionWithdrawalBody() *CreateTransactionWithdrawalDataBody {
+	return &CreateTransactionWithdrawalDataBody{}
+}
+
+func (c *CreateTransactionWithdrawalDataBody) SetAmount(amount string) *CreateTransactionWithdrawalDataBody {
+	c.Amount = amount
+	return c
+}
+
+func (c *CreateTransactionWithdrawalDataBody) SetAssetCode(assetCode string) *CreateTransactionWithdrawalDataBody {
+	c.AssetCode = assetCode
+	return c
+}
+
+func (c *CreateTransactionWithdrawalDataBody) SetCode(code string) *CreateTransactionWithdrawalDataBody {
+	c.Code = code
+	return c
+}
+
+func (c *CreateTransactionWithdrawalDataBody) SetCommit(commit bool) *CreateTransactionWithdrawalDataBody {
+	c.Commit = commit
+	return c
+}
+
+func (c *CreateTransactionWithdrawalDataBody) SetCustomData(customData interface{}) *CreateTransactionWithdrawalDataBody {
+	c.CustomData = customData
+	return c
+}
+
+func (c *CreateTransactionWithdrawalDataBody) SetDescription(description string) *CreateTransactionWithdrawalDataBody {
+	c.Description = description
+	return c
+}
+
+func (c *CreateTransactionWithdrawalDataBody) SetExternalReference(externalReference string) *CreateTransactionWithdrawalDataBody {
+	c.ExternalReference = externalReference
+	return c
+}
+
+func (c *CreateTransactionWithdrawalDataBody) SetOriginWalletID(originWalletID string) *CreateTransactionWithdrawalDataBody {
+	c.OriginWalletID = originWalletID
+	return c
+}
+
+func (c *CreateTransactionWithdrawalDataBody) SetOriginAddress(originAddress string) *CreateTransactionWithdrawalDataBody {
+	c.OriginAddress = originAddress
+	return c
+}

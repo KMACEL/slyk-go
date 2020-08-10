@@ -1,6 +1,7 @@
 package slyk
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 )
@@ -18,6 +19,11 @@ type getInviteFilter map[string]string
 
 func GetInvitesFilter() *getInviteFilter {
 	return &getInviteFilter{}
+}
+
+func (g *getInviteFilter) SetGenericQueryParameter(key string, value interface{}) *getInviteFilter {
+	(*g)[key] = fmt.Sprintf("%v", value)
+	return g
 }
 
 func (g *getInviteFilter) SetCodeWithIN(code string) *getInviteFilter {

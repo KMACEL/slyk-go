@@ -1,6 +1,7 @@
 package slyk
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 )
@@ -18,6 +19,11 @@ type getUserFilter map[string]string
 
 func GetUserFilter() *getUserFilter {
 	return &getUserFilter{}
+}
+
+func (g *getUserFilter) SetGenericQueryParameter(key string, value interface{}) *getUserFilter {
+	(*g)[key] = fmt.Sprintf("%v", value)
+	return g
 }
 
 func (u *getUserFilter) SetApproved(approved bool) *getUserFilter {

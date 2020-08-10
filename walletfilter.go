@@ -1,6 +1,7 @@
 package slyk
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 )
@@ -26,6 +27,11 @@ type getWalletBalanceFilter map[string]string
 
 func GetWalletFilter() *getWalletFilter {
 	return &getWalletFilter{}
+}
+
+func (g *getWalletFilter) SetGenericQueryParameter(key string, value interface{}) *getWalletFilter {
+	(*g)[key] = fmt.Sprintf("%v", value)
+	return g
 }
 
 func (g *getWalletFilter) SetIDWithIN(id ...string) *getWalletFilter {
@@ -79,6 +85,11 @@ func (g *getWalletFilter) SetSortWithCreatedAtReverse() *getWalletFilter {
 
 func GetWalletActivtyWithIDFilter() *getWalletActivityWithIDFilter {
 	return &getWalletActivityWithIDFilter{}
+}
+
+func (g *getWalletActivityWithIDFilter) SetGenericQueryParameter(key string, value interface{}) *getWalletActivityWithIDFilter {
+	(*g)[key] = fmt.Sprintf("%v", value)
+	return g
 }
 
 // asset btc,eth,ltc
@@ -166,6 +177,11 @@ func GetWalletBalanceWithIDFilter() *getWalletBalanceWithIDFilter {
 	return &getWalletBalanceWithIDFilter{}
 }
 
+func (g *getWalletBalanceWithIDFilter) SetGenericQueryParameter(key string, value interface{}) *getWalletBalanceWithIDFilter {
+	(*g)[key] = fmt.Sprintf("%v", value)
+	return g
+}
+
 // asset btc,eth,ltc
 func (g *getWalletBalanceWithIDFilter) SetAssetCodeWithIN(assetCode ...string) *getWalletBalanceWithIDFilter {
 	(*g)["filter[assetCode]"] = "in:" + strings.Join(assetCode, ",")
@@ -189,6 +205,11 @@ func (g *getWalletBalanceWithIDFilter) SetAssetCodeWithNIN(assetCode ...string) 
 
 func GetWalletMovementFilter() *getWalletMovementFilter {
 	return &getWalletMovementFilter{}
+}
+
+func (g *getWalletMovementFilter) SetGenericQueryParameter(key string, value interface{}) *getWalletMovementFilter {
+	(*g)[key] = fmt.Sprintf("%v", value)
+	return g
 }
 
 // asset btc,eth,ltc
@@ -240,6 +261,11 @@ func (g *getWalletMovementFilter) SetAvailableTransactionWithUser() *getWalletMo
 
 func GetWalletTransactionsFilter() *getWalletTransactionstFilter {
 	return &getWalletTransactionstFilter{}
+}
+
+func (g *getWalletTransactionstFilter) SetGenericQueryParameter(key string, value interface{}) *getWalletTransactionstFilter {
+	(*g)[key] = fmt.Sprintf("%v", value)
+	return g
 }
 
 // asset btc,eth,ltc
@@ -315,6 +341,11 @@ func (g *getWalletTransactionstFilter) SetSortWithCreatedAtReverse() *getWalletT
 
 func GetWalletActivityFilter() *getWalletActivityFilter {
 	return &getWalletActivityFilter{}
+}
+
+func (g *getWalletActivityFilter) SetGenericQueryParameter(key string, value interface{}) *getWalletActivityFilter {
+	(*g)[key] = fmt.Sprintf("%v", value)
+	return g
 }
 
 // asset btc,eth,ltc
@@ -401,6 +432,11 @@ func (g *getWalletActivityFilter) SetAvailableIncludeWithWallets() *getWalletAct
 // GetWalletBalanceFilter is
 func GetWalletBalanceFilter() *getWalletBalanceFilter {
 	return &getWalletBalanceFilter{}
+}
+
+func (g *getWalletBalanceFilter) SetGenericQueryParameter(key string, value interface{}) *getWalletBalanceFilter {
+	(*g)[key] = fmt.Sprintf("%v", value)
+	return g
 }
 
 // asset btc,eth,ltc
