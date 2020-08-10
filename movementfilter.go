@@ -7,6 +7,7 @@ import (
 )
 
 type getMovementFilter map[string]string
+type getMovementWithIDFilter map[string]string
 
 /*
  ██████╗ ███████╗████████╗        ███╗   ███╗ ██████╗ ██╗   ██╗███████╗███╗   ███╗███████╗███╗   ██╗████████╗        ███████╗██╗██╗  ████████╗███████╗██████╗
@@ -27,37 +28,38 @@ func (g *getMovementFilter) SetGenericQueryParameter(key string, value interface
 	return g
 }
 
+// asset btc,eth,ltc
+func (g *getMovementFilter) SetAssetCode(assetCode string) *getMovementFilter {
+	(*g)["filter[assetCode]"] = assetCode
+	return g
+}
+
+// asset btc,eth,ltc
+func (g *getMovementFilter) SetAssetCodeWithIN(assetCode ...string) *getMovementFilter {
+	(*g)["filter[assetCode]"] = "in:" + strings.Join(assetCode, ",")
+	return g
+}
+
+// asset btc,eth,ltc
+func (g *getMovementFilter) SetAssetCodeWithNIN(assetCode ...string) *getMovementFilter {
+	(*g)["filter[assetCode]"] = "nin:" + strings.Join(assetCode, ",")
+	return g
+}
+
 // Format : 2019-07-21
 func (g *getMovementFilter) SetCreatedAtWithGTE(date string) *getMovementFilter {
-	(*g)["createdAt"] = "gte:" + date
+	(*g)["filter[createdAt]"] = "gte:" + date
 	return g
 }
 
 // Format : 2019-07-21
 func (g *getMovementFilter) SetCreatedAtWithLTE(date string) *getMovementFilter {
-	(*g)["createdAt"] = "lte:" + date
+	(*g)["filter[createdAt]"] = "lte:" + date
 	return g
 }
 
-func (g *getMovementFilter) SetWalletIDWithIN(walletID ...string) *getMovementFilter {
-	(*g)["filter[walletId]"] = "in:" + strings.Join(walletID, ",")
-	return g
-}
-
-func (g *getMovementFilter) SetWalletIDWithNIN(walletID ...string) *getMovementFilter {
-	(*g)["filter[walletId]"] = "nin:" + strings.Join(walletID, ",")
-	return g
-}
-
-// asset btc,eth,ltc
-func (g *getMovementFilter) SetAssetCodeWithIN(assetCode string) *getMovementFilter {
-	(*g)["filter[assetCode]"] = "in:" + assetCode
-	return g
-}
-
-// asset btc,eth,ltc
-func (g *getMovementFilter) SetAssetCodeWithNIN(assetCode string) *getMovementFilter {
-	(*g)["filter[assetCode]"] = "nin:" + assetCode
+func (g *getMovementFilter) SetID(id string) *getMovementFilter {
+	(*g)["filter[id]"] = id
 	return g
 }
 
@@ -71,13 +73,33 @@ func (g *getMovementFilter) SetIDWithNIN(id ...string) *getMovementFilter {
 	return g
 }
 
-func (g *getMovementFilter) SetTransactionIDWithIN(transactionID string) *getMovementFilter {
-	(*g)["filter[transactionId]"] = "in:" + transactionID
+func (g *getMovementFilter) SetTransaction(transactionID string) *getMovementFilter {
+	(*g)["filter[transactionId]"] = transactionID
 	return g
 }
 
-func (g *getMovementFilter) SetTransactionIDWithNIN(transactionID string) *getMovementFilter {
-	(*g)["filter[transactionId]"] = "nin:" + transactionID
+func (g *getMovementFilter) SetTransactionIDWithIN(transactionID ...string) *getMovementFilter {
+	(*g)["filter[transactionId]"] = "in:" + strings.Join(transactionID, ",")
+	return g
+}
+
+func (g *getMovementFilter) SetTransactionIDWithNIN(transactionID ...string) *getMovementFilter {
+	(*g)["filter[transactionId]"] = "nin:" + strings.Join(transactionID, ",")
+	return g
+}
+
+func (g *getMovementFilter) SetWalletID(walletID string) *getMovementFilter {
+	(*g)["filter[walletId]"] = walletID
+	return g
+}
+
+func (g *getMovementFilter) SetWalletIDWithIN(walletID ...string) *getMovementFilter {
+	(*g)["filter[walletId]"] = "in:" + strings.Join(walletID, ",")
+	return g
+}
+
+func (g *getMovementFilter) SetWalletIDWithNIN(walletID ...string) *getMovementFilter {
+	(*g)["filter[walletId]"] = "nin:" + strings.Join(walletID, ",")
 	return g
 }
 
@@ -116,4 +138,29 @@ func (u *getMovementFilter) SetPageSize(size int) *getMovementFilter {
 func (u *getMovementFilter) SetPageNumber(number int) *getMovementFilter {
 	(*u)["page[number]"] = strconv.Itoa(number)
 	return u
+}
+
+/*
+ ██████╗ ███████╗████████╗        ███╗   ███╗ ██████╗ ██╗   ██╗███████╗███╗   ███╗███████╗███╗   ██╗████████╗        ██╗    ██╗██╗████████╗██╗  ██╗        ██╗██████╗         ███████╗██╗██╗  ████████╗███████╗██████╗
+██╔════╝ ██╔════╝╚══██╔══╝        ████╗ ████║██╔═══██╗██║   ██║██╔════╝████╗ ████║██╔════╝████╗  ██║╚══██╔══╝        ██║    ██║██║╚══██╔══╝██║  ██║        ██║██╔══██╗        ██╔════╝██║██║  ╚══██╔══╝██╔════╝██╔══██╗
+██║  ███╗█████╗     ██║           ██╔████╔██║██║   ██║██║   ██║█████╗  ██╔████╔██║█████╗  ██╔██╗ ██║   ██║           ██║ █╗ ██║██║   ██║   ███████║        ██║██║  ██║        █████╗  ██║██║     ██║   █████╗  ██████╔╝
+██║   ██║██╔══╝     ██║           ██║╚██╔╝██║██║   ██║╚██╗ ██╔╝██╔══╝  ██║╚██╔╝██║██╔══╝  ██║╚██╗██║   ██║           ██║███╗██║██║   ██║   ██╔══██║        ██║██║  ██║        ██╔══╝  ██║██║     ██║   ██╔══╝  ██╔══██╗
+╚██████╔╝███████╗   ██║           ██║ ╚═╝ ██║╚██████╔╝ ╚████╔╝ ███████╗██║ ╚═╝ ██║███████╗██║ ╚████║   ██║           ╚███╔███╔╝██║   ██║   ██║  ██║        ██║██████╔╝        ██║     ██║███████╗██║   ███████╗██║  ██║
+ ╚═════╝ ╚══════╝   ╚═╝           ╚═╝     ╚═╝ ╚═════╝   ╚═══╝  ╚══════╝╚═╝     ╚═╝╚══════╝╚═╝  ╚═══╝   ╚═╝            ╚══╝╚══╝ ╚═╝   ╚═╝   ╚═╝  ╚═╝        ╚═╝╚═════╝         ╚═╝     ╚═╝╚══════╝╚═╝   ╚══════╝╚═╝  ╚═╝
+
+*/
+
+// GetMovementWithIDFilter is
+func GetMovementWithIDFilter() *getMovementWithIDFilter {
+	return &getMovementWithIDFilter{}
+}
+
+func (g *getMovementWithIDFilter) SetGenericQueryParameter(key string, value interface{}) *getMovementWithIDFilter {
+	(*g)[key] = fmt.Sprintf("%v", value)
+	return g
+}
+
+func (g *getMovementWithIDFilter) SetAvailableTransactionWithUser() *getMovementWithIDFilter {
+	(*g)["include"] = "transaction"
+	return g
 }

@@ -132,6 +132,12 @@ func merge(m interface{}) map[string]string {
 				mmap[k] = v
 			}
 		}
+	case []*getMovementWithIDFilter:
+		for i := range getMap {
+			for k, v := range *getMap[i] {
+				mmap[k] = v
+			}
+		}
 	case []*getWalletTransactionstFilter:
 		for i := range getMap {
 			for k, v := range *getMap[i] {
