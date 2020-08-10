@@ -37,26 +37,13 @@ func (c Client) CreateRate(rateBody *CreateRateBodyData) (*Rate, error) {
 // GetRates
 // https://developers.slyk.io/slyk/reference/endpoints#get-rates
 func (c Client) GetRates(filter ...*getRateFilter) (*Rates, error) {
-
-	clientReq := resty.New().R()
-	if filter != nil {
-		clientReq.SetQueryParams(merge(filter))
-	}
-
-	resp, err := clientReq.
-		SetHeader(headerApiKey, c.apiKey).
-		Get(linkRates)
-
+	getBody, err := c.genericGetQuery(linkRates, merge(filter))
 	if err != nil {
 		return nil, err
 	}
 
-	if resp.IsError() {
-		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
-	}
-
 	var rates Rates
-	errUnmarshal := json.Unmarshal(resp.Body(), &rates)
+	errUnmarshal := json.Unmarshal(getBody, &rates)
 	if errUnmarshal != nil {
 		return nil, errUnmarshal
 	}
@@ -67,21 +54,13 @@ func (c Client) GetRates(filter ...*getRateFilter) (*Rates, error) {
 // GetRatesWithBaseAssetCodeAndQuoteAssetCode is
 // https://developers.slyk.io/slyk/reference/endpoints#get-rates-baseassetcode-quoteassetcode
 func (c Client) GetRatesWithBaseAssetCodeAndQuoteAssetCode(baseAssetCode string, quoteAssetCode string) (*Rate, error) {
-
-	resp, err := resty.New().R().
-		SetHeader(headerApiKey, c.apiKey).
-		Get(fmt.Sprintf("%s/%s/%s", linkRates, baseAssetCode, quoteAssetCode))
-
+	getBody, err := c.genericGetQuery(fmt.Sprintf("%s/%s/%s", linkRates, baseAssetCode, quoteAssetCode), nil)
 	if err != nil {
 		return nil, err
 	}
 
-	if resp.IsError() {
-		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
-	}
-
 	var rate Rate
-	errUnmarshal := json.Unmarshal(resp.Body(), &rate)
+	errUnmarshal := json.Unmarshal(getBody, &rate)
 	if errUnmarshal != nil {
 		return nil, errUnmarshal
 	}
@@ -92,22 +71,13 @@ func (c Client) GetRatesWithBaseAssetCodeAndQuoteAssetCode(baseAssetCode string,
 // UpdateRate is
 // https://developers.slyk.io/slyk/reference/endpoints#patch-rates-baseassetcode-quoteassetcode
 func (c Client) UpdateRate(baseAssetCode string, quoteAssetCode string, rateData string) (*Rate, error) {
-
-	resp, err := resty.New().R().
-		SetHeader(headerApiKey, c.apiKey).
-		SetBody(&UpdateRateBodyData{Rate: rateData}).
-		Patch(fmt.Sprintf("%s/%s/%s", linkRates, baseAssetCode, quoteAssetCode))
-
+	getBody, err := c.genericPatchQuery(fmt.Sprintf("%s/%s/%s", linkRates, baseAssetCode, quoteAssetCode), &UpdateRateBodyData{Rate: rateData})
 	if err != nil {
 		return nil, err
 	}
 
-	if resp.IsError() {
-		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
-	}
-
 	var rate Rate
-	errUnmarshal := json.Unmarshal(resp.Body(), &rate)
+	errUnmarshal := json.Unmarshal(getBody, &rate)
 	if errUnmarshal != nil {
 		return nil, errUnmarshal
 	}
@@ -118,18 +88,5 @@ func (c Client) UpdateRate(baseAssetCode string, quoteAssetCode string, rateData
 // DeleteRate is
 // https://developers.slyk.io/slyk/reference/endpoints#delete-rates-baseassetcode-quoteassetcode
 func (c Client) DeleteRate(baseAssetCode string, quoteAssetCode string) error {
-
-	resp, err := resty.New().R().
-		SetHeader(headerApiKey, c.apiKey).
-		Delete(fmt.Sprintf("%s/%s/%s", linkRates, baseAssetCode, quoteAssetCode))
-
-	if err != nil {
-		return err
-	}
-
-	if resp.IsError() {
-		return fmt.Errorf("Status Code : %d", resp.StatusCode())
-	}
-
-	return nil
+	return c.genericDeleteQuery(fmt.Sprintf("%s/%s/%s", linkRates, baseAssetCode, quoteAssetCode), nil)
 }

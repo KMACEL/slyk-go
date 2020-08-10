@@ -3,6 +3,7 @@ package slyk
 import (
 	"fmt"
 	"strconv"
+	"strings"
 )
 
 type getRateFilter map[string]string
@@ -31,8 +32,28 @@ func (g *getRateFilter) SetBaseAssetCode(baseAssetCode string) *getRateFilter {
 	return g
 }
 
+func (g *getRateFilter) SetBaseAssetCodeWithIN(baseAssetCode ...string) *getRateFilter {
+	(*g)["baseAssetCode"] = "in:" + strings.Join(baseAssetCode, ",")
+	return g
+}
+
+func (g *getRateFilter) SetBaseAssetCodeWithNIN(baseAssetCode ...string) *getRateFilter {
+	(*g)["baseAssetCode"] = "nin:" + strings.Join(baseAssetCode, ",")
+	return g
+}
+
 func (g *getRateFilter) SetQuoteAssetCode(quoteAssetCode string) *getRateFilter {
 	(*g)["quoteAssetCode"] = quoteAssetCode
+	return g
+}
+
+func (g *getRateFilter) SetQuoteAssetCodeWithIN(quoteAssetCode ...string) *getRateFilter {
+	(*g)["quoteAssetCode"] = "in:" + strings.Join(quoteAssetCode, ",")
+	return g
+}
+
+func (g *getRateFilter) SetQuoteAssetCodeWithNIN(quoteAssetCode ...string) *getRateFilter {
+	(*g)["quoteAssetCode"] = "nin:" + strings.Join(quoteAssetCode, ",")
 	return g
 }
 

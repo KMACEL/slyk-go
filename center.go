@@ -2,7 +2,6 @@ package slyk
 
 import (
 	"encoding/json"
-	"fmt"
 	"unsafe"
 
 	"github.com/go-resty/resty/v2"
@@ -59,13 +58,6 @@ func (c Client) genericPatchQuery(link string, body interface{}) ([]byte, error)
 		}
 	}
 
-	if err != nil {
-		return nil, err
-	}
-
-	if resp.IsError() {
-		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
-	}
 	return resp.Body(), nil
 }
 
@@ -88,14 +80,27 @@ func (c Client) genericPostQuery(link string, body interface{}) ([]byte, error) 
 		}
 	}
 
+	return resp.Body(), nil
+}
+
+func (c Client) genericDeleteQuery(link string, body interface{}) error {
+	client := resty.New().R()
+	resp, err := client.
+		SetBody(body).
+		SetHeader(headerApiKey, c.apiKey).
+		Delete(link)
+
 	if err != nil {
-		return nil, err
+		return err
 	}
 
 	if resp.IsError() {
-		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
+		return GenericError{
+			Message:    Byte2String(resp.Body()),
+			StatusCode: resp.StatusCode(),
+		}
 	}
-	return resp.Body(), nil
+	return nil
 }
 
 // merge is
