@@ -6,6 +6,7 @@ func TestGetUsers(t *testing.T) {
 	tst := "TestGetUsers"
 
 	returnValue, err := getClient().GetUsers()
+
 	ReturnAndError(t, tst, returnValue, err)
 
 	/*
