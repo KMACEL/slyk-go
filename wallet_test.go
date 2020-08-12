@@ -98,7 +98,7 @@ func TestUpdateWallet(t *testing.T) {
 		UpdateWalletBody().
 			SetLocked(false).
 			SetOwnerID("cf99e4d8-bc64-4a5c-80a4-dd1e25e2018d").
-			SetCustomData(map[string]interface{}{"WalletName": "Tes2t"}))
+			SetCustomData(map[string]interface{}{"WalletName": "Tes2"}))
 
 	ReturnAndError(t, tst, returnValue, err)
 }
@@ -107,7 +107,7 @@ func TestCreateWallet(t *testing.T) {
 	tst := "TestCreateWallet"
 	returnValue, err := getClient().CreateWallet(CreateWalletBody().
 		SetLocked(false).
-		SetName("ACEL2").
+		SetName("ACEL3").
 		SetCustomData(map[string]interface{}{"Name": "Test"}).
 		SetOwnerID("debf8f0c-548b-4a35-833a-a5f33dc154ae"))
 

@@ -142,7 +142,7 @@ func (c Client) GetWalletBalance(filter ...*getWalletBalanceFilter) (*WalletBala
 
 // UpdateWallet is
 // https://developers.slyk.io/slyk/reference/endpoints#patch-wallets-id
-// TODO : Çalışmıyror test edilecek
+// TODO : locked Çalışmıyror
 func (c Client) UpdateWallet(walletID string, updateWallet *UpdateWalletData) (*Wallet, error) {
 	getBody, err := c.genericPatchQuery(linkWallets+"/"+walletID, updateWallet)
 	if err != nil {
@@ -160,7 +160,6 @@ func (c Client) UpdateWallet(walletID string, updateWallet *UpdateWalletData) (*
 
 // CreateWallet is
 // https://developers.slyk.io/slyk/reference/endpoints#post-wallets
-// TODO Body ile çalışmıyor bakıalcak
 func (c Client) CreateWallet(createWallet *CreateWalletData) (*Wallet, error) {
 	getBody, err := c.genericPostQuery(linkWallets, createWallet)
 	if err != nil {

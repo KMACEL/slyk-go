@@ -139,6 +139,21 @@ client.UpdateUser("cf99e4d8-bc64-4a5c-80a4-dd1e25e2018d",
 			SetLocale("en"))
 ```
 
+#### Filter Information
+
+Some filters come in 3 types. These mean "=, in, of". Its equivalents are, for example,
+
+```go
+SetAssetCode(assetCode string) 
+SetAssetCodeWithIN(assetCode ...string) 
+SetAssetCodeWithNIN(assetCode ...string) 
+```
+
+1. "=": it is checked if the data is equal to the value. 1 piece of data is requested.
+2. "in": There can be many data entries. A list of those matching the entered parameters is brought.
+3. "nin": There can be many data entries. The list of non-parameters entered is brought.
+
+
 ### Create Functions
 
 Used to make a new recording.  There are two types of usage.
@@ -213,7 +228,7 @@ GetUser is returns the Slyk user list. This function returns user information an
 if you do not use a filter, '30' users' information is received.
 
 ```go
-response,err:=client.GetUsers()
+response,err := client.GetUsers({{OPTINAL_FILTER}})
 ```
 
 #### Filter List
@@ -255,7 +270,7 @@ SetPageNumber(number int)
 Fetches information about a user. User Id takes as parameter.
 
 ```go
-client.GetUserWithID({{USER_ID}})
+response,err := client.GetUserWithID({{USER_ID}})
 ```
 
 
@@ -266,7 +281,7 @@ Used to update the user's data.
 Function;
 
 ```go
-response,err:=client.UpdateUser({{USER_ID}}, *UpdateUserData) 
+response,err := client.UpdateUser({{USER_ID}}, *UpdateUserData) 
 ```
 
 ### Struct
@@ -303,7 +318,7 @@ Used to register new users.
 Function;
 
 ```go
-response,err:=client.CreateUser(*CreateUserData)
+response,err := client.CreateUser(*CreateUserData)
 ```
 
 
@@ -352,7 +367,7 @@ SetVerified(verified bool)
 It performs the approval process. It takes "user id" as parameter.
 
 ```go
-err:=client.SetUserApprove({{USER_ID}})
+err := client.SetUserApprove({{USER_ID}})
 ```
 
 ### Set User Block
@@ -360,7 +375,7 @@ err:=client.SetUserApprove({{USER_ID}})
 It performs the block process. It takes "user id" as parameter.
 
 ```go
-err:=client.SetUserBlock({{USER_ID}})
+err := client.SetUserBlock({{USER_ID}})
 ```
 
 ### Set User Unblock
@@ -368,7 +383,7 @@ err:=client.SetUserBlock({{USER_ID}})
 It performs the block process. It takes "user id" as parameter.
 
 ```go
-err:=client.SetUserUnblock({{USER_ID}})
+err := client.SetUserUnblock({{USER_ID}})
 ```
 
 ### Change Password
@@ -376,5 +391,327 @@ err:=client.SetUserUnblock({{USER_ID}})
 it is used to change the user password.
 
 ```go
-err:=client.ChangePassword({{USER_ID}},{{NEW_PASSWORD}})
+err := client.ChangePassword({{USER_ID}},{{NEW_PASSWORD}})
+```
+
+## Wallet
+
+### Get Wallets
+
+Brings up the wallet list.
+
+```go
+response,err := client.GetWallets({{OPTINAL_FILTER}})
+```
+
+#### Filter List
+
+For Create;
+
+```go
+slyk.GetWalletFilter()
+```
+
+Append Filters;
+
+```go
+SetGenericQueryParameter(key string, value interface{})
+SetID(id string)
+SetIDWithIN(id ...string)
+SetIDWithNIN(id ...string)
+SetLocked(locked bool)
+SetName(name string)
+SetOwnerID(ownerId string)
+SetReference(reference string)
+SetSortWithCreatedAt()
+SetSortWithCreatedAtReverse()
+
+```
+
+### Get Wallet With ID
+
+The wallet id returns the information of a given wallet.
+
+```go
+response,err := client.GetWalletWithID({{WALLET_ID}}) 
+```
+
+### Get Wallet Activity
+
+Brings wallet activities.
+
+```go
+response,err := client.GetWalletActivity({{OPTINAL_FILTER}})
+```
+
+
+#### Filter List
+
+For Create;
+
+```go
+slyk.GetWalletActivityFilter()
+```
+
+Append Filters;
+
+```go
+SetGenericQueryParameter(key string, value interface{})
+SetAssetCode(assetCode string)
+SetAssetCodeWithIN(assetCode ...string)
+SetAssetCodeWithNIN(assetCode ...string)
+SetCode(code string)
+SetCodeWithIN(code ...string)
+SetCodeWithNIN(code ...string)
+SetStatus(status string)
+SetStatusWithIN(status ...string)
+SetStatusWithNIN(status ...string)
+SetType(getType string)
+SetTypeWithIN(getType ...string)
+SetTypeWithNIN(getType ...string)
+SetSortWithAmount()
+SetSortWithAmountReverse()
+SetSortWithCreatedAt()
+SetSortWithCreatedAtReverse()
+SetAvailableIncludeWithUser()
+SetAvailableIncludeWithWallets()
+```
+
+### Get Wallet Activity With ID
+
+Returns the activities of 1 wallet given the id.
+
+```go
+response,err := client.GetWalletActivityWithID({{WALLET_ID}}},{{OPTINAL_FILTER}})
+```
+
+#### Filter List
+
+For Create;
+
+```go
+slyk.GetWalletActivtyWithIDFilter()
+```
+
+Append Filters;
+
+```go
+SetGenericQueryParameter(key string, value interface{}) 
+SetAssetCode(assetCode string) 
+SetAssetCodeWithIN(assetCode ...string) 
+SetAssetCodeWithNIN(assetCode ...string) 
+SetCode(code string) 
+SetCodeWithIN(code ...string) 
+SetCodeWithNIN(code ...string) 
+SetStatus(status string) 
+SetStatusWithIN(status ...string) 
+SetStatusWithNIN(status ...string) 
+SetType(getType string) 
+SetTypeWithIN(getType ...string) 
+SetTypeWithNIN(getType ...string) 
+SetSortWithAmount() 
+SetSortWithAmountReverse() 
+SetSortWithCreatedAt() 
+SetSortWithCreatedAtReverse() 
+SetAvailableIncludeWithUser() 
+SetAvailableIncludeWithWallets() 
+```
+
+### Get Wallet Balance
+
+Brings balance information.
+
+```go
+response,err := client.GetWalletBalance({{OPTINAL_FILTER}})
+```
+
+
+#### Filter List
+
+For Create;
+
+```go
+slyk.GetWalletBalanceWithIDFilter()
+```
+
+Append Filters;
+
+```go
+SetGenericQueryParameter(key string, value interface{}) 
+SetAssetCode(assetCode string) 
+SetAssetCodeWithIN(assetCode ...string) 
+SetAssetCodeWithNIN(assetCode ...string) 
+```
+
+### Get Wallet Balance With ID
+
+Its wallet id brings the balance information given.
+
+
+```go
+response,err := client.GetWalletBalanceWithID({{WALLET_ID}}},{{OPTINAL_FILTER}})
+```
+
+
+#### Filter List
+
+For Create;
+
+```go
+slyk.GetWalletBalanceWithIDFilter()
+```
+
+Append Filters;
+
+```go
+SetGenericQueryParameter(key string, value interface{}) 
+SetAssetCode(assetCode string) 
+SetAssetCodeWithIN(assetCode ...string) 
+SetAssetCodeWithNIN(assetCode ...string) 
+```
+
+### Get Wallet Movements
+
+Brings up a list of wallet Movements.
+
+
+```go
+response,err := client.GetWalletMovements({{WALLET_ID}}},{{OPTINAL_FILTER}})
+```
+
+
+#### Filter List
+
+For Create;
+
+```go
+slyk.GetWalletMovementFilter()
+```
+
+Append Filters;
+
+```go
+SetGenericQueryParameter(key string, value interface{}) 
+SetAssetCode(assetCode string) 
+SetAssetCodeWithIN(assetCode ...string) 
+SetAssetCodeWithNIN(assetCode ...string) 
+SetSortWithAmount() 
+SetSortWithAmountReverse() 
+SetSortWithCreatedAt() 
+SetSortWithCreatedAtReverse() 
+SetAvailableTransactionWithUser() 
+```
+
+### Get Wallet Transactions
+
+Brings up a list of Wallet Transactions
+
+
+```go
+response,err := client.GetWalletTransactions({{WALLET_ID}}},{{OPTINAL_FILTER}})
+```
+
+
+#### Filter List
+
+For Create;
+
+```go
+slyk.GetWalletTransactionsFilter()
+```
+
+Append Filters;
+
+```go
+SetGenericQueryParameter(key string, value interface{}) 
+SetAssetCode(assetCode string) 
+SetAssetCodeWithIN(assetCode ...string) 
+SetAssetCodeWithNIN(assetCode ...string) 
+SetCode(code string) 
+SetCodeWithIN(code ...string) 
+SetCodeWithNIN(code ...string) 
+SetStatus(status string) 
+SetStatusWithIN(status ...string) 
+SetStatusWithNIN(status ...string) 
+SetType(getType string) 
+SetTypeWithIN(getType ...string) 
+SetTypeWithNIN(getType ...string) 
+SetSortWithAmount() 
+SetSortWithAmountReverse() 
+SetSortWithCreatedAt() 
+SetSortWithCreatedAtReverse() 
+```
+
+### Update Wallet
+
+Used to update wallet information.
+
+Function;
+
+```go
+response,err := client.UpdateWallet({{USER_ID}}, *UpdateWalletData) 
+```
+
+### Struct
+
+```go
+type UpdateWalletData struct {
+	Locked     bool        `json:"locked,omitempty"`
+	OwnerID    string      `json:"ownerId,omitempty"`
+	CustomData interface{} `json:"customData,omitempty"`
+}
+```
+
+### Body Function
+
+For Create;
+
+```go
+slyk.UpdateWalletBody()
+```
+
+Append List;
+
+```go
+SetOwnerID(ownerID string)
+SetLocked(locked bool)
+SetCustomData(customData interface{})
+```
+
+### Create Wallet
+
+Used to create a new wallet.
+
+Function;
+
+```go
+response,err := client.CreateWallet(*CreateWalletData)
+```
+
+### Struct
+
+```go
+type CreateWalletData struct {
+	Name       string      `json:"name,omitempty"`
+	Locked     bool        `json:"locked,omitempty"`
+	OwnerID    string      `json:"ownerId,omitempty"`
+	CustomData interface{} `json:"customData,omitempty"`
+}
+```
+
+### Body Function
+
+For Create;
+
+```go
+slyk.CreateWalletBody()
+```
+
+Append List;
+
+```go
+SetName(name string)
+SetOwnerID(ownerID string) 
+SetLocked(locked bool) 
+SetCustomData(customData interface{})
 ```
