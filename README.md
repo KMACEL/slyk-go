@@ -352,7 +352,7 @@ SetVerified(verified bool)
 It performs the approval process. It takes "user id" as parameter.
 
 ```go
-client.SetUserApprove({{USER_ID}})
+err:=client.SetUserApprove({{USER_ID}})
 ```
 
 ### Set User Block
@@ -360,7 +360,7 @@ client.SetUserApprove({{USER_ID}})
 It performs the block process. It takes "user id" as parameter.
 
 ```go
-client.SetUserBlock({{USER_ID}})
+err:=client.SetUserBlock({{USER_ID}})
 ```
 
 ### Set User Unblock
@@ -368,7 +368,7 @@ client.SetUserBlock({{USER_ID}})
 It performs the block process. It takes "user id" as parameter.
 
 ```go
-client.SetUserUnblock({{USER_ID}})
+err:=client.SetUserUnblock({{USER_ID}})
 ```
 
 ### Change Password
@@ -376,5 +376,5 @@ client.SetUserUnblock({{USER_ID}})
 it is used to change the user password.
 
 ```go
-client.ChangePassword({{USER_ID}},{{NEW_PASSWORD}})
+err:=client.ChangePassword({{USER_ID}},{{NEW_PASSWORD}})
 ```
