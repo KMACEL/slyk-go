@@ -21,7 +21,7 @@ func (c Client) GetUsers(filter ...*getUserFilter) (*Users, error) {
 	return &users, nil
 }
 
-// GetUserWithID is
+// GetUserWithID is Fetches information about a user. User Id takes as parameter.
 // https://developers.slyk.io/slyk/reference/endpoints#get-users-id
 func (c Client) GetUserWithID(userID string) (*User, error) {
 	getBody, err := c.genericGetQuery(linkUsers+"/"+userID, nil)
@@ -57,8 +57,6 @@ func (c Client) UpdateUser(userID string, updateUserData *UpdateUserData) (*User
 
 // CreateUser is
 // https://developers.slyk.io/slyk/reference/endpoints#post-users
-// TODO Diğer parametrelere bakılacak
-// TODO Password tipi kontrol edilecek
 func (c Client) CreateUser(createUserdata *CreateUserData) (*User, error) {
 	getBody, err := c.genericPostQuery(linkUsers, createUserdata)
 	if err != nil {

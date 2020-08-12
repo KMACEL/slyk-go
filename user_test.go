@@ -6,7 +6,6 @@ func TestGetUsers(t *testing.T) {
 	tst := "TestGetUsers"
 
 	returnValue, err := getClient().GetUsers()
-
 	ReturnAndError(t, tst, returnValue, err)
 
 	/*
@@ -44,9 +43,6 @@ func TestGetUsers(t *testing.T) {
 
 			returnValue, err := getClient().GetUsers(GetUserFilter().SetVerified(true).SetEmail("mert@monoji.io"), GetUserFilter().SetVerified(true).SetReferralCode("RV2EXGMMVXG"))
 			ReturnAndError(t, tst, returnValue, err)
-
-			returnValue, err := getClient().GetUsers(GetUserFilter().SetGenericQueryParameter("filter[email]", "mertacel+monoji@gmail.com"))
-			ReturnAndError(t, tst, returnValue, err)
 	*/
 }
 
@@ -61,7 +57,10 @@ func TestGetUserWithID(t *testing.T) {
 func TestUpdateUser(t *testing.T) {
 	tst := "TestUpdateUser"
 
-	returnValue, err := getClient().UpdateUser("cf99e4d8-bc64-4a5c-80a4-dd1e25e2018d", UpdateUserParam().SetName("Mertt"))
+	returnValue, err := getClient().UpdateUser("cf99e4d8-bc64-4a5c-80a4-dd1e25e2018d",
+		UpdateUserParam().
+			SetName("Mert").
+			SetLocale("en"))
 
 	ReturnAndError(t, tst, returnValue, err)
 }
