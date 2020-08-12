@@ -1,6 +1,15 @@
 # Slyk GO
 
-## Create Client
+## Index
+1. [Create Client](#CreateClient)
+2. [Working Principle](#WorkingPrinciple)
+	1. [Get Functions](#GetFunctions)
+	2. [Update Functions](#UpdateFunctions)
+	3. [Create Functions](#CreateFunctions)
+	
+
+
+## Create Client  <a name="CreateClient"></a>
 
 To use the slyk-go library, it is necessary to create a client. You need to give this client an api key.
 
@@ -20,15 +29,15 @@ func main() {
 }
 ```
 
-## Working Principle
+## Working Principle <a name="WorkingPrinciple"></a>
 
 This library has been prepared with reference to "https://developers.slyk.io/slyk/reference/endpoints". The functions in this library are used for communication with the endpoints at this address.
 
-### Get Functions
+### Get Functions <a name="GetFunctions"></a>
 
 Get functions are used to fetch information.
 
-#### Get Functions Filter 
+#### Get Functions Filter  
 
 Get functions can take filters. These filters are created by functions. For example, let's examine the Get User system.
 
@@ -85,7 +94,22 @@ client.GetUsers(slyk.GetUserFilter().
 		SetGenericQueryParameter("filter[OTHER]", "TEST"))
 ```
 
-### Update Functions
+#### Filter Information
+
+Some filters come in 3 types. These mean "=, in, of". Its equivalents are, for example,
+
+```go
+SetAssetCode(assetCode string) 
+SetAssetCodeWithIN(assetCode ...string) 
+SetAssetCodeWithNIN(assetCode ...string) 
+```
+
+1. "=": it is checked if the data is equal to the value. 1 piece of data is requested.
+2. "in": There can be many data entries. A list of those matching the entered parameters is brought.
+3. "nin": There can be many data entries. The list of non-parameters entered is brought.
+
+
+### Update Functions <a name="UpdateFunctions"></a>
 
 Functions used to update data. There are two types of usage.
 
@@ -139,22 +163,8 @@ client.UpdateUser("cf99e4d8-bc64-4a5c-80a4-dd1e25e2018d",
 			SetLocale("en"))
 ```
 
-#### Filter Information
 
-Some filters come in 3 types. These mean "=, in, of". Its equivalents are, for example,
-
-```go
-SetAssetCode(assetCode string) 
-SetAssetCodeWithIN(assetCode ...string) 
-SetAssetCodeWithNIN(assetCode ...string) 
-```
-
-1. "=": it is checked if the data is equal to the value. 1 piece of data is requested.
-2. "in": There can be many data entries. A list of those matching the entered parameters is brought.
-3. "nin": There can be many data entries. The list of non-parameters entered is brought.
-
-
-### Create Functions
+### Create Functions <a name="CreateFunctions"></a>
 
 Used to make a new recording.  There are two types of usage.
 
@@ -176,6 +186,8 @@ func (c Client) CreateUser(createUserdata *CreateUserData) (*User, error) {
 	return &user, nil
 }
 ```
+
+
 
 #### Method 1 - With Struct
 
