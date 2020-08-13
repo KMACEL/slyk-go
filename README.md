@@ -1,10 +1,10 @@
-
 <div>
 	<br>
 	<br>
 	<p align="center"><a href="https://slyk.io/"><img width="150" src="media/slyk.png" alt="Slyk"></a></p>
 	<br>
-	<p align="center"><a href="https://slyk.io/"><img width="50" src="media/logo.png" alt="Slyk"></a> - GO Library </p>
+	<p align="center"><a href="https://slyk.io/"><img width="50" src="media/logo.png" alt="Slyk"></a> - GO Library</p>
+	<br>
 </div>
 
 # Slyk GO
