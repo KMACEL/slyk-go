@@ -45,6 +45,12 @@
 6. [Movement](#movement)
 	1. [Get Movements](#get-movements)
 	2. [Get Movement With ID](#get-movement-with-id)
+7. [Payment Method](#movement)
+	1. [Get Payment Methods](#get-payment-methods)
+	2. [Get Payment Method With Slug](#get-payment-method-with-slug)
+
+
+
 
 ## Create Client
 
@@ -1256,4 +1262,44 @@ Append Filters;
 ```go
 SetGenericQueryParameter(key string, value interface{}) 
 SetAvailableTransactionWithUser() 
+```
+
+
+## Payment Method
+
+### Get Payment Methods
+
+Brings up the payment medhods list.
+
+```go
+response,err := client.GetPaymentMethods({{OPTIONAL_FILTER}})
+```
+
+#### Filter List
+
+For Create;
+
+```go
+slyk.GetPaymentMedhodFilter()
+```
+
+Append Filters;
+
+```go
+SetGenericQueryParameter(key string, value interface{})
+SetCreatedAtWithGTE(date string)
+SetCreatedAtWithLTE(date string)
+SetEnabledWithIN(enabled bool)
+SetEnabledWithNIN(enabled bool)
+SetSlug(slug string)
+SetSlugWithIN(slug ...string) 
+SetSlugWithNIN(slug ...string)
+```
+
+### Get Payment Method With Slug
+
+It brings 1 payment medhod information whose slug is given.
+
+```go
+response,err := client.GetPaymentMethodsWithSlug({{SLUG}})
 ```

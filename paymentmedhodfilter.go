@@ -49,17 +49,17 @@ func (g *getPaymentMethodFilter) SetEnabledWithNIN(enabled bool) *getPaymentMeth
 	return g
 }
 
-func (g *getWalletFilter) SetSlug(slug string) *getWalletFilter {
+func (g *getPaymentMethodFilter) SetSlug(slug string) *getPaymentMethodFilter {
 	(*g)["filter[slug]"] = slug
 	return g
 }
 
-func (g *getWalletFilter) SetSlugWithIN(slug ...string) *getWalletFilter {
+func (g *getPaymentMethodFilter) SetSlugWithIN(slug ...string) *getPaymentMethodFilter {
 	(*g)["filter[slug]"] = "in:" + strings.Join(slug, ",")
 	return g
 }
 
-func (g *getWalletFilter) SetSlugWithNIN(slug ...string) *getWalletFilter {
+func (g *getPaymentMethodFilter) SetSlugWithNIN(slug ...string) *getPaymentMethodFilter {
 	(*g)["filter[slug]"] = "nin:" + strings.Join(slug, ",")
 	return g
 }
