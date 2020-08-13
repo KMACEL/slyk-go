@@ -6,7 +6,7 @@
 	1. [Get Functions](#get-functions)
 	2. [Update Functions](#update-functions)
 	3. [Create Functions](#create-functions)
-3. [Working Principle](#user)
+3. [User](#user)
 	1. [Get User](#get-user)
 	2. [Get User With ID](#get-user-with-id)
 	3. [Update User](#update-user)
@@ -37,9 +37,12 @@
 	8. [Create Transaction Pay](#create-transaction-pay)
 	9. [Create Transaction Transfer](#create-transaction-transfer)
 	10. [Create Transaction Withdrawa](#create-transaction-withdrawa)
+5. [Asset](#asset)
+	1. [Get Assets](#get-assets)
+	2. [Get Asset With Code](#get-asset-with-code)
+	3. [Update Assets With Code](#update-assets-with-code)
+	4. [Create Asset](#create-asset)
 
-
-l
 ## Create Client
 
 To use the slyk-go library, it is necessary to create a client. You need to give this client an api key.
@@ -1041,4 +1044,145 @@ SetDescription(description string)
 SetExternalReference(externalReference string) 
 SetOriginWalletID(originWalletID string) 
 SetOriginAddress(originAddress string) 
+```
+
+## Asset
+
+### Get Assets
+
+Brings up the assets list.
+
+```go
+response,err := client.GetAssets({{OPTINAL_FILTER}})
+```
+
+#### Filter List
+
+For Create;
+
+```go
+slyk.GetAssetFilter()
+```
+
+Append Filters;
+
+```go
+SetGenericQueryParameter(key string, value interface{}) 
+SetCode(code string) 
+SetCodeWithIN(code ...string) 
+SetCodeWithNIN(code ...string) 
+SetEnabled(enabled bool) 
+SetName(name string) 
+SetSystem(system bool) 
+SetType(getType string) 
+SetTypeWithIN(getType ...string) 
+SetTypeWithNIN(getType ...string) 
+SetSortWithCreatedAt() 
+SetSortWithCreatedAtReverse() 
+SetSortWithEnabled() 
+SetSortWithEnabledReverse() 
+SetSortWithSystem() 
+SetSortWithSystemReverse() 
+SetSortWithType() 
+SetSortWithTypeReverse() 
+SetPageSize(size int) 
+SetPageNumber(number int)
+```
+
+### Get Asset With Code
+
+It brings 1 asset information whose code is given.
+
+```go
+response,err := client.GetAssetsWithCode({{ASSET_CODE}})
+```
+
+### Update Assets With Code
+
+Updates the asset information.
+
+Function;
+
+```go
+response,err := client.UpdateAssetsWithCode({{ASSET_CODE}}, *UpdateAssetDataBody) 
+```
+
+#### Struct
+
+```go
+type UpdateAssetDataBody struct {
+	DecimalPlaces int         `json:"decimalPlaces,omitempty"`
+	Name          string      `json:"name,omitempty"`
+	Contract      struct{}    `json:"contract,omitempty"`
+	CustomData    interface{} `json:"customData,omitempty"`
+	Enabled       bool        `json:"enabled,omitempty"`
+	Logo          string      `json:"logo,omitempty"`
+	Symbol        string      `json:"symbol,omitempty"`
+}
+```
+
+#### Body Function
+
+For Create;
+
+```go
+slyk.UpdateAssetDataForBody()
+```
+
+Append List;
+
+```go
+SetName(name string) 
+SetDecimalPlaces(decimalPlaces int) 
+SetContract(contract struct{}) 
+SetCustomData(customData interface{}) 
+SetEnabled(enabled bool) 
+SetLogo(logo string) 
+SetSymbol(symbol string) 
+```
+
+### Create Asset
+
+Updates the asset information.
+
+Function;
+
+```go
+response,err := client.CreateAsset(*CreateAssetDataBody) 
+```
+
+#### Struct
+
+```go
+type CreateAssetDataBody struct {
+	Code          string      `json:"code"`
+	Contract      struct{}    `json:"contract,omitempty"`
+	CustomData    interface{} `json:"customData,omitempty"`
+	DecimalPlaces int         `json:"decimalPlaces"`
+	Enabled       bool        `json:"enabled,omitempty"`
+	Name          string      `json:"name"`
+	Symbol        string      `json:"symbol,omitempty"`
+	Type          string      `json:"type"`
+}
+```
+
+#### Body Function
+
+For Create;
+
+```go
+slyk.CreateAssetDataForBody()
+```
+
+Append List;
+
+```go
+SetCode(code string) 
+SetName(name string) 
+SetContract(contract struct{}) 
+SetCustomData(customData interface{}) 
+SetDecimalPlaces(decimalPlaces int) 
+SetEnabled(enabled bool) 
+SetSymbol(sysmbol string) 
+SetType(typeParam string) 
 ```
