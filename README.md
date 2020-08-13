@@ -26,7 +26,20 @@
 	8. [Get Wallet Transactions](#get-wallet-transactions)
 	9. [Update Wallet](#update-wallet)
 	10. [Create Wallet](#create-wallet)
+4. [Transaction](#transaction)
+	1. [Get Transactions](#get-transactions)
+	2. [Get Transactions With ID](#get-transactions-with-id)
+	3. [Set Transaction Approve With ID](#set-transaction-approve-with-id)
+	4. [Set Transaction Confirm With ID](#set-transaction-confirm-with-id)
+	5. [Set Transaction Fail With ID](#set-transaction-fail-with-id)
+	6. [Set Transaction Reject With ID](#set-transaction-reject-with-id)
+	7. [Add Transaction Deposit](#add-transaction-deposit)
+	8. [Create Transaction Pay](#create-transaction-pay)
+	9. [Create Transaction Transfer](#create-transaction-transfer)
+	10. [Create Transaction Withdrawa](#create-transaction-withdrawa)
 
+
+l
 ## Create Client
 
 To use the slyk-go library, it is necessary to create a client. You need to give this client an api key.
@@ -293,7 +306,6 @@ SetPageSize(size int)
 SetPageNumber(number int) 
 ```
 
-
 ### Get User With ID
 
 Fetches information about a user. User Id takes as parameter.
@@ -301,7 +313,6 @@ Fetches information about a user. User Id takes as parameter.
 ```go
 response,err := client.GetUserWithID({{USER_ID}})
 ```
-
 
 ### Update User
 
@@ -743,4 +754,291 @@ SetName(name string)
 SetOwnerID(ownerID string) 
 SetLocked(locked bool) 
 SetCustomData(customData interface{})
+```
+
+## Transaction
+
+### Get Transactions
+
+Returns transactions data.
+
+```go
+response,err := client.GetTransactions({{OPTINAL_FILTER}})
+```
+
+#### Filter List
+
+For Create;
+
+```go
+slyk.GetTransactionsFilter()
+```
+
+Append Filters;
+
+```go
+SetGenericQueryParameter(key string, value interface{})
+SetAssetCode(assetCode string)
+SetAssetCodeWithIN(assetCode ...string)
+SetAssetCodeWithNIN(assetCode ...string)
+SetCode(code string)
+SetCodeWithIN(code ...string)
+SetCodeWithNIN(code ...string)
+SetCreated(date string)
+SetCreatedAtWithGTE(date string)
+SetCreatedAtWithLTE(date string)
+SetDescription(description string)
+SetDestinationWalletID(destinationWalletID string)
+SetDestinationWalletIdWithIN(destinationWalletId ...string)
+SetDestinationWalletIdWithNIN(destinationWalletId ...string)
+SetExternalId(externalId string)
+SetExternalIdWithIN(externalId ...string)
+SetExternalIdWithNIN(externalId ...string)
+SetExternalReferenceWithNIN(externalReference string)
+SetID(id string)
+SetIDWithIN(id ...string)
+SetIDWithNIN(id ...string)
+SetOriginWalletID(originWalletId string)
+SetOriginWalletIDWithIN(originWalletId ...string)
+SetOriginWalletIdWithNIN(originWalletId ...string)
+SetRSeference(reference string)
+SetStatus(status string)
+SetStatusWithIN(status ...string)
+SetStatusWithNIN(status ...string)
+SetType(typeParam string)
+SetTypeWithIN(typeParam ...string)
+SetTypeWithNIN(typeParam ...string)
+SetWalletID(walletID string)
+SetWalletIdWithIN(walletId ...string)
+SetWalletIdWithNIN(walletId ...string)
+SetSortWithAmount()
+SetSortWithAmountReverse()
+SetSortWithCreatedAt()
+SetSortWithCreatedAtReverse()
+SetPageSize(size int)
+SetPageNumber(number int)
+```
+
+### Get Transactions With ID
+
+Returns 1 Transaction data given its id.
+
+```go
+response,err := client.GetTransactionsWithID({{TRANSACTIN_ID}} )
+```
+
+### Set Transaction Approve With ID
+
+It is used to approve the transaction in pending.
+
+```go
+response,err := client.SetTransactionApproveWithID({{TRANSACTIN_ID}} )
+```
+
+### Set Transaction Confirm With ID
+
+It is used to confirm the transaction in pending.
+
+```go
+response,err := client.SetTransactionConfirmWithID({{TRANSACTIN_ID}} )
+```
+
+### Set Transaction Fail With ID
+
+It is used to fail the transaction in pending.
+
+```go
+response,err := client.SetTransactionFailWithID({{TRANSACTIN_ID}} )
+```
+
+
+### Set Transaction Reject With ID
+
+It is used to Reject the transaction in pending.
+
+```go
+response,err := client.SetTransactionRejectWithID({{TRANSACTIN_ID}} )
+```
+
+### Add Transaction Deposit
+
+Used to add deposit to the transection.
+
+Function;
+
+```go
+response,err := client.AddTransactionDeposit({{TRANSACTIN_ID}},*AddTransactionDepositDataBody)
+```
+
+#### Struct
+
+```go
+type AddTransactionDepositDataBody struct {
+	Amount              string      `json:"amount"`
+	AssetCode           string      `json:"assetCode"`
+	Code                string      `json:"code"`
+	CustomData          interface{} `json:"customData,omitempty"`
+	Data                interface{} `json:"data"`
+	Description         string      `json:"description,omitempty"`
+	DestinationAddress  string      `json:"destinationAddress,omitempty"`
+	DestinationWalletID string      `json:"destinationWalletId"`
+	Commit              bool        `json:"commit,omitempty"`
+	ExternalReference   string      `json:"externalReference,omitempty"`
+}
+```
+
+#### Body Function
+
+For Create;
+
+```go
+slyk.AddTransactionDepositBody()
+```
+
+Append List;
+
+```go
+SetAmount(amount string)
+SetAssetCode(assetCode string)
+SetCode(code string)
+SetCommit(commit bool)
+SetCustomData(customData interface{})
+SetDescription(description string)
+SetDestinationAddress(destinationAddress string)
+SetDestinationWalletID(destinationWalletID string)
+SetExternalReference(externalReference string)
+```
+
+### Create Transaction Pay
+
+Function;
+
+```go
+response,err := client.CreateTransactionPay(*CreateTransactionPayDataBody)
+```
+
+#### Struct
+
+```go
+type CreateTransactionPayDataBody struct {
+	Amount         string      `json:"amount"`
+	AssetCode      string      `json:"assetCode"`
+	CustomData     interface{} `json:"customData,omitempty"`
+	Description    string      `json:"description,omitempty"`
+	OriginWalletID string      `json:"originWalletId"`
+}
+```
+
+#### Body Function
+
+For Create;
+
+```go
+slyk.CreateTransactionPayBody()
+```
+
+Append List;
+
+```go
+SetAmount(amount string) 
+SetAssetCode(assetCode string) 
+SetCustomData(customData interface{}) 
+SetDescription(description string) 
+SetOriginWalletID(originWalletID string) 
+```
+
+### Create Transaction Transfer
+
+Function;
+```go
+response,err := client.CreateTransactionTransfer(*CreateTransactionTransferDataBody)
+```
+
+#### Struct
+
+```go
+type CreateTransactionTransferDataBody struct {
+	Amount              string      `json:"amount"`
+	AssetCode           string      `json:"assetCode"`
+	Code                string      `json:"code"`
+	Commit              bool        `json:"commit,omitempty"`
+	CustomData          interface{} `json:"customData,omitempty"`
+	Description         string      `json:"description,omitempty"`
+	DestinationAddress  string      `json:"destinationAddress,omitempty"`
+	DestinationWalletID string      `json:"destinationWalletId"`
+	ExternalReference   string      `json:"externalReference,omitempty"`
+	OriginAddress       string      `json:"originAddress,omitempty"`
+	OriginWalletID      string      `json:"originWalletId"`
+}
+```
+
+#### Body Function
+
+For Create;
+
+```go
+slyk.CreateTransactionTransferBody()
+```
+
+Append List;
+
+```go
+SetAmount(amount string) 
+SetAssetCode(assetCode string) 
+SetCode(code string) 
+SetCommit(commit bool) 
+SetCustomData(customData interface{}) 
+SetDescription(description string) 
+SetDestinationAddress(destinationAddress string) 
+SetDestinationWalletID(destinationWalletID string) 
+SetExternalReference(externalReference string) 
+SetOriginWalletID(originWalletID string) 
+SetOriginAddress(originAddress string) 
+```
+
+### Create Transaction Withdrawal
+
+Function;
+```go
+response,err := client.CreateTransactionWithdrawal(*CreateTransactionWithdrawalDataBody)
+```
+
+#### Struct
+
+```go
+type CreateTransactionWithdrawalDataBody struct {
+	Amount            string      `json:"amount"`
+	AssetCode         string      `json:"assetCode"`
+	Code              string      `json:"code"`
+	Commit            bool        `json:"commit,omitempty"`
+	CustomData        interface{} `json:"customData,omitempty"`
+	Data              interface{} `json:"data,omitempty"`
+	Description       string      `json:"description,omitempty"`
+	ExternalReference string      `json:"externalReference,omitempty"`
+	OriginAddress     string      `json:"originAddress,omitempty"`
+	OriginWalletID    string      `json:"originWalletId"`
+}
+```
+
+#### Body Function
+
+For Create;
+
+```go
+slyk.CreateTransactionWithdrawalBody()
+```
+
+Append List;
+
+```go
+
+SetAmount(amount string) 
+SetAssetCode(assetCode string) 
+SetCode(code string) 
+SetCommit(commit bool) 
+SetCustomData(customData interface{}) 
+SetDescription(description string) 
+SetExternalReference(externalReference string) 
+SetOriginWalletID(originWalletID string) 
+SetOriginAddress(originAddress string) 
 ```
