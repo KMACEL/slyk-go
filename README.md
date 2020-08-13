@@ -60,10 +60,10 @@
 	3. [Update Rate](#update-rate)
 	4. [Create Rate](#create-rate)
 	5. [Delete Rate](#delete-rate)
-8. [Address](#adress)
+9. [Address](#adress)
 	1. [Get Addresses](#get-addresses)
-	1. [Get Address With ID](#get-address-with-id)
-	1. [Create Address](#create-address)
+	2. [Get Address With ID](#get-address-with-id)
+	3. [Create Address](#create-address)
 
 ## Create Client
 
