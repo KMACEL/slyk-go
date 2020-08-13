@@ -274,53 +274,53 @@ func (t *TransactionRejectDataBody) SetReason(reason string) *TransactionRejectD
 ╚═╝  ╚═╝╚═════╝ ╚═════╝            ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝ ╚═════╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝        ╚═════╝ ╚══════╝╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═╝           ╚═════╝  ╚═════╝ ╚═════╝    ╚═╝
 */
 
-func AddTransactionDepositBody() *AddTransactionDepositDataBody {
-	return &AddTransactionDepositDataBody{}
+func AddTransactionDepositBody() *CreateTransactionDepositDataBody {
+	return &CreateTransactionDepositDataBody{}
 }
 
-func (a *AddTransactionDepositDataBody) SetAmount(amount string) *AddTransactionDepositDataBody {
-	a.Amount = amount
-	return a
+func (c *CreateTransactionDepositDataBody) SetAmount(amount string) *CreateTransactionDepositDataBody {
+	c.Amount = amount
+	return c
 }
 
-func (a *AddTransactionDepositDataBody) SetAssetCode(assetCode string) *AddTransactionDepositDataBody {
-	a.AssetCode = assetCode
-	return a
+func (c *CreateTransactionDepositDataBody) SetAssetCode(assetCode string) *CreateTransactionDepositDataBody {
+	c.AssetCode = assetCode
+	return c
 }
 
-func (a *AddTransactionDepositDataBody) SetCode(code string) *AddTransactionDepositDataBody {
-	a.Code = code
-	return a
+func (c *CreateTransactionDepositDataBody) SetCode(code string) *CreateTransactionDepositDataBody {
+	c.Code = code
+	return c
 }
 
-func (a *AddTransactionDepositDataBody) SetCommit(commit bool) *AddTransactionDepositDataBody {
-	a.Commit = commit
-	return a
+func (c *CreateTransactionDepositDataBody) SetCommit(commit bool) *CreateTransactionDepositDataBody {
+	c.Commit = commit
+	return c
 }
 
-func (a *AddTransactionDepositDataBody) SetCustomData(customData interface{}) *AddTransactionDepositDataBody {
-	a.CustomData = customData
-	return a
+func (c *CreateTransactionDepositDataBody) SetCustomData(customData interface{}) *CreateTransactionDepositDataBody {
+	c.CustomData = customData
+	return c
 }
 
-func (a *AddTransactionDepositDataBody) SetDescription(description string) *AddTransactionDepositDataBody {
-	a.Description = description
-	return a
+func (c *CreateTransactionDepositDataBody) SetDescription(description string) *CreateTransactionDepositDataBody {
+	c.Description = description
+	return c
 }
 
-func (a *AddTransactionDepositDataBody) SetDestinationAddress(destinationAddress string) *AddTransactionDepositDataBody {
-	a.DestinationAddress = destinationAddress
-	return a
+func (c *CreateTransactionDepositDataBody) SetDestinationAddress(destinationAddress string) *CreateTransactionDepositDataBody {
+	c.DestinationAddress = destinationAddress
+	return c
 }
 
-func (a *AddTransactionDepositDataBody) SetDestinationWalletID(destinationWalletID string) *AddTransactionDepositDataBody {
-	a.DestinationWalletID = destinationWalletID
-	return a
+func (c *CreateTransactionDepositDataBody) SetDestinationWalletID(destinationWalletID string) *CreateTransactionDepositDataBody {
+	c.DestinationWalletID = destinationWalletID
+	return c
 }
 
-func (a *AddTransactionDepositDataBody) SetExternalReference(externalReference string) *AddTransactionDepositDataBody {
-	a.ExternalReference = externalReference
-	return a
+func (c *CreateTransactionDepositDataBody) SetExternalReference(externalReference string) *CreateTransactionDepositDataBody {
+	c.ExternalReference = externalReference
+	return c
 }
 
 /*

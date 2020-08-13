@@ -33,7 +33,7 @@
 	4. [Set Transaction Confirm With ID](#set-transaction-confirm-with-id)
 	5. [Set Transaction Fail With ID](#set-transaction-fail-with-id)
 	6. [Set Transaction Reject With ID](#set-transaction-reject-with-id)
-	7. [Add Transaction Deposit](#add-transaction-deposit)
+	7. [Create Transaction Deposit](#create-transaction-deposit)
 	8. [Create Transaction Pay](#create-transaction-pay)
 	9. [Create Transaction Transfer](#create-transaction-transfer)
 	10. [Create Transaction Withdrawa](#create-transaction-withdrawa)
@@ -65,7 +65,6 @@
 	2. [Get Address With ID](#get-address-with-id)
 	3. [Create Address](#create-address)
 
-------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------
 
@@ -221,7 +220,6 @@ func (c Client) CreateUser(createUserdata *CreateUserData) (*User, error) {
 	.
 }
 ```
-
 
 
 #### Method 1 - With Struct
@@ -875,20 +873,20 @@ It is used to Reject the transaction in pending.
 response,err := client.SetTransactionRejectWithID({{TRANSACTIN_ID}} )
 ```
 
-### Add Transaction Deposit
+### Create Transaction Deposit
 
-Used to add deposit to the transection.
+Used to create deposit to the transection.
 
 Function;
 
 ```go
-response,err := client.AddTransactionDeposit({{TRANSACTIN_ID}},*AddTransactionDepositDataBody)
+response,err := client.CreateTransactionDeposit({{TRANSACTIN_ID}},*CreateTransactionDepositDataBody)
 ```
 
 #### Struct
 
 ```go
-type AddTransactionDepositDataBody struct {
+type CreateTransactionDepositDataBody struct {
 	Amount              string      `json:"amount"`
 	AssetCode           string      `json:"assetCode"`
 	Code                string      `json:"code"`
@@ -907,7 +905,7 @@ type AddTransactionDepositDataBody struct {
 For Create;
 
 ```go
-slyk.AddTransactionDepositBody()
+slyk.CreateTransactionDepositBody()
 ```
 
 Append List;
@@ -1115,6 +1113,8 @@ response,err := client.GetAssetsWithCode({{ASSET_CODE}})
 ### Update Assets With Code
 
 Updates the asset information.
+
+Note : System assets cannot be updated.
 
 Function;
 
@@ -1554,6 +1554,8 @@ response,err := client.DeleteRate({{BASE_ASSET_CODE}},{{QUOTE_ASSET_CODE}})
 ------------------------------------------------------------------------------------------------------------
 
 ## Address
+
+Note : Address APIs become active only after "CoinBase" integration. It is "Coinbase" as the Only Provider.
 
 ### Get Addresses
 

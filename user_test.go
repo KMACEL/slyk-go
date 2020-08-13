@@ -84,7 +84,7 @@ func TestCreateUser(t *testing.T) {
 func TestSetUserApprove(t *testing.T) {
 	tst := "TestSetUserApprove"
 
-	err := getClient().SetUserApprove("ff17a840-44de-4fdd-94aa-d7619c0aa01b")
+	err := getClient().SetUserApprove("1bd9b033-5e8a-4d15-bfde-7610f7bd32eb")
 
 	OnlyError(t, tst, err)
 }

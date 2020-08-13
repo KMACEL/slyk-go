@@ -3,30 +3,18 @@ package slyk
 import (
 	"encoding/json"
 	"fmt"
-
-	"github.com/go-resty/resty/v2"
 )
 
 // CreateRate
 // https://developers.slyk.io/slyk/reference/endpoints#post-rates
 func (c Client) CreateRate(rateBody *CreateRateBodyData) (*Rate, error) {
-
-	resp, err := resty.New().R().
-		SetHeader(headerApiKey, c.apiKey).
-		SetBody(rateBody).
-		Post(linkRates)
-
-	fmt.Println(string(resp.Body()))
+	getBody, err := c.genericPostQuery(linkRates, rateBody)
 	if err != nil {
 		return nil, err
 	}
 
-	if resp.IsError() {
-		return nil, fmt.Errorf("Status Code : %d", resp.StatusCode())
-	}
-
 	var rate Rate
-	errUnmarshal := json.Unmarshal(resp.Body(), &rate)
+	errUnmarshal := json.Unmarshal(getBody, &rate)
 	if errUnmarshal != nil {
 		return nil, errUnmarshal
 	}

@@ -11,7 +11,10 @@ func TestGetTransactions(t *testing.T) {
 		SetAssetCode("usd").
 		SetDestinationWalletIdWithIN("d6f417be-59f8-4728-a782-b810215f0ef2", "73fb8803-bd14-4127-bdb3-8a71b030d4bd"))*/
 
-	returnValue, err := getClient().GetTransactions(GetTransactionsFilter().SetStatus("pending"))
+	returnValue, err := getClient().GetTransactions(
+		GetTransactionsFilter().SetStatus("pending").
+			SetCode("internal").
+			SetType("withdrawal"))
 
 	ReturnAndError(t, tst, returnValue, err)
 }
@@ -19,7 +22,7 @@ func TestGetTransactions(t *testing.T) {
 func TestGetTransactionsWithID(t *testing.T) {
 	tst := "TestGetTransactionsWithID"
 
-	returnValue, err := getClient().GetTransactionsWithID("9bd25790-5437-42d3-bab6-da97ed96dcf6")
+	returnValue, err := getClient().GetTransactionsWithID("feec35b0-5c2e-493d-8b06-176706a3d131")
 
 	ReturnAndError(t, tst, returnValue, err)
 }
@@ -27,7 +30,7 @@ func TestGetTransactionsWithID(t *testing.T) {
 func TestCreateTransactionApproveWithID(t *testing.T) {
 	tst := "TestCreateTransactionApproveWithID"
 
-	returnValue, err := getClient().SetTransactionApproveWithID("7ce14b27-dfcd-4207-8511-deb2feff0d27")
+	returnValue, err := getClient().SetTransactionApproveWithID("e47afd0c-043d-4830-bcfa-18741f9991b1")
 
 	ReturnAndError(t, tst, returnValue, err)
 }
@@ -56,11 +59,11 @@ func TestSetTransactionRejectWithID(t *testing.T) {
 	ReturnAndError(t, tst, returnValue, err)
 }
 
-func TestAddTransactionDeposit(t *testing.T) {
-	tst := "TestAddTransactionDeposit"
+func TestCreateTransactionDeposit(t *testing.T) {
+	tst := "TestAddTranTestCreateTransactionDepositsactionDeposit"
 
-	returnValue, err := getClient().AddTransactionDeposit("327f8888-5f88-4edf-a4b9-7c2066e6e0d9",
-		&AddTransactionDepositDataBody{
+	returnValue, err := getClient().CreateTransactionDeposit("327f8888-5f88-4edf-a4b9-7c2066e6e0d9",
+		&CreateTransactionDepositDataBody{
 			Amount:              "0.1",
 			AssetCode:           "usd",
 			Code:                "internal",
@@ -77,7 +80,7 @@ func TestCreateTransactionPay(t *testing.T) {
 	returnValue, err := getClient().CreateTransactionPay(&CreateTransactionPayDataBody{
 		Amount:         "12",
 		AssetCode:      "usd",
-		OriginWalletID: "dc80f0c2-3360-46b4-bde0-08ccf06d2878",
+		OriginWalletID: "c553b251-9bf5-42a4-99ef-238ad03fa656",
 	})
 
 	ReturnAndError(t, tst, returnValue, err)

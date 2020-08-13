@@ -12,13 +12,13 @@ type Rate struct {
 }
 
 type RateData struct {
-	BaseAssetCode  string      `json:"baseAssetCode"`
-	CreatedAt      time.Time   `json:"createdAt"`
-	CustomData     interface{} `json:"customData"`
-	Metadata       interface{} `json:"metadata"`
-	QuoteAssetCode string      `json:"quoteAssetCode"`
-	Rate           string      `json:"rate"`
-	UpdatedAt      time.Time   `json:"updatedAt"`
+	BaseAssetCode  string                 `json:"baseAssetCode"`
+	CreatedAt      time.Time              `json:"createdAt"`
+	CustomData     map[string]interface{} `json:"customData"`
+	Metadata       map[string]interface{} `json:"metadata"`
+	QuoteAssetCode string                 `json:"quoteAssetCode"`
+	Rate           string                 `json:"rate"`
+	UpdatedAt      time.Time              `json:"updatedAt"`
 }
 
 type CreateRateBodyData struct {

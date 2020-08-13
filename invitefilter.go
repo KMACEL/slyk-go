@@ -43,13 +43,13 @@ func (g *getInviteFilter) SetCodeWithNIN(code ...string) *getInviteFilter {
 
 // Format : 2019-07-21
 func (g *getInviteFilter) SetExpiredAtWithGTE(date string) *getInviteFilter {
-	(*g)["expiredAt"] = "gte:" + date
+	(*g)["filter[expiredAt]"] = "gte:" + date
 	return g
 }
 
 // Format : 2019-07-21
 func (g *getInviteFilter) SetExpiredAtWithLTE(date string) *getInviteFilter {
-	(*g)["expiredAt"] = "lte:" + date
+	(*g)["filter[expiredAt]"] = "lte:" + date
 	return g
 }
 

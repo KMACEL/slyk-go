@@ -6,7 +6,10 @@ func TestGetAssets(t *testing.T) {
 	tst := "TestGetAssets"
 
 	//returnValue, err := getClient().GetAssets()
-	returnValue, err := getClient().GetAssets(GetAssetFilter().SetCodeWithIN("eur"))
+	returnValue, err := getClient().GetAssets(
+		GetAssetFilter().
+			SetCodeWithNIN("eur").
+			SetPageSize(30))
 
 	ReturnAndError(t, tst, returnValue, err)
 }
@@ -23,7 +26,7 @@ func TestGetAssetsWithCode(t *testing.T) {
 func TestUpdateAssetsWithCode(t *testing.T) {
 	tst := "TestUpdateAssetsWithCode"
 
-	returnValue, err := getClient().UpdateAssetsWithCode("ltc", UpdateAssetDataForBody().SetName("Litecoinn"))
+	returnValue, err := getClient().UpdateAssetsWithCode("123456", UpdateAssetDataForBody().SetName("US Dollar"))
 
 	ReturnAndError(t, tst, returnValue, err)
 }

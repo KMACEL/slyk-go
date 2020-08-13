@@ -5,7 +5,9 @@ import "testing"
 func TestGetMovements(t *testing.T) {
 	tst := "TestGetMovements"
 
-	returnValue, err := getClient().GetMovements()
+	returnValue, err := getClient().GetMovements(
+		GetMovementFilter().
+			SetAssetCodeWithIN("usd"))
 
 	ReturnAndError(t, tst, returnValue, err)
 }

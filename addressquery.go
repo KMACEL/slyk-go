@@ -40,7 +40,7 @@ func (c Client) GetAddressWithID(addressID string) (*Address, error) {
 
 // CreateAddress is
 // https://developers.slyk.io/slyk/reference/endpoints#post-addresses
-// TODO : Sadece coinbase, test edilecek
+// Only COin Base
 func (c Client) CreateAddress(createAddressBody *CreateAddressBody) (*Address, error) {
 	getBody, err := c.genericPostQuery(linkAddresses, createAddressBody)
 	if err != nil {

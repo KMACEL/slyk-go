@@ -113,15 +113,15 @@ func (g *getassetFilter) SetSortWithTypeReverse() *getassetFilter {
 }
 
 // Defines the number of results per page. Default = 30.
-func (u *getassetFilter) SetPageSize(size int) *getassetFilter {
-	(*u)["page[size]"] = strconv.Itoa(size)
-	return u
+func (g *getassetFilter) SetPageSize(size int) *getassetFilter {
+	(*g)["page[size]"] = strconv.Itoa(size)
+	return g
 }
 
 // Defines the number of the page to retrieve. Default = 1
-func (u *getassetFilter) SetPageNumber(number int) *getassetFilter {
-	(*u)["page[number]"] = strconv.Itoa(number)
-	return u
+func (g *getassetFilter) SetPageNumber(number int) *getassetFilter {
+	(*g)["page[number]"] = strconv.Itoa(number)
+	return g
 }
 
 /*

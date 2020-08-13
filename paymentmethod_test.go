@@ -5,7 +5,9 @@ import "testing"
 func TestGetPaymentMethods(t *testing.T) {
 	tst := "TestGetPaymentMethods"
 
-	returnValue, err := getClient().GetPaymentMethods()
+	returnValue, err := getClient().GetPaymentMethods(
+		GetPaymentMedhodFilter().
+			SetEnabled(false))
 
 	ReturnAndError(t, tst, returnValue, err)
 }

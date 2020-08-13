@@ -108,10 +108,10 @@ func (c Client) SetTransactionRejectWithID(transactionID string, transactionReje
 	return &transaction, nil
 }
 
-// AddTransactionDeposit is
+// CreateTransactionDeposit is
 // https://developers.slyk.io/slyk/reference/endpoints#post-transactions-deposit is
-func (c Client) AddTransactionDeposit(transactionID string, addTransactionDepositDataBody *AddTransactionDepositDataBody) (*Transaction, error) {
-	getBody, err := c.genericPostQuery(linkTransactions+"/deposit", addTransactionDepositDataBody)
+func (c Client) CreateTransactionDeposit(transactionID string, createTransactionDepositDataBody *CreateTransactionDepositDataBody) (*Transaction, error) {
+	getBody, err := c.genericPostQuery(linkTransactions+"/deposit", createTransactionDepositDataBody)
 	if err != nil {
 		return nil, err
 	}

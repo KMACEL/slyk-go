@@ -2,6 +2,7 @@ package slyk
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // GetInvites is
@@ -46,6 +47,7 @@ func (c Client) GetInviteWithCodeForValidate(inviteCode string) (*InviteForValid
 		return nil, err
 	}
 
+	fmt.Printf("%+v\n", string(getBody))
 	var inviteForValidate InviteForValidate
 	errUnmarshal := json.Unmarshal(getBody, &inviteForValidate)
 	if errUnmarshal != nil {
@@ -92,17 +94,7 @@ func (c Client) CancelInvite(inviteCode string) (*Invite, error) {
 // SendInvite is
 // https://developers.slyk.io/slyk/reference/endpoints#post-invites-send
 // TODO : çalışmıyor
-func (c Client) SendInvite(sendInviteDataBody *SendInviteDataBody) (*Invite, error) {
-	getBody, err := c.genericPostQuery(linkInvites+"/send", sendInviteDataBody)
-	if err != nil {
-		return nil, err
-	}
-
-	var invite Invite
-	errUnmarshal := json.Unmarshal(getBody, &invite)
-	if errUnmarshal != nil {
-		return nil, errUnmarshal
-	}
-
-	return &invite, nil
+func (c Client) SendInvite(sendInviteDataBody *SendInviteDataBody) error {
+	_, err := c.genericPostQuery(linkInvites+"/send", sendInviteDataBody)
+	return err
 }

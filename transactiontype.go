@@ -40,7 +40,7 @@ type TransactionRejectDataBody struct {
 	Reason string `json:"reason"`
 }
 
-type AddTransactionDepositDataBody struct {
+type CreateTransactionDepositDataBody struct {
 	Amount              string      `json:"amount"`
 	AssetCode           string      `json:"assetCode"`
 	Code                string      `json:"code"`
