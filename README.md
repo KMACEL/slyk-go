@@ -60,7 +60,10 @@
 	3. [Update Rate](#update-rate)
 	4. [Create Rate](#create-rate)
 	5. [Delete Rate](#delete-rate)
-
+8. [Address](#adress)
+	1. [Get Addresses](#get-addresses)
+	1. [Get Address With ID](#get-address-with-id)
+	1. [Create Address](#create-address)
 
 ## Create Client
 
@@ -1516,3 +1519,79 @@ SetCustomData(customData interface{})
 ```go
 response,err := client.DeleteRate({{BASE_ASSET_CODE}},{{QUOTE_ASSET_CODE}})
 ``
+
+
+## Address
+
+### Get Addresses
+
+Brings up the address list.
+
+```go
+response,err := client.GetAddresses({{OPTIONAL_FILTER}})
+```
+
+#### Filter List
+
+For Create;
+
+```go
+slyk.GetAddressFilter()
+```
+
+Append Filters;
+
+```go
+SetGenericQueryParameter(key string, value interface{})
+SetAddress(address string)
+SetAssetCode(assetCode string)
+SetAssetCodeWithIN(assetCode ...string)
+SetAssetCodeWithNIN(assetCode ...string)
+SetID(walletID string)
+SetIDWithIN(walletID ...string)
+SetIDWithNIN(walletID ...string)
+```
+
+### Get Address With ID
+
+```go
+response,err := client.GetAddressWithID({{ADDRESS_ID}})
+```
+
+### Create Address
+
+Function;
+
+```go
+response,err := client.CreateAddress(*CreateAddressBody)
+```
+
+#### Struct
+
+```go
+type CreateAddressBody struct {
+	Address    string      `json:"address,omitempty"`
+	AssetCode  string      `json:"assetCode,omitempty"`
+	CustomData interface{} `json:"customData,omitempty"`
+	Provider   string      `json:"provider,omitempty"`
+	WalletID   string      `json:"walletId,omitempty"`
+}
+```
+
+#### Body Function
+
+For Create;
+
+```go
+slyk.CreateAddressForBody()
+```
+
+Append List;
+
+```go
+SetAddress(address string) 
+SetAssetCode(assetCode string) 
+SetCustomData(customData interface{}) 
+SetProvider(provider string) 
+SetWalletID(walletID string) 
+```

@@ -6,7 +6,7 @@ import (
 
 // GetAddresses is
 // https://developers.slyk.io/slyk/reference/endpoints#get-addresses
-func (c Client) GetAddresses(filter ...*geTransactionstFilter) (*Addresses, error) {
+func (c Client) GetAddresses(filter ...*getaddressFilter) (*Addresses, error) {
 	getBody, err := c.genericGetQuery(linkAddresses, merge(filter))
 	if err != nil {
 		return nil, err
