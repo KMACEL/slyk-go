@@ -45,7 +45,7 @@
 6. [Movement](#movement)
 	1. [Get Movements](#get-movements)
 	2. [Get Movement With ID](#get-movement-with-id)
-7. [Payment Method](#movement)
+7. [Payment Method](#payment-method)
 	1. [Get Payment Methods](#get-payment-methods)
 	2. [Get Payment Method With Slug](#get-payment-method-with-slug)
 8. [Invites](#invites)
@@ -60,7 +60,7 @@
 	3. [Update Rate](#update-rate)
 	4. [Create Rate](#create-rate)
 	5. [Delete Rate](#delete-rate)
-9. [Address](#adress)
+9. [Address](#address)
 	1. [Get Addresses](#get-addresses)
 	2. [Get Address With ID](#get-address-with-id)
 	3. [Create Address](#create-address)
@@ -258,7 +258,7 @@ client.CreateUser(slyk.CreateUserParameter().
 		SetBlocked(false).
 		SetLocale("en"))
 ```
-
+------------------------------------------------------------------------------------------------------------
 ## User
 
 ### Get User
@@ -431,6 +431,8 @@ it is used to change the user password.
 ```go
 err := client.ChangePassword({{USER_ID}},{{NEW_PASSWORD}})
 ```
+
+------------------------------------------------------------------------------------------------------------
 
 ## Wallet
 
@@ -754,6 +756,8 @@ SetLocked(locked bool)
 SetCustomData(customData interface{})
 ```
 
+------------------------------------------------------------------------------------------------------------
+
 ## Transaction
 
 ### Get Transactions
@@ -1041,6 +1045,8 @@ SetOriginWalletID(originWalletID string)
 SetOriginAddress(originAddress string) 
 ```
 
+------------------------------------------------------------------------------------------------------------
+
 ## Asset
 
 ### Get Assets
@@ -1182,6 +1188,8 @@ SetSymbol(sysmbol string)
 SetType(typeParam string) 
 ```
 
+------------------------------------------------------------------------------------------------------------
+
 ## Movement
 
 ### Get Movements
@@ -1250,6 +1258,7 @@ SetGenericQueryParameter(key string, value interface{})
 SetAvailableTransactionWithUser() 
 ```
 
+------------------------------------------------------------------------------------------------------------
 
 ## Payment Method
 
@@ -1289,6 +1298,8 @@ It brings 1 payment medhod information whose slug is given.
 ```go
 response,err := client.GetPaymentMethodsWithSlug({{SLUG}})
 ```
+
+------------------------------------------------------------------------------------------------------------
 
 ## Invites
 
@@ -1396,6 +1407,7 @@ SetInviterUserID(inviterUserID string)
 response,err := client.CancelInvite({{INVITE_CODE}})
 ```
 
+------------------------------------------------------------------------------------------------------------
 
 ## Rates
 
@@ -1518,8 +1530,9 @@ SetCustomData(customData interface{})
 
 ```go
 response,err := client.DeleteRate({{BASE_ASSET_CODE}},{{QUOTE_ASSET_CODE}})
-``
+```
 
+------------------------------------------------------------------------------------------------------------
 
 ## Address
 
