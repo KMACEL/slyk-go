@@ -70,8 +70,8 @@ func (c Client) GetRatesWithBaseAssetCodeAndQuoteAssetCode(baseAssetCode string,
 
 // UpdateRate is
 // https://developers.slyk.io/slyk/reference/endpoints#patch-rates-baseassetcode-quoteassetcode
-func (c Client) UpdateRate(baseAssetCode string, quoteAssetCode string, rateData string) (*Rate, error) {
-	getBody, err := c.genericPatchQuery(fmt.Sprintf("%s/%s/%s", linkRates, baseAssetCode, quoteAssetCode), &UpdateRateBodyData{Rate: rateData})
+func (c Client) UpdateRate(baseAssetCode string, quoteAssetCode string, updateRateBodyData *UpdateRateBodyData) (*Rate, error) {
+	getBody, err := c.genericPatchQuery(fmt.Sprintf("%s/%s/%s", linkRates, baseAssetCode, quoteAssetCode), updateRateBodyData)
 	if err != nil {
 		return nil, err
 	}

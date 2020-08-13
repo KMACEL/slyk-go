@@ -108,13 +108,69 @@ func (g *getRateFilter) SetSortWitRateReverse() *getRateFilter {
 }
 
 // Defines the number of results per page. Default = 30.
-func (u *getRateFilter) SetPageSize(size int) *getRateFilter {
-	(*u)["page[size]"] = strconv.Itoa(size)
-	return u
+func (g *getRateFilter) SetPageSize(size int) *getRateFilter {
+	(*g)["page[size]"] = strconv.Itoa(size)
+	return g
 }
 
 // Defines the number of the page to retrieve. Default = 1
-func (u *getRateFilter) SetPageNumber(number int) *getRateFilter {
-	(*u)["page[number]"] = strconv.Itoa(number)
-	return u
+func (g *getRateFilter) SetPageNumber(number int) *getRateFilter {
+	(*g)["page[number]"] = strconv.Itoa(number)
+	return g
+}
+
+/*
+██╗   ██╗██████╗ ██████╗  █████╗ ████████╗███████╗    ██████╗  █████╗ ████████╗███████╗    ██████╗  ██████╗ ██████╗ ██╗   ██╗
+██║   ██║██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝██╔════╝    ██╔══██╗██╔══██╗╚══██╔══╝██╔════╝    ██╔══██╗██╔═══██╗██╔══██╗╚██╗ ██╔╝
+██║   ██║██████╔╝██║  ██║███████║   ██║   █████╗      ██████╔╝███████║   ██║   █████╗      ██████╔╝██║   ██║██║  ██║ ╚████╔╝
+██║   ██║██╔═══╝ ██║  ██║██╔══██║   ██║   ██╔══╝      ██╔══██╗██╔══██║   ██║   ██╔══╝      ██╔══██╗██║   ██║██║  ██║  ╚██╔╝
+╚██████╔╝██║     ██████╔╝██║  ██║   ██║   ███████╗    ██║  ██║██║  ██║   ██║   ███████╗    ██████╔╝╚██████╔╝██████╔╝   ██║
+ ╚═════╝ ╚═╝     ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝    ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚══════╝    ╚═════╝  ╚═════╝ ╚═════╝    ╚═╝
+*/
+
+func UpdateRateBody() *UpdateRateBodyData {
+	return &UpdateRateBodyData{}
+}
+
+func (c *UpdateRateBodyData) SetRate(rate string) *UpdateRateBodyData {
+	c.Rate = rate
+	return c
+}
+
+func (c *UpdateRateBodyData) SetCustomData(customData interface{}) *UpdateRateBodyData {
+	c.CustomData = customData
+	return c
+}
+
+/*
+ ██████╗██████╗ ███████╗ █████╗ ████████╗███████╗    ██████╗  █████╗ ████████╗███████╗    ██████╗  ██████╗ ██████╗ ██╗   ██╗
+██╔════╝██╔══██╗██╔════╝██╔══██╗╚══██╔══╝██╔════╝    ██╔══██╗██╔══██╗╚══██╔══╝██╔════╝    ██╔══██╗██╔═══██╗██╔══██╗╚██╗ ██╔╝
+██║     ██████╔╝█████╗  ███████║   ██║   █████╗      ██████╔╝███████║   ██║   █████╗      ██████╔╝██║   ██║██║  ██║ ╚████╔╝
+██║     ██╔══██╗██╔══╝  ██╔══██║   ██║   ██╔══╝      ██╔══██╗██╔══██║   ██║   ██╔══╝      ██╔══██╗██║   ██║██║  ██║  ╚██╔╝
+╚██████╗██║  ██║███████╗██║  ██║   ██║   ███████╗    ██║  ██║██║  ██║   ██║   ███████╗    ██████╔╝╚██████╔╝██████╔╝   ██║
+ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝    ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚══════╝    ╚═════╝  ╚═════╝ ╚═════╝    ╚═╝
+*/
+
+func CreateRateBody() *CreateRateBodyData {
+	return &CreateRateBodyData{}
+}
+
+func (c *CreateRateBodyData) SetBaseAssetCode(baseAssetCode string) *CreateRateBodyData {
+	c.BaseAssetCode = baseAssetCode
+	return c
+}
+
+func (c *CreateRateBodyData) SetQuoteAssetCode(quoteAssetCode string) *CreateRateBodyData {
+	c.QuoteAssetCode = quoteAssetCode
+	return c
+}
+
+func (c *CreateRateBodyData) SetRate(rate string) *CreateRateBodyData {
+	c.Rate = rate
+	return c
+}
+
+func (c *CreateRateBodyData) SetCustomData(customData interface{}) *CreateRateBodyData {
+	c.CustomData = customData
+	return c
 }

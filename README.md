@@ -54,6 +54,13 @@
 	3. [Get Invite With Code For Validate](#get-invite-with-code-for-validate)
 	4. [Create Invite](#create-invite)
 	5. [Cancel Invite](#cancel-invite)
+8. [Rates](#rates)
+	1. [Get Rates](#get-rates)
+	2. [Get Rates With Base Asset Code And Quote Asset Code](#get-rates-with-base-asset-code-and-quote-asset-code)
+	3. [Update Rate](#update-rate)
+	4. [Create Rate](#create-rate)
+	5. [Delete Rate](#delete-rate)
+
 
 ## Create Client
 
@@ -1348,7 +1355,7 @@ response,err := client.GetInviteWithCodeForValidate({{INVITE_CODE}})
 
 ### Create Invite
 
-Updates the asset information.
+Create the asset information.
 
 Function;
 
@@ -1387,3 +1394,125 @@ response,err := client.CancelInvite({{INVITE_CODE}})
 ```
 
 
+## Rates
+
+### Get Rates
+
+Brings up the rates list.
+
+```go
+response,err := client.GetRates({{OPTIONAL_FILTER}})
+```
+
+#### Filter List
+
+For Create;
+
+```go
+slyk.GetRateFilter()
+```
+
+Append Filters;
+
+```go
+SetGenericQueryParameter(key string, value interface{})
+SetBaseAssetCode(baseAssetCode string)
+SetBaseAssetCodeWithIN(baseAssetCode ...string)
+SetBaseAssetCodeWithNIN(baseAssetCode ...string)
+SetQuoteAssetCode(quoteAssetCode string)
+SetQuoteAssetCodeWithIN(quoteAssetCode ...string)
+SetQuoteAssetCodeWithNIN(quoteAssetCode ...string)
+SetRateWithGT(rate string)
+SetRateWithGTE(rate string)
+SetRateWithLT(rate string)
+SetRateWithLTE(rate string)
+SetSortWithCreatedAt()
+SetSortWithCreatedAtReverse()
+SetSortWithUpdatedAt()
+SetSortWithUpdatedAtReverse()
+SetSortWitRate()
+SetSortWitRateReverse()
+SetPageSize(size int)
+SetPageNumber(number int)
+```
+
+### Get Rates With Base Asset Code And Quote Asset Code
+
+```go
+response,err := client.GetRatesWithBaseAssetCodeAndQuoteAssetCode({{BASE_ASSET_CODE}},{{QUOTE_ASSET_CODE}})
+```
+
+### Update Rate
+
+Function;
+
+```go
+response,err := client.UpdateRate({{BASE_ASSET_CODE}},{{QUOTE_ASSET_CODE}},*UpdateRateBodyData)
+```
+#### Struct
+
+```go
+type UpdateRateBodyData struct {
+	Rate       string      `json:"rate"`
+	CustomData interface{} `json:"customData,omitempty"`
+}
+```
+
+
+#### Body Function
+
+For Create;
+
+```go
+slyk.UpdateRateBody()
+```
+
+Append List;
+
+```go
+SetRate(rate string) 
+SetCustomData(customData interface{}) 
+```
+
+### Create Rate
+
+Function;
+
+```go
+response,err := client.CreateRate(*CreateRateBodyData)
+```
+
+#### Struct
+
+```go
+type CreateRateBodyData struct {
+	BaseAssetCode  string      `json:"baseAssetCode"`
+	QuoteAssetCode string      `json:"quoteAssetCode"`
+	Rate           string      `json:"rate"`
+	CustomData     interface{} `json:"customData,omitempty"`
+}
+```
+
+
+#### Body Function
+
+For Create;
+
+```go
+slyk.CreateRateBody()
+```
+
+Append List;
+
+```go
+SetBaseAssetCode(baseAssetCode string)
+SetQuoteAssetCode(quoteAssetCode string)
+SetRate(rate string)
+SetCustomData(customData interface{})
+```
+
+### Delete Rate
+
+```go
+response,err := client.DeleteRate({{BASE_ASSET_CODE}},{{QUOTE_ASSET_CODE}})
+``

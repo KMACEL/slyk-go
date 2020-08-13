@@ -33,7 +33,7 @@ func TestGetRatesWithBaseAssetCodeAndQuoteAssetCode(t *testing.T) {
 func TestUpdateRate(t *testing.T) {
 	tst := "TestUpdateRate"
 
-	returnValue, err := getClient().UpdateRate("btc", "eth", "49")
+	returnValue, err := getClient().UpdateRate("btc", "eth", &UpdateRateBodyData{Rate: "49"})
 
 	ReturnAndError(t, tst, returnValue, err)
 }
