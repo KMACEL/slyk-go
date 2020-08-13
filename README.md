@@ -48,9 +48,12 @@
 7. [Payment Method](#movement)
 	1. [Get Payment Methods](#get-payment-methods)
 	2. [Get Payment Method With Slug](#get-payment-method-with-slug)
-
-
-
+8. [Invites](#invites)
+	1. [Get Invites](#get-invites)
+	2. [Get Invite With Code](#get-invite-with-code)
+	3. [Get Invite With Code For Validate](#get-invite-with-code-for-validate)
+	4. [Create Invite](#create-invite)
+	5. [Cancel Invite](#cancel-invite)
 
 ## Create Client
 
@@ -1303,3 +1306,111 @@ It brings 1 payment medhod information whose slug is given.
 ```go
 response,err := client.GetPaymentMethodsWithSlug({{SLUG}})
 ```
+
+## Invites
+
+### Get Invites
+
+Brings up the invites list.
+
+```go
+response,err := client.GetInvites({{OPTIONAL_FILTER}})
+```
+
+#### Filter List
+
+For Create;
+
+```go
+slyk.GetInvitesFilter()
+```
+
+Append Filters;
+
+```go
+SetGenericQueryParameter(key string, value interface{}) 
+SetCode(code string) 
+SetCodeWithIN(code ...string) 
+SetCodeWithNIN(code ...string) 
+SetExpiredAtWithGTE(date string) 
+SetExpiredAtWithLTE(date string) 
+SetInvitedEmail(invitedEmail string) 
+SetInvitedEmailWithIN(invitedEmail ...string) 
+SetInvitedEmailWithNIN(invitedEmail ...string) 
+SetInvitedUserID(invitedEmail string) 
+SetInvitedUserIDWithIN(invitedUserID ...string) 
+SetInvitedUserIDWithNIN(invitedUserID ...string) 
+SetInviterUserID(inviterUserID string) 
+SetInviterUserIDWithIN(inviterUserID ...string) 
+SetInviterUserIDWithNIN(inviterUserID ...string) 
+SetStatus(status string) 
+SetStatusWithIN(status ...string) 
+SetStatusWithNIN(status ...string) 
+SetType(typeInvite string) 
+SetSortWithCreatedAt() 
+SetSortWithCreatedAtReverse() 
+SetSortWithExpiredAt() 
+SetSortWithExpiredAtReverse() 
+SetSortWithUpdatedAt() 
+SetSortWithUpdatedAtReverse() 
+SetPageSize(size int) 
+SetPageNumber(number int) 
+```
+
+### Get Invite With Code
+
+It brings 1 invite information whose slug is given.
+
+```go
+response,err := client.GetInviteWithCode({{INVITE_CODE}})
+```
+
+### Get Invite With Code For Validate
+
+
+```go
+response,err := client.GetInviteWithCodeForValidate({{INVITE_CODE}})
+```
+
+
+### Create Invite
+
+Updates the asset information.
+
+Function;
+
+```go
+response,err := client.CreateInvite(*CreateInviteDataBody) 
+```
+
+#### Struct
+
+```go
+type CreateInviteDataBody struct {
+	Email         string `json:"email,omitempty"`
+	InviterUserID string `json:"inviterUserId,omitempty"`
+}
+```
+
+#### Body Function
+
+For Create;
+
+```go
+slyk.CreateInviteBody()
+```
+
+Append List;
+
+```go
+SetEmail(email string)
+SetInviterUserID(inviterUserID string)
+```
+
+### Cancel Invite
+
+```go
+response,err := client.CancelInvite({{INVITE_CODE}})
+```
+
+

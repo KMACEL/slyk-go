@@ -42,13 +42,13 @@ func (g *getInviteFilter) SetCodeWithNIN(code ...string) *getInviteFilter {
 }
 
 // Format : 2019-07-21
-func (g *getMovementFilter) SetExpiredAtWithGTE(date string) *getMovementFilter {
+func (g *getInviteFilter) SetExpiredAtWithGTE(date string) *getInviteFilter {
 	(*g)["expiredAt"] = "gte:" + date
 	return g
 }
 
 // Format : 2019-07-21
-func (g *getMovementFilter) SetExpiredAtWithLTE(date string) *getMovementFilter {
+func (g *getInviteFilter) SetExpiredAtWithLTE(date string) *getInviteFilter {
 	(*g)["expiredAt"] = "lte:" + date
 	return g
 }
@@ -149,15 +149,15 @@ func (g *getInviteFilter) SetSortWithUpdatedAtReverse() *getInviteFilter {
 }
 
 // Defines the number of results per page. Default = 30.
-func (u *getInviteFilter) SetPageSize(size int) *getInviteFilter {
-	(*u)["page[size]"] = strconv.Itoa(size)
-	return u
+func (g *getInviteFilter) SetPageSize(size int) *getInviteFilter {
+	(*g)["page[size]"] = strconv.Itoa(size)
+	return g
 }
 
 // Defines the number of the page to retrieve. Default = 1
-func (u *getInviteFilter) SetPageNumber(number int) *getInviteFilter {
-	(*u)["page[number]"] = strconv.Itoa(number)
-	return u
+func (g *getInviteFilter) SetPageNumber(number int) *getInviteFilter {
+	(*g)["page[number]"] = strconv.Itoa(number)
+	return g
 }
 
 /*
@@ -170,7 +170,7 @@ func (u *getInviteFilter) SetPageNumber(number int) *getInviteFilter {
 */
 
 // CreateInvitesBody is
-func CreateInvitesBody() *CreateInviteDataBody {
+func CreateInviteBody() *CreateInviteDataBody {
 	return &CreateInviteDataBody{}
 }
 
