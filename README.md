@@ -42,6 +42,9 @@
 	2. [Get Asset With Code](#get-asset-with-code)
 	3. [Update Assets With Code](#update-assets-with-code)
 	4. [Create Asset](#create-asset)
+6. [Movement](#movement)
+	1. [Get Movements](#get-movements)
+	2. [Get Movement With ID](#get-movement-with-id)
 
 ## Create Client
 
@@ -273,7 +276,7 @@ GetUser is returns the Slyk user list. This function returns user information an
 if you do not use a filter, '30' users' information is received.
 
 ```go
-response,err := client.GetUsers({{OPTINAL_FILTER}})
+response,err := client.GetUsers({{OPTIONAL_FILTER}})
 ```
 
 #### Filter List
@@ -444,7 +447,7 @@ err := client.ChangePassword({{USER_ID}},{{NEW_PASSWORD}})
 Brings up the wallet list.
 
 ```go
-response,err := client.GetWallets({{OPTINAL_FILTER}})
+response,err := client.GetWallets({{OPTIONAL_FILTER}})
 ```
 
 #### Filter List
@@ -484,7 +487,7 @@ response,err := client.GetWalletWithID({{WALLET_ID}})
 Brings wallet activities.
 
 ```go
-response,err := client.GetWalletActivity({{OPTINAL_FILTER}})
+response,err := client.GetWalletActivity({{OPTIONAL_FILTER}})
 ```
 
 
@@ -525,7 +528,7 @@ SetAvailableIncludeWithWallets()
 Returns the activities of 1 wallet given the id.
 
 ```go
-response,err := client.GetWalletActivityWithID({{WALLET_ID}}},{{OPTINAL_FILTER}})
+response,err := client.GetWalletActivityWithID({{WALLET_ID}}},{{OPTIONAL_FILTER}})
 ```
 
 #### Filter List
@@ -565,7 +568,7 @@ SetAvailableIncludeWithWallets()
 Brings balance information.
 
 ```go
-response,err := client.GetWalletBalance({{OPTINAL_FILTER}})
+response,err := client.GetWalletBalance({{OPTIONAL_FILTER}})
 ```
 
 
@@ -592,7 +595,7 @@ Its wallet id brings the balance information given.
 
 
 ```go
-response,err := client.GetWalletBalanceWithID({{WALLET_ID}}},{{OPTINAL_FILTER}})
+response,err := client.GetWalletBalanceWithID({{WALLET_ID}}},{{OPTIONAL_FILTER}})
 ```
 
 
@@ -619,7 +622,7 @@ Brings up a list of wallet Movements.
 
 
 ```go
-response,err := client.GetWalletMovements({{WALLET_ID}}},{{OPTINAL_FILTER}})
+response,err := client.GetWalletMovements({{WALLET_ID}}},{{OPTIONAL_FILTER}})
 ```
 
 
@@ -651,7 +654,7 @@ Brings up a list of Wallet Transactions
 
 
 ```go
-response,err := client.GetWalletTransactions({{WALLET_ID}}},{{OPTINAL_FILTER}})
+response,err := client.GetWalletTransactions({{WALLET_ID}}},{{OPTIONAL_FILTER}})
 ```
 
 
@@ -766,7 +769,7 @@ SetCustomData(customData interface{})
 Returns transactions data.
 
 ```go
-response,err := client.GetTransactions({{OPTINAL_FILTER}})
+response,err := client.GetTransactions({{OPTIONAL_FILTER}})
 ```
 
 #### Filter List
@@ -1053,7 +1056,7 @@ SetOriginAddress(originAddress string)
 Brings up the assets list.
 
 ```go
-response,err := client.GetAssets({{OPTINAL_FILTER}})
+response,err := client.GetAssets({{OPTIONAL_FILTER}})
 ```
 
 #### Filter List
@@ -1185,4 +1188,72 @@ SetDecimalPlaces(decimalPlaces int)
 SetEnabled(enabled bool) 
 SetSymbol(sysmbol string) 
 SetType(typeParam string) 
+```
+
+## Movement
+
+### Get Movements
+
+Brings up the movements list.
+
+```go
+response,err := client.GetMovements({{OPTIONAL_FILTER}})
+```
+
+#### Filter List
+
+For Create;
+
+```go
+slyk.GetMovementFilter()
+```
+
+Append Filters;
+
+```go
+SetGenericQueryParameter(key string, value interface{})
+SetAssetCode(assetCode string)
+SetAssetCodeWithIN(assetCode ...string)
+SetAssetCodeWithNIN(assetCode ...string)
+SetCreatedAtWithGTE(date string)
+SetCreatedAtWithLTE(date string)
+SetID(id string)
+SetIDWithIN(id ...string)
+SetIDWithNIN(id ...string)
+SetTransaction(transactionID string)
+SetTransactionIDWithIN(transactionID ...string)
+SetTransactionIDWithNIN(transactionID ...string)
+SetWalletID(walletID string)
+SetWalletIDWithIN(walletID ...string)
+SetWalletIDWithNIN(walletID ...string)
+SetSortWithCreatedAt()
+SetSortWithCreatedAtReverse()
+SetSortWithAmount(amount string)
+SetSortWithAmountReverse(amount string)
+SetAvailableTransactionWithUser()
+SetPageSize(size int)
+SetPageNumber(number int)
+```
+
+### Get Movement With ID
+
+It brings 1 movement information whose id is given.
+
+```go
+response,err := client.GetMovementWithID({{MOVEMENT_ID}},{{OPTIONAL_FILTER}})
+```
+
+#### Filter List
+
+For Create;
+
+```go
+slyk.GetMovementWithIDFilter()
+```
+
+Append Filters;
+
+```go
+SetGenericQueryParameter(key string, value interface{}) 
+SetAvailableTransactionWithUser() 
 ```
