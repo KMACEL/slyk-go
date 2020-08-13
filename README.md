@@ -1,15 +1,33 @@
 # Slyk GO
 
 ## Index
-1. [Create Client](#CreateClient)
-2. [Working Principle](#WorkingPrinciple)
-	1. [Get Functions](#GetFunctions)
-	2. [Update Functions](#UpdateFunctions)
-	3. [Create Functions](#CreateFunctions)
-	
+1. [Create Client](#create-client)
+2. [Working Principle](#working-principle)
+	1. [Get Functions](#get-functions)
+	2. [Update Functions](#update-functions)
+	3. [Create Functions](#create-functions)
+3. [Working Principle](#user)
+	1. [Get User](#get-user)
+	2. [Get User With ID](#get-user-with-id)
+	3. [Update User](#update-user)
+	4. [Create User](#create-user)
+	5. [Set User Approve](#set-user-approve)
+	6. [Set User Block](#set-user-block)
+	7. [Set User Unblock](#set-user-unblock)
+	8. [Change Password](#change-password)
+3. [Wallet](#wallet)
+	1. [Get Wallets](#get-wallets)
+	2. [Get Wallet With ID](#get-wallet-with-id)
+	3. [Get Wallet Activity](#get-wallet-activity)
+	4. [Get Wallet Activity With ID](#get-wallet-activity-with-id)
+	5. [Get Wallet Balance](#get-wallet-balance)
+	6. [Get Wallet Balance With ID](#get-wallet-balance-with-id)
+	7. [Get Wallet Movements](#get-wallet-movements)
+	8. [Get Wallet Transactions](#get-wallet-transactions)
+	9. [Update Wallet](#update-wallet)
+	10. [Create Wallet](#create-wallet)
 
-
-## Create Client  <a name="CreateClient"></a>
+## Create Client
 
 To use the slyk-go library, it is necessary to create a client. You need to give this client an api key.
 
@@ -29,12 +47,11 @@ func main() {
 }
 ```
 
-## Working Principle <a name="WorkingPrinciple"></a>
+## Working Principle 
 
 This library has been prepared with reference to "https://developers.slyk.io/slyk/reference/endpoints". The functions in this library are used for communication with the endpoints at this address.
 
-### Get Functions <a name="GetFunctions"></a>
-
+### Get Functions 
 Get functions are used to fetch information.
 
 #### Get Functions Filter  
@@ -109,7 +126,7 @@ SetAssetCodeWithNIN(assetCode ...string)
 3. "nin": There can be many data entries. The list of non-parameters entered is brought.
 
 
-### Update Functions <a name="UpdateFunctions"></a>
+### Update Functions
 
 Functions used to update data. There are two types of usage.
 
@@ -164,7 +181,7 @@ client.UpdateUser("cf99e4d8-bc64-4a5c-80a4-dd1e25e2018d",
 ```
 
 
-### Create Functions <a name="CreateFunctions"></a>
+### Create Functions
 
 Used to make a new recording.  There are two types of usage.
 
@@ -296,7 +313,7 @@ Function;
 response,err := client.UpdateUser({{USER_ID}}, *UpdateUserData) 
 ```
 
-### Struct
+#### Struct
 
 ```go
 type UpdateUserData struct {
@@ -306,7 +323,7 @@ type UpdateUserData struct {
 }
 ```
 
-### Body Function
+#### Body Function
 
 For Create;
 
@@ -334,7 +351,7 @@ response,err := client.CreateUser(*CreateUserData)
 ```
 
 
-### Struct
+#### Struct
 
 ```go
 type CreateUserData struct {
@@ -351,7 +368,7 @@ type CreateUserData struct {
 }
 ```
 
-### Body Function
+#### Body Function
 
 For Create;
 
@@ -664,7 +681,7 @@ Function;
 response,err := client.UpdateWallet({{USER_ID}}, *UpdateWalletData) 
 ```
 
-### Struct
+#### Struct
 
 ```go
 type UpdateWalletData struct {
@@ -674,7 +691,7 @@ type UpdateWalletData struct {
 }
 ```
 
-### Body Function
+#### Body Function
 
 For Create;
 
@@ -700,7 +717,7 @@ Function;
 response,err := client.CreateWallet(*CreateWalletData)
 ```
 
-### Struct
+#### Struct
 
 ```go
 type CreateWalletData struct {
@@ -711,7 +728,7 @@ type CreateWalletData struct {
 }
 ```
 
-### Body Function
+#### Body Function
 
 For Create;
 
