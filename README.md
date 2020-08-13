@@ -90,18 +90,9 @@ This is the function that brings up the User list. **"filter ...\*getUserFilter"
 
 ```go
 func (c Client) GetUsers(filter ...*getUserFilter) (*Users, error) {
-	getBody, err := c.genericGetQuery(linkUsers, merge(filter))
-	if err != nil {
-		return nil, err
-	}
-
-	var users Users
-	errUnmarshal := json.Unmarshal(getBody, &users)
-	if errUnmarshal != nil {
-		return nil, errUnmarshal
-	}
-
-	return &users, nil
+	.
+	.
+	.
 }
 ```
 
@@ -162,18 +153,9 @@ Take the "UpdateUser" function for example. The first parameter is the id of the
 
 ```go
 func (c Client) UpdateUser(userID string, updateUserData *UpdateUserData) (*User, error) {
-	getBody, err := c.genericPatchQuery(linkUsers+"/"+userID, updateUserData)
-	if err != nil {
-		return nil, err
-	}
-
-	var user User
-	errUnmarshal := json.Unmarshal(getBody, &user)
-	if errUnmarshal != nil {
-		return nil, errUnmarshal
-	}
-
-	return &user, nil
+	.
+	.
+	.
 }
 ```
 
@@ -217,18 +199,9 @@ Take the "CreateUser" function for example. As data, the struct to be created is
 
 ```go
 func (c Client) CreateUser(createUserdata *CreateUserData) (*User, error) {
-	getBody, err := c.genericPostQuery(linkUsers, createUserdata)
-	if err != nil {
-		return nil, err
-	}
-
-	var user User
-	errUnmarshal := json.Unmarshal(getBody, &user)
-	if errUnmarshal != nil {
-		return nil, errUnmarshal
-	}
-
-	return &user, nil
+	.
+	.
+	.
 }
 ```
 
