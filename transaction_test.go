@@ -46,7 +46,7 @@ func TestTransactionConfirmWithID(t *testing.T) {
 func TestSetTransactionFailWithID(t *testing.T) {
 	tst := "TestSetTransactionFailWithID"
 
-	returnValue, err := getClient().SetTransactionFailWithID("70ec8e59-05c4-4a5e-881b-fa4db1b2d172", &TransactionFailDataBody{Reason: "Problem"})
+	returnValue, err := getClient().SetTransactionFailWithID("ed7c86bd-6105-4dcb-8791-9f6627887bc9", &TransactionFailDataBody{Reason: "Problem"})
 
 	ReturnAndError(t, tst, returnValue, err)
 }

@@ -93,7 +93,6 @@ func (c Client) CancelInvite(inviteCode string) (*Invite, error) {
 
 // SendInvite is
 // https://developers.slyk.io/slyk/reference/endpoints#post-invites-send
-// TODO : çalışmıyor
 func (c Client) SendInvite(sendInviteDataBody *SendInviteDataBody) error {
 	_, err := c.genericPostQuery(linkInvites+"/send", sendInviteDataBody)
 	return err

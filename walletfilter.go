@@ -593,7 +593,6 @@ func (c *CreateWalletData) SetLocked(locked bool) *CreateWalletData {
 	return c
 }
 
-// TODO Çalışmıyor bakılacak
 func (c *CreateWalletData) SetCustomData(customData interface{}) *CreateWalletData {
 	c.CustomData = customData
 	return c

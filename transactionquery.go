@@ -76,7 +76,6 @@ func (c Client) SetTransactionConfirmWithID(transactionID string) (*Transaction,
 // SetTransactionFailWithID is
 // https://developers.slyk.io/slyk/reference/endpoints#post-transactions-id-fail
 func (c Client) SetTransactionFailWithID(transactionID string, transactionFailDataBody *TransactionFailDataBody) (*Transaction, error) {
-	// todo transactionFailDataBody çalışmıyor
 	getBody, err := c.genericPostQuery(linkTransactions+"/"+transactionID+"/fail", transactionFailDataBody)
 	if err != nil {
 		return nil, err

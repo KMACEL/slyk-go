@@ -49,7 +49,7 @@ func TestGetUsers(t *testing.T) {
 func TestGetUserWithID(t *testing.T) {
 	tst := "TestGetUserWithID"
 
-	returnValue, err := getClient().GetUserWithID("cf99e4d8-bc64-4a5c-80a4-dd1e25e2018d")
+	returnValue, err := getClient().GetUserWithID("1bd9b033-5e8a-4d15-bfde-7610f7bd32eb")
 
 	ReturnAndError(t, tst, returnValue, err)
 }
@@ -57,10 +57,11 @@ func TestGetUserWithID(t *testing.T) {
 func TestUpdateUser(t *testing.T) {
 	tst := "TestUpdateUser"
 
-	returnValue, err := getClient().UpdateUser("cf99e4d8-bc64-4a5c-80a4-dd1e25e2018d",
+	returnValue, err := getClient().UpdateUser("1bd9b033-5e8a-4d15-bfde-7610f7bd32eb",
 		UpdateUserParam().
-			SetName("Mert").
-			SetLocale("en"))
+			SetName("Mert A").
+			SetLocale("en").
+			SetCustomData(map[string]interface{}{"Test": "Mert"}))
 
 	ReturnAndError(t, tst, returnValue, err)
 }

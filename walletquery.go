@@ -142,7 +142,6 @@ func (c Client) GetWalletBalance(filter ...*getWalletBalanceFilter) (*WalletBala
 
 // UpdateWallet is
 // https://developers.slyk.io/slyk/reference/endpoints#patch-wallets-id
-// TODO : locked Çalışmıyror
 func (c Client) UpdateWallet(walletID string, updateWallet *UpdateWalletData) (*Wallet, error) {
 	getBody, err := c.genericPatchQuery(linkWallets+"/"+walletID, updateWallet)
 	if err != nil {

@@ -7,3 +7,5 @@
 5. Paymet Method : GetPaymentMethods filter dont working
 6. Rate : GetRates filter dont working
 7. Transaction : CreateTransactionPay destination_wallet_is_locked
+8. Transaction : SetTransactionFailWithID Reason dont working
+9. Wallet : UpdateWallet Returns locked to true, but not false.

@@ -146,7 +146,6 @@ func (p *UpdateUserData) SetLocale(locale string) *UpdateUserData {
 	return p
 }
 
-// TODO Çalışmıyor bakılacak
 func (p *UpdateUserData) SetCustomData(customData interface{}) *UpdateUserData {
 	p.CustomData = customData
 	return p
