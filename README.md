@@ -169,6 +169,9 @@ SetAssetCodeWithNIN(assetCode ...string)
 2. "in": There can be many data entries. A list of those matching the entered parameters is brought.
 3. "nin": There can be many data entries. The list of non-parameters entered is brought.
 
+Note for page filters :
+* PageSize = Defines the number of results per page. Default = 30.
+* Page Number = Defines the number of the page to retrieve. Default = 1
 
 ### Update Functions
 
@@ -370,6 +373,8 @@ SetCustomData(customData interface{})
 
 Used to register new users.
 
+Note ;
+* Login password. It must contain: 1 capital letter; 1 lower letter; 1 digit; at least 8 characters.
 
 Function;
 
@@ -421,6 +426,7 @@ SetVerified(verified bool)
 ### Set User Approve
 
 It performs the approval process. It takes "user id" as parameter.
+An user that is not approved is unable to login.
 
 ```go
 err := client.SetUserApprove({{USER_ID}})
@@ -429,6 +435,7 @@ err := client.SetUserApprove({{USER_ID}})
 ### Set User Block
 
 It performs the block process. It takes "user id" as parameter.
+An user that is blocked is unable to login.
 
 ```go
 err := client.SetUserBlock({{USER_ID}})
@@ -445,6 +452,7 @@ err := client.SetUserUnblock({{USER_ID}})
 ### Change Password
 
 it is used to change the user password.
+New password. It must contain: 1 capital letter; 1 lower letter; 1 digit; at least 8 characters.
 
 ```go
 err := client.ChangePassword({{USER_ID}},{{NEW_PASSWORD}})
@@ -490,6 +498,8 @@ SetSortWithCreatedAtReverse()
 ### Get Wallet With ID
 
 The wallet id returns the information of a given wallet.
+Convenience endepoint endpoint to get a paginated list of transactions where the wallet id may be either the destinationWalletId or the originWalletId of the Transaction object.
+
 
 ```go
 response,err := client.GetWalletWithID({{WALLET_ID}}) 
@@ -579,6 +589,7 @@ SetAvailableIncludeWithWallets()
 ### Get Wallet Balance
 
 Brings balance information.
+Retrieves a payspace's balance for the various assets it contains. Only assets that were ever transacted on the wallet will be shown (even if their balance is currently zero).
 
 ```go
 response,err := client.GetWalletBalance({{OPTIONAL_FILTER}})

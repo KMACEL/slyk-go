@@ -1,8 +1,7 @@
 # TODO List
 
 1. Address: To be tested after Coinbase integration.
-2. Asset Create : Type control
-3. Invite : TestGetInviteWithCodeForValidate function control
+3. Invite : GetInviteWithCodeForValidate function control
 4. Invite : GetInviteWithCodeForValidate function control (responde null)
 5. Paymet Method : GetPaymentMethods filter dont working
 6. Rate : GetRates filter dont working
