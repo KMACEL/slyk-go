@@ -7,7 +7,7 @@ func TestGetPaymentMethods(t *testing.T) {
 
 	returnValue, err := getClient().GetPaymentMethods(
 		GetPaymentMedhodFilter().
-			SetEnabled(false))
+			SetSlug("stripe"))
 
 	ReturnAndError(t, tst, returnValue, err)
 }

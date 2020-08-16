@@ -68,8 +68,8 @@ func (g *getInviteFilter) SetInvitedEmailWithNIN(invitedEmail ...string) *getInv
 	return g
 }
 
-func (g *getInviteFilter) SetInvitedUserID(invitedEmail string) *getInviteFilter {
-	(*g)["filter[invitedUserId]"] = invitedEmail
+func (g *getInviteFilter) SetInvitedUserID(invitedUserId string) *getInviteFilter {
+	(*g)["filter[invitedUserId]"] = invitedUserId
 	return g
 }
 

@@ -9,11 +9,11 @@ func TestGetUsers(t *testing.T) {
 	ReturnAndError(t, tst, returnValue, err)
 
 	/*
-		returnValue, err := getClient().GetUsers(GetUserFilter().SetEmail("mertacel+monoji@gmail.com"))
+		returnValue, err := getClient().GetUsers(GetUserFilter().SetEmail("mertacel@gmail.com"))
 		ReturnAndError(t, tst, returnValue, err)
 
 			returnValue, err = getClient().GetUsers(GetUserFilter().
-				SetEmail("mert@monoji.io").
+				SetEmail("mertacel@gmail.com").
 				SetBlocked(true))
 			ReturnAndError(t, tst, returnValue, err)
 
@@ -41,7 +41,7 @@ func TestGetUsers(t *testing.T) {
 			returnValue, err := getClient().GetUsers(GetUserFilter().SetRole("owner"))
 			ReturnAndError(t, tst, returnValue, err)
 
-			returnValue, err := getClient().GetUsers(GetUserFilter().SetVerified(true).SetEmail("mert@monoji.io"), GetUserFilter().SetVerified(true).SetReferralCode("RV2EXGMMVXG"))
+			returnValue, err := getClient().GetUsers(GetUserFilter().SetVerified(true).SetEmail("mertacel@gmail.com"), GetUserFilter().SetVerified(true).SetReferralCode("RV2EXGMMVXG"))
 			ReturnAndError(t, tst, returnValue, err)
 	*/
 }
@@ -71,8 +71,8 @@ func TestCreateUser(t *testing.T) {
 
 	returnValue, err := getClient().CreateUser(CreateUserParameter().
 		SetName("Mert").
-		SetEmail("mertacel+monoji7@gmail.com").
-		SetPassword("123456789.A").
+		SetEmail("mertacel@gmail.com").
+		SetPassword("12345678.aA").
 		SetCustomData(map[string]interface{}{"name": "mert"}).
 		SetVerified(true).
 		SetApproved(true).
@@ -109,7 +109,7 @@ func TestSetUserUnblock(t *testing.T) {
 func TestChangePassword(t *testing.T) {
 	tst := "TestChangePassword"
 
-	err := getClient().ChangePassword("ff17a840-44de-4fdd-94aa-d7619c0aa01b", "12345678..aA")
+	err := getClient().ChangePassword("ff17a840-44de-4fdd-94aa-d7619c0aa01b", "12345678.aA")
 
 	OnlyError(t, tst, err)
 }

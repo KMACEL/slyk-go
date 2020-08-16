@@ -173,6 +173,21 @@ Note for page filters :
 * PageSize = Defines the number of results per page. Default = 30.
 * Page Number = Defines the number of the page to retrieve. Default = 1
 
+> **NOTE : In this document, the filters are located under "Filter List". "For Create;" Then comes the filter suitable for that function. "Filters That Can Be Added;" After, come filters that can be added to that filter.** 
+
+> **Example = client.GetUsers(slyk.GetUserFilter().SetEmail("mertacel@gmail.com").SetBlocked(true))**
+
+	client.GetUsers = API
+
+	slyk.GetUserFilter = Filter Creator
+
+	SetEmail : Filter ()
+
+	SetBlocked : Filter
+
+
+
+
 ### Update Functions
 
 Functions used to update data. There are two types of usage.
@@ -188,6 +203,8 @@ func (c Client) UpdateUser(userID string, updateUserData *UpdateUserData) (*User
 ```
 
 #### Method 1 - With Struct
+
+A struct is required for each "update" function. You can enter data directly with struct suitable for Update function and perform update operations.
 
 Update Struct : 
 
@@ -210,6 +227,7 @@ client.UpdateUser("cf99e4d8-bc64-4a5c-80a4-dd1e25e2018d", &slyk.UpdateUserData{
 ```
 
 #### Method 2 - With Methods
+You can assign parameters to be updated with a constructor method.
 
 ```go
 client.UpdateUser("cf99e4d8-bc64-4a5c-80a4-dd1e25e2018d",
@@ -217,7 +235,6 @@ client.UpdateUser("cf99e4d8-bc64-4a5c-80a4-dd1e25e2018d",
 			SetName("Mert").
 			SetLocale("en"))
 ```
-
 
 ### Create Functions
 
@@ -233,8 +250,10 @@ func (c Client) CreateUser(createUserdata *CreateUserData) (*User, error) {
 }
 ```
 
-
 #### Method 1 - With Struct
+
+
+A struct is required for each "create" function. You can enter data directly with struct suitable for Create function and perform create operations.
 
 Struct : 
 
@@ -263,6 +282,9 @@ client.CreateUser(&sly.CreateUserData{
 ```
 
 #### Method 2 - With Methods
+
+You can assign parameters to be created with a constructor method.
+
 
 ```go
 client.CreateUser(slyk.CreateUserParameter().
@@ -300,7 +322,7 @@ For Create;
 slyk.GetUserFilter()
 ```
 
-Append Filters;
+Filters That Can Be Added;
 
 ```go
 SetGenericQueryParameter(key string, value interface{})
@@ -479,7 +501,7 @@ For Create;
 slyk.GetWalletFilter()
 ```
 
-Append Filters;
+Filters That Can Be Added;
 
 ```go
 SetGenericQueryParameter(key string, value interface{})
@@ -522,7 +544,7 @@ For Create;
 slyk.GetWalletActivityFilter()
 ```
 
-Append Filters;
+Filters That Can Be Added;
 
 ```go
 SetGenericQueryParameter(key string, value interface{})
@@ -562,7 +584,7 @@ For Create;
 slyk.GetWalletActivtyWithIDFilter()
 ```
 
-Append Filters;
+Filters That Can Be Added;
 
 ```go
 SetGenericQueryParameter(key string, value interface{}) 
@@ -604,7 +626,7 @@ For Create;
 slyk.GetWalletBalanceWithIDFilter()
 ```
 
-Append Filters;
+Filters That Can Be Added;
 
 ```go
 SetGenericQueryParameter(key string, value interface{}) 
@@ -631,7 +653,7 @@ For Create;
 slyk.GetWalletBalanceWithIDFilter()
 ```
 
-Append Filters;
+Filters That Can Be Added;
 
 ```go
 SetGenericQueryParameter(key string, value interface{}) 
@@ -658,7 +680,7 @@ For Create;
 slyk.GetWalletMovementFilter()
 ```
 
-Append Filters;
+Filters That Can Be Added;
 
 ```go
 SetGenericQueryParameter(key string, value interface{}) 
@@ -690,7 +712,7 @@ For Create;
 slyk.GetWalletTransactionsFilter()
 ```
 
-Append Filters;
+Filters That Can Be Added;
 
 ```go
 SetGenericQueryParameter(key string, value interface{}) 
@@ -807,7 +829,7 @@ For Create;
 slyk.GetTransactionsFilter()
 ```
 
-Append Filters;
+Filters That Can Be Added;
 
 ```go
 SetGenericQueryParameter(key string, value interface{})
@@ -1097,7 +1119,7 @@ For Create;
 slyk.GetAssetFilter()
 ```
 
-Append Filters;
+Filters That Can Be Added;
 
 ```go
 SetGenericQueryParameter(key string, value interface{}) 
@@ -1243,7 +1265,7 @@ For Create;
 slyk.GetMovementFilter()
 ```
 
-Append Filters;
+Filters That Can Be Added;
 
 ```go
 SetGenericQueryParameter(key string, value interface{})
@@ -1286,7 +1308,7 @@ For Create;
 slyk.GetMovementWithIDFilter()
 ```
 
-Append Filters;
+Filters That Can Be Added;
 
 ```go
 SetGenericQueryParameter(key string, value interface{}) 
@@ -1314,7 +1336,7 @@ For Create;
 slyk.GetPaymentMedhodFilter()
 ```
 
-Append Filters;
+Filters That Can Be Added;
 
 ```go
 SetGenericQueryParameter(key string, value interface{})
@@ -1356,7 +1378,7 @@ For Create;
 slyk.GetInvitesFilter()
 ```
 
-Append Filters;
+Filters That Can Be Added;
 
 ```go
 SetGenericQueryParameter(key string, value interface{}) 
@@ -1465,7 +1487,7 @@ For Create;
 slyk.GetRateFilter()
 ```
 
-Append Filters;
+Filters That Can Be Added;
 
 ```go
 SetGenericQueryParameter(key string, value interface{})
@@ -1593,7 +1615,7 @@ For Create;
 slyk.GetAddressFilter()
 ```
 
-Append Filters;
+Filters That Can Be Added;
 
 ```go
 SetGenericQueryParameter(key string, value interface{})
