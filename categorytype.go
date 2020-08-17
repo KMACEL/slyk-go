@@ -1,0 +1,23 @@
+package slyk
+
+import "time"
+
+type Categories struct {
+	Data  []CategoryData `json:"data"`
+	Total int            `json:"total"`
+}
+
+type Category struct {
+	Data CategoryData `json:"data"`
+}
+
+type CategoryData struct {
+	CreatedAt   time.Time              `json:"createdAt"`
+	CustomData  map[string]interface{} `json:"customData"`
+	Description string                 `json:"description"`
+	ID          string                 `json:"id"`
+	ImageURL    string                 `json:"imageUrl"`
+	Metadata    map[string]interface{} `json:"metadata"`
+	Title       string                 `json:"title"`
+	UpdatedAt   time.Time              `json:"updatedAt"`
+}

@@ -2,6 +2,7 @@ package slyk
 
 import (
 	"encoding/json"
+	"fmt"
 	"unsafe"
 
 	"github.com/go-resty/resty/v2"
@@ -27,6 +28,7 @@ func (c Client) genericGetQuery(link string, queryParams map[string]string) ([]b
 		SetHeader(headerApiKey, c.apiKey).
 		Get(link)
 
+	fmt.Println(Byte2String(resp.Body()))
 	if err != nil {
 		return nil, err
 	}
@@ -198,6 +200,12 @@ func merge(m interface{}) map[string]string {
 			}
 		}
 	case []*getInviteFilter:
+		for i := range getMap {
+			for k, v := range *getMap[i] {
+				mmap[k] = v
+			}
+		}
+	case []*getCategoriesFilter:
 		for i := range getMap {
 			for k, v := range *getMap[i] {
 				mmap[k] = v
