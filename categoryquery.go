@@ -35,3 +35,20 @@ func (c Client) GetCategoryWithID(cateoryID string) (*Category, error) {
 
 	return &category, nil
 }
+
+// UpdateCategoryWithID is
+// https://developers.slyk.io/slyk/reference/endpoints#patch-categories-id is
+func (c Client) UpdateCategoryWithID(cateoryID string, updateCategoryDataBody *UpdateCategoryDataBody) (*Category, error) {
+	getBody, err := c.genericPatchQuery(linkCategories+"/"+cateoryID, updateCategoryDataBody)
+	if err != nil {
+		return nil, err
+	}
+
+	var category Category
+	errUnmarshal := json.Unmarshal(getBody, &category)
+	if errUnmarshal != nil {
+		return nil, errUnmarshal
+	}
+
+	return &category, nil
+}

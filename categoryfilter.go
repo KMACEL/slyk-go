@@ -118,3 +118,41 @@ func (g *getCategoriesFilter) SetPageNumber(number int) *getCategoriesFilter {
 	(*g)["page[number]"] = strconv.Itoa(number)
 	return g
 }
+
+/*
+██╗   ██╗██████╗ ██████╗  █████╗ ████████╗███████╗         ██████╗ █████╗ ████████╗███████╗ ██████╗  ██████╗ ██████╗ ██╗   ██╗        ██████╗  █████╗ ████████╗ █████╗         ███████╗ ██████╗ ██████╗         ██████╗  ██████╗ ██████╗ ██╗   ██╗
+██║   ██║██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝██╔════╝        ██╔════╝██╔══██╗╚══██╔══╝██╔════╝██╔════╝ ██╔═══██╗██╔══██╗╚██╗ ██╔╝        ██╔══██╗██╔══██╗╚══██╔══╝██╔══██╗        ██╔════╝██╔═══██╗██╔══██╗        ██╔══██╗██╔═══██╗██╔══██╗╚██╗ ██╔╝
+██║   ██║██████╔╝██║  ██║███████║   ██║   █████╗          ██║     ███████║   ██║   █████╗  ██║  ███╗██║   ██║██████╔╝ ╚████╔╝         ██║  ██║███████║   ██║   ███████║        █████╗  ██║   ██║██████╔╝        ██████╔╝██║   ██║██║  ██║ ╚████╔╝
+██║   ██║██╔═══╝ ██║  ██║██╔══██║   ██║   ██╔══╝          ██║     ██╔══██║   ██║   ██╔══╝  ██║   ██║██║   ██║██╔══██╗  ╚██╔╝          ██║  ██║██╔══██║   ██║   ██╔══██║        ██╔══╝  ██║   ██║██╔══██╗        ██╔══██╗██║   ██║██║  ██║  ╚██╔╝
+╚██████╔╝██║     ██████╔╝██║  ██║   ██║   ███████╗        ╚██████╗██║  ██║   ██║   ███████╗╚██████╔╝╚██████╔╝██║  ██║   ██║           ██████╔╝██║  ██║   ██║   ██║  ██║        ██║     ╚██████╔╝██║  ██║        ██████╔╝╚██████╔╝██████╔╝   ██║
+ ╚═════╝ ╚═╝     ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝         ╚═════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝   ╚═╝           ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝        ╚═╝      ╚═════╝ ╚═╝  ╚═╝        ╚═════╝  ╚═════╝ ╚═════╝    ╚═╝
+*/
+
+func UpdateCategoryDataForBody() *UpdateCategoryDataBody {
+	return &UpdateCategoryDataBody{}
+}
+
+func (u *UpdateCategoryDataBody) SetDescription(description string) *UpdateCategoryDataBody {
+	u.Description = description
+	return u
+}
+
+func (u *UpdateCategoryDataBody) SetImage(image string) *UpdateCategoryDataBody {
+	u.Image = image
+	return u
+}
+
+func (u *UpdateCategoryDataBody) SetTitle(title string) *UpdateCategoryDataBody {
+	u.Title = title
+	return u
+}
+
+func (u *UpdateCategoryDataBody) SetCustomData(customData string) *UpdateCategoryDataBody {
+	u.CustomData = customData
+	return u
+}
+
+func (u *UpdateCategoryDataBody) SetOrder(order string) *UpdateCategoryDataBody {
+	u.Order = order
+	return u
+}

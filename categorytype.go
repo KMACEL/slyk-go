@@ -21,3 +21,11 @@ type CategoryData struct {
 	Title       string                 `json:"title"`
 	UpdatedAt   time.Time              `json:"updatedAt"`
 }
+
+type UpdateCategoryDataBody struct {
+	Description string      `json:"description,omitempty"`
+	Image       string      `json:"image,omitempty"`
+	Title       string      `json:"title,omitempty"`
+	CustomData  interface{} `json:"customData"`
+	Order       string      `json:"order,omitempty"`
+}
