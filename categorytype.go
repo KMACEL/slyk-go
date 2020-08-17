@@ -29,3 +29,11 @@ type UpdateCategoryDataBody struct {
 	CustomData  interface{} `json:"customData"`
 	Order       string      `json:"order,omitempty"`
 }
+
+type CreateCategoryDataBody struct {
+	Description string      `json:"description,omitempty"`
+	Image       string      `json:"image,omitempty"`
+	Title       string      `json:"title"`
+	CustomData  interface{} `json:"customData"`
+	Order       string      `json:"order,omitempty"`
+}

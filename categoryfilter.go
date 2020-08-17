@@ -156,3 +156,41 @@ func (u *UpdateCategoryDataBody) SetOrder(order string) *UpdateCategoryDataBody 
 	u.Order = order
 	return u
 }
+
+/*
+ ██████╗██████╗ ███████╗ █████╗ ████████╗███████╗         ██████╗ █████╗ ████████╗███████╗ ██████╗  ██████╗ ██████╗ ██╗   ██╗        ██████╗  █████╗ ████████╗ █████╗         ███████╗ ██████╗ ██████╗         ██████╗  ██████╗ ██████╗ ██╗   ██╗
+██╔════╝██╔══██╗██╔════╝██╔══██╗╚══██╔══╝██╔════╝        ██╔════╝██╔══██╗╚══██╔══╝██╔════╝██╔════╝ ██╔═══██╗██╔══██╗╚██╗ ██╔╝        ██╔══██╗██╔══██╗╚══██╔══╝██╔══██╗        ██╔════╝██╔═══██╗██╔══██╗        ██╔══██╗██╔═══██╗██╔══██╗╚██╗ ██╔╝
+██║     ██████╔╝█████╗  ███████║   ██║   █████╗          ██║     ███████║   ██║   █████╗  ██║  ███╗██║   ██║██████╔╝ ╚████╔╝         ██║  ██║███████║   ██║   ███████║        █████╗  ██║   ██║██████╔╝        ██████╔╝██║   ██║██║  ██║ ╚████╔╝
+██║     ██╔══██╗██╔══╝  ██╔══██║   ██║   ██╔══╝          ██║     ██╔══██║   ██║   ██╔══╝  ██║   ██║██║   ██║██╔══██╗  ╚██╔╝          ██║  ██║██╔══██║   ██║   ██╔══██║        ██╔══╝  ██║   ██║██╔══██╗        ██╔══██╗██║   ██║██║  ██║  ╚██╔╝
+╚██████╗██║  ██║███████╗██║  ██║   ██║   ███████╗        ╚██████╗██║  ██║   ██║   ███████╗╚██████╔╝╚██████╔╝██║  ██║   ██║           ██████╔╝██║  ██║   ██║   ██║  ██║        ██║     ╚██████╔╝██║  ██║        ██████╔╝╚██████╔╝██████╔╝   ██║
+ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝         ╚═════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝   ╚═╝           ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝        ╚═╝      ╚═════╝ ╚═╝  ╚═╝        ╚═════╝  ╚═════╝ ╚═════╝    ╚═╝
+*/
+
+func CreateCategoryDataForBody() *CreateCategoryDataBody {
+	return &CreateCategoryDataBody{}
+}
+
+func (u *CreateCategoryDataBody) SetDescription(description string) *CreateCategoryDataBody {
+	u.Description = description
+	return u
+}
+
+func (u *CreateCategoryDataBody) SetImage(image string) *CreateCategoryDataBody {
+	u.Image = image
+	return u
+}
+
+func (u *CreateCategoryDataBody) SetTitle(title string) *CreateCategoryDataBody {
+	u.Title = title
+	return u
+}
+
+func (u *CreateCategoryDataBody) SetCustomData(customData interface{}) *CreateCategoryDataBody {
+	u.CustomData = customData
+	return u
+}
+
+func (u *CreateCategoryDataBody) SetOrder(order string) *CreateCategoryDataBody {
+	u.Order = order
+	return u
+}

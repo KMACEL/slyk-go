@@ -52,3 +52,20 @@ func (c Client) UpdateCategoryWithID(cateoryID string, updateCategoryDataBody *U
 
 	return &category, nil
 }
+
+// CreateCategory is
+// https://developers.slyk.io/slyk/reference/endpoints#post-categories
+func (c Client) CreateCategory(createCategoryDataBody *CreateCategoryDataBody) (*Category, error) {
+	getBody, err := c.genericPostQuery(linkCategories, createCategoryDataBody)
+	if err != nil {
+		return nil, err
+	}
+
+	var category Category
+	errUnmarshal := json.Unmarshal(getBody, &category)
+	if errUnmarshal != nil {
+		return nil, errUnmarshal
+	}
+
+	return &category, nil
+}

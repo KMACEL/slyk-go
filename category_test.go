@@ -27,3 +27,11 @@ func TestUpdateCategoryWithID(t *testing.T) {
 
 	ReturnAndError(t, tst, returnValue, err)
 }
+
+func TestCreateCategory(t *testing.T) {
+	tst := "TestCreateCategory"
+
+	returnValue, err := getClient().CreateCategory(CreateCategoryDataForBody().SetCustomData(map[string]interface{}{"mert": "category"}).SetTitle("Test1"))
+
+	ReturnAndError(t, tst, returnValue, err)
+}
