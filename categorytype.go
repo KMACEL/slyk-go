@@ -37,3 +37,7 @@ type CreateCategoryDataBody struct {
 	CustomData  interface{} `json:"customData"`
 	Order       string      `json:"order,omitempty"`
 }
+
+type CategoryReorderDataBody struct {
+	SubsequentID string `json:"subsequentId,omitempty"`
+}

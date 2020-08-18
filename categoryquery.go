@@ -69,3 +69,15 @@ func (c Client) CreateCategory(createCategoryDataBody *CreateCategoryDataBody) (
 
 	return &category, nil
 }
+
+// CategoryReorder is
+// https://developers.slyk.io/slyk/reference/endpoints#post-categories-id-reorder
+func (c Client) CategoryReorder(cateoryID string, categoryReorderDataBody *CategoryReorderDataBody) error {
+	_, err := c.genericPostQuery(linkCategories+"/"+cateoryID+"/reorder", categoryReorderDataBody)
+	return err
+}
+
+// https://developers.slyk.io/slyk/reference/endpoints#delete-categories-id
+func (c Client) DeleteCategory(cateoryID string) error {
+	return c.genericDeleteQuery(linkCategories+"/"+cateoryID, nil)
+}

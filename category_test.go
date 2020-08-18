@@ -35,3 +35,19 @@ func TestCreateCategory(t *testing.T) {
 
 	ReturnAndError(t, tst, returnValue, err)
 }
+
+func TestCategoryReorder(t *testing.T) {
+	tst := "TestCategoryReorder"
+
+	err := getClient().CategoryReorder("27d3d24a-257b-4a88-a8eb-bb8b6121f317", &CategoryReorderDataBody{})
+
+	OnlyError(t, tst, err)
+}
+
+func TestDeleteCategory(t *testing.T) {
+	tst := "TestDeleteCategory"
+
+	err := getClient().DeleteCategory("ec3cf024-0f6d-4252-bd0b-86795d871482")
+
+	OnlyError(t, tst, err)
+}
