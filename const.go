@@ -23,6 +23,7 @@ const (
 	linkMovements      = apiSlyk + "/movements"
 	linkInvites        = apiSlyk + "/invites"
 	linkCategories     = apiSlyk + "/categories"
+	linkOrders         = apiSlyk + "/orders"
 )
 
 const (
