@@ -6,7 +6,7 @@ import (
 
 // GetAssets is
 // https://developers.slyk.io/slyk/reference/endpoints#get-assets
-func (c Client) GetAssets(filter ...*getassetFilter) (*Assests, error) {
+func (c Client) GetAssets(filter ...*getassetsFilter) (*Assests, error) {
 	getBody, err := c.genericGetQuery(linkAssets, merge(filter))
 	if err != nil {
 		return nil, err

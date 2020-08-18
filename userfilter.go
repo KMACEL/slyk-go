@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-type getUserFilter map[string]string
+type getUsersFilter map[string]string
 
 /*
  ██████╗ ███████╗████████╗        ██╗   ██╗███████╗███████╗██████╗         ███████╗██╗██╗  ████████╗███████╗██████╗
@@ -17,110 +17,110 @@ type getUserFilter map[string]string
  ╚═════╝ ╚══════╝   ╚═╝            ╚═════╝ ╚══════╝╚══════╝╚═╝  ╚═╝        ╚═╝     ╚═╝╚══════╝╚═╝   ╚══════╝╚═╝  ╚═╝
 */
 
-func GetUserFilter() *getUserFilter {
-	return &getUserFilter{}
+func GetUsersFilter() *getUsersFilter {
+	return &getUsersFilter{}
 }
 
-func (g *getUserFilter) SetGenericQueryParameter(key string, value interface{}) *getUserFilter {
+func (g *getUsersFilter) SetGenericQueryParameter(key string, value interface{}) *getUsersFilter {
 	(*g)[key] = fmt.Sprintf("%v", value)
 	return g
 }
 
-func (u *getUserFilter) SetApproved(approved bool) *getUserFilter {
-	(*u)["filter[approved]"] = strconv.FormatBool(approved)
-	return u
+func (g *getUsersFilter) SetApproved(approved bool) *getUsersFilter {
+	(*g)["filter[approved]"] = strconv.FormatBool(approved)
+	return g
 }
 
-func (u *getUserFilter) SetBlocked(blocked bool) *getUserFilter {
-	(*u)["filter[blocked]"] = strconv.FormatBool(blocked)
-	return u
+func (g *getUsersFilter) SetBlocked(blocked bool) *getUsersFilter {
+	(*g)["filter[blocked]"] = strconv.FormatBool(blocked)
+	return g
 }
 
-func (u *getUserFilter) SetEmail(email string) *getUserFilter {
-	(*u)["filter[email]"] = email
-	return u
+func (g *getUsersFilter) SetEmail(email string) *getUsersFilter {
+	(*g)["filter[email]"] = email
+	return g
 }
 
-func (u *getUserFilter) SetID(id string) *getUserFilter {
-	(*u)["filter[id]"] = id
-	return u
+func (g *getUsersFilter) SetID(id string) *getUsersFilter {
+	(*g)["filter[id]"] = id
+	return g
 }
 
-func (u *getUserFilter) SetIDWithIN(id ...string) *getUserFilter {
-	(*u)["filter[id]"] = "in:" + strings.Join(id, ",")
-	return u
+func (g *getUsersFilter) SetIDWithIN(id ...string) *getUsersFilter {
+	(*g)["filter[id]"] = "in:" + strings.Join(id, ",")
+	return g
 }
 
-func (u *getUserFilter) SetName(name string) *getUserFilter {
-	(*u)["filter[name]"] = name
-	return u
+func (g *getUsersFilter) SetName(name string) *getUsersFilter {
+	(*g)["filter[name]"] = name
+	return g
 }
 
-func (u *getUserFilter) SetPhone(phone string) *getUserFilter {
-	(*u)["filter[phone]"] = phone
-	return u
+func (g *getUsersFilter) SetPhone(phone string) *getUsersFilter {
+	(*g)["filter[phone]"] = phone
+	return g
 }
 
-func (u *getUserFilter) SetPrimaryWalletId(primaryWalletId string) *getUserFilter {
-	(*u)["filter[primaryWalletId]"] = primaryWalletId
-	return u
+func (g *getUsersFilter) SetPrimaryWalletId(primaryWalletId string) *getUsersFilter {
+	(*g)["filter[primaryWalletId]"] = primaryWalletId
+	return g
 }
 
-func (u *getUserFilter) SetReferralCode(referralCode string) *getUserFilter {
-	(*u)["filter[referralCode]"] = referralCode
-	return u
+func (g *getUsersFilter) SetReferralCode(referralCode string) *getUsersFilter {
+	(*g)["filter[referralCode]"] = referralCode
+	return g
 }
 
-func (u *getUserFilter) SetReferralUserID(referralUserID string) *getUserFilter {
-	(*u)["filter[referralUserId]"] = referralUserID
-	return u
+func (g *getUsersFilter) SetReferralUserID(referralUserID string) *getUsersFilter {
+	(*g)["filter[referralUserId]"] = referralUserID
+	return g
 }
 
-func (u *getUserFilter) SetReferralUserIDWithIN(referralUserID ...string) *getUserFilter {
-	(*u)["filter[referralUserId]"] = "in:" + strings.Join(referralUserID, ",")
-	return u
+func (g *getUsersFilter) SetReferralUserIDWithIN(referralUserID ...string) *getUsersFilter {
+	(*g)["filter[referralUserId]"] = "in:" + strings.Join(referralUserID, ",")
+	return g
 }
 
-func (u *getUserFilter) SetRole(role string) *getUserFilter {
-	(*u)["filter[role]"] = role
-	return u
+func (g *getUsersFilter) SetRole(role string) *getUsersFilter {
+	(*g)["filter[role]"] = role
+	return g
 }
 
-func (u *getUserFilter) SetVerified(verified bool) *getUserFilter {
-	(*u)["filter[verified]"] = strconv.FormatBool(verified)
-	return u
+func (g *getUsersFilter) SetVerified(verified bool) *getUsersFilter {
+	(*g)["filter[verified]"] = strconv.FormatBool(verified)
+	return g
 }
 
-func (u *getUserFilter) SetSortWithCreatedAt() *getUserFilter {
-	(*u)["sort"] = "createdAt"
-	return u
+func (g *getUsersFilter) SetSortWithCreatedAt() *getUsersFilter {
+	(*g)["sort"] = "createdAt"
+	return g
 }
 
-func (u *getUserFilter) SetSortWithCreatedAtReverse() *getUserFilter {
-	(*u)["sort"] = "-createdAt"
-	return u
+func (g *getUsersFilter) SetSortWithCreatedAtReverse() *getUsersFilter {
+	(*g)["sort"] = "-createdAt"
+	return g
 }
 
-func (u *getUserFilter) SetSortWithUpdatedAt() *getUserFilter {
-	(*u)["sort"] = "updatedAt"
-	return u
+func (g *getUsersFilter) SetSortWithUpdatedAt() *getUsersFilter {
+	(*g)["sort"] = "updatedAt"
+	return g
 }
 
-func (u *getUserFilter) SetSortWithUpdatedAtReverse() *getUserFilter {
-	(*u)["sort"] = "-updatedAt"
-	return u
+func (g *getUsersFilter) SetSortWithUpdatedAtReverse() *getUsersFilter {
+	(*g)["sort"] = "-updatedAt"
+	return g
 }
 
 // Defines the number of results per page. Default = 30.
-func (u *getUserFilter) SetPageSize(size int) *getUserFilter {
-	(*u)["page[size]"] = strconv.Itoa(size)
-	return u
+func (g *getUsersFilter) SetPageSize(size int) *getUsersFilter {
+	(*g)["page[size]"] = strconv.Itoa(size)
+	return g
 }
 
 // Defines the number of the page to retrieve. Default = 1
-func (u *getUserFilter) SetPageNumber(number int) *getUserFilter {
-	(*u)["page[number]"] = strconv.Itoa(number)
-	return u
+func (g *getUsersFilter) SetPageNumber(number int) *getUsersFilter {
+	(*g)["page[number]"] = strconv.Itoa(number)
+	return g
 }
 
 /*
@@ -132,21 +132,21 @@ func (u *getUserFilter) SetPageNumber(number int) *getUserFilter {
  ╚═════╝ ╚═╝     ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝         ╚═════╝ ╚══════╝╚══════╝╚═╝  ╚═╝        ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝
 */
 
-func UpdateUserParam() *UpdateUserData {
-	return &UpdateUserData{}
+func UpdateUserDataForBody() *UpdateUserDataBody {
+	return &UpdateUserDataBody{}
 }
 
-func (p *UpdateUserData) SetName(name string) *UpdateUserData {
+func (p *UpdateUserDataBody) SetName(name string) *UpdateUserDataBody {
 	p.Name = name
 	return p
 }
 
-func (p *UpdateUserData) SetLocale(locale string) *UpdateUserData {
+func (p *UpdateUserDataBody) SetLocale(locale string) *UpdateUserDataBody {
 	p.Locale = locale
 	return p
 }
 
-func (p *UpdateUserData) SetCustomData(customData interface{}) *UpdateUserData {
+func (p *UpdateUserDataBody) SetCustomData(customData interface{}) *UpdateUserDataBody {
 	p.CustomData = customData
 	return p
 }
@@ -161,56 +161,56 @@ func (p *UpdateUserData) SetCustomData(customData interface{}) *UpdateUserData {
 */
 
 // CreateUserParam is
-func CreateUserParameter() *CreateUserData {
-	return &CreateUserData{}
+func CreateUserDataForBody() *CreateUserDataBody {
+	return &CreateUserDataBody{}
 }
 
-func (c *CreateUserData) SetName(name string) *CreateUserData {
+func (c *CreateUserDataBody) SetName(name string) *CreateUserDataBody {
 	c.Name = name
 	return c
 }
 
-func (c *CreateUserData) SetEmail(email string) *CreateUserData {
+func (c *CreateUserDataBody) SetEmail(email string) *CreateUserDataBody {
 	c.Email = email
 	return c
 }
 
-func (c *CreateUserData) SetPassword(password string) *CreateUserData {
+func (c *CreateUserDataBody) SetPassword(password string) *CreateUserDataBody {
 	c.Password = password
 	return c
 }
 
-func (c *CreateUserData) SetLocale(locale string) *CreateUserData {
+func (c *CreateUserDataBody) SetLocale(locale string) *CreateUserDataBody {
 	c.Locale = locale
 	return c
 }
 
-func (c *CreateUserData) SetCustomData(customData interface{}) *CreateUserData {
+func (c *CreateUserDataBody) SetCustomData(customData interface{}) *CreateUserDataBody {
 	c.CustomData = customData
 	return c
 }
 
-func (c *CreateUserData) SetApproved(approved bool) *CreateUserData {
+func (c *CreateUserDataBody) SetApproved(approved bool) *CreateUserDataBody {
 	c.Approved = approved
 	return c
 }
 
-func (c *CreateUserData) SetBlocked(blocked bool) *CreateUserData {
+func (c *CreateUserDataBody) SetBlocked(blocked bool) *CreateUserDataBody {
 	c.Blocked = blocked
 	return c
 }
 
-func (c *CreateUserData) SetCode(code string) *CreateUserData {
+func (c *CreateUserDataBody) SetCode(code string) *CreateUserDataBody {
 	c.Code = code
 	return c
 }
 
-func (c *CreateUserData) SetPrimaryWalletID(primaryWalletID string) *CreateUserData {
+func (c *CreateUserDataBody) SetPrimaryWalletID(primaryWalletID string) *CreateUserDataBody {
 	c.PrimaryWalletID = primaryWalletID
 	return c
 }
 
-func (c *CreateUserData) SetVerified(verified bool) *CreateUserData {
+func (c *CreateUserDataBody) SetVerified(verified bool) *CreateUserDataBody {
 	c.Verified = verified
 	return c
 }

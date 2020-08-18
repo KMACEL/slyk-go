@@ -6,7 +6,7 @@ import (
 
 // GetUser is returns the Slyk user list.
 // https://developers.slyk.io/slyk/reference/endpoints#get-users
-func (c Client) GetUsers(filter ...*getUserFilter) (*Users, error) {
+func (c Client) GetUsers(filter ...*getUsersFilter) (*Users, error) {
 	getBody, err := c.genericGetQuery(linkUsers, merge(filter))
 	if err != nil {
 		return nil, err
@@ -40,7 +40,7 @@ func (c Client) GetUserWithID(userID string) (*User, error) {
 
 // UpdateUser is
 // https://developers.slyk.io/slyk/reference/endpoints#patch-users-id
-func (c Client) UpdateUser(userID string, updateUserData *UpdateUserData) (*User, error) {
+func (c Client) UpdateUser(userID string, updateUserData *UpdateUserDataBody) (*User, error) {
 	getBody, err := c.genericPatchQuery(linkUsers+"/"+userID, updateUserData)
 	if err != nil {
 		return nil, err
@@ -57,7 +57,7 @@ func (c Client) UpdateUser(userID string, updateUserData *UpdateUserData) (*User
 
 // CreateUser is
 // https://developers.slyk.io/slyk/reference/endpoints#post-users
-func (c Client) CreateUser(createUserdata *CreateUserData) (*User, error) {
+func (c Client) CreateUser(createUserdata *CreateUserDataBody) (*User, error) {
 	getBody, err := c.genericPostQuery(linkUsers, createUserdata)
 	if err != nil {
 		return nil, err

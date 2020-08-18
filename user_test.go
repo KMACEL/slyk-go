@@ -9,39 +9,39 @@ func TestGetUsers(t *testing.T) {
 	ReturnAndError(t, tst, returnValue, err)
 
 	/*
-		returnValue, err := getClient().GetUsers(GetUserFilter().SetEmail("mertacel@gmail.com"))
+		returnValue, err := getClient().GetUsers(GetUsersFilter().SetEmail("mertacel@gmail.com"))
 		ReturnAndError(t, tst, returnValue, err)
 
-			returnValue, err = getClient().GetUsers(GetUserFilter().
+			returnValue, err = getClient().GetUsers(GetUsersFilter().
 				SetEmail("mertacel@gmail.com").
 				SetBlocked(true))
 			ReturnAndError(t, tst, returnValue, err)
 
-			returnValue, err := getClient().GetUsers(GetUserFilter().SetID("cf99e4d8-bc64-4a5c-80a4-dd1e25e2018d"))
+			returnValue, err := getClient().GetUsers(GetUsersFilter().SetID("cf99e4d8-bc64-4a5c-80a4-dd1e25e2018d"))
 			ReturnAndError(t, tst, returnValue, err)
 
-			returnValue, err := getClient().GetUsers(GetUserFilter().SetName("MERT"))
+			returnValue, err := getClient().GetUsers(GetUsersFilter().SetName("MERT"))
 			ReturnAndError(t, tst, returnValue, err)
 
-			returnValue, err := getClient().GetUsers(GetUserFilter().SetPhone("123"))
+			returnValue, err := getClient().GetUsers(GetUsersFilter().SetPhone("123"))
 			ReturnAndError(t, tst, returnValue, err)
 
-			returnValue, err := getClient().GetUsers(GetUserFilter().SetPrimaryWalletId("dc80f0c2-3360-46b4-bde0-08ccf06d2878"))
+			returnValue, err := getClient().GetUsers(GetUsersFilter().SetPrimaryWalletId("dc80f0c2-3360-46b4-bde0-08ccf06d2878"))
 			ReturnAndError(t, tst, returnValue, err)
 
-			returnValue, err := getClient().GetUsers(GetUserFilter().SetPrimaryWalletId("dc80f0c2-3360-46b4-bde0-08ccf06d2878"))
+			returnValue, err := getClient().GetUsers(GetUsersFilter().SetPrimaryWalletId("dc80f0c2-3360-46b4-bde0-08ccf06d2878"))
 			ReturnAndError(t, tst, returnValue, err)
 
-			returnValue, err := getClient().GetUsers(GetUserFilter().SetReferralCode("RV2EXGMMVXG"))
+			returnValue, err := getClient().GetUsers(GetUsersFilter().SetReferralCode("RV2EXGMMVXG"))
 			ReturnAndError(t, tst, returnValue, err)
 
-			returnValue, err := getClient().GetUsers(GetUserFilter().SetReferralUserID(""))
+			returnValue, err := getClient().GetUsers(GetUsersFilter().SetReferralUserID(""))
 			ReturnAndError(t, tst, returnValue, err)
 
-			returnValue, err := getClient().GetUsers(GetUserFilter().SetRole("owner"))
+			returnValue, err := getClient().GetUsers(GetUsersFilter().SetRole("owner"))
 			ReturnAndError(t, tst, returnValue, err)
 
-			returnValue, err := getClient().GetUsers(GetUserFilter().SetVerified(true).SetEmail("mertacel@gmail.com"), GetUserFilter().SetVerified(true).SetReferralCode("RV2EXGMMVXG"))
+			returnValue, err := getClient().GetUsers(GetUsersFilter().SetVerified(true).SetEmail("mertacel@gmail.com"), GetUsersFilter().SetVerified(true).SetReferralCode("RV2EXGMMVXG"))
 			ReturnAndError(t, tst, returnValue, err)
 	*/
 }
@@ -58,7 +58,7 @@ func TestUpdateUser(t *testing.T) {
 	tst := "TestUpdateUser"
 
 	returnValue, err := getClient().UpdateUser("1bd9b033-5e8a-4d15-bfde-7610f7bd32eb",
-		UpdateUserParam().
+		UpdateUserDataForBody().
 			SetName("Mert A").
 			SetLocale("en").
 			SetCustomData(map[string]interface{}{"Test": "Mert"}))
@@ -69,7 +69,7 @@ func TestUpdateUser(t *testing.T) {
 func TestCreateUser(t *testing.T) {
 	tst := "TestCreateUser"
 
-	returnValue, err := getClient().CreateUser(CreateUserParameter().
+	returnValue, err := getClient().CreateUser(CreateUserDataForBody().
 		SetName("Mert").
 		SetEmail("mertacel@gmail.com").
 		SetPassword("12345678.aA").

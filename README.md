@@ -111,10 +111,10 @@ Get functions are used to fetch information.
 
 Get functions can take filters. These filters are created by functions. For example, let's examine the Get User system.
 
-This is the function that brings up the User list. **"filter ...\*getUserFilter"**
+This is the function that brings up the User list. **"filter ...\*getUsersFilter"**
 
 ```go
-func (c Client) GetUsers(filter ...*getUserFilter) (*Users, error) {
+func (c Client) GetUsers(filter ...*getUsersFilter) (*Users, error) {
 	.
 	.
 	.
@@ -127,17 +127,17 @@ func (c Client) GetUsers(filter ...*getUserFilter) (*Users, error) {
 client.GetUsers()
 ```
 
-But if you want to create a filter, a "getUserFilter" type filter must be created. But since this is a private value, a filter should be created through constructor methods.
+But if you want to create a filter, a "getUsersFilter" type filter must be created. But since this is a private value, a filter should be created through constructor methods.
 
 ```go
-client.GetUsers(slyk.GetUserFilter().SetEmail("mertacel@gmail.com")
+client.GetUsers(slyk.GetUsersFilter().SetEmail("mertacel@gmail.com")
 ```
 Thus, this function will bring up the user whose "email" address is "mertacel@gmail.com".
 
 However, it is possible to add more than one filter as below.
 
 ```go
-client.GetUsers(slyk.GetUserFilter().
+client.GetUsers(slyk.GetUsersFilter().
 		SetEmail("mertacel@gmail.com").
 		SetBlocked(true).
 		SetApproved(true).
@@ -147,7 +147,7 @@ client.GetUsers(slyk.GetUserFilter().
 If there is a filter in "slyk endpoint" that is not in this library, you can also query it with "SetGenericQueryParameter".
 
 ```go
-client.GetUsers(slyk.GetUserFilter().
+client.GetUsers(slyk.GetUsersFilter().
 		SetEmail("mertacel@gmail.com").
 		SetBlocked(true).
 		SetApproved(true).
@@ -175,11 +175,11 @@ Note for page filters :
 
 > **NOTE : In this document, the filters are located under "Filter List". "For Create;" Then comes the filter suitable for that function. "Filters That Can Be Added;" After, come filters that can be added to that filter.** 
 
-> **Example = client.GetUsers(slyk.GetUserFilter().SetEmail("mertacel@gmail.com").SetBlocked(true))**
+> **Example = client.GetUsers(slyk.GetUsersFilter().SetEmail("mertacel@gmail.com").SetBlocked(true))**
 
 	client.GetUsers = API
 
-	slyk.GetUserFilter = Filter Creator
+	slyk.GetUsersFilter = Filter Creator
 
 	SetEmail : Filter ()
 
@@ -195,7 +195,7 @@ Functions used to update data. There are two types of usage.
 Take the "UpdateUser" function for example. The first parameter is the id of the data to be updated. The second data is the struct to update.
 
 ```go
-func (c Client) UpdateUser(userID string, updateUserData *UpdateUserData) (*User, error) {
+func (c Client) UpdateUser(userID string, updateUserData *UpdateUserDataBody) (*User, error) {
 	.
 	.
 	.
@@ -209,7 +209,7 @@ A struct is required for each "update" function. You can enter data directly wit
 Update Struct : 
 
 ```go
-type UpdateUserData struct {
+type UpdateUserDataBody struct {
 	Name       string      `json:"name,omitempty"`
 	Locale     string      `json:"locale,omitempty"`
 	CustomData interface{} `json:"customData,omitempty"`
@@ -219,7 +219,7 @@ type UpdateUserData struct {
 Use;
 
 ```go
-client.UpdateUser("cf99e4d8-bc64-4a5c-80a4-dd1e25e2018d", &slyk.UpdateUserData{
+client.UpdateUser("cf99e4d8-bc64-4a5c-80a4-dd1e25e2018d", &slyk.UpdateUserDataBody{
 	Name:       "Mert",
 	Locale:     "en",
 	CustomData: map[string]interface{}{"Test": "123"},
@@ -231,7 +231,7 @@ You can assign parameters to be updated with a constructor method.
 
 ```go
 client.UpdateUser("cf99e4d8-bc64-4a5c-80a4-dd1e25e2018d",
-		slyk.UpdateUserParam().
+		slyk.UpdateUserDataForBody().
 			SetName("Mert").
 			SetLocale("en"))
 ```
@@ -243,7 +243,7 @@ Used to make a new recording.  There are two types of usage.
 Take the "CreateUser" function for example. As data, the struct to be created is taken.
 
 ```go
-func (c Client) CreateUser(createUserdata *CreateUserData) (*User, error) {
+func (c Client) CreateUser(createUserdata *CreateUserDataBody) (*User, error) {
 	.
 	.
 	.
@@ -258,7 +258,7 @@ A struct is required for each "create" function. You can enter data directly wit
 Struct : 
 
 ```go
-type CreateUserData struct {
+type CreateUserDataBody struct {
 	Email           string      `json:"email"`
 	Code            string      `json:"code,omitempty"`
 	Locale          string      `json:"locale,omitempty"`
@@ -275,7 +275,7 @@ type CreateUserData struct {
 Use;
 
 ```go
-client.CreateUser(&sly.CreateUserData{
+client.CreateUser(&sly.CreateUserDataBody{
 		Email:    "mertacel@gmail.com",
 		Password: "123456789.aA",
 	})
@@ -287,7 +287,7 @@ You can assign parameters to be created with a constructor method.
 
 
 ```go
-client.CreateUser(slyk.CreateUserParameter().
+client.CreateUser(slyk.CreateUserDataForBody().
 		SetName("Mert").
 		SetEmail("mertacel@gmail.com").
 		SetPassword("123456789.aA").
@@ -319,7 +319,7 @@ response,err := client.GetUsers({{OPTIONAL_FILTER}})
 For Create;
 
 ```go
-slyk.GetUserFilter()
+slyk.GetUsersFilter()
 ```
 
 Filters That Can Be Added;
@@ -362,13 +362,13 @@ Used to update the user's data.
 Function;
 
 ```go
-response,err := client.UpdateUser({{USER_ID}}, *UpdateUserData) 
+response,err := client.UpdateUser({{USER_ID}}, *UpdateUserDataBody) 
 ```
 
 #### Struct
 
 ```go
-type UpdateUserData struct {
+type UpdateUserDataBody struct {
 	Name       string      `json:"name,omitempty"`
 	Locale     string      `json:"locale,omitempty"`
 	CustomData interface{} `json:"customData,omitempty"`
@@ -380,7 +380,7 @@ type UpdateUserData struct {
 For Create;
 
 ```go
-slyk.UpdateUserParam()
+slyk.UpdateUserDataForBody()
 ```
 
 Append List;
@@ -401,14 +401,14 @@ Note ;
 Function;
 
 ```go
-response,err := client.CreateUser(*CreateUserData)
+response,err := client.CreateUser(*CreateUserDataBody)
 ```
 
 
 #### Struct
 
 ```go
-type CreateUserData struct {
+type CreateUserDataBody struct {
 	Email           string      `json:"email"`
 	Code            string      `json:"code,omitempty"`
 	Locale          string      `json:"locale,omitempty"`
@@ -427,7 +427,7 @@ type CreateUserData struct {
 For Create;
 
 ```go
-slyk.CreateUserParameter()
+slyk.CreateUserDataForBody()
 ```
 
 Append List;
@@ -498,7 +498,7 @@ response,err := client.GetWallets({{OPTIONAL_FILTER}})
 For Create;
 
 ```go
-slyk.GetWalletFilter()
+slyk.GetWalletsFilter()
 ```
 
 Filters That Can Be Added;
@@ -677,7 +677,7 @@ response,err := client.GetWalletMovements({{WALLET_ID}}},{{OPTIONAL_FILTER}})
 For Create;
 
 ```go
-slyk.GetWalletMovementFilter()
+slyk.GetWalletMovementsFilter()
 ```
 
 Filters That Can Be Added;
@@ -747,7 +747,7 @@ response,err := client.UpdateWallet({{USER_ID}}, *UpdateWalletData)
 #### Struct
 
 ```go
-type UpdateWalletData struct {
+type UpdateWalletDataBody struct {
 	Locked     bool        `json:"locked,omitempty"`
 	OwnerID    string      `json:"ownerId,omitempty"`
 	CustomData interface{} `json:"customData,omitempty"`
@@ -759,7 +759,7 @@ type UpdateWalletData struct {
 For Create;
 
 ```go
-slyk.UpdateWalletBody()
+slyk.UpdateWalletDataForBody()
 ```
 
 Append List;
@@ -783,7 +783,7 @@ response,err := client.CreateWallet(*CreateWalletData)
 #### Struct
 
 ```go
-type CreateWalletData struct {
+type CreateWalletDataBody struct {
 	Name       string      `json:"name,omitempty"`
 	Locked     bool        `json:"locked,omitempty"`
 	OwnerID    string      `json:"ownerId,omitempty"`
@@ -796,7 +796,7 @@ type CreateWalletData struct {
 For Create;
 
 ```go
-slyk.CreateWalletBody()
+slyk.CreateWalletDataForBody()
 ```
 
 Append List;
@@ -903,17 +903,61 @@ response,err := client.SetTransactionConfirmWithID({{TRANSACTIN_ID}} )
 It is used to fail the transaction in pending.
 
 ```go
-response,err := client.SetTransactionFailWithID({{TRANSACTIN_ID}} )
+response,err := client.SetTransactionFailWithID({{TRANSACTIN_ID}},*TransactionFailDataBody)
 ```
 
+#### Struct
+
+```go
+type TransactionFailDataBody struct {
+	Reason string `json:"reason"`
+}
+```
+
+#### Body Function
+
+For Create;
+
+```go
+slyk.TransactionFailDataForBody()
+```
+
+Append List;
+
+```go
+SetReason(reason string)
+```
 
 ### Set Transaction Reject With ID
 
 It is used to Reject the transaction in pending.
 
 ```go
-response,err := client.SetTransactionRejectWithID({{TRANSACTIN_ID}} )
+response,err := client.SetTransactionRejectWithID({{TRANSACTIN_ID}}, *TransactionRejectDataBody)
 ```
+
+#### Struct
+
+```go
+type TransactionRejectDataBody struct {
+	Reason string `json:"reason"`
+}
+```
+
+#### Body Function
+
+For Create;
+
+```go
+slyk.TransactionRejectDataForBody()
+```
+
+Append List;
+
+```go
+SetReason(reason string)
+```
+
 
 ### Create Transaction Deposit
 
@@ -947,7 +991,7 @@ type CreateTransactionDepositDataBody struct {
 For Create;
 
 ```go
-slyk.CreateTransactionDepositBody()
+slyk.CreateTransactionDepositDataForBody()
 ```
 
 Append List;
@@ -989,7 +1033,7 @@ type CreateTransactionPayDataBody struct {
 For Create;
 
 ```go
-slyk.CreateTransactionPayBody()
+slyk.CreateTransactionPayDataForBody()
 ```
 
 Append List;
@@ -1032,7 +1076,7 @@ type CreateTransactionTransferDataBody struct {
 For Create;
 
 ```go
-slyk.CreateTransactionTransferBody()
+slyk.CreateTransactionTransferDataForBody()
 ```
 
 Append List;
@@ -1080,7 +1124,7 @@ type CreateTransactionWithdrawalDataBody struct {
 For Create;
 
 ```go
-slyk.CreateTransactionWithdrawalBody()
+slyk.CreateTransactionWithdrawalDataForBody()
 ```
 
 Append List;
@@ -1116,7 +1160,7 @@ response,err := client.GetAssets({{OPTIONAL_FILTER}})
 For Create;
 
 ```go
-slyk.GetAssetFilter()
+slyk.GetAssetsFilter()
 ```
 
 Filters That Can Be Added;
@@ -1262,7 +1306,7 @@ response,err := client.GetMovements({{OPTIONAL_FILTER}})
 For Create;
 
 ```go
-slyk.GetMovementFilter()
+slyk.GetMovementsFilter()
 ```
 
 Filters That Can Be Added;
@@ -1333,7 +1377,7 @@ response,err := client.GetPaymentMethods({{OPTIONAL_FILTER}})
 For Create;
 
 ```go
-slyk.GetPaymentMedhodFilter()
+slyk.GetPaymentMedhodsFilter()
 ```
 
 Filters That Can Be Added;
@@ -1484,7 +1528,7 @@ response,err := client.GetRates({{OPTIONAL_FILTER}})
 For Create;
 
 ```go
-slyk.GetRateFilter()
+slyk.GetRatesFilter()
 ```
 
 Filters That Can Be Added;
@@ -1527,7 +1571,7 @@ response,err := client.UpdateRate({{BASE_ASSET_CODE}},{{QUOTE_ASSET_CODE}},*Upda
 #### Struct
 
 ```go
-type UpdateRateBodyData struct {
+type UpdateRateDataBody struct {
 	Rate       string      `json:"rate"`
 	CustomData interface{} `json:"customData,omitempty"`
 }
@@ -1539,7 +1583,7 @@ type UpdateRateBodyData struct {
 For Create;
 
 ```go
-slyk.UpdateRateBody()
+slyk.UpdateRateDataForBody()
 ```
 
 Append List;
@@ -1554,13 +1598,13 @@ SetCustomData(customData interface{})
 Function;
 
 ```go
-response,err := client.CreateRate(*CreateRateBodyData)
+response,err := client.CreateRate(*CreateRateDataBody)
 ```
 
 #### Struct
 
 ```go
-type CreateRateBodyData struct {
+type CreateRateDataBody struct {
 	BaseAssetCode  string      `json:"baseAssetCode"`
 	QuoteAssetCode string      `json:"quoteAssetCode"`
 	Rate           string      `json:"rate"`
@@ -1574,7 +1618,7 @@ type CreateRateBodyData struct {
 For Create;
 
 ```go
-slyk.CreateRateBody()
+slyk.CreateRateDataForBody()
 ```
 
 Append List;
@@ -1612,7 +1656,7 @@ response,err := client.GetAddresses({{OPTIONAL_FILTER}})
 For Create;
 
 ```go
-slyk.GetAddressFilter()
+slyk.GetAddressesFilter()
 ```
 
 Filters That Can Be Added;

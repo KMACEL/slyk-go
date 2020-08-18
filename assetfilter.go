@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-type getassetFilter map[string]string
+type getassetsFilter map[string]string
 
 /*
  ██████╗ ███████╗████████╗         █████╗ ███████╗███████╗███████╗████████╗        ███████╗██╗██╗  ████████╗███████╗██████╗
@@ -18,108 +18,108 @@ type getassetFilter map[string]string
 */
 
 // GetAssetFilter is
-func GetAssetFilter() *getassetFilter {
-	return &getassetFilter{}
+func GetAssetsFilter() *getassetsFilter {
+	return &getassetsFilter{}
 }
 
-func (g *getassetFilter) SetGenericQueryParameter(key string, value interface{}) *getassetFilter {
+func (g *getassetsFilter) SetGenericQueryParameter(key string, value interface{}) *getassetsFilter {
 	(*g)[key] = fmt.Sprintf("%v", value)
 	return g
 }
 
-func (g *getassetFilter) SetCode(code string) *getassetFilter {
+func (g *getassetsFilter) SetCode(code string) *getassetsFilter {
 	(*g)["filter[code]"] = code
 	return g
 }
 
-func (g *getassetFilter) SetCodeWithIN(code ...string) *getassetFilter {
+func (g *getassetsFilter) SetCodeWithIN(code ...string) *getassetsFilter {
 	(*g)["filter[code]"] = "in:" + strings.Join(code, ",")
 	return g
 }
 
-func (g *getassetFilter) SetCodeWithNIN(code ...string) *getassetFilter {
+func (g *getassetsFilter) SetCodeWithNIN(code ...string) *getassetsFilter {
 	(*g)["filter[code]"] = "nin:" + strings.Join(code, ",")
 	return g
 }
 
-func (g *getassetFilter) SetEnabled(enabled bool) *getassetFilter {
+func (g *getassetsFilter) SetEnabled(enabled bool) *getassetsFilter {
 	(*g)["filter[enabled]"] = strconv.FormatBool(enabled)
 	return g
 }
 
-func (g *getassetFilter) SetName(name string) *getassetFilter {
+func (g *getassetsFilter) SetName(name string) *getassetsFilter {
 	(*g)["filter[name]"] = name
 	return g
 }
 
-func (g *getassetFilter) SetSystem(system bool) *getassetFilter {
+func (g *getassetsFilter) SetSystem(system bool) *getassetsFilter {
 	(*g)["filter[system]"] = strconv.FormatBool(system)
 	return g
 }
 
-func (g *getassetFilter) SetType(getType string) *getassetFilter {
+func (g *getassetsFilter) SetType(getType string) *getassetsFilter {
 	(*g)["filter[type]"] = getType
 	return g
 }
 
-func (g *getassetFilter) SetTypeWithIN(getType ...string) *getassetFilter {
+func (g *getassetsFilter) SetTypeWithIN(getType ...string) *getassetsFilter {
 	(*g)["filter[type]"] = "in:" + strings.Join(getType, ",")
 	return g
 }
 
-func (g *getassetFilter) SetTypeWithNIN(getType ...string) *getassetFilter {
+func (g *getassetsFilter) SetTypeWithNIN(getType ...string) *getassetsFilter {
 	(*g)["filter[type]"] = "nin:" + strings.Join(getType, ",")
 	return g
 }
 
-func (g *getassetFilter) SetSortWithCreatedAt() *getassetFilter {
+func (g *getassetsFilter) SetSortWithCreatedAt() *getassetsFilter {
 	(*g)["sort"] = "createdAt"
 	return g
 }
 
-func (g *getassetFilter) SetSortWithCreatedAtReverse() *getassetFilter {
+func (g *getassetsFilter) SetSortWithCreatedAtReverse() *getassetsFilter {
 	(*g)["sort"] = "-createdAt"
 	return g
 }
 
-func (g *getassetFilter) SetSortWithEnabled() *getassetFilter {
+func (g *getassetsFilter) SetSortWithEnabled() *getassetsFilter {
 	(*g)["sort"] = "enabled"
 	return g
 }
 
-func (g *getassetFilter) SetSortWithEnabledReverse() *getassetFilter {
+func (g *getassetsFilter) SetSortWithEnabledReverse() *getassetsFilter {
 	(*g)["sort"] = "-enabled"
 	return g
 }
 
-func (g *getassetFilter) SetSortWithSystem() *getassetFilter {
+func (g *getassetsFilter) SetSortWithSystem() *getassetsFilter {
 	(*g)["sort"] = "system"
 	return g
 }
 
-func (g *getassetFilter) SetSortWithSystemReverse() *getassetFilter {
+func (g *getassetsFilter) SetSortWithSystemReverse() *getassetsFilter {
 	(*g)["sort"] = "-system"
 	return g
 }
 
-func (g *getassetFilter) SetSortWithType() *getassetFilter {
+func (g *getassetsFilter) SetSortWithType() *getassetsFilter {
 	(*g)["sort"] = "type"
 	return g
 }
 
-func (g *getassetFilter) SetSortWithTypeReverse() *getassetFilter {
+func (g *getassetsFilter) SetSortWithTypeReverse() *getassetsFilter {
 	(*g)["sort"] = "-type"
 	return g
 }
 
 // Defines the number of results per page. Default = 30.
-func (g *getassetFilter) SetPageSize(size int) *getassetFilter {
+func (g *getassetsFilter) SetPageSize(size int) *getassetsFilter {
 	(*g)["page[size]"] = strconv.Itoa(size)
 	return g
 }
 
 // Defines the number of the page to retrieve. Default = 1
-func (g *getassetFilter) SetPageNumber(number int) *getassetFilter {
+func (g *getassetsFilter) SetPageNumber(number int) *getassetsFilter {
 	(*g)["page[number]"] = strconv.Itoa(number)
 	return g
 }

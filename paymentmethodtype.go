@@ -12,12 +12,12 @@ type PaymentMedhod struct {
 }
 
 type PaymentMedhodData struct {
-	Assets       []string    `json:"assets"`
-	Capabilities []string    `json:"capabilities"`
-	CreatedAt    time.Time   `json:"createdAt"`
-	Enabled      bool        `json:"enabled"`
-	Features     []string    `json:"features"`
-	Metadata     interface{} `json:"metadata,omitempty"`
-	Name         string      `json:"name"`
-	Slug         string      `json:"slug"`
+	Assets       []string               `json:"assets"`
+	Capabilities []string               `json:"capabilities"`
+	CreatedAt    time.Time              `json:"createdAt"`
+	Enabled      bool                   `json:"enabled"`
+	Features     []string               `json:"features"`
+	Metadata     map[string]interface{} `json:"metadata,omitempty"`
+	Name         string                 `json:"name"`
+	Slug         string                 `json:"slug"`
 }

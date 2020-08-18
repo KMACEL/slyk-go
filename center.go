@@ -109,13 +109,13 @@ func (c Client) genericDeleteQuery(link string, body interface{}) error {
 func merge(m interface{}) map[string]string {
 	mmap := make(map[string]string)
 	switch getMap := m.(type) {
-	case []*getUserFilter:
+	case []*getUsersFilter:
 		for i := range getMap {
 			for k, v := range *getMap[i] {
 				mmap[k] = v
 			}
 		}
-	case []*getWalletFilter:
+	case []*getWalletsFilter:
 		for i := range getMap {
 			for k, v := range *getMap[i] {
 				mmap[k] = v
@@ -133,7 +133,7 @@ func merge(m interface{}) map[string]string {
 				mmap[k] = v
 			}
 		}
-	case []*getWalletMovementFilter:
+	case []*getWalletMovementsFilter:
 		for i := range getMap {
 			for k, v := range *getMap[i] {
 				mmap[k] = v
@@ -169,37 +169,37 @@ func merge(m interface{}) map[string]string {
 				mmap[k] = v
 			}
 		}
-	case []*getaddressFilter:
+	case []*getaddressesFilter:
 		for i := range getMap {
 			for k, v := range *getMap[i] {
 				mmap[k] = v
 			}
 		}
-	case []*getassetFilter:
+	case []*getassetsFilter:
 		for i := range getMap {
 			for k, v := range *getMap[i] {
 				mmap[k] = v
 			}
 		}
-	case []*getRateFilter:
+	case []*getRatesFilter:
 		for i := range getMap {
 			for k, v := range *getMap[i] {
 				mmap[k] = v
 			}
 		}
-	case []*getPaymentMethodFilter:
+	case []*getPaymentMethodsFilter:
 		for i := range getMap {
 			for k, v := range *getMap[i] {
 				mmap[k] = v
 			}
 		}
-	case []*getMovementFilter:
+	case []*getMovementsFilter:
 		for i := range getMap {
 			for k, v := range *getMap[i] {
 				mmap[k] = v
 			}
 		}
-	case []*getInviteFilter:
+	case []*getInvitesFilter:
 		for i := range getMap {
 			for k, v := range *getMap[i] {
 				mmap[k] = v

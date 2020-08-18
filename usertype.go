@@ -31,13 +31,13 @@ type UserData struct {
 	Verified        bool                   `json:"verified"`
 }
 
-type UpdateUserData struct {
+type UpdateUserDataBody struct {
 	Name       string      `json:"name,omitempty"`
 	Locale     string      `json:"locale,omitempty"`
 	CustomData interface{} `json:"customData,omitempty"`
 }
 
-type CreateUserData struct {
+type CreateUserDataBody struct {
 	Email           string      `json:"email"`
 	Code            string      `json:"code,omitempty"`
 	Locale          string      `json:"locale,omitempty"`

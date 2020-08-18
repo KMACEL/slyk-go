@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-type getMovementFilter map[string]string
+type getMovementsFilter map[string]string
 type getMovementWithIDFilter map[string]string
 
 /*
@@ -19,125 +19,125 @@ type getMovementWithIDFilter map[string]string
 */
 
 // GetMovementFilter is
-func GetMovementFilter() *getMovementFilter {
-	return &getMovementFilter{}
+func GetMovementsFilter() *getMovementsFilter {
+	return &getMovementsFilter{}
 }
 
-func (g *getMovementFilter) SetGenericQueryParameter(key string, value interface{}) *getMovementFilter {
+func (g *getMovementsFilter) SetGenericQueryParameter(key string, value interface{}) *getMovementsFilter {
 	(*g)[key] = fmt.Sprintf("%v", value)
 	return g
 }
 
 // asset btc,eth,ltc
-func (g *getMovementFilter) SetAssetCode(assetCode string) *getMovementFilter {
+func (g *getMovementsFilter) SetAssetCode(assetCode string) *getMovementsFilter {
 	(*g)["filter[assetCode]"] = assetCode
 	return g
 }
 
 // asset btc,eth,ltc
-func (g *getMovementFilter) SetAssetCodeWithIN(assetCode ...string) *getMovementFilter {
+func (g *getMovementsFilter) SetAssetCodeWithIN(assetCode ...string) *getMovementsFilter {
 	(*g)["filter[assetCode]"] = "in:" + strings.Join(assetCode, ",")
 	return g
 }
 
 // asset btc,eth,ltc
-func (g *getMovementFilter) SetAssetCodeWithNIN(assetCode ...string) *getMovementFilter {
+func (g *getMovementsFilter) SetAssetCodeWithNIN(assetCode ...string) *getMovementsFilter {
 	(*g)["filter[assetCode]"] = "nin:" + strings.Join(assetCode, ",")
 	return g
 }
 
 // Format : 2019-07-21
-func (g *getMovementFilter) SetCreatedAtWithGTE(date string) *getMovementFilter {
+func (g *getMovementsFilter) SetCreatedAtWithGTE(date string) *getMovementsFilter {
 	(*g)["filter[createdAt]"] = "gte:" + date
 	return g
 }
 
 // Format : 2019-07-21
-func (g *getMovementFilter) SetCreatedAtWithLTE(date string) *getMovementFilter {
+func (g *getMovementsFilter) SetCreatedAtWithLTE(date string) *getMovementsFilter {
 	(*g)["filter[createdAt]"] = "lte:" + date
 	return g
 }
 
-func (g *getMovementFilter) SetID(id string) *getMovementFilter {
+func (g *getMovementsFilter) SetID(id string) *getMovementsFilter {
 	(*g)["filter[id]"] = id
 	return g
 }
 
-func (g *getMovementFilter) SetIDWithIN(id ...string) *getMovementFilter {
+func (g *getMovementsFilter) SetIDWithIN(id ...string) *getMovementsFilter {
 	(*g)["filter[id]"] = "in:" + strings.Join(id, ",")
 	return g
 }
 
-func (g *getMovementFilter) SetIDWithNIN(id ...string) *getMovementFilter {
+func (g *getMovementsFilter) SetIDWithNIN(id ...string) *getMovementsFilter {
 	(*g)["filter[id]"] = "nin:" + strings.Join(id, ",")
 	return g
 }
 
-func (g *getMovementFilter) SetTransaction(transactionID string) *getMovementFilter {
+func (g *getMovementsFilter) SetTransaction(transactionID string) *getMovementsFilter {
 	(*g)["filter[transactionId]"] = transactionID
 	return g
 }
 
-func (g *getMovementFilter) SetTransactionIDWithIN(transactionID ...string) *getMovementFilter {
+func (g *getMovementsFilter) SetTransactionIDWithIN(transactionID ...string) *getMovementsFilter {
 	(*g)["filter[transactionId]"] = "in:" + strings.Join(transactionID, ",")
 	return g
 }
 
-func (g *getMovementFilter) SetTransactionIDWithNIN(transactionID ...string) *getMovementFilter {
+func (g *getMovementsFilter) SetTransactionIDWithNIN(transactionID ...string) *getMovementsFilter {
 	(*g)["filter[transactionId]"] = "nin:" + strings.Join(transactionID, ",")
 	return g
 }
 
-func (g *getMovementFilter) SetWalletID(walletID string) *getMovementFilter {
+func (g *getMovementsFilter) SetWalletID(walletID string) *getMovementsFilter {
 	(*g)["filter[walletId]"] = walletID
 	return g
 }
 
-func (g *getMovementFilter) SetWalletIDWithIN(walletID ...string) *getMovementFilter {
+func (g *getMovementsFilter) SetWalletIDWithIN(walletID ...string) *getMovementsFilter {
 	(*g)["filter[walletId]"] = "in:" + strings.Join(walletID, ",")
 	return g
 }
 
-func (g *getMovementFilter) SetWalletIDWithNIN(walletID ...string) *getMovementFilter {
+func (g *getMovementsFilter) SetWalletIDWithNIN(walletID ...string) *getMovementsFilter {
 	(*g)["filter[walletId]"] = "nin:" + strings.Join(walletID, ",")
 	return g
 }
 
-func (g *getMovementFilter) SetSortWithCreatedAt() *getMovementFilter {
+func (g *getMovementsFilter) SetSortWithCreatedAt() *getMovementsFilter {
 	(*g)["sort"] = "createdAt"
 	return g
 }
 
-func (g *getMovementFilter) SetSortWithCreatedAtReverse() *getMovementFilter {
+func (g *getMovementsFilter) SetSortWithCreatedAtReverse() *getMovementsFilter {
 	(*g)["sort"] = "-createdAt"
 	return g
 }
 
-func (g *getMovementFilter) SetSortWithAmount(amount string) *getMovementFilter {
+func (g *getMovementsFilter) SetSortWithAmount(amount string) *getMovementsFilter {
 	(*g)["filter[amount]"] = "amount"
 	return g
 }
 
-func (g *getMovementFilter) SetSortWithAmountReverse(amount string) *getMovementFilter {
+func (g *getMovementsFilter) SetSortWithAmountReverse(amount string) *getMovementsFilter {
 	(*g)["filter[amount]"] = "-amount"
 	return g
 }
 
-func (g *getMovementFilter) SetAvailableTransactionWithUser() *getMovementFilter {
+func (g *getMovementsFilter) SetAvailableTransactionWithUser() *getMovementsFilter {
 	(*g)["include"] = "transaction"
 	return g
 }
 
 // Defines the number of results per page. Default = 30.
-func (u *getMovementFilter) SetPageSize(size int) *getMovementFilter {
-	(*u)["page[size]"] = strconv.Itoa(size)
-	return u
+func (g *getMovementsFilter) SetPageSize(size int) *getMovementsFilter {
+	(*g)["page[size]"] = strconv.Itoa(size)
+	return g
 }
 
 // Defines the number of the page to retrieve. Default = 1
-func (u *getMovementFilter) SetPageNumber(number int) *getMovementFilter {
-	(*u)["page[number]"] = strconv.Itoa(number)
-	return u
+func (g *getMovementsFilter) SetPageNumber(number int) *getMovementsFilter {
+	(*g)["page[number]"] = strconv.Itoa(number)
+	return g
 }
 
 /*

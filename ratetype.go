@@ -21,14 +21,14 @@ type RateData struct {
 	UpdatedAt      time.Time              `json:"updatedAt"`
 }
 
-type CreateRateBodyData struct {
+type CreateRateDataBody struct {
 	BaseAssetCode  string      `json:"baseAssetCode"`
 	QuoteAssetCode string      `json:"quoteAssetCode"`
 	Rate           string      `json:"rate"`
 	CustomData     interface{} `json:"customData,omitempty"`
 }
 
-type UpdateRateBodyData struct {
+type UpdateRateDataBody struct {
 	Rate       string      `json:"rate"`
 	CustomData interface{} `json:"customData,omitempty"`
 }

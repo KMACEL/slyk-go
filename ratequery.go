@@ -5,26 +5,9 @@ import (
 	"fmt"
 )
 
-// CreateRate
-// https://developers.slyk.io/slyk/reference/endpoints#post-rates
-func (c Client) CreateRate(rateBody *CreateRateBodyData) (*Rate, error) {
-	getBody, err := c.genericPostQuery(linkRates, rateBody)
-	if err != nil {
-		return nil, err
-	}
-
-	var rate Rate
-	errUnmarshal := json.Unmarshal(getBody, &rate)
-	if errUnmarshal != nil {
-		return nil, errUnmarshal
-	}
-
-	return &rate, nil
-}
-
 // GetRates
 // https://developers.slyk.io/slyk/reference/endpoints#get-rates
-func (c Client) GetRates(filter ...*getRateFilter) (*Rates, error) {
+func (c Client) GetRates(filter ...*getRatesFilter) (*Rates, error) {
 	getBody, err := c.genericGetQuery(linkRates, merge(filter))
 	if err != nil {
 		return nil, err
@@ -58,8 +41,25 @@ func (c Client) GetRatesWithBaseAssetCodeAndQuoteAssetCode(baseAssetCode string,
 
 // UpdateRate is
 // https://developers.slyk.io/slyk/reference/endpoints#patch-rates-baseassetcode-quoteassetcode
-func (c Client) UpdateRate(baseAssetCode string, quoteAssetCode string, updateRateBodyData *UpdateRateBodyData) (*Rate, error) {
-	getBody, err := c.genericPatchQuery(fmt.Sprintf("%s/%s/%s", linkRates, baseAssetCode, quoteAssetCode), updateRateBodyData)
+func (c Client) UpdateRate(baseAssetCode string, quoteAssetCode string, updateRateDataBody *UpdateRateDataBody) (*Rate, error) {
+	getBody, err := c.genericPatchQuery(fmt.Sprintf("%s/%s/%s", linkRates, baseAssetCode, quoteAssetCode), updateRateDataBody)
+	if err != nil {
+		return nil, err
+	}
+
+	var rate Rate
+	errUnmarshal := json.Unmarshal(getBody, &rate)
+	if errUnmarshal != nil {
+		return nil, errUnmarshal
+	}
+
+	return &rate, nil
+}
+
+// CreateRate
+// https://developers.slyk.io/slyk/reference/endpoints#post-rates
+func (c Client) CreateRate(rateBody *CreateRateDataBody) (*Rate, error) {
+	getBody, err := c.genericPostQuery(linkRates, rateBody)
 	if err != nil {
 		return nil, err
 	}

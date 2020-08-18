@@ -6,7 +6,7 @@ import (
 
 // GetPaymentMethods is
 // https://developers.slyk.io/slyk/reference/endpoints#get-payment-methods
-func (c Client) GetPaymentMethods(filter ...*getPaymentMethodFilter) (*PaymentMedhods, error) {
+func (c Client) GetPaymentMethods(filter ...*getPaymentMethodsFilter) (*PaymentMedhods, error) {
 	getBody, err := c.genericGetQuery(linkPaymentMethods, merge(filter))
 	if err != nil {
 		return nil, err

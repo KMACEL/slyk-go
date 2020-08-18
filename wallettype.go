@@ -171,13 +171,13 @@ type WalletTransactionData struct {
 	UpdatedAt           time.Time   `json:"updatedAt"`
 }
 
-type UpdateWalletData struct {
+type UpdateWalletDataBody struct {
 	Locked     bool        `json:"locked,omitempty"`
 	OwnerID    string      `json:"ownerId,omitempty"`
 	CustomData interface{} `json:"customData,omitempty"`
 }
 
-type CreateWalletData struct {
+type CreateWalletDataBody struct {
 	Name       string      `json:"name,omitempty"`
 	Locked     bool        `json:"locked,omitempty"`
 	OwnerID    string      `json:"ownerId,omitempty"`

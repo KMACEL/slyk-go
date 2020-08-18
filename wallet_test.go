@@ -56,7 +56,7 @@ func TestGetWalletMovements(t *testing.T) {
 	tst := "TestGetWalletMovements"
 
 	returnValue, err := getClient().GetWalletMovements("73fb8803-bd14-4127-bdb3-8a71b030d4bd",
-		GetWalletMovementFilter().
+		GetWalletMovementsFilter().
 			SetAssetCodeWithIN("usd").
 			SetSortWithAmount())
 
@@ -95,7 +95,7 @@ func TestUpdateWallet(t *testing.T) {
 	tst := "TestUpdateWallet"
 
 	returnValue, err := getClient().UpdateWallet("73fb8803-bd14-4127-bdb3-8a71b030d4bd",
-		UpdateWalletBody().
+		UpdateWalletDataForBody().
 			SetLocked(false).
 			SetOwnerID("cf99e4d8-bc64-4a5c-80a4-dd1e25e2018d").
 			SetCustomData(map[string]interface{}{"WalletName": "Tes2"}))

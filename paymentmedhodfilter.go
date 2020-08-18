@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-type getPaymentMethodFilter map[string]string
+type getPaymentMethodsFilter map[string]string
 
 /*
  ██████╗ ███████╗████████╗        ██████╗  █████╗ ██╗   ██╗███╗   ███╗███████╗███╗   ██╗████████╗        ███╗   ███╗███████╗██████╗ ██╗  ██╗ ██████╗ ██████╗         ███████╗██╗██╗  ████████╗███████╗██████╗
@@ -18,53 +18,53 @@ type getPaymentMethodFilter map[string]string
 */
 
 // GetPaymentMedhodFilter is
-func GetPaymentMedhodFilter() *getPaymentMethodFilter {
-	return &getPaymentMethodFilter{}
+func GetPaymentMedhodsFilter() *getPaymentMethodsFilter {
+	return &getPaymentMethodsFilter{}
 }
 
-func (g *getPaymentMethodFilter) SetGenericQueryParameter(key string, value interface{}) *getPaymentMethodFilter {
+func (g *getPaymentMethodsFilter) SetGenericQueryParameter(key string, value interface{}) *getPaymentMethodsFilter {
 	(*g)[key] = fmt.Sprintf("%v", value)
 	return g
 }
 
 // Format : 2019-07-21
-func (g *getPaymentMethodFilter) SetCreatedAtWithGTE(date string) *getPaymentMethodFilter {
+func (g *getPaymentMethodsFilter) SetCreatedAtWithGTE(date string) *getPaymentMethodsFilter {
 	(*g)["filter[createdAt]"] = "gte:" + date
 	return g
 }
 
 // Format : 2019-07-21
-func (g *getPaymentMethodFilter) SetCreatedAtWithLTE(date string) *getPaymentMethodFilter {
+func (g *getPaymentMethodsFilter) SetCreatedAtWithLTE(date string) *getPaymentMethodsFilter {
 	(*g)["filter[createdAt]"] = "lte:" + date
 	return g
 }
 
-func (g *getPaymentMethodFilter) SetEnabled(enabled bool) *getPaymentMethodFilter {
+func (g *getPaymentMethodsFilter) SetEnabled(enabled bool) *getPaymentMethodsFilter {
 	(*g)["filter[enabled]"] = strconv.FormatBool(enabled)
 	return g
 }
 
-func (g *getPaymentMethodFilter) SetEnabledWithIN(enabled bool) *getPaymentMethodFilter {
+func (g *getPaymentMethodsFilter) SetEnabledWithIN(enabled bool) *getPaymentMethodsFilter {
 	(*g)["filter[enabled]"] = "in:" + strconv.FormatBool(enabled)
 	return g
 }
 
-func (g *getPaymentMethodFilter) SetEnabledWithNIN(enabled bool) *getPaymentMethodFilter {
+func (g *getPaymentMethodsFilter) SetEnabledWithNIN(enabled bool) *getPaymentMethodsFilter {
 	(*g)["filter[enabled]"] = "nin:" + strconv.FormatBool(enabled)
 	return g
 }
 
-func (g *getPaymentMethodFilter) SetSlug(slug string) *getPaymentMethodFilter {
+func (g *getPaymentMethodsFilter) SetSlug(slug string) *getPaymentMethodsFilter {
 	(*g)["filter[slug]"] = slug
 	return g
 }
 
-func (g *getPaymentMethodFilter) SetSlugWithIN(slug ...string) *getPaymentMethodFilter {
+func (g *getPaymentMethodsFilter) SetSlugWithIN(slug ...string) *getPaymentMethodsFilter {
 	(*g)["filter[slug]"] = "in:" + strings.Join(slug, ",")
 	return g
 }
 
-func (g *getPaymentMethodFilter) SetSlugWithNIN(slug ...string) *getPaymentMethodFilter {
+func (g *getPaymentMethodsFilter) SetSlugWithNIN(slug ...string) *getPaymentMethodsFilter {
 	(*g)["filter[slug]"] = "nin:" + strings.Join(slug, ",")
 	return g
 }

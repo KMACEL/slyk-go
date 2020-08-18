@@ -7,7 +7,7 @@ func TestGetAssets(t *testing.T) {
 
 	//returnValue, err := getClient().GetAssets()
 	returnValue, err := getClient().GetAssets(
-		GetAssetFilter().
+		GetAssetsFilter().
 			SetCodeWithNIN("eur").
 			SetPageSize(30))
 

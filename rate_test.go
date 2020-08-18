@@ -5,7 +5,7 @@ import "testing"
 func TestCreateRate(t *testing.T) {
 	tst := "TestCreateRate"
 
-	returnValue, err := getClient().CreateRate(&CreateRateBodyData{
+	returnValue, err := getClient().CreateRate(&CreateRateDataBody{
 		BaseAssetCode:  "usd",
 		QuoteAssetCode: "eth",
 		Rate:           "48.86",
@@ -18,7 +18,7 @@ func TestGetRates(t *testing.T) {
 	tst := "TestGetRates"
 
 	returnValue, err := getClient().GetRates(
-		GetRateFilter().
+		GetRatesFilter().
 			SetQuoteAssetCode("ltc"))
 
 	ReturnAndError(t, tst, returnValue, err)
@@ -35,7 +35,7 @@ func TestGetRatesWithBaseAssetCodeAndQuoteAssetCode(t *testing.T) {
 func TestUpdateRate(t *testing.T) {
 	tst := "TestUpdateRate"
 
-	returnValue, err := getClient().UpdateRate("btc", "eth", &UpdateRateBodyData{Rate: "50"})
+	returnValue, err := getClient().UpdateRate("btc", "eth", &UpdateRateDataBody{Rate: "50"})
 
 	ReturnAndError(t, tst, returnValue, err)
 }

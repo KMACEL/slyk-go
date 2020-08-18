@@ -6,10 +6,10 @@ import (
 	"strings"
 )
 
-type getWalletFilter map[string]string
+type getWalletsFilter map[string]string
 type getWalletActivityWithIDFilter map[string]string
 type getWalletBalanceWithIDFilter map[string]string
-type getWalletMovementFilter map[string]string
+type getWalletMovementsFilter map[string]string
 type getWalletTransactionstFilter map[string]string
 type getWalletActivityFilter map[string]string
 type getWalletBalanceFilter map[string]string
@@ -25,56 +25,56 @@ type getWalletBalanceFilter map[string]string
  ╚═════╝ ╚══════╝   ╚═╝            ╚══╝╚══╝ ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝   ╚═╝           ╚═╝     ╚═╝╚══════╝╚═╝   ╚══════╝╚═╝  ╚═╝
 */
 
-func GetWalletFilter() *getWalletFilter {
-	return &getWalletFilter{}
+func GetWalletFilter() *getWalletsFilter {
+	return &getWalletsFilter{}
 }
 
-func (g *getWalletFilter) SetGenericQueryParameter(key string, value interface{}) *getWalletFilter {
+func (g *getWalletsFilter) SetGenericQueryParameter(key string, value interface{}) *getWalletsFilter {
 	(*g)[key] = fmt.Sprintf("%v", value)
 	return g
 }
 
-func (g *getWalletFilter) SetID(id string) *getWalletFilter {
+func (g *getWalletsFilter) SetID(id string) *getWalletsFilter {
 	(*g)["filter[id]"] = id
 	return g
 }
 
-func (g *getWalletFilter) SetIDWithIN(id ...string) *getWalletFilter {
+func (g *getWalletsFilter) SetIDWithIN(id ...string) *getWalletsFilter {
 	(*g)["filter[id]"] = "in:" + strings.Join(id, ",")
 	return g
 }
 
-func (g *getWalletFilter) SetIDWithNIN(id ...string) *getWalletFilter {
+func (g *getWalletsFilter) SetIDWithNIN(id ...string) *getWalletsFilter {
 	(*g)["filter[id]"] = "nin:" + strings.Join(id, ",")
 	return g
 }
 
-func (g *getWalletFilter) SetLocked(locked bool) *getWalletFilter {
+func (g *getWalletsFilter) SetLocked(locked bool) *getWalletsFilter {
 	(*g)["filter[locked]"] = strconv.FormatBool(locked)
 	return g
 }
 
-func (g *getWalletFilter) SetName(name string) *getWalletFilter {
+func (g *getWalletsFilter) SetName(name string) *getWalletsFilter {
 	(*g)["filter[name]"] = name
 	return g
 }
 
-func (g *getWalletFilter) SetOwnerID(ownerId string) *getWalletFilter {
+func (g *getWalletsFilter) SetOwnerID(ownerId string) *getWalletsFilter {
 	(*g)["filter[ownerId]"] = ownerId
 	return g
 }
 
-func (g *getWalletFilter) SetReference(reference string) *getWalletFilter {
+func (g *getWalletsFilter) SetReference(reference string) *getWalletsFilter {
 	(*g)["filter[reference]"] = reference
 	return g
 }
 
-func (g *getWalletFilter) SetSortWithCreatedAt() *getWalletFilter {
+func (g *getWalletsFilter) SetSortWithCreatedAt() *getWalletsFilter {
 	(*g)["sort"] = "createdAt"
 	return g
 }
 
-func (g *getWalletFilter) SetSortWithCreatedAtReverse() *getWalletFilter {
+func (g *getWalletsFilter) SetSortWithCreatedAtReverse() *getWalletsFilter {
 	(*g)["sort"] = "-createdAt"
 	return g
 }
@@ -234,54 +234,54 @@ func (g *getWalletBalanceWithIDFilter) SetAssetCodeWithNIN(assetCode ...string) 
  ╚═════╝ ╚══════╝   ╚═╝            ╚══╝╚══╝ ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝   ╚═╝           ╚═╝     ╚═╝ ╚═════╝   ╚═══╝  ╚══════╝╚═╝     ╚═╝╚══════╝╚═╝  ╚═══╝   ╚═╝           ╚═╝     ╚═╝╚══════╝╚═╝   ╚══════╝╚═╝  ╚═╝
 */
 
-func GetWalletMovementFilter() *getWalletMovementFilter {
-	return &getWalletMovementFilter{}
+func GetWalletMovementsFilter() *getWalletMovementsFilter {
+	return &getWalletMovementsFilter{}
 }
 
-func (g *getWalletMovementFilter) SetGenericQueryParameter(key string, value interface{}) *getWalletMovementFilter {
+func (g *getWalletMovementsFilter) SetGenericQueryParameter(key string, value interface{}) *getWalletMovementsFilter {
 	(*g)[key] = fmt.Sprintf("%v", value)
 	return g
 }
 
 // asset btc,eth,ltc
-func (g *getWalletMovementFilter) SetAssetCode(assetCode string) *getWalletMovementFilter {
+func (g *getWalletMovementsFilter) SetAssetCode(assetCode string) *getWalletMovementsFilter {
 	(*g)["filter[assetCode]"] = assetCode
 	return g
 }
 
 // asset btc,eth,ltc
-func (g *getWalletMovementFilter) SetAssetCodeWithIN(assetCode ...string) *getWalletMovementFilter {
+func (g *getWalletMovementsFilter) SetAssetCodeWithIN(assetCode ...string) *getWalletMovementsFilter {
 	(*g)["filter[assetCode]"] = "in:" + strings.Join(assetCode, ",")
 	return g
 }
 
 // asset btc,eth,ltc
-func (g *getWalletMovementFilter) SetAssetCodeWithNIN(assetCode ...string) *getWalletMovementFilter {
+func (g *getWalletMovementsFilter) SetAssetCodeWithNIN(assetCode ...string) *getWalletMovementsFilter {
 	(*g)["filter[assetCode]"] = "nin:" + strings.Join(assetCode, ",")
 	return g
 }
 
-func (g *getWalletMovementFilter) SetSortWithAmount() *getWalletMovementFilter {
+func (g *getWalletMovementsFilter) SetSortWithAmount() *getWalletMovementsFilter {
 	(*g)["amount"] = "amount"
 	return g
 }
 
-func (g *getWalletMovementFilter) SetSortWithAmountReverse() *getWalletMovementFilter {
+func (g *getWalletMovementsFilter) SetSortWithAmountReverse() *getWalletMovementsFilter {
 	(*g)["amount"] = "-amount"
 	return g
 }
 
-func (g *getWalletMovementFilter) SetSortWithCreatedAt() *getWalletMovementFilter {
+func (g *getWalletMovementsFilter) SetSortWithCreatedAt() *getWalletMovementsFilter {
 	(*g)["sort"] = "createdAt"
 	return g
 }
 
-func (g *getWalletMovementFilter) SetSortWithCreatedAtReverse() *getWalletMovementFilter {
+func (g *getWalletMovementsFilter) SetSortWithCreatedAtReverse() *getWalletMovementsFilter {
 	(*g)["sort"] = "-createdAt"
 	return g
 }
 
-func (g *getWalletMovementFilter) SetAvailableTransactionWithUser() *getWalletMovementFilter {
+func (g *getWalletMovementsFilter) SetAvailableTransactionWithUser() *getWalletMovementsFilter {
 	(*g)["include"] = "transaction"
 	return g
 }
@@ -546,21 +546,21 @@ func (g *getWalletBalanceFilter) SetAssetCodeWithNIN(assetCode ...string) *getWa
 */
 
 // UpdateWalletBody is
-func UpdateWalletBody() *UpdateWalletData {
-	return &UpdateWalletData{}
+func UpdateWalletDataForBody() *UpdateWalletDataBody {
+	return &UpdateWalletDataBody{}
 }
 
-func (u *UpdateWalletData) SetOwnerID(ownerID string) *UpdateWalletData {
+func (u *UpdateWalletDataBody) SetOwnerID(ownerID string) *UpdateWalletDataBody {
 	u.OwnerID = ownerID
 	return u
 }
 
-func (u *UpdateWalletData) SetLocked(locked bool) *UpdateWalletData {
+func (u *UpdateWalletDataBody) SetLocked(locked bool) *UpdateWalletDataBody {
 	u.Locked = locked
 	return u
 }
 
-func (u *UpdateWalletData) SetCustomData(customData interface{}) *UpdateWalletData {
+func (u *UpdateWalletDataBody) SetCustomData(customData interface{}) *UpdateWalletDataBody {
 	u.CustomData = customData
 	return u
 }
@@ -574,26 +574,26 @@ func (u *UpdateWalletData) SetCustomData(customData interface{}) *UpdateWalletDa
  ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝         ╚══╝╚══╝ ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝   ╚═╝           ╚═════╝  ╚═════╝ ╚═════╝    ╚═╝
 */
 
-func CreateWalletBody() *CreateWalletData {
-	return &CreateWalletData{}
+func CreateWalletBody() *CreateWalletDataBody {
+	return &CreateWalletDataBody{}
 }
 
-func (c *CreateWalletData) SetName(name string) *CreateWalletData {
+func (c *CreateWalletDataBody) SetName(name string) *CreateWalletDataBody {
 	c.Name = name
 	return c
 }
 
-func (c *CreateWalletData) SetOwnerID(ownerID string) *CreateWalletData {
+func (c *CreateWalletDataBody) SetOwnerID(ownerID string) *CreateWalletDataBody {
 	c.OwnerID = ownerID
 	return c
 }
 
-func (c *CreateWalletData) SetLocked(locked bool) *CreateWalletData {
+func (c *CreateWalletDataBody) SetLocked(locked bool) *CreateWalletDataBody {
 	c.Locked = locked
 	return c
 }
 
-func (c *CreateWalletData) SetCustomData(customData interface{}) *CreateWalletData {
+func (c *CreateWalletDataBody) SetCustomData(customData interface{}) *CreateWalletDataBody {
 	c.CustomData = customData
 	return c
 }

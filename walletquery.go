@@ -6,7 +6,7 @@ import (
 
 // GetWallets is
 // https://developers.slyk.io/slyk/reference/endpoints#get-wallets
-func (c Client) GetWallets(filter ...*getWalletFilter) (*Wallets, error) {
+func (c Client) GetWallets(filter ...*getWalletsFilter) (*Wallets, error) {
 	getBody, err := c.genericGetQuery(linkWallets, merge(filter))
 	if err != nil {
 		return nil, err
@@ -74,7 +74,7 @@ func (c Client) GetWalletBalanceWithID(walletID string, filter ...*getWalletBala
 
 // GetWalletMovements is
 // https://developers.slyk.io/slyk/reference/endpoints#get-wallets-id-movements
-func (c Client) GetWalletMovements(walletID string, filter ...*getWalletMovementFilter) (*WalletMovements, error) {
+func (c Client) GetWalletMovements(walletID string, filter ...*getWalletMovementsFilter) (*WalletMovements, error) {
 	getBody, err := c.genericGetQuery(linkWallets+"/"+walletID+movements, merge(filter))
 	if err != nil {
 		return nil, err
@@ -142,7 +142,7 @@ func (c Client) GetWalletBalance(filter ...*getWalletBalanceFilter) (*WalletBala
 
 // UpdateWallet is
 // https://developers.slyk.io/slyk/reference/endpoints#patch-wallets-id
-func (c Client) UpdateWallet(walletID string, updateWallet *UpdateWalletData) (*Wallet, error) {
+func (c Client) UpdateWallet(walletID string, updateWallet *UpdateWalletDataBody) (*Wallet, error) {
 	getBody, err := c.genericPatchQuery(linkWallets+"/"+walletID, updateWallet)
 	if err != nil {
 		return nil, err
@@ -159,7 +159,7 @@ func (c Client) UpdateWallet(walletID string, updateWallet *UpdateWalletData) (*
 
 // CreateWallet is
 // https://developers.slyk.io/slyk/reference/endpoints#post-wallets
-func (c Client) CreateWallet(createWallet *CreateWalletData) (*Wallet, error) {
+func (c Client) CreateWallet(createWallet *CreateWalletDataBody) (*Wallet, error) {
 	getBody, err := c.genericPostQuery(linkWallets, createWallet)
 	if err != nil {
 		return nil, err

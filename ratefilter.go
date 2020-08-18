@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-type getRateFilter map[string]string
+type getRatesFilter map[string]string
 
 /*
  ██████╗ ███████╗████████╗        ██████╗  █████╗ ████████╗███████╗        ███████╗██╗██╗  ████████╗███████╗██████╗
@@ -18,103 +18,103 @@ type getRateFilter map[string]string
 */
 
 // GetRateFilter is
-func GetRateFilter() *getRateFilter {
-	return &getRateFilter{}
+func GetRatesFilter() *getRatesFilter {
+	return &getRatesFilter{}
 }
 
-func (g *getRateFilter) SetGenericQueryParameter(key string, value interface{}) *getRateFilter {
+func (g *getRatesFilter) SetGenericQueryParameter(key string, value interface{}) *getRatesFilter {
 	(*g)[key] = fmt.Sprintf("%v", value)
 	return g
 }
 
-func (g *getRateFilter) SetBaseAssetCode(baseAssetCode string) *getRateFilter {
+func (g *getRatesFilter) SetBaseAssetCode(baseAssetCode string) *getRatesFilter {
 	(*g)["baseAssetCode"] = baseAssetCode
 	return g
 }
 
-func (g *getRateFilter) SetBaseAssetCodeWithIN(baseAssetCode ...string) *getRateFilter {
+func (g *getRatesFilter) SetBaseAssetCodeWithIN(baseAssetCode ...string) *getRatesFilter {
 	(*g)["baseAssetCode"] = "in:" + strings.Join(baseAssetCode, ",")
 	return g
 }
 
-func (g *getRateFilter) SetBaseAssetCodeWithNIN(baseAssetCode ...string) *getRateFilter {
+func (g *getRatesFilter) SetBaseAssetCodeWithNIN(baseAssetCode ...string) *getRatesFilter {
 	(*g)["baseAssetCode"] = "nin:" + strings.Join(baseAssetCode, ",")
 	return g
 }
 
-func (g *getRateFilter) SetQuoteAssetCode(quoteAssetCode string) *getRateFilter {
+func (g *getRatesFilter) SetQuoteAssetCode(quoteAssetCode string) *getRatesFilter {
 	(*g)["quoteAssetCode"] = quoteAssetCode
 	return g
 }
 
-func (g *getRateFilter) SetQuoteAssetCodeWithIN(quoteAssetCode ...string) *getRateFilter {
+func (g *getRatesFilter) SetQuoteAssetCodeWithIN(quoteAssetCode ...string) *getRatesFilter {
 	(*g)["quoteAssetCode"] = "in:" + strings.Join(quoteAssetCode, ",")
 	return g
 }
 
-func (g *getRateFilter) SetQuoteAssetCodeWithNIN(quoteAssetCode ...string) *getRateFilter {
+func (g *getRatesFilter) SetQuoteAssetCodeWithNIN(quoteAssetCode ...string) *getRatesFilter {
 	(*g)["quoteAssetCode"] = "nin:" + strings.Join(quoteAssetCode, ",")
 	return g
 }
 
-func (g *getRateFilter) SetRateWithGT(rate string) *getRateFilter {
+func (g *getRatesFilter) SetRateWithGT(rate string) *getRatesFilter {
 	(*g)["rate"] = "gt:" + rate
 	return g
 }
 
-func (g *getRateFilter) SetRateWithGTE(rate string) *getRateFilter {
+func (g *getRatesFilter) SetRateWithGTE(rate string) *getRatesFilter {
 	(*g)["rate"] = "gte:" + rate
 	return g
 }
 
-func (g *getRateFilter) SetRateWithLT(rate string) *getRateFilter {
+func (g *getRatesFilter) SetRateWithLT(rate string) *getRatesFilter {
 	(*g)["rate"] = "lt:" + rate
 	return g
 }
 
-func (g *getRateFilter) SetRateWithLTE(rate string) *getRateFilter {
+func (g *getRatesFilter) SetRateWithLTE(rate string) *getRatesFilter {
 	(*g)["rate"] = "lte:" + rate
 	return g
 }
 
-func (g *getRateFilter) SetSortWithCreatedAt() *getRateFilter {
+func (g *getRatesFilter) SetSortWithCreatedAt() *getRatesFilter {
 	(*g)["sort"] = "createdAt"
 	return g
 }
 
-func (g *getRateFilter) SetSortWithCreatedAtReverse() *getRateFilter {
+func (g *getRatesFilter) SetSortWithCreatedAtReverse() *getRatesFilter {
 	(*g)["sort"] = "-createdAt"
 	return g
 }
 
-func (g *getRateFilter) SetSortWithUpdatedAt() *getRateFilter {
+func (g *getRatesFilter) SetSortWithUpdatedAt() *getRatesFilter {
 	(*g)["sort"] = "updatedAt"
 	return g
 }
 
-func (g *getRateFilter) SetSortWithUpdatedAtReverse() *getRateFilter {
+func (g *getRatesFilter) SetSortWithUpdatedAtReverse() *getRatesFilter {
 	(*g)["sort"] = "-updatedAt"
 	return g
 }
 
-func (g *getRateFilter) SetSortWitRate() *getRateFilter {
+func (g *getRatesFilter) SetSortWitRate() *getRatesFilter {
 	(*g)["sort"] = "rate"
 	return g
 }
 
-func (g *getRateFilter) SetSortWitRateReverse() *getRateFilter {
+func (g *getRatesFilter) SetSortWitRateReverse() *getRatesFilter {
 	(*g)["sort"] = "-rate"
 	return g
 }
 
 // Defines the number of results per page. Default = 30.
-func (g *getRateFilter) SetPageSize(size int) *getRateFilter {
+func (g *getRatesFilter) SetPageSize(size int) *getRatesFilter {
 	(*g)["page[size]"] = strconv.Itoa(size)
 	return g
 }
 
 // Defines the number of the page to retrieve. Default = 1
-func (g *getRateFilter) SetPageNumber(number int) *getRateFilter {
+func (g *getRatesFilter) SetPageNumber(number int) *getRatesFilter {
 	(*g)["page[number]"] = strconv.Itoa(number)
 	return g
 }
@@ -128,16 +128,16 @@ func (g *getRateFilter) SetPageNumber(number int) *getRateFilter {
  ╚═════╝ ╚═╝     ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝    ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚══════╝    ╚═════╝  ╚═════╝ ╚═════╝    ╚═╝
 */
 
-func UpdateRateBody() *UpdateRateBodyData {
-	return &UpdateRateBodyData{}
+func UpdateRateDataForBody() *UpdateRateDataBody {
+	return &UpdateRateDataBody{}
 }
 
-func (c *UpdateRateBodyData) SetRate(rate string) *UpdateRateBodyData {
+func (c *UpdateRateDataBody) SetRate(rate string) *UpdateRateDataBody {
 	c.Rate = rate
 	return c
 }
 
-func (c *UpdateRateBodyData) SetCustomData(customData interface{}) *UpdateRateBodyData {
+func (c *UpdateRateDataBody) SetCustomData(customData interface{}) *UpdateRateDataBody {
 	c.CustomData = customData
 	return c
 }
@@ -151,26 +151,26 @@ func (c *UpdateRateBodyData) SetCustomData(customData interface{}) *UpdateRateBo
  ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝    ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚══════╝    ╚═════╝  ╚═════╝ ╚═════╝    ╚═╝
 */
 
-func CreateRateBody() *CreateRateBodyData {
-	return &CreateRateBodyData{}
+func CreateRateDataForBody() *CreateRateDataBody {
+	return &CreateRateDataBody{}
 }
 
-func (c *CreateRateBodyData) SetBaseAssetCode(baseAssetCode string) *CreateRateBodyData {
+func (c *CreateRateDataBody) SetBaseAssetCode(baseAssetCode string) *CreateRateDataBody {
 	c.BaseAssetCode = baseAssetCode
 	return c
 }
 
-func (c *CreateRateBodyData) SetQuoteAssetCode(quoteAssetCode string) *CreateRateBodyData {
+func (c *CreateRateDataBody) SetQuoteAssetCode(quoteAssetCode string) *CreateRateDataBody {
 	c.QuoteAssetCode = quoteAssetCode
 	return c
 }
 
-func (c *CreateRateBodyData) SetRate(rate string) *CreateRateBodyData {
+func (c *CreateRateDataBody) SetRate(rate string) *CreateRateDataBody {
 	c.Rate = rate
 	return c
 }
 
-func (c *CreateRateBodyData) SetCustomData(customData interface{}) *CreateRateBodyData {
+func (c *CreateRateDataBody) SetCustomData(customData interface{}) *CreateRateDataBody {
 	c.CustomData = customData
 	return c
 }

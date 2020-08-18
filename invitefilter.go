@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-type getInviteFilter map[string]string
+type getInvitesFilter map[string]string
 
 /*
  ██████╗ ███████╗████████╗        ██╗███╗   ██╗██╗   ██╗██╗████████╗███████╗███████╗        ███████╗██╗██╗  ████████╗███████╗██████╗
@@ -17,145 +17,145 @@ type getInviteFilter map[string]string
  ╚═════╝ ╚══════╝   ╚═╝           ╚═╝╚═╝  ╚═══╝  ╚═══╝  ╚═╝   ╚═╝   ╚══════╝╚══════╝        ╚═╝     ╚═╝╚══════╝╚═╝   ╚══════╝╚═╝  ╚═╝
 */
 
-func GetInvitesFilter() *getInviteFilter {
-	return &getInviteFilter{}
+func GetInvitesFilter() *getInvitesFilter {
+	return &getInvitesFilter{}
 }
 
-func (g *getInviteFilter) SetGenericQueryParameter(key string, value interface{}) *getInviteFilter {
+func (g *getInvitesFilter) SetGenericQueryParameter(key string, value interface{}) *getInvitesFilter {
 	(*g)[key] = fmt.Sprintf("%v", value)
 	return g
 }
 
-func (g *getInviteFilter) SetCode(code string) *getInviteFilter {
+func (g *getInvitesFilter) SetCode(code string) *getInvitesFilter {
 	(*g)["filter[code]"] = code
 	return g
 }
 
-func (g *getInviteFilter) SetCodeWithIN(code ...string) *getInviteFilter {
+func (g *getInvitesFilter) SetCodeWithIN(code ...string) *getInvitesFilter {
 	(*g)["filter[code]"] = "in:" + strings.Join(code, ",")
 	return g
 }
 
-func (g *getInviteFilter) SetCodeWithNIN(code ...string) *getInviteFilter {
+func (g *getInvitesFilter) SetCodeWithNIN(code ...string) *getInvitesFilter {
 	(*g)["filter[code]"] = "nin:" + strings.Join(code, ",")
 	return g
 }
 
 // Format : 2019-07-21
-func (g *getInviteFilter) SetExpiredAtWithGTE(date string) *getInviteFilter {
+func (g *getInvitesFilter) SetExpiredAtWithGTE(date string) *getInvitesFilter {
 	(*g)["filter[expiredAt]"] = "gte:" + date
 	return g
 }
 
 // Format : 2019-07-21
-func (g *getInviteFilter) SetExpiredAtWithLTE(date string) *getInviteFilter {
+func (g *getInvitesFilter) SetExpiredAtWithLTE(date string) *getInvitesFilter {
 	(*g)["filter[expiredAt]"] = "lte:" + date
 	return g
 }
 
-func (g *getInviteFilter) SetInvitedEmail(invitedEmail string) *getInviteFilter {
+func (g *getInvitesFilter) SetInvitedEmail(invitedEmail string) *getInvitesFilter {
 	(*g)["filter[invitedEmail]"] = invitedEmail
 	return g
 }
 
-func (g *getInviteFilter) SetInvitedEmailWithIN(invitedEmail ...string) *getInviteFilter {
+func (g *getInvitesFilter) SetInvitedEmailWithIN(invitedEmail ...string) *getInvitesFilter {
 	(*g)["filter[invitedEmail]"] = "in:" + strings.Join(invitedEmail, ",")
 	return g
 }
 
-func (g *getInviteFilter) SetInvitedEmailWithNIN(invitedEmail ...string) *getInviteFilter {
+func (g *getInvitesFilter) SetInvitedEmailWithNIN(invitedEmail ...string) *getInvitesFilter {
 	(*g)["filter[invitedEmail]"] = "nin:" + strings.Join(invitedEmail, ",")
 	return g
 }
 
-func (g *getInviteFilter) SetInvitedUserID(invitedUserId string) *getInviteFilter {
+func (g *getInvitesFilter) SetInvitedUserID(invitedUserId string) *getInvitesFilter {
 	(*g)["filter[invitedUserId]"] = invitedUserId
 	return g
 }
 
-func (g *getInviteFilter) SetInvitedUserIDWithIN(invitedUserID ...string) *getInviteFilter {
+func (g *getInvitesFilter) SetInvitedUserIDWithIN(invitedUserID ...string) *getInvitesFilter {
 	(*g)["filter[invitedUserId]"] = "in:" + strings.Join(invitedUserID, ",")
 	return g
 }
 
-func (g *getInviteFilter) SetInvitedUserIDWithNIN(invitedUserID ...string) *getInviteFilter {
+func (g *getInvitesFilter) SetInvitedUserIDWithNIN(invitedUserID ...string) *getInvitesFilter {
 	(*g)["filter[invitedUserId]"] = "nin:" + strings.Join(invitedUserID, ",")
 	return g
 }
 
-func (g *getInviteFilter) SetInviterUserID(inviterUserID string) *getInviteFilter {
+func (g *getInvitesFilter) SetInviterUserID(inviterUserID string) *getInvitesFilter {
 	(*g)["filter[inviterUserId]"] = inviterUserID
 	return g
 }
 
-func (g *getInviteFilter) SetInviterUserIDWithIN(inviterUserID ...string) *getInviteFilter {
+func (g *getInvitesFilter) SetInviterUserIDWithIN(inviterUserID ...string) *getInvitesFilter {
 	(*g)["filter[inviterUserId]"] = "in:" + strings.Join(inviterUserID, ",")
 	return g
 }
 
-func (g *getInviteFilter) SetInviterUserIDWithNIN(inviterUserID ...string) *getInviteFilter {
+func (g *getInvitesFilter) SetInviterUserIDWithNIN(inviterUserID ...string) *getInvitesFilter {
 	(*g)["filter[inviterUserId]"] = "nin:" + strings.Join(inviterUserID, ",")
 	return g
 }
 
-func (g *getInviteFilter) SetStatus(status string) *getInviteFilter {
+func (g *getInvitesFilter) SetStatus(status string) *getInvitesFilter {
 	(*g)["filter[status]"] = status
 	return g
 }
 
-func (g *getInviteFilter) SetStatusWithIN(status ...string) *getInviteFilter {
+func (g *getInvitesFilter) SetStatusWithIN(status ...string) *getInvitesFilter {
 	(*g)["filter[status]"] = "in:" + strings.Join(status, ",")
 	return g
 }
 
-func (g *getInviteFilter) SetStatusWithNIN(status ...string) *getInviteFilter {
+func (g *getInvitesFilter) SetStatusWithNIN(status ...string) *getInvitesFilter {
 	(*g)["filter[status]"] = "nin:" + strings.Join(status, ",")
 	return g
 }
 
-func (g *getInviteFilter) SetType(typeInvite string) *getInviteFilter {
+func (g *getInvitesFilter) SetType(typeInvite string) *getInvitesFilter {
 	(*g)["filter[type]"] = typeInvite
 	return g
 }
 
-func (g *getInviteFilter) SetSortWithCreatedAt() *getInviteFilter {
+func (g *getInvitesFilter) SetSortWithCreatedAt() *getInvitesFilter {
 	(*g)["sort"] = "createdAt"
 	return g
 }
 
-func (g *getInviteFilter) SetSortWithCreatedAtReverse() *getInviteFilter {
+func (g *getInvitesFilter) SetSortWithCreatedAtReverse() *getInvitesFilter {
 	(*g)["sort"] = "-createdAt"
 	return g
 }
 
-func (g *getInviteFilter) SetSortWithExpiredAt() *getInviteFilter {
+func (g *getInvitesFilter) SetSortWithExpiredAt() *getInvitesFilter {
 	(*g)["sort"] = "expiredAt"
 	return g
 }
 
-func (g *getInviteFilter) SetSortWithExpiredAtReverse() *getInviteFilter {
+func (g *getInvitesFilter) SetSortWithExpiredAtReverse() *getInvitesFilter {
 	(*g)["sort"] = "-expiredAt"
 	return g
 }
 
-func (g *getInviteFilter) SetSortWithUpdatedAt() *getInviteFilter {
+func (g *getInvitesFilter) SetSortWithUpdatedAt() *getInvitesFilter {
 	(*g)["sort"] = "updatedAt"
 	return g
 }
 
-func (g *getInviteFilter) SetSortWithUpdatedAtReverse() *getInviteFilter {
+func (g *getInvitesFilter) SetSortWithUpdatedAtReverse() *getInvitesFilter {
 	(*g)["sort"] = "-updatedAt"
 	return g
 }
 
 // Defines the number of results per page. Default = 30.
-func (g *getInviteFilter) SetPageSize(size int) *getInviteFilter {
+func (g *getInvitesFilter) SetPageSize(size int) *getInvitesFilter {
 	(*g)["page[size]"] = strconv.Itoa(size)
 	return g
 }
 
 // Defines the number of the page to retrieve. Default = 1
-func (g *getInviteFilter) SetPageNumber(number int) *getInviteFilter {
+func (g *getInvitesFilter) SetPageNumber(number int) *getInvitesFilter {
 	(*g)["page[number]"] = strconv.Itoa(number)
 	return g
 }
@@ -170,7 +170,7 @@ func (g *getInviteFilter) SetPageNumber(number int) *getInviteFilter {
 */
 
 // CreateInvitesBody is
-func CreateInviteBody() *CreateInviteDataBody {
+func CreateInviteDataForBody() *CreateInviteDataBody {
 	return &CreateInviteDataBody{}
 }
 

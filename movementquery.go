@@ -6,7 +6,7 @@ import (
 
 // GetMovements
 // https://developers.slyk.io/slyk/reference/endpoints#get-movements
-func (c Client) GetMovements(filter ...*getMovementFilter) (*Movements, error) {
+func (c Client) GetMovements(filter ...*getMovementsFilter) (*Movements, error) {
 	getBody, err := c.genericGetQuery(linkMovements, merge(filter))
 	if err != nil {
 		return nil, err

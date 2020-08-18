@@ -237,7 +237,7 @@ func (u *geTransactionstFilter) SetPageNumber(number int) *geTransactionstFilter
 
 */
 
-func SetTransactionFailBody() *TransactionFailDataBody {
+func TransactionFailDataForBody() *TransactionFailDataBody {
 	return &TransactionFailDataBody{}
 }
 
@@ -256,7 +256,7 @@ func (t *TransactionFailDataBody) SetReason(reason string) *TransactionFailDataB
 
 */
 
-func SetTransactionRejectBody() *TransactionRejectDataBody {
+func TransactionRejectDataForBody() *TransactionRejectDataBody {
 	return &TransactionRejectDataBody{}
 }
 
@@ -274,7 +274,7 @@ func (t *TransactionRejectDataBody) SetReason(reason string) *TransactionRejectD
 ╚═╝  ╚═╝╚═════╝ ╚═════╝            ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝ ╚═════╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝        ╚═════╝ ╚══════╝╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═╝           ╚═════╝  ╚═════╝ ╚═════╝    ╚═╝
 */
 
-func AddTransactionDepositBody() *CreateTransactionDepositDataBody {
+func CreateTransactionDepositDataForBody() *CreateTransactionDepositDataBody {
 	return &CreateTransactionDepositDataBody{}
 }
 
@@ -332,7 +332,7 @@ func (c *CreateTransactionDepositDataBody) SetExternalReference(externalReferenc
  ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝           ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝ ╚═════╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝        ╚═╝     ╚═╝  ╚═╝   ╚═╝           ╚═════╝  ╚═════╝ ╚═════╝    ╚═╝
 */
 
-func CreateTransactionPayBody() *CreateTransactionPayDataBody {
+func CreateTransactionPayDataForBody() *CreateTransactionPayDataBody {
 	return &CreateTransactionPayDataBody{}
 }
 
@@ -370,7 +370,7 @@ func (c *CreateTransactionPayDataBody) SetOriginWalletID(originWalletID string) 
  ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝           ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝ ╚═════╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝           ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝     ╚══════╝╚═╝  ╚═╝        ╚═════╝  ╚═════╝ ╚═════╝    ╚═╝
 */
 
-func CreateTransactionTransferBody() *CreateTransactionTransferDataBody {
+func CreateTransactionTransferDataForBody() *CreateTransactionTransferDataBody {
 	return &CreateTransactionTransferDataBody{}
 }
 
@@ -438,7 +438,7 @@ func (c *CreateTransactionTransferDataBody) SetOriginAddress(originAddress strin
  ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝           ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝ ╚═════╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝         ╚══╝╚══╝ ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝ ╚══╝╚══╝ ╚═╝  ╚═╝╚══════╝        ╚═════╝  ╚═════╝ ╚═════╝    ╚═╝
 */
 
-func CreateTransactionWithdrawalBody() *CreateTransactionWithdrawalDataBody {
+func CreateTransactionWithdrawalDataForBody() *CreateTransactionWithdrawalDataBody {
 	return &CreateTransactionWithdrawalDataBody{}
 }
 

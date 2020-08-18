@@ -7,7 +7,7 @@ import (
 
 // GetInvites is
 // https://developers.slyk.io/slyk/reference/endpoints#get-invites
-func (c Client) GetInvites(filter ...*getInviteFilter) (*Invites, error) {
+func (c Client) GetInvites(filter ...*getInvitesFilter) (*Invites, error) {
 	getBody, err := c.genericGetQuery(linkInvites, merge(filter))
 	if err != nil {
 		return nil, err

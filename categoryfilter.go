@@ -37,37 +37,37 @@ func (g *getCategoriesFilter) SetDescription(description string) *getCategoriesF
 	return g
 }
 
-func (g *getassetFilter) SetID(id string) *getassetFilter {
+func (g *getCategoriesFilter) SetID(id string) *getCategoriesFilter {
 	(*g)["filter[id]"] = id
 	return g
 }
 
-func (g *getassetFilter) SetIDWithIN(id ...string) *getassetFilter {
+func (g *getCategoriesFilter) SetIDWithIN(id ...string) *getCategoriesFilter {
 	(*g)["filter[id]"] = "in:" + strings.Join(id, ",")
 	return g
 }
 
-func (g *getassetFilter) SetIDWithNIN(id ...string) *getassetFilter {
+func (g *getCategoriesFilter) SetIDWithNIN(id ...string) *getCategoriesFilter {
 	(*g)["filter[id]"] = "nin:" + strings.Join(id, ",")
 	return g
 }
 
-func (g *getassetFilter) SetOrder(order string) *getassetFilter {
+func (g *getCategoriesFilter) SetOrder(order string) *getCategoriesFilter {
 	(*g)["filter[order]"] = order
 	return g
 }
 
-func (g *getassetFilter) SetOrderWithGTE(order string) *getassetFilter {
+func (g *getCategoriesFilter) SetOrderWithGTE(order string) *getCategoriesFilter {
 	(*g)["filter[order]"] = "gte:" + order
 	return g
 }
 
-func (g *getassetFilter) SetOrderWithLTE(order string) *getassetFilter {
+func (g *getCategoriesFilter) SetOrderWithLTE(order string) *getCategoriesFilter {
 	(*g)["filter[getassetFilter]"] = "lte:" + order
 	return g
 }
 
-func (g *getassetFilter) SetTitle(title string) *getassetFilter {
+func (g *getCategoriesFilter) SetTitle(title string) *getCategoriesFilter {
 	(*g)["filter[title]"] = title
 	return g
 }
