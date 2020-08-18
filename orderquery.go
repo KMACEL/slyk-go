@@ -38,8 +38,25 @@ func (c Client) GetOrderWithID(orderID string) (*Order, error) {
 
 // GetOrderLinesWithID is
 // https://developers.slyk.io/slyk/reference/endpoints#get-invites-3
-func (c Client) GetOrderLinesWithID(orderID string, filter ...*getOrderLinesWithIDFilter) (*Order, error) {
+func (c Client) GetOrderLinesWithID(orderID string, filter ...*getOrderLinesWithIDFilter) (*Orders, error) {
 	getBody, err := c.genericGetQuery(linkOrders+"/"+orderID+"/lines", merge(filter))
+	if err != nil {
+		return nil, err
+	}
+
+	var orders Orders
+	errUnmarshal := json.Unmarshal(getBody, &orders)
+	if errUnmarshal != nil {
+		return nil, errUnmarshal
+	}
+
+	return &orders, nil
+}
+
+// GetOrderLinesWithIDAndLineID is
+// https://developers.slyk.io/slyk/reference/endpoints#get-orders-orderid-lines-id
+func (c Client) GetOrderLinesWithIDAndLineID(orderID string, lineID string) (*Order, error) {
+	getBody, err := c.genericGetQuery(linkOrders+"/"+orderID+"/lines/"+lineID, nil)
 	if err != nil {
 		return nil, err
 	}
