@@ -7,6 +7,16 @@ import (
 )
 
 type getOrdersFilter map[string]string
+type getOrderLinesWithIDFilter map[string]string
+
+/*
+ ██████╗ ███████╗████████╗         ██████╗ ██████╗ ██████╗ ███████╗██████╗ ███████╗        ███████╗██╗██╗  ████████╗███████╗██████╗
+██╔════╝ ██╔════╝╚══██╔══╝        ██╔═══██╗██╔══██╗██╔══██╗██╔════╝██╔══██╗██╔════╝        ██╔════╝██║██║  ╚══██╔══╝██╔════╝██╔══██╗
+██║  ███╗█████╗     ██║           ██║   ██║██████╔╝██║  ██║█████╗  ██████╔╝███████╗        █████╗  ██║██║     ██║   █████╗  ██████╔╝
+██║   ██║██╔══╝     ██║           ██║   ██║██╔══██╗██║  ██║██╔══╝  ██╔══██╗╚════██║        ██╔══╝  ██║██║     ██║   ██╔══╝  ██╔══██╗
+╚██████╔╝███████╗   ██║           ╚██████╔╝██║  ██║██████╔╝███████╗██║  ██║███████║        ██║     ██║███████╗██║   ███████╗██║  ██║
+ ╚═════╝ ╚══════╝   ╚═╝            ╚═════╝ ╚═╝  ╚═╝╚═════╝ ╚══════╝╚═╝  ╚═╝╚══════╝        ╚═╝     ╚═╝╚══════╝╚═╝   ╚══════╝╚═╝  ╚═╝
+*/
 
 func GetOrdersFilter() *getOrdersFilter {
 	return &getOrdersFilter{}
@@ -237,6 +247,149 @@ func (g *getOrdersFilter) SetPageSize(size int) *getOrdersFilter {
 
 // Defines the number of the page to retrieve. Default = 1
 func (g *getOrdersFilter) SetPageNumber(number int) *getOrdersFilter {
+	(*g)["page[number]"] = strconv.Itoa(number)
+	return g
+}
+
+/*
+ ██████╗ ███████╗████████╗         ██████╗ ██████╗ ██████╗ ███████╗██████╗         ██╗     ██╗███╗   ██╗███████╗███████╗        ██╗    ██╗██╗████████╗██╗  ██╗        ██╗██████╗         ███████╗██╗██╗  ████████╗███████╗██████╗
+██╔════╝ ██╔════╝╚══██╔══╝        ██╔═══██╗██╔══██╗██╔══██╗██╔════╝██╔══██╗        ██║     ██║████╗  ██║██╔════╝██╔════╝        ██║    ██║██║╚══██╔══╝██║  ██║        ██║██╔══██╗        ██╔════╝██║██║  ╚══██╔══╝██╔════╝██╔══██╗
+██║  ███╗█████╗     ██║           ██║   ██║██████╔╝██║  ██║█████╗  ██████╔╝        ██║     ██║██╔██╗ ██║█████╗  ███████╗        ██║ █╗ ██║██║   ██║   ███████║        ██║██║  ██║        █████╗  ██║██║     ██║   █████╗  ██████╔╝
+██║   ██║██╔══╝     ██║           ██║   ██║██╔══██╗██║  ██║██╔══╝  ██╔══██╗        ██║     ██║██║╚██╗██║██╔══╝  ╚════██║        ██║███╗██║██║   ██║   ██╔══██║        ██║██║  ██║        ██╔══╝  ██║██║     ██║   ██╔══╝  ██╔══██╗
+╚██████╔╝███████╗   ██║           ╚██████╔╝██║  ██║██████╔╝███████╗██║  ██║        ███████╗██║██║ ╚████║███████╗███████║        ╚███╔███╔╝██║   ██║   ██║  ██║        ██║██████╔╝        ██║     ██║███████╗██║   ███████╗██║  ██║
+ ╚═════╝ ╚══════╝   ╚═╝            ╚═════╝ ╚═╝  ╚═╝╚═════╝ ╚══════╝╚═╝  ╚═╝        ╚══════╝╚═╝╚═╝  ╚═══╝╚══════╝╚══════╝         ╚══╝╚══╝ ╚═╝   ╚═╝   ╚═╝  ╚═╝        ╚═╝╚═════╝         ╚═╝     ╚═╝╚══════╝╚═╝   ╚══════╝╚═╝  ╚═╝
+*/
+
+// GetOrderLinesWithIDFilter is
+func GetOrderLinesWithIDFilter() *getOrderLinesWithIDFilter {
+	return &getOrderLinesWithIDFilter{}
+}
+
+func (g *getOrderLinesWithIDFilter) SetGenericQueryParameter(key string, value interface{}) *getOrderLinesWithIDFilter {
+	(*g)[key] = fmt.Sprintf("%v", value)
+	return g
+}
+
+func (g *getOrderLinesWithIDFilter) SetAssetCode(assetCode string) *getOrderLinesWithIDFilter {
+	(*g)["filter[assetCode]"] = assetCode
+	return g
+}
+
+// asset btc,eth,ltc
+func (g *getOrderLinesWithIDFilter) SetAssetCodeWithIN(assetCode ...string) *getOrderLinesWithIDFilter {
+	(*g)["filter[assetCode]"] = "in:" + strings.Join(assetCode, ",")
+	return g
+}
+
+// asset btc,eth,ltc
+func (g *getOrderLinesWithIDFilter) SetAssetCodeWithNIN(assetCode ...string) *getOrderLinesWithIDFilter {
+	(*g)["filter[assetCode]"] = "nin:" + strings.Join(assetCode, ",")
+	return g
+}
+
+func (g *getOrderLinesWithIDFilter) SetFulfilledAt(fulfilledAt string) *getOrderLinesWithIDFilter {
+	(*g)["filter[fulfilledAt]"] = fulfilledAt
+	return g
+}
+
+func (g *getOrderLinesWithIDFilter) SetFulfilledAtWithGTE(fulfilledAt string) *getOrderLinesWithIDFilter {
+	(*g)["filter[fulfilledAt]"] = "gte:" + fulfilledAt
+	return g
+}
+
+func (g *getOrderLinesWithIDFilter) SetFulfilledAtWithLTE(fulfilledAt string) *getOrderLinesWithIDFilter {
+	(*g)["filter[fulfilledAt]"] = "lte:" + fulfilledAt
+	return g
+}
+
+func (g *getOrderLinesWithIDFilter) SetFulfilledQuantity(fulfilledQuantity string) *getOrderLinesWithIDFilter {
+	(*g)["filter[fulfilledQuantity]"] = fulfilledQuantity
+	return g
+}
+
+func (g *getOrderLinesWithIDFilter) SetFulfilledQuantityWithGTE(fulfilledQuantity string) *getOrderLinesWithIDFilter {
+	(*g)["filter[fulfilledQuantity]"] = "gte:" + fulfilledQuantity
+	return g
+}
+
+func (g *getOrderLinesWithIDFilter) SetFulfilledQuantityWithLTE(fulfilledQuantity string) *getOrderLinesWithIDFilter {
+	(*g)["filter[fulfilledQuantity]"] = "lte:" + fulfilledQuantity
+	return g
+}
+
+func (g *getOrderLinesWithIDFilter) SetQuantity(quantity string) *getOrderLinesWithIDFilter {
+	(*g)["filter[quantity]"] = quantity
+	return g
+}
+
+func (g *getOrderLinesWithIDFilter) SetQuantityWithGTE(quantity string) *getOrderLinesWithIDFilter {
+	(*g)["filter[quantity]"] = "gte:" + quantity
+	return g
+}
+
+func (g *getOrderLinesWithIDFilter) SetQuantityWithLTE(quantity string) *getOrderLinesWithIDFilter {
+	(*g)["filter[quantity]"] = "lte:" + quantity
+	return g
+}
+
+func (g *getOrderLinesWithIDFilter) SetStatus(status string) *getOrderLinesWithIDFilter {
+	(*g)["filter[status]"] = status
+	return g
+}
+
+func (g *getOrderLinesWithIDFilter) SetStatusWithIN(status ...string) *getOrderLinesWithIDFilter {
+	(*g)["filter[status]"] = "in:" + strings.Join(status, ",")
+	return g
+}
+
+func (g *getOrderLinesWithIDFilter) SetStatusWithNIN(status ...string) *getOrderLinesWithIDFilter {
+	(*g)["filter[status]"] = "nin:" + strings.Join(status, ",")
+	return g
+}
+
+func (g *getOrderLinesWithIDFilter) SetUnitPrice(unitPrice string) *getOrderLinesWithIDFilter {
+	(*g)["filter[unitPrice]"] = unitPrice
+	return g
+}
+
+func (g *getOrderLinesWithIDFilter) SetUnitPriceWithGTE(unitPrice string) *getOrderLinesWithIDFilter {
+	(*g)["filter[unitPrice]"] = "gte:" + unitPrice
+	return g
+}
+
+func (g *getOrderLinesWithIDFilter) SetUnitPriceWithLTE(unitPrice string) *getOrderLinesWithIDFilter {
+	(*g)["filter[unitPrice]"] = "lte:" + unitPrice
+	return g
+}
+
+func (g *getOrderLinesWithIDFilter) SetSortWithCreatedAt() *getOrderLinesWithIDFilter {
+	(*g)["sort"] = "createdAt"
+	return g
+}
+
+func (g *getOrderLinesWithIDFilter) SetSortWithCreatedAtReverse() *getOrderLinesWithIDFilter {
+	(*g)["sort"] = "-createdAt"
+	return g
+}
+
+func (g *getOrderLinesWithIDFilter) SetSortWithFulfilledAt() *getOrderLinesWithIDFilter {
+	(*g)["sort"] = "fulfilledAt"
+	return g
+}
+
+func (g *getOrderLinesWithIDFilter) SetSortWithFulfilledAtReverse() *getOrderLinesWithIDFilter {
+	(*g)["sort"] = "-fulfilledAt"
+	return g
+}
+
+// Defines the number of results per page. Default = 30.
+func (g *getOrderLinesWithIDFilter) SetPageSize(size int) *getOrderLinesWithIDFilter {
+	(*g)["page[size]"] = strconv.Itoa(size)
+	return g
+}
+
+// Defines the number of the page to retrieve. Default = 1
+func (g *getOrderLinesWithIDFilter) SetPageNumber(number int) *getOrderLinesWithIDFilter {
 	(*g)["page[number]"] = strconv.Itoa(number)
 	return g
 }

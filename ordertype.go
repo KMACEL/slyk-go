@@ -7,6 +7,10 @@ type Orders struct {
 	Total int         `json:"total"`
 }
 
+type Order struct {
+	Data OrderData `json:"data"`
+}
+
 type OrderData struct {
 	Amount                string                 `json:"amount"`
 	AmountWithoutShipment string                 `json:"amountWithoutShipment"`
