@@ -86,3 +86,10 @@ func (c Client) CreateOrder(createOrderDataBody *CreateOrderDataBody) (*Order, e
 
 	return &order, nil
 }
+
+// OrderCancel is
+// https://developers.slyk.io/slyk/reference/endpoints#post-orders-id-cancel
+func (c Client) OrderCancel(orderID string, orderCancelDataBody *OrderCancelDataBody) error {
+	_, err := c.genericPostQuery(linkOrders+"/"+orderID+"/cancel", orderCancelDataBody)
+	return err
+}

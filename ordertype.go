@@ -63,3 +63,8 @@ type LineForOrder struct {
 	Quantity               int         `json:"quantity,omitempty"`
 	ProductQuestionsResult interface{} `json:"productQuestionsResult,omitempty"`
 }
+
+type OrderCancelDataBody struct {
+	Reason       string `json:"reason,omitempty"`
+	RefundAmount string `json:"refundAmount,omitempty"`
+}
