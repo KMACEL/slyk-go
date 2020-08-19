@@ -44,3 +44,22 @@ type OrderData struct {
 	} `json:"user"`
 	UserID string `json:"userId"`
 }
+
+type CreateOrderDataBody struct {
+	ChosenPaymentMethod string         `json:"chosenPaymentMethod,omitempty"`
+	CustomData          interface{}    `json:"customData,omitempty"`
+	DeliveryMethod      string         `json:"deliveryMethod,omitempty"`
+	DryRun              bool           `json:"dryRun,omitempty"`
+	Lines               []LineForOrder `json:"lines"`
+	ShippingAddressID   string         `json:"shippingAddressId,omitempty"`
+	UseBonus            bool           `json:"useBonus,omitempty"`
+	UserID              string         `json:"userId"`
+	UserNotes           string         `json:"userNotes,omitempty"`
+	WalletID            string         `json:"walletId,omitempty"`
+}
+
+type LineForOrder struct {
+	ProductID              string      `json:"productId"`
+	Quantity               int         `json:"quantity,omitempty"`
+	ProductQuestionsResult interface{} `json:"productQuestionsResult,omitempty"`
+}

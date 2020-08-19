@@ -393,3 +393,71 @@ func (g *getOrderLinesWithIDFilter) SetPageNumber(number int) *getOrderLinesWith
 	(*g)["page[number]"] = strconv.Itoa(number)
 	return g
 }
+
+/*
+ ██████╗██████╗ ███████╗ █████╗ ████████╗███████╗         ██████╗ ██████╗ ██████╗ ███████╗██████╗         ██████╗  █████╗ ████████╗ █████╗         ███████╗ ██████╗ ██████╗         ██████╗  ██████╗ ██████╗ ██╗   ██╗
+██╔════╝██╔══██╗██╔════╝██╔══██╗╚══██╔══╝██╔════╝        ██╔═══██╗██╔══██╗██╔══██╗██╔════╝██╔══██╗        ██╔══██╗██╔══██╗╚══██╔══╝██╔══██╗        ██╔════╝██╔═══██╗██╔══██╗        ██╔══██╗██╔═══██╗██╔══██╗╚██╗ ██╔╝
+██║     ██████╔╝█████╗  ███████║   ██║   █████╗          ██║   ██║██████╔╝██║  ██║█████╗  ██████╔╝        ██║  ██║███████║   ██║   ███████║        █████╗  ██║   ██║██████╔╝        ██████╔╝██║   ██║██║  ██║ ╚████╔╝
+██║     ██╔══██╗██╔══╝  ██╔══██║   ██║   ██╔══╝          ██║   ██║██╔══██╗██║  ██║██╔══╝  ██╔══██╗        ██║  ██║██╔══██║   ██║   ██╔══██║        ██╔══╝  ██║   ██║██╔══██╗        ██╔══██╗██║   ██║██║  ██║  ╚██╔╝
+╚██████╗██║  ██║███████╗██║  ██║   ██║   ███████╗        ╚██████╔╝██║  ██║██████╔╝███████╗██║  ██║        ██████╔╝██║  ██║   ██║   ██║  ██║        ██║     ╚██████╔╝██║  ██║        ██████╔╝╚██████╔╝██████╔╝   ██║
+ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝         ╚═════╝ ╚═╝  ╚═╝╚═════╝ ╚══════╝╚═╝  ╚═╝        ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝        ╚═╝      ╚═════╝ ╚═╝  ╚═╝        ╚═════╝  ╚═════╝ ╚═════╝    ╚═╝
+*/
+
+func CreateOrderDataForBody() *CreateOrderDataBody {
+	return &CreateOrderDataBody{}
+}
+
+func (c *CreateOrderDataBody) SetChosenPaymentMethod(chosenPaymentMethod string) *CreateOrderDataBody {
+	c.ChosenPaymentMethod = chosenPaymentMethod
+	return c
+}
+
+func (c *CreateOrderDataBody) SetCustomData(customData interface{}) *CreateOrderDataBody {
+	c.CustomData = customData
+	return c
+}
+
+func (c *CreateOrderDataBody) SetDeliveryMethod(deliveryMethod string) *CreateOrderDataBody {
+	c.DeliveryMethod = deliveryMethod
+	return c
+}
+
+func (c *CreateOrderDataBody) SetDryRun(dryRun bool) *CreateOrderDataBody {
+	c.DryRun = dryRun
+	return c
+}
+
+func (c *CreateOrderDataBody) SetLines(lines []LineForOrder) *CreateOrderDataBody {
+	c.Lines = lines
+	return c
+}
+
+func (c *CreateOrderDataBody) AppendLine(line LineForOrder) *CreateOrderDataBody {
+	c.Lines = append(c.Lines, line)
+	return c
+}
+
+func (c *CreateOrderDataBody) SetShippingAddressID(shippingAddressID string) *CreateOrderDataBody {
+	c.ShippingAddressID = shippingAddressID
+	return c
+}
+
+func (c *CreateOrderDataBody) SetUseBonus(useBonus bool) *CreateOrderDataBody {
+	c.UseBonus = useBonus
+	return c
+}
+
+func (c *CreateOrderDataBody) SetUserID(userID string) *CreateOrderDataBody {
+	c.UserID = userID
+	return c
+}
+
+func (c *CreateOrderDataBody) SetUserNotes(userNotes string) *CreateOrderDataBody {
+	c.UserNotes = userNotes
+	return c
+}
+
+func (c *CreateOrderDataBody) SetWalletID(walletID string) *CreateOrderDataBody {
+	c.WalletID = walletID
+	return c
+}

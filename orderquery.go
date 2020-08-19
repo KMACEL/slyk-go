@@ -69,3 +69,20 @@ func (c Client) GetOrderLinesWithIDAndLineID(orderID string, lineID string) (*Or
 
 	return &order, nil
 }
+
+// CreateOrder is
+// https://developers.slyk.io/slyk/reference/endpoints#post-orders
+func (c Client) CreateOrder(createOrderDataBody *CreateOrderDataBody) (*Order, error) {
+	getBody, err := c.genericPostQuery(linkOrders, createOrderDataBody)
+	if err != nil {
+		return nil, err
+	}
+
+	var order Order
+	errUnmarshal := json.Unmarshal(getBody, &order)
+	if errUnmarshal != nil {
+		return nil, errUnmarshal
+	}
+
+	return &order, nil
+}
