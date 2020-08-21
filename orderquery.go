@@ -93,3 +93,20 @@ func (c Client) OrderCancel(orderID string, orderCancelDataBody *OrderCancelData
 	_, err := c.genericPostQuery(linkOrders+"/"+orderID+"/cancel", orderCancelDataBody)
 	return err
 }
+
+// OrderFulfill is
+// https://developers.slyk.io/slyk/reference/endpoints#post-orders-id-fulfill
+func (c Client) OrderFulfill(orderID string, orderFulfillDataBody *OrderFulfillDataBody) (*Order, error) {
+	getBody, err := c.genericPostQuery(linkOrders+"/"+orderID+"/fulfill", orderFulfillDataBody)
+	if err != nil {
+		return nil, err
+	}
+
+	var order Order
+	errUnmarshal := json.Unmarshal(getBody, &order)
+	if errUnmarshal != nil {
+		return nil, errUnmarshal
+	}
+
+	return &order, nil
+}

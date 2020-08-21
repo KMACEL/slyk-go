@@ -68,3 +68,7 @@ type OrderCancelDataBody struct {
 	Reason       string `json:"reason,omitempty"`
 	RefundAmount string `json:"refundAmount,omitempty"`
 }
+
+type OrderFulfillDataBody struct {
+	TrackingID string `json:"trackingId"`
+}

@@ -36,3 +36,17 @@ func TestCreateOrder(t *testing.T) {
 
 	ReturnAndError(t, tst, returnValue, err)
 }
+
+func TestOrderCancel(t *testing.T) {
+	tst := "TestOrderCancel"
+	err := getClient().OrderCancel("", &OrderCancelDataBody{})
+
+	OnlyError(t, tst, err)
+}
+
+func TestOrderFulfill(t *testing.T) {
+	tst := "TestOrderFulfill"
+	returnValue, err := getClient().OrderFulfill("", &OrderFulfillDataBody{})
+
+	ReturnAndError(t, tst, returnValue, err)
+}
