@@ -503,3 +503,17 @@ func (o *OrderFulfillDataBody) SetTrackingID(trackingID string) *OrderFulfillDat
 	o.TrackingID = trackingID
 	return o
 }
+
+func OrderPayDataForBody() *OrderPayDataBody {
+	return &OrderPayDataBody{}
+}
+
+func (o *OrderPayDataBody) SetAmount(amount string) *OrderPayDataBody {
+	o.Amount = amount
+	return o
+}
+
+func (o *OrderPayDataBody) SetWalletID(walletID string) *OrderPayDataBody {
+	o.WalletID = walletID
+	return o
+}

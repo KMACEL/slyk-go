@@ -72,3 +72,8 @@ type OrderCancelDataBody struct {
 type OrderFulfillDataBody struct {
 	TrackingID string `json:"trackingId"`
 }
+
+type OrderPayDataBody struct {
+	Amount   string `json:"amount,omitempty"`
+	WalletID string `json:"walletId,omitempty"`
+}

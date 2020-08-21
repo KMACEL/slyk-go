@@ -127,3 +127,20 @@ func (c Client) OrderUNFulfill(orderID string) (*Order, error) {
 
 	return &order, nil
 }
+
+// OrderPay is
+// https://developers.slyk.io/slyk/reference/endpoints#post-orders-id-pay
+func (c Client) OrderPay(orderID string, orderPayDataBody *OrderPayDataBody) (*Order, error) {
+	getBody, err := c.genericPostQuery(linkOrders+"/"+orderID+"/pay", orderPayDataBody)
+	if err != nil {
+		return nil, err
+	}
+
+	var order Order
+	errUnmarshal := json.Unmarshal(getBody, &order)
+	if errUnmarshal != nil {
+		return nil, errUnmarshal
+	}
+
+	return &order, nil
+}
