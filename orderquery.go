@@ -110,3 +110,20 @@ func (c Client) OrderFulfill(orderID string, orderFulfillDataBody *OrderFulfillD
 
 	return &order, nil
 }
+
+// OrderUNFulfill is
+// https://developers.slyk.io/slyk/reference/endpoints#post-orders-id-unfulfill
+func (c Client) OrderUNFulfill(orderID string) (*Order, error) {
+	getBody, err := c.genericPostQuery(linkOrders+"/"+orderID+"/unfulfill", nil)
+	if err != nil {
+		return nil, err
+	}
+
+	var order Order
+	errUnmarshal := json.Unmarshal(getBody, &order)
+	if errUnmarshal != nil {
+		return nil, errUnmarshal
+	}
+
+	return &order, nil
+}

@@ -50,3 +50,10 @@ func TestOrderFulfill(t *testing.T) {
 
 	ReturnAndError(t, tst, returnValue, err)
 }
+
+func TestOrderUNFulfill(t *testing.T) {
+	tst := "TestOrderUNFulfill"
+	returnValue, err := getClient().OrderUNFulfill("")
+
+	ReturnAndError(t, tst, returnValue, err)
+}
