@@ -38,36 +38,36 @@ func (c Client) GetOrderWithID(orderID string) (*Order, error) {
 
 // GetOrderLinesWithID is
 // https://developers.slyk.io/slyk/reference/endpoints#get-invites-3
-func (c Client) GetOrderLinesWithID(orderID string, filter ...*getOrderLinesWithIDFilter) (*Orders, error) {
+func (c Client) GetOrderLinesWithID(orderID string, filter ...*getOrderLinesWithIDFilter) (*OrderLines, error) {
 	getBody, err := c.genericGetQuery(linkOrders+"/"+orderID+"/lines", merge(filter))
 	if err != nil {
 		return nil, err
 	}
 
-	var orders Orders
-	errUnmarshal := json.Unmarshal(getBody, &orders)
+	var orderLines OrderLines
+	errUnmarshal := json.Unmarshal(getBody, &orderLines)
 	if errUnmarshal != nil {
 		return nil, errUnmarshal
 	}
 
-	return &orders, nil
+	return &orderLines, nil
 }
 
 // GetOrderLinesWithIDAndLineID is
 // https://developers.slyk.io/slyk/reference/endpoints#get-orders-orderid-lines-id
-func (c Client) GetOrderLinesWithIDAndLineID(orderID string, lineID string) (*Order, error) {
+func (c Client) GetOrderLinesWithIDAndLineID(orderID string, lineID string) (*OrderLine, error) {
 	getBody, err := c.genericGetQuery(linkOrders+"/"+orderID+"/lines/"+lineID, nil)
 	if err != nil {
 		return nil, err
 	}
 
-	var order Order
-	errUnmarshal := json.Unmarshal(getBody, &order)
+	var orderLine OrderLine
+	errUnmarshal := json.Unmarshal(getBody, &orderLine)
 	if errUnmarshal != nil {
 		return nil, errUnmarshal
 	}
 
-	return &order, nil
+	return &orderLine, nil
 }
 
 // CreateOrder is
@@ -143,4 +143,38 @@ func (c Client) OrderPay(orderID string, orderPayDataBody *OrderPayDataBody) (*O
 	}
 
 	return &order, nil
+}
+
+// OrderLineFulfill is
+// https://developers.slyk.io/slyk/reference/endpoints#get-invites-4
+func (c Client) OrderLineFulfill(orderID string, lineID string, orderLineFulfillDataBody *OrderLineFulfillDataBody) (*OrderLine, error) {
+	getBody, err := c.genericPostQuery(linkOrders+"/"+orderID+"/lines/"+lineID+"/fulfill", orderLineFulfillDataBody)
+	if err != nil {
+		return nil, err
+	}
+
+	var orderLine OrderLine
+	errUnmarshal := json.Unmarshal(getBody, &orderLine)
+	if errUnmarshal != nil {
+		return nil, errUnmarshal
+	}
+
+	return &orderLine, nil
+}
+
+// OrderLineUNFulfill is
+// https://developers.slyk.io/slyk/reference/endpoints#get-invites-5
+func (c Client) OrderLineUNFulfill(orderID string, lineID string, orderLineUNFulfillDataBody *OrderLineUNFulfillDataBody) (*OrderLine, error) {
+	getBody, err := c.genericPostQuery(linkOrders+"/"+orderID+"/lines/"+lineID+"/unfulfill", orderLineUNFulfillDataBody)
+	if err != nil {
+		return nil, err
+	}
+
+	var orderLine OrderLine
+	errUnmarshal := json.Unmarshal(getBody, &orderLine)
+	if errUnmarshal != nil {
+		return nil, errUnmarshal
+	}
+
+	return &orderLine, nil
 }

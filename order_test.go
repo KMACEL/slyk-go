@@ -64,3 +64,17 @@ func TestOrderPay(t *testing.T) {
 
 	ReturnAndError(t, tst, returnValue, err)
 }
+
+func TestOrderLineFulfill(t *testing.T) {
+	tst := "TestOrderLineFulfill"
+	returnValue, err := getClient().OrderLineFulfill("", "", &OrderLineFulfillDataBody{})
+
+	ReturnAndError(t, tst, returnValue, err)
+}
+
+func TestOrderLineUNFulfill(t *testing.T) {
+	tst := "TestOrderLineUNFulfill"
+	returnValue, err := getClient().OrderLineUNFulfill("", "", &OrderLineUNFulfillDataBody{})
+
+	ReturnAndError(t, tst, returnValue, err)
+}
