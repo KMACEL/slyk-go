@@ -7,6 +7,10 @@ type Products struct {
 	Total int           `json:"total"`
 }
 
+type Product struct {
+	Data ProductData `json:"data"`
+}
+
 type ProductData struct {
 	AllowChoosingQuantity bool      `json:"allowChoosingQuantity"`
 	AssetCode             string    `json:"assetCode"`

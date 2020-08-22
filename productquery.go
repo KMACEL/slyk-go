@@ -2,6 +2,8 @@ package slyk
 
 import "encoding/json"
 
+// GetProducts is
+// https://developers.slyk.io/slyk/reference/endpoints#get-invites-6
 func (c Client) GetProducts(filter ...*getProductsFilter) (*Products, error) {
 	getBody, err := c.genericGetQuery(linkProducts, merge(filter))
 	if err != nil {
@@ -15,4 +17,21 @@ func (c Client) GetProducts(filter ...*getProductsFilter) (*Products, error) {
 	}
 
 	return &products, nil
+}
+
+// GetProductsWithID
+// https://developers.slyk.io/slyk/reference/endpoints#get-products-id
+func (c Client) GetProductWithID(productID string) (*Product, error) {
+	getBody, err := c.genericGetQuery(linkProducts+"/"+productID, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	var product Product
+	errUnmarshal := json.Unmarshal(getBody, &product)
+	if errUnmarshal != nil {
+		return nil, errUnmarshal
+	}
+
+	return &product, nil
 }

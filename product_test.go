@@ -9,3 +9,11 @@ func TestGetProducts(t *testing.T) {
 
 	ReturnAndError(t, tst, returnValue, err)
 }
+
+func TestGetProductWithID(t *testing.T) {
+	tst := "TestGetProductWithID"
+
+	returnValue, err := getClient().GetProductWithID("")
+
+	ReturnAndError(t, tst, returnValue, err)
+}
