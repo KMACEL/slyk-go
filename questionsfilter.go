@@ -224,3 +224,52 @@ func (u *UpdateQuestionDataBody) SetTypeCode(typeCode string) *UpdateQuestionDat
 	u.TypeCode = typeCode
 	return u
 }
+
+/*
+ ██████╗██████╗ ███████╗ █████╗ ████████╗███████╗         ██████╗ ██╗   ██╗███████╗███████╗████████╗██╗ ██████╗ ███╗   ██╗        ██████╗  █████╗ ████████╗ █████╗         ███████╗ ██████╗ ██████╗         ██████╗  ██████╗ ██████╗ ██╗   ██╗
+██╔════╝██╔══██╗██╔════╝██╔══██╗╚══██╔══╝██╔════╝        ██╔═══██╗██║   ██║██╔════╝██╔════╝╚══██╔══╝██║██╔═══██╗████╗  ██║        ██╔══██╗██╔══██╗╚══██╔══╝██╔══██╗        ██╔════╝██╔═══██╗██╔══██╗        ██╔══██╗██╔═══██╗██╔══██╗╚██╗ ██╔╝
+██║     ██████╔╝█████╗  ███████║   ██║   █████╗          ██║   ██║██║   ██║█████╗  ███████╗   ██║   ██║██║   ██║██╔██╗ ██║        ██║  ██║███████║   ██║   ███████║        █████╗  ██║   ██║██████╔╝        ██████╔╝██║   ██║██║  ██║ ╚████╔╝
+██║     ██╔══██╗██╔══╝  ██╔══██║   ██║   ██╔══╝          ██║▄▄ ██║██║   ██║██╔══╝  ╚════██║   ██║   ██║██║   ██║██║╚██╗██║        ██║  ██║██╔══██║   ██║   ██╔══██║        ██╔══╝  ██║   ██║██╔══██╗        ██╔══██╗██║   ██║██║  ██║  ╚██╔╝
+╚██████╗██║  ██║███████╗██║  ██║   ██║   ███████╗        ╚██████╔╝╚██████╔╝███████╗███████║   ██║   ██║╚██████╔╝██║ ╚████║        ██████╔╝██║  ██║   ██║   ██║  ██║        ██║     ╚██████╔╝██║  ██║        ██████╔╝╚██████╔╝██████╔╝   ██║
+ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝         ╚══▀▀═╝  ╚═════╝ ╚══════╝╚══════╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝        ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝        ╚═╝      ╚═════╝ ╚═╝  ╚═╝        ╚═════╝  ╚═════╝ ╚═════╝    ╚═╝
+*/
+
+// CreateQuestionDataForBody is
+func CreateQuestionDataForBody() *CreateQuestionDataBody {
+	return &CreateQuestionDataBody{}
+}
+
+func (c *CreateQuestionDataBody) SetConfigurations(configurations interface{}) *CreateQuestionDataBody {
+	c.Configurations = configurations
+	return c
+}
+
+func (c *CreateQuestionDataBody) SetCustomData(customData interface{}) *CreateQuestionDataBody {
+	c.CustomData = customData
+	return c
+}
+
+func (c *CreateQuestionDataBody) SetDescription(description string) *CreateQuestionDataBody {
+	c.Description = description
+	return c
+}
+
+func (c *CreateQuestionDataBody) SetProductTypeCode(productTypeCode string) *CreateQuestionDataBody {
+	c.ProductTypeCode = productTypeCode
+	return c
+}
+
+func (c *CreateQuestionDataBody) SetRequired(required bool) *CreateQuestionDataBody {
+	c.Required = required
+	return c
+}
+
+func (c *CreateQuestionDataBody) SetTitle(title string) *CreateQuestionDataBody {
+	c.Title = title
+	return c
+}
+
+func (c *CreateQuestionDataBody) SetTypeCode(typeCode string) *CreateQuestionDataBody {
+	c.TypeCode = typeCode
+	return c
+}

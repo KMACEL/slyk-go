@@ -69,3 +69,20 @@ func (c Client) UpdateQuestion(questionID string, updateQuestionDataBody *Update
 
 	return &question, nil
 }
+
+// CreateQuestion is
+// https://developers.slyk.io/slyk/reference/endpoints#post-questions
+func (c Client) CreateQuestion(createQuestionDataBody *CreateQuestionDataBody) (*Question, error) {
+	getBody, err := c.genericPostQuery(linkQuestions, createQuestionDataBody)
+	if err != nil {
+		return nil, err
+	}
+
+	var question Question
+	errUnmarshal := json.Unmarshal(getBody, &question)
+	if errUnmarshal != nil {
+		return nil, errUnmarshal
+	}
+
+	return &question, nil
+}

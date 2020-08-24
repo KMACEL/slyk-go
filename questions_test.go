@@ -33,3 +33,11 @@ func TestUpdateQuestion(t *testing.T) {
 
 	ReturnAndError(t, tst, returnValue, err)
 }
+
+func TestCreateQuestion(t *testing.T) {
+	tst := "TestCreateQuestion"
+
+	returnValue, err := getClient().CreateQuestion(&CreateQuestionDataBody{})
+
+	ReturnAndError(t, tst, returnValue, err)
+}

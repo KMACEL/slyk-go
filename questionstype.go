@@ -48,3 +48,13 @@ type UpdateQuestionDataBody struct {
 	Title           string      `json:"title,omitempty"`
 	TypeCode        string      `json:"typeCode,omitempty"`
 }
+
+type CreateQuestionDataBody struct {
+	Configurations  interface{} `json:"configurations,omitempty"`
+	CustomData      interface{} `json:"customData,omitempty"`
+	Description     string      `json:"description,omitempty"`
+	ProductTypeCode string      `json:"productTypeCode"`
+	Required        bool        `json:"required,omitempty"`
+	Title           string      `json:"title"`
+	TypeCode        string      `json:"typeCode"`
+}
