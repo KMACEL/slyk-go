@@ -52,3 +52,20 @@ func (c Client) GetQuestionsTypes(filter ...*getQuestionsTypesFilter) (*Question
 
 	return &questionTypes, nil
 }
+
+// UpdateQuestion is
+// https://developers.slyk.io/slyk/reference/endpoints#patch-questions-id
+func (c Client) UpdateQuestion(questionID string, updateQuestionDataBody *UpdateQuestionDataBody) (*Question, error) {
+	getBody, err := c.genericPatchQuery(linkQuestions+"/"+questionID, updateQuestionDataBody)
+	if err != nil {
+		return nil, err
+	}
+
+	var question Question
+	errUnmarshal := json.Unmarshal(getBody, &question)
+	if errUnmarshal != nil {
+		return nil, errUnmarshal
+	}
+
+	return &question, nil
+}

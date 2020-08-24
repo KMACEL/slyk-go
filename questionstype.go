@@ -38,3 +38,13 @@ type QuestionTypeData struct {
 	DashboardJSONSchema interface{} `json:"dashboardJsonSchema,omitempty"`
 	JSONSchemaTemplate  interface{} `json:"jsonSchemaTemplate,omitempty"`
 }
+
+type UpdateQuestionDataBody struct {
+	Configurations  interface{} `json:"configurations,omitempty"`
+	CustomData      interface{} `json:"customData,omitempty"`
+	Description     string      `json:"description,omitempty"`
+	ProductTypeCode string      `json:"productTypeCode,omitempty"`
+	Required        bool        `json:"required,omitempty"`
+	Title           string      `json:"title,omitempty"`
+	TypeCode        string      `json:"typeCode,omitempty"`
+}
