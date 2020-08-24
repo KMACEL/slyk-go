@@ -25,6 +25,7 @@ const (
 	linkCategories     = apiSlyk + "/categories"
 	linkOrders         = apiSlyk + "/orders"
 	linkProducts       = apiSlyk + "/products"
+	linkQuestions      = apiSlyk + "/questions"
 )
 
 const (
