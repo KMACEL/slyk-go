@@ -79,3 +79,11 @@ func TestDeleteProduct(t *testing.T) {
 
 	OnlyError(t, tst, err)
 }
+
+func TestDeleteProductQuestion(t *testing.T) {
+	tst := "TestDeleteProductQuestion"
+
+	err := getClient().DeleteProductQuestion("bfbd599a-294b-4e52-989f-ec8d6b281950", "")
+
+	OnlyError(t, tst, err)
+}

@@ -97,7 +97,7 @@ func (c Client) ProductReorder(productID string, productReorderDataBody *Product
 // ProductQuestionReorder is
 // https://developers.slyk.io/slyk/reference/endpoints#post-products-productid-questions-id-reorder
 func (c Client) ProductQuestionReorder(productID string, questionID string, productQuestionReorderDataBody *ProductQuestionReorderDataBody) error {
-	_, err := c.genericPostQuery(linkProducts+"/"+productID+"/questions"+questionID+"/reorder", productQuestionReorderDataBody)
+	_, err := c.genericPostQuery(linkProducts+"/"+productID+"/questions/"+questionID+"/reorder", productQuestionReorderDataBody)
 	return err
 }
 
@@ -105,4 +105,10 @@ func (c Client) ProductQuestionReorder(productID string, questionID string, prod
 // https://developers.slyk.io/slyk/reference/endpoints#delete-products-id
 func (c Client) DeleteProduct(productID string) error {
 	return c.genericDeleteQuery(linkProducts+"/"+productID, nil)
+}
+
+// DeleteProductQuestion is
+// https://developers.slyk.io/slyk/reference/endpoints#delete-products-productid-questions-id
+func (c Client) DeleteProductQuestion(productID string, questionID string) error {
+	return c.genericDeleteQuery(linkProducts+"/"+productID+"/questions/"+questionID, nil)
 }
