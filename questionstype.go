@@ -25,3 +25,16 @@ type QuestionData struct {
 	TypeCode        string      `json:"typeCode"`
 	UpdatedAt       time.Time   `json:"updatedAt"`
 }
+
+type QuestionTypes struct {
+	Data  []QuestionTypeData `json:"data"`
+	Total int                `json:"total"`
+}
+
+type QuestionTypeData struct {
+	Code                string      `json:"code"`
+	CreatedAt           time.Time   `json:"createdAt"`
+	UpdatedAt           time.Time   `json:"updatedAt"`
+	DashboardJSONSchema interface{} `json:"dashboardJsonSchema,omitempty"`
+	JSONSchemaTemplate  interface{} `json:"jsonSchemaTemplate,omitempty"`
+}

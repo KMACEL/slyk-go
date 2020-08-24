@@ -10,10 +10,18 @@ func TestGetQuestions(t *testing.T) {
 	ReturnAndError(t, tst, returnValue, err)
 }
 
-func TestGetQuestionsWithID(t *testing.T) {
+func TestGetQuestionWithID(t *testing.T) {
 	tst := "TestGetQuestionsWithID"
 
-	returnValue, err := getClient().GetQuestionsWithID("d448e2e5-3b79-4ece-8a0f-754c9b1e0d8c")
+	returnValue, err := getClient().GetQuestionWithID("d448e2e5-3b79-4ece-8a0f-754c9b1e0d8c")
+
+	ReturnAndError(t, tst, returnValue, err)
+}
+
+func TestGetQuestionsTypes(t *testing.T) {
+	tst := "TestGetQuestionsTypes"
+
+	returnValue, err := getClient().GetQuestionsTypes()
 
 	ReturnAndError(t, tst, returnValue, err)
 }

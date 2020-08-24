@@ -7,6 +7,7 @@ import (
 )
 
 type getQuestionsFilter map[string]string
+type getQuestionsTypesFilter map[string]string
 
 /*
  ██████╗ ███████╗████████╗         ██████╗ ██╗   ██╗███████╗███████╗████████╗██╗ ██████╗ ███╗   ██╗███████╗        ███████╗██╗██╗  ████████╗███████╗██████╗
@@ -105,6 +106,72 @@ func (g *getQuestionsFilter) SetPageSize(size int) *getQuestionsFilter {
 
 // Defines the number of the page to retrieve. Default = 1
 func (g *getQuestionsFilter) SetPageNumber(number int) *getQuestionsFilter {
+	(*g)["page[number]"] = strconv.Itoa(number)
+	return g
+}
+
+/*
+ ██████╗ ███████╗████████╗         ██████╗ ██╗   ██╗███████╗███████╗████████╗██╗ ██████╗ ███╗   ██╗███████╗        ████████╗██╗   ██╗██████╗ ███████╗███████╗        ███████╗██╗██╗  ████████╗███████╗██████╗
+██╔════╝ ██╔════╝╚══██╔══╝        ██╔═══██╗██║   ██║██╔════╝██╔════╝╚══██╔══╝██║██╔═══██╗████╗  ██║██╔════╝        ╚══██╔══╝╚██╗ ██╔╝██╔══██╗██╔════╝██╔════╝        ██╔════╝██║██║  ╚══██╔══╝██╔════╝██╔══██╗
+██║  ███╗█████╗     ██║           ██║   ██║██║   ██║█████╗  ███████╗   ██║   ██║██║   ██║██╔██╗ ██║███████╗           ██║    ╚████╔╝ ██████╔╝█████╗  ███████╗        █████╗  ██║██║     ██║   █████╗  ██████╔╝
+██║   ██║██╔══╝     ██║           ██║▄▄ ██║██║   ██║██╔══╝  ╚════██║   ██║   ██║██║   ██║██║╚██╗██║╚════██║           ██║     ╚██╔╝  ██╔═══╝ ██╔══╝  ╚════██║        ██╔══╝  ██║██║     ██║   ██╔══╝  ██╔══██╗
+╚██████╔╝███████╗   ██║           ╚██████╔╝╚██████╔╝███████╗███████║   ██║   ██║╚██████╔╝██║ ╚████║███████║           ██║      ██║   ██║     ███████╗███████║        ██║     ██║███████╗██║   ███████╗██║  ██║
+ ╚═════╝ ╚══════╝   ╚═╝            ╚══▀▀═╝  ╚═════╝ ╚══════╝╚══════╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝           ╚═╝      ╚═╝   ╚═╝     ╚══════╝╚══════╝        ╚═╝     ╚═╝╚══════╝╚═╝   ╚══════╝╚═╝  ╚═╝
+*/
+
+// GetQuestionsTypesFilter is
+func GetQuestionsTypesFilter() *getQuestionsTypesFilter {
+	return &getQuestionsTypesFilter{}
+}
+
+func (g *getQuestionsTypesFilter) SetGenericQueryParameter(key string, value interface{}) *getQuestionsTypesFilter {
+	(*g)[key] = fmt.Sprintf("%v", value)
+	return g
+}
+
+func (g *getQuestionsTypesFilter) SetCode(code string) *getQuestionsTypesFilter {
+	(*g)["code"] = code
+	return g
+}
+
+func (g *getQuestionsTypesFilter) SetCodeWithIN(code ...string) *getQuestionsTypesFilter {
+	(*g)["code"] = "in:" + strings.Join(code, ",")
+	return g
+}
+
+func (g *getQuestionsTypesFilter) SetCodeWithNIN(code ...string) *getQuestionsTypesFilter {
+	(*g)["code"] = "nin:" + strings.Join(code, ",")
+	return g
+}
+
+func (g *getQuestionsTypesFilter) SetSortWithCreatedAt() *getQuestionsTypesFilter {
+	(*g)["sort"] = "createdAt"
+	return g
+}
+
+func (g *getQuestionsTypesFilter) SetSortWithCreatedAtReverse() *getQuestionsTypesFilter {
+	(*g)["sort"] = "-createdAt"
+	return g
+}
+
+func (g *getQuestionsTypesFilter) SetSortWithCode() *getQuestionsTypesFilter {
+	(*g)["sort"] = "code"
+	return g
+}
+
+func (g *getQuestionsTypesFilter) SetSortWithCodeReverse() *getQuestionsTypesFilter {
+	(*g)["sort"] = "-code"
+	return g
+}
+
+// Defines the number of results per page. Default = 30.
+func (g *getQuestionsTypesFilter) SetPageSize(size int) *getQuestionsTypesFilter {
+	(*g)["page[size]"] = strconv.Itoa(size)
+	return g
+}
+
+// Defines the number of the page to retrieve. Default = 1
+func (g *getQuestionsTypesFilter) SetPageNumber(number int) *getQuestionsTypesFilter {
 	(*g)["page[number]"] = strconv.Itoa(number)
 	return g
 }
