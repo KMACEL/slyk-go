@@ -51,3 +51,13 @@ func TestAddProductQuestionWithID(t *testing.T) {
 
 	ReturnAndError(t, tst, returnValue, err)
 }
+
+func TestProductReorder(t *testing.T) {
+	tst := "TestProductReorder"
+
+	err := getClient().ProductReorder("bfbd599a-294b-4e52-989f-ec8d6b281950", &ProductReorderDataBody{
+		SubsequentID: "",
+	})
+
+	OnlyError(t, tst, err)
+}

@@ -95,3 +95,7 @@ type AddProductQuestionResponseBody struct {
 		QuestionID string `json:"questionId"`
 	} `json:"data"`
 }
+
+type ProductReorderDataBody struct {
+	SubsequentID string `json:"subsequentId"`
+}

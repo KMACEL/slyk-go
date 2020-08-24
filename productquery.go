@@ -86,3 +86,10 @@ func (c Client) AddProductQuestionWithID(productID string, addProductQuestionDat
 
 	return &addProductQuestionResponseBody, nil
 }
+
+// AddProductQuestionWithIDForReorder is
+// https://developers.slyk.io/slyk/reference/endpoints#post-products-id-reorder
+func (c Client) ProductReorder(productID string, productReorderDataBody *ProductReorderDataBody) error {
+	_, err := c.genericPostQuery(linkProducts+"/"+productID+"/reorder", productReorderDataBody)
+	return err
+}

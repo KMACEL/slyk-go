@@ -386,7 +386,26 @@ func AddProductQuestionDataForBody() *AddProductQuestionDataBody {
 	return &AddProductQuestionDataBody{}
 }
 
-func (u *AddProductQuestionDataBody) SetQuestionID(questionID string) *AddProductQuestionDataBody {
-	u.QuestionID = questionID
-	return u
+func (a *AddProductQuestionDataBody) SetQuestionID(questionID string) *AddProductQuestionDataBody {
+	a.QuestionID = questionID
+	return a
+}
+
+/*
+██████╗ ██████╗  ██████╗ ██████╗ ██╗   ██╗ ██████╗████████╗        ██████╗ ███████╗ ██████╗ ██████╗ ██████╗ ███████╗██████╗         ██████╗  █████╗ ████████╗ █████╗         ███████╗ ██████╗ ██████╗         ██████╗  ██████╗ ██████╗ ██╗   ██╗
+██╔══██╗██╔══██╗██╔═══██╗██╔══██╗██║   ██║██╔════╝╚══██╔══╝        ██╔══██╗██╔════╝██╔═══██╗██╔══██╗██╔══██╗██╔════╝██╔══██╗        ██╔══██╗██╔══██╗╚══██╔══╝██╔══██╗        ██╔════╝██╔═══██╗██╔══██╗        ██╔══██╗██╔═══██╗██╔══██╗╚██╗ ██╔╝
+██████╔╝██████╔╝██║   ██║██║  ██║██║   ██║██║        ██║           ██████╔╝█████╗  ██║   ██║██████╔╝██║  ██║█████╗  ██████╔╝        ██║  ██║███████║   ██║   ███████║        █████╗  ██║   ██║██████╔╝        ██████╔╝██║   ██║██║  ██║ ╚████╔╝
+██╔═══╝ ██╔══██╗██║   ██║██║  ██║██║   ██║██║        ██║           ██╔══██╗██╔══╝  ██║   ██║██╔══██╗██║  ██║██╔══╝  ██╔══██╗        ██║  ██║██╔══██║   ██║   ██╔══██║        ██╔══╝  ██║   ██║██╔══██╗        ██╔══██╗██║   ██║██║  ██║  ╚██╔╝
+██║     ██║  ██║╚██████╔╝██████╔╝╚██████╔╝╚██████╗   ██║           ██║  ██║███████╗╚██████╔╝██║  ██║██████╔╝███████╗██║  ██║        ██████╔╝██║  ██║   ██║   ██║  ██║        ██║     ╚██████╔╝██║  ██║        ██████╔╝╚██████╔╝██████╔╝   ██║
+╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚═════╝  ╚═════╝  ╚═════╝   ╚═╝           ╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚═════╝ ╚══════╝╚═╝  ╚═╝        ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝        ╚═╝      ╚═════╝ ╚═╝  ╚═╝        ╚═════╝  ╚═════╝ ╚═════╝    ╚═╝
+*/
+
+// ProductWithIDForReorderDataForBody is
+func ProductReorderDataForBody() *ProductReorderDataBody {
+	return &ProductReorderDataBody{}
+}
+
+func (p *ProductReorderDataBody) SetSubsequentID(subsequentID string) *ProductReorderDataBody {
+	p.SubsequentID = subsequentID
+	return p
 }
