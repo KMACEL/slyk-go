@@ -93,3 +93,10 @@ func (c Client) ProductReorder(productID string, productReorderDataBody *Product
 	_, err := c.genericPostQuery(linkProducts+"/"+productID+"/reorder", productReorderDataBody)
 	return err
 }
+
+// ProductQuestionReorder is
+// https://developers.slyk.io/slyk/reference/endpoints#post-products-productid-questions-id-reorder
+func (c Client) ProductQuestionReorder(productID string, questionID string, productQuestionReorderDataBody *ProductQuestionReorderDataBody) error {
+	_, err := c.genericPostQuery(linkProducts+"/"+productID+"/questions"+questionID+"/reorder", productQuestionReorderDataBody)
+	return err
+}
