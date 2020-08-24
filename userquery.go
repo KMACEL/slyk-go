@@ -7,7 +7,7 @@ import (
 // GetUser is returns the Slyk user list.
 // https://developers.slyk.io/slyk/reference/endpoints#get-users
 func (c Client) GetUsers(filter ...*getUsersFilter) (*Users, error) {
-	getBody, err := c.genericGetQuery(linkUsers, merge(filter))
+	getBody, err := c.GenericGetQuery(linkUsers, merge(filter))
 	if err != nil {
 		return nil, err
 	}
@@ -24,7 +24,7 @@ func (c Client) GetUsers(filter ...*getUsersFilter) (*Users, error) {
 // GetUserWithID is Fetches information about a user. User Id takes as parameter.
 // https://developers.slyk.io/slyk/reference/endpoints#get-users-id
 func (c Client) GetUserWithID(userID string) (*User, error) {
-	getBody, err := c.genericGetQuery(linkUsers+"/"+userID, nil)
+	getBody, err := c.GenericGetQuery(linkUsers+"/"+userID, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -41,7 +41,7 @@ func (c Client) GetUserWithID(userID string) (*User, error) {
 // UpdateUser is
 // https://developers.slyk.io/slyk/reference/endpoints#patch-users-id
 func (c Client) UpdateUser(userID string, updateUserData *UpdateUserDataBody) (*User, error) {
-	getBody, err := c.genericPatchQuery(linkUsers+"/"+userID, updateUserData)
+	getBody, err := c.GenericPatchQuery(linkUsers+"/"+userID, updateUserData)
 	if err != nil {
 		return nil, err
 	}
@@ -58,7 +58,7 @@ func (c Client) UpdateUser(userID string, updateUserData *UpdateUserDataBody) (*
 // CreateUser is
 // https://developers.slyk.io/slyk/reference/endpoints#post-users
 func (c Client) CreateUser(createUserdata *CreateUserDataBody) (*User, error) {
-	getBody, err := c.genericPostQuery(linkUsers, createUserdata)
+	getBody, err := c.GenericPostQuery(linkUsers, createUserdata)
 	if err != nil {
 		return nil, err
 	}
@@ -75,28 +75,28 @@ func (c Client) CreateUser(createUserdata *CreateUserDataBody) (*User, error) {
 // SetUserApprove is
 // https://developers.slyk.io/slyk/reference/endpoints#post-users-id-approve
 func (c Client) SetUserApprove(userID string) error {
-	_, err := c.genericPostQuery(linkUsers+"/"+userID+approve, nil)
+	_, err := c.GenericPostQuery(linkUsers+"/"+userID+approve, nil)
 	return err
 }
 
 // SetUserBlock is
 // https://developers.slyk.io/slyk/reference/endpoints#post-users-id-block
 func (c Client) SetUserBlock(userID string) error {
-	_, err := c.genericPostQuery(linkUsers+"/"+userID+block, nil)
+	_, err := c.GenericPostQuery(linkUsers+"/"+userID+block, nil)
 	return err
 }
 
 // SetUserUnblock is
 // https://developers.slyk.io/slyk/reference/endpoints#post-users-id-unblock
 func (c Client) SetUserUnblock(userID string) error {
-	_, err := c.genericPostQuery(linkUsers+"/"+userID+unblock, nil)
+	_, err := c.GenericPostQuery(linkUsers+"/"+userID+unblock, nil)
 	return err
 }
 
 // ChangePassword is
 // https://developers.slyk.io/slyk/reference/endpoints#post-users-id-change-password
 func (c Client) ChangePassword(userID string, psw string) error {
-	_, err := c.genericPostQuery(linkUsers+"/"+userID+changePassword, struct {
+	_, err := c.GenericPostQuery(linkUsers+"/"+userID+changePassword, struct {
 		Password string `json:"password"`
 	}{
 		Password: psw,

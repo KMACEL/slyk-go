@@ -5,7 +5,7 @@ import "encoding/json"
 // GetCategories is
 // https://developers.slyk.io/slyk/reference/endpoints#get-invites-1 TODO : Wrong
 func (c Client) GetCategories(filter ...*getCategoriesFilter) (*Categories, error) {
-	getBody, err := c.genericGetQuery(linkCategories, merge(filter))
+	getBody, err := c.GenericGetQuery(linkCategories, merge(filter))
 	if err != nil {
 		return nil, err
 	}
@@ -22,7 +22,7 @@ func (c Client) GetCategories(filter ...*getCategoriesFilter) (*Categories, erro
 // GetCategoryWithID is
 // https://developers.slyk.io/slyk/reference/endpoints#get-categories-id
 func (c Client) GetCategoryWithID(cateoryID string) (*Category, error) {
-	getBody, err := c.genericGetQuery(linkCategories+"/"+cateoryID, nil)
+	getBody, err := c.GenericGetQuery(linkCategories+"/"+cateoryID, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -39,7 +39,7 @@ func (c Client) GetCategoryWithID(cateoryID string) (*Category, error) {
 // UpdateCategoryWithID is
 // https://developers.slyk.io/slyk/reference/endpoints#patch-categories-id is
 func (c Client) UpdateCategoryWithID(cateoryID string, updateCategoryDataBody *UpdateCategoryDataBody) (*Category, error) {
-	getBody, err := c.genericPatchQuery(linkCategories+"/"+cateoryID, updateCategoryDataBody)
+	getBody, err := c.GenericPatchQuery(linkCategories+"/"+cateoryID, updateCategoryDataBody)
 	if err != nil {
 		return nil, err
 	}
@@ -56,7 +56,7 @@ func (c Client) UpdateCategoryWithID(cateoryID string, updateCategoryDataBody *U
 // CreateCategory is
 // https://developers.slyk.io/slyk/reference/endpoints#post-categories
 func (c Client) CreateCategory(createCategoryDataBody *CreateCategoryDataBody) (*Category, error) {
-	getBody, err := c.genericPostQuery(linkCategories, createCategoryDataBody)
+	getBody, err := c.GenericPostQuery(linkCategories, createCategoryDataBody)
 	if err != nil {
 		return nil, err
 	}
@@ -73,11 +73,11 @@ func (c Client) CreateCategory(createCategoryDataBody *CreateCategoryDataBody) (
 // CategoryReorder is
 // https://developers.slyk.io/slyk/reference/endpoints#post-categories-id-reorder
 func (c Client) CategoryReorder(cateoryID string, categoryReorderDataBody *CategoryReorderDataBody) error {
-	_, err := c.genericPostQuery(linkCategories+"/"+cateoryID+"/reorder", categoryReorderDataBody)
+	_, err := c.GenericPostQuery(linkCategories+"/"+cateoryID+"/reorder", categoryReorderDataBody)
 	return err
 }
 
 // https://developers.slyk.io/slyk/reference/endpoints#delete-categories-id
 func (c Client) DeleteCategory(cateoryID string) error {
-	return c.genericDeleteQuery(linkCategories+"/"+cateoryID, nil)
+	return c.GenericDeleteQuery(linkCategories+"/"+cateoryID, nil)
 }

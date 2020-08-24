@@ -8,7 +8,7 @@ import (
 // GetRates
 // https://developers.slyk.io/slyk/reference/endpoints#get-rates
 func (c Client) GetRates(filter ...*getRatesFilter) (*Rates, error) {
-	getBody, err := c.genericGetQuery(linkRates, merge(filter))
+	getBody, err := c.GenericGetQuery(linkRates, merge(filter))
 	if err != nil {
 		return nil, err
 	}
@@ -25,7 +25,7 @@ func (c Client) GetRates(filter ...*getRatesFilter) (*Rates, error) {
 // GetRatesWithBaseAssetCodeAndQuoteAssetCode is
 // https://developers.slyk.io/slyk/reference/endpoints#get-rates-baseassetcode-quoteassetcode
 func (c Client) GetRatesWithBaseAssetCodeAndQuoteAssetCode(baseAssetCode string, quoteAssetCode string) (*Rate, error) {
-	getBody, err := c.genericGetQuery(fmt.Sprintf("%s/%s/%s", linkRates, baseAssetCode, quoteAssetCode), nil)
+	getBody, err := c.GenericGetQuery(fmt.Sprintf("%s/%s/%s", linkRates, baseAssetCode, quoteAssetCode), nil)
 	if err != nil {
 		return nil, err
 	}
@@ -42,7 +42,7 @@ func (c Client) GetRatesWithBaseAssetCodeAndQuoteAssetCode(baseAssetCode string,
 // UpdateRate is
 // https://developers.slyk.io/slyk/reference/endpoints#patch-rates-baseassetcode-quoteassetcode
 func (c Client) UpdateRate(baseAssetCode string, quoteAssetCode string, updateRateDataBody *UpdateRateDataBody) (*Rate, error) {
-	getBody, err := c.genericPatchQuery(fmt.Sprintf("%s/%s/%s", linkRates, baseAssetCode, quoteAssetCode), updateRateDataBody)
+	getBody, err := c.GenericPatchQuery(fmt.Sprintf("%s/%s/%s", linkRates, baseAssetCode, quoteAssetCode), updateRateDataBody)
 	if err != nil {
 		return nil, err
 	}
@@ -59,7 +59,7 @@ func (c Client) UpdateRate(baseAssetCode string, quoteAssetCode string, updateRa
 // CreateRate
 // https://developers.slyk.io/slyk/reference/endpoints#post-rates
 func (c Client) CreateRate(rateBody *CreateRateDataBody) (*Rate, error) {
-	getBody, err := c.genericPostQuery(linkRates, rateBody)
+	getBody, err := c.GenericPostQuery(linkRates, rateBody)
 	if err != nil {
 		return nil, err
 	}
@@ -76,5 +76,5 @@ func (c Client) CreateRate(rateBody *CreateRateDataBody) (*Rate, error) {
 // DeleteRate is
 // https://developers.slyk.io/slyk/reference/endpoints#delete-rates-baseassetcode-quoteassetcode
 func (c Client) DeleteRate(baseAssetCode string, quoteAssetCode string) error {
-	return c.genericDeleteQuery(fmt.Sprintf("%s/%s/%s", linkRates, baseAssetCode, quoteAssetCode), nil)
+	return c.GenericDeleteQuery(fmt.Sprintf("%s/%s/%s", linkRates, baseAssetCode, quoteAssetCode), nil)
 }

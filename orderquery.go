@@ -5,7 +5,7 @@ import "encoding/json"
 // GetOrders is
 // https://developers.slyk.io/slyk/reference/endpoints#get-invites-2
 func (c Client) GetOrders(filter ...*getOrdersFilter) (*Orders, error) {
-	getBody, err := c.genericGetQuery(linkOrders, merge(filter))
+	getBody, err := c.GenericGetQuery(linkOrders, merge(filter))
 	if err != nil {
 		return nil, err
 	}
@@ -22,7 +22,7 @@ func (c Client) GetOrders(filter ...*getOrdersFilter) (*Orders, error) {
 // GetOrderWithID is
 // https://developers.slyk.io/slyk/reference/endpoints#get-orders-id
 func (c Client) GetOrderWithID(orderID string) (*Order, error) {
-	getBody, err := c.genericGetQuery(linkOrders+"/"+orderID, nil)
+	getBody, err := c.GenericGetQuery(linkOrders+"/"+orderID, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -39,7 +39,7 @@ func (c Client) GetOrderWithID(orderID string) (*Order, error) {
 // GetOrderLinesWithID is
 // https://developers.slyk.io/slyk/reference/endpoints#get-invites-3
 func (c Client) GetOrderLinesWithID(orderID string, filter ...*getOrderLinesWithIDFilter) (*OrderLines, error) {
-	getBody, err := c.genericGetQuery(linkOrders+"/"+orderID+"/lines", merge(filter))
+	getBody, err := c.GenericGetQuery(linkOrders+"/"+orderID+"/lines", merge(filter))
 	if err != nil {
 		return nil, err
 	}
@@ -56,7 +56,7 @@ func (c Client) GetOrderLinesWithID(orderID string, filter ...*getOrderLinesWith
 // GetOrderLinesWithIDAndLineID is
 // https://developers.slyk.io/slyk/reference/endpoints#get-orders-orderid-lines-id
 func (c Client) GetOrderLinesWithIDAndLineID(orderID string, lineID string) (*OrderLine, error) {
-	getBody, err := c.genericGetQuery(linkOrders+"/"+orderID+"/lines/"+lineID, nil)
+	getBody, err := c.GenericGetQuery(linkOrders+"/"+orderID+"/lines/"+lineID, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -73,7 +73,7 @@ func (c Client) GetOrderLinesWithIDAndLineID(orderID string, lineID string) (*Or
 // CreateOrder is
 // https://developers.slyk.io/slyk/reference/endpoints#post-orders
 func (c Client) CreateOrder(createOrderDataBody *CreateOrderDataBody) (*Order, error) {
-	getBody, err := c.genericPostQuery(linkOrders, createOrderDataBody)
+	getBody, err := c.GenericPostQuery(linkOrders, createOrderDataBody)
 	if err != nil {
 		return nil, err
 	}
@@ -90,14 +90,14 @@ func (c Client) CreateOrder(createOrderDataBody *CreateOrderDataBody) (*Order, e
 // OrderCancel is
 // https://developers.slyk.io/slyk/reference/endpoints#post-orders-id-cancel
 func (c Client) OrderCancel(orderID string, orderCancelDataBody *OrderCancelDataBody) error {
-	_, err := c.genericPostQuery(linkOrders+"/"+orderID+"/cancel", orderCancelDataBody)
+	_, err := c.GenericPostQuery(linkOrders+"/"+orderID+"/cancel", orderCancelDataBody)
 	return err
 }
 
 // OrderFulfill is
 // https://developers.slyk.io/slyk/reference/endpoints#post-orders-id-fulfill
 func (c Client) OrderFulfill(orderID string, orderFulfillDataBody *OrderFulfillDataBody) (*Order, error) {
-	getBody, err := c.genericPostQuery(linkOrders+"/"+orderID+"/fulfill", orderFulfillDataBody)
+	getBody, err := c.GenericPostQuery(linkOrders+"/"+orderID+"/fulfill", orderFulfillDataBody)
 	if err != nil {
 		return nil, err
 	}
@@ -114,7 +114,7 @@ func (c Client) OrderFulfill(orderID string, orderFulfillDataBody *OrderFulfillD
 // OrderUNFulfill is
 // https://developers.slyk.io/slyk/reference/endpoints#post-orders-id-unfulfill
 func (c Client) OrderUNFulfill(orderID string) (*Order, error) {
-	getBody, err := c.genericPostQuery(linkOrders+"/"+orderID+"/unfulfill", nil)
+	getBody, err := c.GenericPostQuery(linkOrders+"/"+orderID+"/unfulfill", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -131,7 +131,7 @@ func (c Client) OrderUNFulfill(orderID string) (*Order, error) {
 // OrderPay is
 // https://developers.slyk.io/slyk/reference/endpoints#post-orders-id-pay
 func (c Client) OrderPay(orderID string, orderPayDataBody *OrderPayDataBody) (*Order, error) {
-	getBody, err := c.genericPostQuery(linkOrders+"/"+orderID+"/pay", orderPayDataBody)
+	getBody, err := c.GenericPostQuery(linkOrders+"/"+orderID+"/pay", orderPayDataBody)
 	if err != nil {
 		return nil, err
 	}
@@ -148,7 +148,7 @@ func (c Client) OrderPay(orderID string, orderPayDataBody *OrderPayDataBody) (*O
 // OrderLineFulfill is
 // https://developers.slyk.io/slyk/reference/endpoints#get-invites-4
 func (c Client) OrderLineFulfill(orderID string, lineID string, orderLineFulfillDataBody *OrderLineFulfillDataBody) (*OrderLine, error) {
-	getBody, err := c.genericPostQuery(linkOrders+"/"+orderID+"/lines/"+lineID+"/fulfill", orderLineFulfillDataBody)
+	getBody, err := c.GenericPostQuery(linkOrders+"/"+orderID+"/lines/"+lineID+"/fulfill", orderLineFulfillDataBody)
 	if err != nil {
 		return nil, err
 	}
@@ -165,7 +165,7 @@ func (c Client) OrderLineFulfill(orderID string, lineID string, orderLineFulfill
 // OrderLineUNFulfill is
 // https://developers.slyk.io/slyk/reference/endpoints#get-invites-5
 func (c Client) OrderLineUNFulfill(orderID string, lineID string, orderLineUNFulfillDataBody *OrderLineUNFulfillDataBody) (*OrderLine, error) {
-	getBody, err := c.genericPostQuery(linkOrders+"/"+orderID+"/lines/"+lineID+"/unfulfill", orderLineUNFulfillDataBody)
+	getBody, err := c.GenericPostQuery(linkOrders+"/"+orderID+"/lines/"+lineID+"/unfulfill", orderLineUNFulfillDataBody)
 	if err != nil {
 		return nil, err
 	}

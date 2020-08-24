@@ -18,7 +18,7 @@ func (g GenericError) Error() string {
 	return Byte2String(getError)
 }
 
-func (c Client) genericGetQuery(link string, queryParams map[string]string) ([]byte, error) {
+func (c Client) GenericGetQuery(link string, queryParams map[string]string) ([]byte, error) {
 	clientReq := resty.New().R()
 	if queryParams != nil {
 		clientReq.SetQueryParams(queryParams)
@@ -43,7 +43,7 @@ func (c Client) genericGetQuery(link string, queryParams map[string]string) ([]b
 	return resp.Body(), nil
 }
 
-func (c Client) genericPatchQuery(link string, body interface{}) ([]byte, error) {
+func (c Client) GenericPatchQuery(link string, body interface{}) ([]byte, error) {
 	resp, err := resty.New().R().
 		SetBody(body).
 		SetHeader(headerApiKey, c.apiKey).
@@ -63,7 +63,7 @@ func (c Client) genericPatchQuery(link string, body interface{}) ([]byte, error)
 	return resp.Body(), nil
 }
 
-func (c Client) genericPostQuery(link string, body interface{}) ([]byte, error) {
+func (c Client) GenericPostQuery(link string, body interface{}) ([]byte, error) {
 
 	client := resty.New().R()
 	resp, err := client.
@@ -85,7 +85,7 @@ func (c Client) genericPostQuery(link string, body interface{}) ([]byte, error) 
 	return resp.Body(), nil
 }
 
-func (c Client) genericDeleteQuery(link string, body interface{}) error {
+func (c Client) GenericDeleteQuery(link string, body interface{}) error {
 	client := resty.New().R()
 	resp, err := client.
 		SetBody(body).

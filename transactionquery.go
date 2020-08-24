@@ -7,7 +7,7 @@ import (
 // GetTransactions is
 // https://developers.slyk.io/slyk/reference/endpoints#get-transactions
 func (c Client) GetTransactions(filter ...*geTransactionstFilter) (*Transactions, error) {
-	getBody, err := c.genericGetQuery(linkTransactions, merge(filter))
+	getBody, err := c.GenericGetQuery(linkTransactions, merge(filter))
 	if err != nil {
 		return nil, err
 	}
@@ -24,7 +24,7 @@ func (c Client) GetTransactions(filter ...*geTransactionstFilter) (*Transactions
 // GetTransactionsWithID is
 // https://developers.slyk.io/slyk/reference/endpoints#get-transactions-id
 func (c Client) GetTransactionsWithID(transactionID string) (*Transaction, error) {
-	getBody, err := c.genericGetQuery(linkTransactions+"/"+transactionID, nil)
+	getBody, err := c.GenericGetQuery(linkTransactions+"/"+transactionID, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -42,7 +42,7 @@ func (c Client) GetTransactionsWithID(transactionID string) (*Transaction, error
 // Its only possible to approve transactions that are pending.
 // https://developers.slyk.io/slyk/reference/endpoints#post-transactions-id-approve
 func (c Client) SetTransactionApproveWithID(transactionID string) (*Transaction, error) {
-	getBody, err := c.genericPostQuery(linkTransactions+"/"+transactionID+"/approve", nil)
+	getBody, err := c.GenericPostQuery(linkTransactions+"/"+transactionID+"/approve", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -59,7 +59,7 @@ func (c Client) SetTransactionApproveWithID(transactionID string) (*Transaction,
 // CreateTransactionConfirmWithID is
 // https://developers.slyk.io/slyk/reference/endpoints#post-transactions-id-confirm
 func (c Client) SetTransactionConfirmWithID(transactionID string) (*Transaction, error) {
-	getBody, err := c.genericPostQuery(linkTransactions+"/"+transactionID+"/confirm", nil)
+	getBody, err := c.GenericPostQuery(linkTransactions+"/"+transactionID+"/confirm", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -76,7 +76,7 @@ func (c Client) SetTransactionConfirmWithID(transactionID string) (*Transaction,
 // SetTransactionFailWithID is
 // https://developers.slyk.io/slyk/reference/endpoints#post-transactions-id-fail
 func (c Client) SetTransactionFailWithID(transactionID string, transactionFailDataBody *TransactionFailDataBody) (*Transaction, error) {
-	getBody, err := c.genericPostQuery(linkTransactions+"/"+transactionID+"/fail", transactionFailDataBody)
+	getBody, err := c.GenericPostQuery(linkTransactions+"/"+transactionID+"/fail", transactionFailDataBody)
 	if err != nil {
 		return nil, err
 	}
@@ -93,7 +93,7 @@ func (c Client) SetTransactionFailWithID(transactionID string, transactionFailDa
 // SetTransactionRejectWithID is
 // https://developers.slyk.io/slyk/reference/endpoints#post-transactions-id-reject
 func (c Client) SetTransactionRejectWithID(transactionID string, transactionRejectDataBody *TransactionRejectDataBody) (*Transaction, error) {
-	getBody, err := c.genericPostQuery(linkTransactions+"/"+transactionID+"/reject", transactionRejectDataBody)
+	getBody, err := c.GenericPostQuery(linkTransactions+"/"+transactionID+"/reject", transactionRejectDataBody)
 	if err != nil {
 		return nil, err
 	}
@@ -110,7 +110,7 @@ func (c Client) SetTransactionRejectWithID(transactionID string, transactionReje
 // CreateTransactionDeposit is
 // https://developers.slyk.io/slyk/reference/endpoints#post-transactions-deposit is
 func (c Client) CreateTransactionDeposit(transactionID string, createTransactionDepositDataBody *CreateTransactionDepositDataBody) (*Transaction, error) {
-	getBody, err := c.genericPostQuery(linkTransactions+"/deposit", createTransactionDepositDataBody)
+	getBody, err := c.GenericPostQuery(linkTransactions+"/deposit", createTransactionDepositDataBody)
 	if err != nil {
 		return nil, err
 	}
@@ -127,7 +127,7 @@ func (c Client) CreateTransactionDeposit(transactionID string, createTransaction
 // CreateTransaction is
 // https://developers.slyk.io/slyk/reference/endpoints#post-transactions-pay
 func (c Client) CreateTransactionPay(createTransactionPayDataBody *CreateTransactionPayDataBody) (*Transaction, error) {
-	getBody, err := c.genericPostQuery(linkTransactions+"/pay", createTransactionPayDataBody)
+	getBody, err := c.GenericPostQuery(linkTransactions+"/pay", createTransactionPayDataBody)
 	if err != nil {
 		return nil, err
 	}
@@ -144,7 +144,7 @@ func (c Client) CreateTransactionPay(createTransactionPayDataBody *CreateTransac
 // CreateTransactionTransfer
 // https://developers.slyk.io/slyk/reference/endpoints#post-transactions-transfer
 func (c Client) CreateTransactionTransfer(createTransactionTransferDataBody *CreateTransactionTransferDataBody) (*Transaction, error) {
-	getBody, err := c.genericPostQuery(linkTransactions+"/transfer", createTransactionTransferDataBody)
+	getBody, err := c.GenericPostQuery(linkTransactions+"/transfer", createTransactionTransferDataBody)
 	if err != nil {
 		return nil, err
 	}
@@ -161,7 +161,7 @@ func (c Client) CreateTransactionTransfer(createTransactionTransferDataBody *Cre
 // CreateTransactionWithdrawal is
 // https://developers.slyk.io/slyk/reference/endpoints#post-transactions-withdrawal
 func (c Client) CreateTransactionWithdrawal(createTransactionWithdrawalDataBody *CreateTransactionWithdrawalDataBody) (*Transaction, error) {
-	getBody, err := c.genericPostQuery(linkTransactions+"/withdrawal", createTransactionWithdrawalDataBody)
+	getBody, err := c.GenericPostQuery(linkTransactions+"/withdrawal", createTransactionWithdrawalDataBody)
 	if err != nil {
 		return nil, err
 	}

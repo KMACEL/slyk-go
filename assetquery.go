@@ -7,7 +7,7 @@ import (
 // GetAssets is
 // https://developers.slyk.io/slyk/reference/endpoints#get-assets
 func (c Client) GetAssets(filter ...*getassetsFilter) (*Assests, error) {
-	getBody, err := c.genericGetQuery(linkAssets, merge(filter))
+	getBody, err := c.GenericGetQuery(linkAssets, merge(filter))
 	if err != nil {
 		return nil, err
 	}
@@ -24,7 +24,7 @@ func (c Client) GetAssets(filter ...*getassetsFilter) (*Assests, error) {
 // GetAssetsWithCode is
 // https://developers.slyk.io/slyk/reference/endpoints#get-assets-code
 func (c Client) GetAssetsWithCode(assetCode string) (*Asset, error) {
-	getBody, err := c.genericGetQuery(linkAssets+"/"+assetCode, nil)
+	getBody, err := c.GenericGetQuery(linkAssets+"/"+assetCode, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -41,7 +41,7 @@ func (c Client) GetAssetsWithCode(assetCode string) (*Asset, error) {
 // UpdateAssetsWithCode
 // https://developers.slyk.io/slyk/reference/endpoints#patch-assets-code
 func (c Client) UpdateAssetsWithCode(assetCode string, updateAssetDataBody *UpdateAssetDataBody) (*Asset, error) {
-	getBody, err := c.genericPatchQuery(linkAssets+"/"+assetCode, updateAssetDataBody)
+	getBody, err := c.GenericPatchQuery(linkAssets+"/"+assetCode, updateAssetDataBody)
 	if err != nil {
 		return nil, err
 	}
@@ -58,7 +58,7 @@ func (c Client) UpdateAssetsWithCode(assetCode string, updateAssetDataBody *Upda
 // CreateAsset
 // https://developers.slyk.io/slyk/reference/endpoints#post-assets
 func (c Client) CreateAsset(createAssetDataBody *CreateAssetDataBody) (*Asset, error) {
-	getBody, err := c.genericPostQuery(linkAssets, createAssetDataBody)
+	getBody, err := c.GenericPostQuery(linkAssets, createAssetDataBody)
 	if err != nil {
 		return nil, err
 	}

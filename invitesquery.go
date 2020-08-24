@@ -8,7 +8,7 @@ import (
 // GetInvites is
 // https://developers.slyk.io/slyk/reference/endpoints#get-invites
 func (c Client) GetInvites(filter ...*getInvitesFilter) (*Invites, error) {
-	getBody, err := c.genericGetQuery(linkInvites, merge(filter))
+	getBody, err := c.GenericGetQuery(linkInvites, merge(filter))
 	if err != nil {
 		return nil, err
 	}
@@ -25,7 +25,7 @@ func (c Client) GetInvites(filter ...*getInvitesFilter) (*Invites, error) {
 // GetInviteWithCode is
 // https://developers.slyk.io/slyk/reference/endpoints#get-invites-code
 func (c Client) GetInviteWithCode(inviteCode string) (*Invite, error) {
-	getBody, err := c.genericGetQuery(linkInvites+"/"+inviteCode, nil)
+	getBody, err := c.GenericGetQuery(linkInvites+"/"+inviteCode, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -42,7 +42,7 @@ func (c Client) GetInviteWithCode(inviteCode string) (*Invite, error) {
 // GetInviteWithCodeForValidate is
 // https://developers.slyk.io/slyk/reference/endpoints#get-invites-code-validate
 func (c Client) GetInviteWithCodeForValidate(inviteCode string) (*InviteForValidate, error) {
-	getBody, err := c.genericGetQuery(linkInvites+"/"+inviteCode+"/validate", nil)
+	getBody, err := c.GenericGetQuery(linkInvites+"/"+inviteCode+"/validate", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -60,7 +60,7 @@ func (c Client) GetInviteWithCodeForValidate(inviteCode string) (*InviteForValid
 // CreateInvite is
 // https://developers.slyk.io/slyk/reference/endpoints#post-invites
 func (c Client) CreateInvite(createInviteDataBody *CreateInviteDataBody) (*Invite, error) {
-	getBody, err := c.genericPostQuery(linkInvites, createInviteDataBody)
+	getBody, err := c.GenericPostQuery(linkInvites, createInviteDataBody)
 	if err != nil {
 		return nil, err
 	}
@@ -77,7 +77,7 @@ func (c Client) CreateInvite(createInviteDataBody *CreateInviteDataBody) (*Invit
 // CancelInvite is
 // https://developers.slyk.io/slyk/reference/endpoints#post-invites-code-cancel
 func (c Client) CancelInvite(inviteCode string) (*Invite, error) {
-	getBody, err := c.genericPostQuery(linkInvites+"/"+inviteCode+"/cancel", nil)
+	getBody, err := c.GenericPostQuery(linkInvites+"/"+inviteCode+"/cancel", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -94,6 +94,6 @@ func (c Client) CancelInvite(inviteCode string) (*Invite, error) {
 // SendInvite is
 // https://developers.slyk.io/slyk/reference/endpoints#post-invites-send
 func (c Client) SendInvite(sendInviteDataBody *SendInviteDataBody) error {
-	_, err := c.genericPostQuery(linkInvites+"/send", sendInviteDataBody)
+	_, err := c.GenericPostQuery(linkInvites+"/send", sendInviteDataBody)
 	return err
 }

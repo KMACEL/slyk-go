@@ -7,7 +7,7 @@ import (
 // GetMovements
 // https://developers.slyk.io/slyk/reference/endpoints#get-movements
 func (c Client) GetMovements(filter ...*getMovementsFilter) (*Movements, error) {
-	getBody, err := c.genericGetQuery(linkMovements, merge(filter))
+	getBody, err := c.GenericGetQuery(linkMovements, merge(filter))
 	if err != nil {
 		return nil, err
 	}
@@ -24,7 +24,7 @@ func (c Client) GetMovements(filter ...*getMovementsFilter) (*Movements, error) 
 // GetMovementWithID is
 // https://developers.slyk.io/slyk/reference/endpoints#get-movements-id
 func (c Client) GetMovementWithID(movementID string, getMovementWithIDFilter ...*getMovementWithIDFilter) (*Movement, error) {
-	getBody, err := c.genericGetQuery(linkMovements+"/"+movementID, merge(getMovementWithIDFilter))
+	getBody, err := c.GenericGetQuery(linkMovements+"/"+movementID, merge(getMovementWithIDFilter))
 	if err != nil {
 		return nil, err
 	}
