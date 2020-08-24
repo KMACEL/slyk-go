@@ -164,101 +164,210 @@ func (g *getProductsFilter) SetPageNumber(number int) *getProductsFilter {
 */
 
 // CreateProductsDataForBody is
-func CreateProductsDataForBody() *CreateProductsDataBody {
-	return &CreateProductsDataBody{}
+func CreateProductDataForBody() *CreateProductDataBody {
+	return &CreateProductDataBody{}
 }
 
-func (c *CreateProductsDataBody) SetAllowChoosingQuantity(allowChoosingQuantity bool) *CreateProductsDataBody {
+func (c *CreateProductDataBody) SetAllowChoosingQuantity(allowChoosingQuantity bool) *CreateProductDataBody {
 	c.AllowChoosingQuantity = allowChoosingQuantity
 	return c
 }
 
-func (c *CreateProductsDataBody) SetAssetCode(assetCode string) *CreateProductsDataBody {
+func (c *CreateProductDataBody) SetAssetCode(assetCode string) *CreateProductDataBody {
 	c.AssetCode = assetCode
 	return c
 }
 
-func (c *CreateProductsDataBody) SetAvailable(available bool) *CreateProductsDataBody {
+func (c *CreateProductDataBody) SetAvailable(available bool) *CreateProductDataBody {
 	c.Available = available
 	return c
 }
 
-func (c *CreateProductsDataBody) SetBonus(bonus string) *CreateProductsDataBody {
+func (c *CreateProductDataBody) SetBonus(bonus string) *CreateProductDataBody {
 	c.Bonus = bonus
 	return c
 }
 
-func (c *CreateProductsDataBody) SetButtonLabel(buttonLabel string) *CreateProductsDataBody {
+func (c *CreateProductDataBody) SetButtonLabel(buttonLabel string) *CreateProductDataBody {
 	c.ButtonLabel = buttonLabel
 	return c
 }
 
-func (c *CreateProductsDataBody) SetCategoryID(categoryID string) *CreateProductsDataBody {
+func (c *CreateProductDataBody) SetCategoryID(categoryID string) *CreateProductDataBody {
 	c.CategoryID = categoryID
 	return c
 }
 
-func (c *CreateProductsDataBody) SetCustomData(customData interface{}) *CreateProductsDataBody {
+func (c *CreateProductDataBody) SetCustomData(customData interface{}) *CreateProductDataBody {
 	c.CustomData = customData
 	return c
 }
 
-func (c *CreateProductsDataBody) SetDescription(description string) *CreateProductsDataBody {
+func (c *CreateProductDataBody) SetDescription(description string) *CreateProductDataBody {
 	c.Description = description
 	return c
 }
 
-func (c *CreateProductsDataBody) SetFeatured(featured bool) *CreateProductsDataBody {
+func (c *CreateProductDataBody) SetFeatured(featured bool) *CreateProductDataBody {
 	c.Featured = featured
 	return c
 }
 
-func (c *CreateProductsDataBody) SetImage(image string) *CreateProductsDataBody {
+func (c *CreateProductDataBody) SetImage(image string) *CreateProductDataBody {
 	c.Image = image
 	return c
 }
 
-func (c *CreateProductsDataBody) SetListLabel(listLabel string) *CreateProductsDataBody {
+func (c *CreateProductDataBody) SetListLabel(listLabel string) *CreateProductDataBody {
 	c.ListLabel = listLabel
 	return c
 }
 
-func (c *CreateProductsDataBody) SetName(name string) *CreateProductsDataBody {
+func (c *CreateProductDataBody) SetName(name string) *CreateProductDataBody {
 	c.Name = name
 	return c
 }
 
-func (c *CreateProductsDataBody) SetOrder(order string) *CreateProductsDataBody {
+func (c *CreateProductDataBody) SetOrder(order string) *CreateProductDataBody {
 	c.Order = order
 	return c
 }
 
-func (c *CreateProductsDataBody) SetPrice(price string) *CreateProductsDataBody {
+func (c *CreateProductDataBody) SetPrice(price string) *CreateProductDataBody {
 	c.Price = price
 	return c
 }
 
-func (c *CreateProductsDataBody) SetRequiresIdentity(requiresIdentity bool) *CreateProductsDataBody {
+func (c *CreateProductDataBody) SetRequiresIdentity(requiresIdentity bool) *CreateProductDataBody {
 	c.RequiresIdentity = requiresIdentity
 	return c
 }
 
-func (c *CreateProductsDataBody) SetTaxRateID(taxRateID string) *CreateProductsDataBody {
+func (c *CreateProductDataBody) SetTaxRateID(taxRateID string) *CreateProductDataBody {
 	c.TaxRateID = taxRateID
 	return c
 }
 
-func (c *CreateProductsDataBody) SetThumbnail(thumbnail string) *CreateProductsDataBody {
+func (c *CreateProductDataBody) SetThumbnail(thumbnail string) *CreateProductDataBody {
 	c.Thumbnail = thumbnail
 	return c
 }
 
-func (c *CreateProductsDataBody) SetURL(url string) *CreateProductsDataBody {
+func (c *CreateProductDataBody) SetURL(url string) *CreateProductDataBody {
 	c.URL = url
 	return c
 }
 
-func (c *CreateProductsDataBody) SetVisible(visible bool) *CreateProductsDataBody {
+func (c *CreateProductDataBody) SetVisible(visible bool) *CreateProductDataBody {
 	c.Visible = visible
 	return c
+}
+
+/*
+██╗   ██╗██████╗ ██████╗  █████╗ ████████╗███████╗        ██████╗ ██████╗  ██████╗ ██████╗ ██╗   ██╗ ██████╗████████╗███████╗        ██████╗  █████╗ ████████╗ █████╗         ███████╗ ██████╗ ██████╗         ██████╗  ██████╗ ██████╗ ██╗   ██╗
+██║   ██║██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝██╔════╝        ██╔══██╗██╔══██╗██╔═══██╗██╔══██╗██║   ██║██╔════╝╚══██╔══╝██╔════╝        ██╔══██╗██╔══██╗╚══██╔══╝██╔══██╗        ██╔════╝██╔═══██╗██╔══██╗        ██╔══██╗██╔═══██╗██╔══██╗╚██╗ ██╔╝
+██║   ██║██████╔╝██║  ██║███████║   ██║   █████╗          ██████╔╝██████╔╝██║   ██║██║  ██║██║   ██║██║        ██║   ███████╗        ██║  ██║███████║   ██║   ███████║        █████╗  ██║   ██║██████╔╝        ██████╔╝██║   ██║██║  ██║ ╚████╔╝
+██║   ██║██╔═══╝ ██║  ██║██╔══██║   ██║   ██╔══╝          ██╔═══╝ ██╔══██╗██║   ██║██║  ██║██║   ██║██║        ██║   ╚════██║        ██║  ██║██╔══██║   ██║   ██╔══██║        ██╔══╝  ██║   ██║██╔══██╗        ██╔══██╗██║   ██║██║  ██║  ╚██╔╝
+╚██████╔╝██║     ██████╔╝██║  ██║   ██║   ███████╗        ██║     ██║  ██║╚██████╔╝██████╔╝╚██████╔╝╚██████╗   ██║   ███████║        ██████╔╝██║  ██║   ██║   ██║  ██║        ██║     ╚██████╔╝██║  ██║        ██████╔╝╚██████╔╝██████╔╝   ██║
+ ╚═════╝ ╚═╝     ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝        ╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚═════╝  ╚═════╝  ╚═════╝   ╚═╝   ╚══════╝        ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝        ╚═╝      ╚═════╝ ╚═╝  ╚═╝        ╚═════╝  ╚═════╝ ╚═════╝    ╚═╝
+*/
+
+// UpdateProductsDataForBody is
+func UpdateProductDataForBody() *UpdateProductDataBody {
+	return &UpdateProductDataBody{}
+}
+
+func (u *UpdateProductDataBody) SetAllowChoosingQuantity(allowChoosingQuantity bool) *UpdateProductDataBody {
+	u.AllowChoosingQuantity = allowChoosingQuantity
+	return u
+}
+
+func (u *UpdateProductDataBody) SetAssetCode(assetCode string) *UpdateProductDataBody {
+	u.AssetCode = assetCode
+	return u
+}
+
+func (u *UpdateProductDataBody) SetAvailable(available bool) *UpdateProductDataBody {
+	u.Available = available
+	return u
+}
+
+func (u *UpdateProductDataBody) SetBonus(bonus string) *UpdateProductDataBody {
+	u.Bonus = bonus
+	return u
+}
+
+func (u *UpdateProductDataBody) SetButtonLabel(buttonLabel string) *UpdateProductDataBody {
+	u.ButtonLabel = buttonLabel
+	return u
+}
+
+func (u *UpdateProductDataBody) SetCategoryID(categoryID string) *UpdateProductDataBody {
+	u.CategoryID = categoryID
+	return u
+}
+
+func (u *UpdateProductDataBody) SetCustomData(customData interface{}) *UpdateProductDataBody {
+	u.CustomData = customData
+	return u
+}
+
+func (u *UpdateProductDataBody) SetDescription(description string) *UpdateProductDataBody {
+	u.Description = description
+	return u
+}
+
+func (u *UpdateProductDataBody) SetFeatured(featured bool) *UpdateProductDataBody {
+	u.Featured = featured
+	return u
+}
+
+func (u *UpdateProductDataBody) SetImage(image string) *UpdateProductDataBody {
+	u.Image = image
+	return u
+}
+
+func (u *UpdateProductDataBody) SetListLabel(listLabel string) *UpdateProductDataBody {
+	u.ListLabel = listLabel
+	return u
+}
+
+func (u *UpdateProductDataBody) SetName(name string) *UpdateProductDataBody {
+	u.Name = name
+	return u
+}
+
+func (u *UpdateProductDataBody) SetOrder(order string) *UpdateProductDataBody {
+	u.Order = order
+	return u
+}
+
+func (u *UpdateProductDataBody) SetPrice(price string) *UpdateProductDataBody {
+	u.Price = price
+	return u
+}
+
+func (u *UpdateProductDataBody) SetRequiresIdentity(requiresIdentity bool) *UpdateProductDataBody {
+	u.RequiresIdentity = requiresIdentity
+	return u
+}
+
+func (u *UpdateProductDataBody) SetTaxRateID(taxRateID string) *UpdateProductDataBody {
+	u.TaxRateID = taxRateID
+	return u
+}
+
+func (u *UpdateProductDataBody) SetThumbnail(thumbnail string) *UpdateProductDataBody {
+	u.Thumbnail = thumbnail
+	return u
+}
+
+func (u *UpdateProductDataBody) SetURL(url string) *UpdateProductDataBody {
+	u.URL = url
+	return u
+}
+
+func (u *UpdateProductDataBody) SetVisible(visible bool) *UpdateProductDataBody {
+	u.Visible = visible
+	return u
 }

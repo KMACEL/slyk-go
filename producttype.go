@@ -40,7 +40,7 @@ type ProductData struct {
 	Visible          bool      `json:"visible"`
 }
 
-type CreateProductsDataBody struct {
+type CreateProductDataBody struct {
 	AllowChoosingQuantity bool        `json:"allowChoosingQuantity,omitempty"`
 	AssetCode             string      `json:"assetCode,omitempty"`
 	Available             bool        `json:"available,omitempty"`
@@ -55,6 +55,28 @@ type CreateProductsDataBody struct {
 	Name                  string      `json:"name"`
 	Order                 string      `json:"order,omitempty"`
 	Price                 string      `json:"price"`
+	RequiresIdentity      bool        `json:"requiresIdentity,omitempty"`
+	TaxRateID             string      `json:"taxRateId,omitempty"`
+	Thumbnail             string      `json:"thumbnail,omitempty"`
+	URL                   string      `json:"url,omitempty"`
+	Visible               bool        `json:"visible,omitempty"`
+}
+
+type UpdateProductDataBody struct {
+	AllowChoosingQuantity bool        `json:"allowChoosingQuantity,omitempty"`
+	AssetCode             string      `json:"assetCode,omitempty"`
+	Available             bool        `json:"available,omitempty"`
+	Bonus                 string      `json:"bonus,omitempty"`
+	ButtonLabel           string      `json:"buttonLabel,omitempty"`
+	CategoryID            string      `json:"categoryId,omitempty"`
+	CustomData            interface{} `json:"customData,omitempty"`
+	Description           string      `json:"description,omitempty"`
+	Featured              bool        `json:"featured,omitempty"`
+	Image                 string      `json:"image,omitempty"`
+	ListLabel             string      `json:"listLabel,omitempty"`
+	Name                  string      `json:"name,omitempty"`
+	Order                 string      `json:"order,omitempty"`
+	Price                 string      `json:"price,omitempty"`
 	RequiresIdentity      bool        `json:"requiresIdentity,omitempty"`
 	TaxRateID             string      `json:"taxRateId,omitempty"`
 	Thumbnail             string      `json:"thumbnail,omitempty"`

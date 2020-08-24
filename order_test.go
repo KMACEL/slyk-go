@@ -30,8 +30,8 @@ func TestCreateOrder(t *testing.T) {
 	tst := "TestCreateOrder"
 	//todo producton sonra bakılacak
 	returnValue, err := getClient().CreateOrder(&CreateOrderDataBody{
-		Lines:  []LineForOrder{{ProductID: ""}},
-		UserID: "",
+		Lines:  []LineForOrder{{ProductID: "bfbd599a-294b-4e52-989f-ec8d6b281950"}},
+		UserID: "1bd9b033-5e8a-4d15-bfde-7610f7bd32eb",
 	})
 
 	ReturnAndError(t, tst, returnValue, err)
