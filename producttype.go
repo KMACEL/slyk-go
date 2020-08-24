@@ -83,3 +83,15 @@ type UpdateProductDataBody struct {
 	URL                   string      `json:"url,omitempty"`
 	Visible               bool        `json:"visible,omitempty"`
 }
+
+type AddProductQuestionDataBody struct {
+	QuestionID string `json:"questionId"`
+}
+
+type AddProductQuestionResponseBody struct {
+	Data struct {
+		Order      string `json:"order"`
+		ProductID  string `json:"productId"`
+		QuestionID string `json:"questionId"`
+	} `json:"data"`
+}

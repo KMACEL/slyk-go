@@ -21,7 +21,7 @@ func TestGetProductWithID(t *testing.T) {
 func TestUpdateProducts(t *testing.T) {
 	tst := "TestUpdateProducts"
 
-	returnValue, err := getClient().UpdateProducts("bfbd599a-294b-4e52-989f-ec8d6b281950", &UpdateProductDataBody{
+	returnValue, err := getClient().UpdateProduct("bfbd599a-294b-4e52-989f-ec8d6b281950", &UpdateProductDataBody{
 		CategoryID: "27d3d24a-257b-4a88-a8eb-bb8b6121f317",
 		Price:      "10.3",
 		Name:       "Mert",
@@ -33,10 +33,20 @@ func TestUpdateProducts(t *testing.T) {
 func TestCreateProducts(t *testing.T) {
 	tst := "TestCreateProducts"
 
-	returnValue, err := getClient().CreateProducts(&CreateProductDataBody{
+	returnValue, err := getClient().CreateProduct(&CreateProductDataBody{
 		CategoryID: "27d3d24a-257b-4a88-a8eb-bb8b6121f317",
 		Price:      "10.2",
 		Name:       "Mert",
+	})
+
+	ReturnAndError(t, tst, returnValue, err)
+}
+
+func TestAddProductQuestionWithID(t *testing.T) {
+	tst := "TestAddProductQuestionWithID"
+
+	returnValue, err := getClient().AddProductQuestionWithID("bfbd599a-294b-4e52-989f-ec8d6b281950", &AddProductQuestionDataBody{
+		QuestionID: "",
 	})
 
 	ReturnAndError(t, tst, returnValue, err)

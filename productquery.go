@@ -38,7 +38,7 @@ func (c Client) GetProductWithID(productID string) (*Product, error) {
 
 // UpdateProducts is
 // https://developers.slyk.io/slyk/reference/endpoints#patch-products-id
-func (c Client) UpdateProducts(productID string, updateProductsDataBody *UpdateProductDataBody) (*Product, error) {
+func (c Client) UpdateProduct(productID string, updateProductsDataBody *UpdateProductDataBody) (*Product, error) {
 	getBody, err := c.genericPatchQuery(linkProducts+"/"+productID, updateProductsDataBody)
 	if err != nil {
 		return nil, err
@@ -55,7 +55,7 @@ func (c Client) UpdateProducts(productID string, updateProductsDataBody *UpdateP
 
 // CreateProducts is
 // https://developers.slyk.io/slyk/reference/endpoints#post-products
-func (c Client) CreateProducts(createProductsDataBody *CreateProductDataBody) (*Product, error) {
+func (c Client) CreateProduct(createProductsDataBody *CreateProductDataBody) (*Product, error) {
 	getBody, err := c.genericPostQuery(linkProducts, createProductsDataBody)
 	if err != nil {
 		return nil, err
@@ -68,4 +68,21 @@ func (c Client) CreateProducts(createProductsDataBody *CreateProductDataBody) (*
 	}
 
 	return &product, nil
+}
+
+// AddProductQuestionsWithID is
+// https://developers.slyk.io/slyk/reference/endpoints#post-products-id-questions
+func (c Client) AddProductQuestionWithID(productID string, addProductQuestionDataBody *AddProductQuestionDataBody) (*AddProductQuestionResponseBody, error) {
+	getBody, err := c.genericPostQuery(linkProducts+"/"+productID+"/questions", addProductQuestionDataBody)
+	if err != nil {
+		return nil, err
+	}
+
+	var addProductQuestionResponseBody AddProductQuestionResponseBody
+	errUnmarshal := json.Unmarshal(getBody, &addProductQuestionResponseBody)
+	if errUnmarshal != nil {
+		return nil, errUnmarshal
+	}
+
+	return &addProductQuestionResponseBody, nil
 }
