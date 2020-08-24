@@ -100,3 +100,9 @@ func (c Client) ProductQuestionReorder(productID string, questionID string, prod
 	_, err := c.genericPostQuery(linkProducts+"/"+productID+"/questions"+questionID+"/reorder", productQuestionReorderDataBody)
 	return err
 }
+
+// DeleteProduct is
+// https://developers.slyk.io/slyk/reference/endpoints#delete-products-id
+func (c Client) DeleteProduct(productID string) error {
+	return c.genericDeleteQuery(linkProducts+"/"+productID, nil)
+}
