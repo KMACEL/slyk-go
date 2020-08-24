@@ -7,6 +7,10 @@ type Questions struct {
 	Total int            `json:"total"`
 }
 
+type Question struct {
+	Data QuestionData `json:"data"`
+}
+
 type QuestionData struct {
 	Configurations  interface{} `json:"configurations"`
 	CreatedAt       time.Time   `json:"createdAt"`

@@ -18,3 +18,20 @@ func (c Client) GetQuestions(filter ...*getQuestionsFilter) (*Questions, error) 
 
 	return &questions, nil
 }
+
+// GetQuestionsWithID is
+// https://developers.slyk.io/slyk/reference/endpoints#get-questions-id
+func (c Client) GetQuestionsWithID(questionID string) (*Question, error) {
+	getBody, err := c.genericGetQuery(linkQuestions+"/"+questionID, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	var question Question
+	errUnmarshal := json.Unmarshal(getBody, &question)
+	if errUnmarshal != nil {
+		return nil, errUnmarshal
+	}
+
+	return &question, nil
+}
