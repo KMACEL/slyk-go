@@ -41,3 +41,11 @@ func TestCreateQuestion(t *testing.T) {
 
 	ReturnAndError(t, tst, returnValue, err)
 }
+
+func TestDeleteQuestion(t *testing.T) {
+	tst := "TestDeleteQuestion"
+
+	err := getClient().DeleteQuestion("")
+
+	OnlyError(t, tst, err)
+}

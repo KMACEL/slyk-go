@@ -86,3 +86,9 @@ func (c Client) CreateQuestion(createQuestionDataBody *CreateQuestionDataBody) (
 
 	return &question, nil
 }
+
+// DeleteQuestion is
+// https://developers.slyk.io/slyk/reference/endpoints#delete-questions-id
+func (c Client) DeleteQuestion(questionID string) error {
+	return c.genericDeleteQuery(linkQuestions+"/"+questionID, nil)
+}
