@@ -13,7 +13,19 @@ func TestGetProducts(t *testing.T) {
 func TestGetProductWithID(t *testing.T) {
 	tst := "TestGetProductWithID"
 
-	returnValue, err := getClient().GetProductWithID("")
+	returnValue, err := getClient().GetProductWithID("bfbd599a-294b-4e52-989f-ec8d6b281950")
+
+	ReturnAndError(t, tst, returnValue, err)
+}
+
+func TestCreateProducts(t *testing.T) {
+	tst := "TestCreateProducts"
+
+	returnValue, err := getClient().CreateProducts(&CreateProductsDataBody{
+		CategoryID: "27d3d24a-257b-4a88-a8eb-bb8b6121f317",
+		Price:      "10.2",
+		Name:       "Mert",
+	})
 
 	ReturnAndError(t, tst, returnValue, err)
 }

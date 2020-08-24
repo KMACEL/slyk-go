@@ -35,3 +35,20 @@ func (c Client) GetProductWithID(productID string) (*Product, error) {
 
 	return &product, nil
 }
+
+// CreateProducts is
+// https://developers.slyk.io/slyk/reference/endpoints#post-products
+func (c Client) CreateProducts(createProductsDataBody *CreateProductsDataBody) (*Product, error) {
+	getBody, err := c.genericPostQuery(linkProducts, createProductsDataBody)
+	if err != nil {
+		return nil, err
+	}
+
+	var product Product
+	errUnmarshal := json.Unmarshal(getBody, &product)
+	if errUnmarshal != nil {
+		return nil, errUnmarshal
+	}
+
+	return &product, nil
+}
