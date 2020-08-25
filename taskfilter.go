@@ -173,3 +173,77 @@ func (g *getTasksFilter) SetPageNumber(number int) *getTasksFilter {
 	(*g)["page[number]"] = strconv.Itoa(number)
 	return g
 }
+
+/*
+██╗   ██╗██████╗ ██████╗  █████╗ ████████╗███████╗        ████████╗ █████╗ ███████╗██╗  ██╗        ██████╗  █████╗ ████████╗ █████╗         ███████╗ ██████╗ ██████╗         ██████╗  ██████╗ ██████╗ ██╗   ██╗
+██║   ██║██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝██╔════╝        ╚══██╔══╝██╔══██╗██╔════╝██║ ██╔╝        ██╔══██╗██╔══██╗╚══██╔══╝██╔══██╗        ██╔════╝██╔═══██╗██╔══██╗        ██╔══██╗██╔═══██╗██╔══██╗╚██╗ ██╔╝
+██║   ██║██████╔╝██║  ██║███████║   ██║   █████╗             ██║   ███████║███████╗█████╔╝         ██║  ██║███████║   ██║   ███████║        █████╗  ██║   ██║██████╔╝        ██████╔╝██║   ██║██║  ██║ ╚████╔╝
+██║   ██║██╔═══╝ ██║  ██║██╔══██║   ██║   ██╔══╝             ██║   ██╔══██║╚════██║██╔═██╗         ██║  ██║██╔══██║   ██║   ██╔══██║        ██╔══╝  ██║   ██║██╔══██╗        ██╔══██╗██║   ██║██║  ██║  ╚██╔╝
+╚██████╔╝██║     ██████╔╝██║  ██║   ██║   ███████╗           ██║   ██║  ██║███████║██║  ██╗        ██████╔╝██║  ██║   ██║   ██║  ██║        ██║     ╚██████╔╝██║  ██║        ██████╔╝╚██████╔╝██████╔╝   ██║
+ ╚═════╝ ╚═╝     ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝           ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝        ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝        ╚═╝      ╚═════╝ ╚═╝  ╚═╝        ╚═════╝  ╚═════╝ ╚═════╝    ╚═╝
+*/
+
+// UpdateTaskDataForBody is
+func UpdateTaskDataForBody() *UpdateTaskDataBody {
+	return &UpdateTaskDataBody{}
+}
+
+func (u *UpdateTaskDataBody) SetAmount(amount string) *UpdateTaskDataBody {
+	u.Amount = amount
+	return u
+}
+
+func (u *UpdateTaskDataBody) SetButtonLabel(buttonLabel string) *UpdateTaskDataBody {
+	u.ButtonLabel = buttonLabel
+	return u
+}
+
+func (u *UpdateTaskDataBody) SetCustomData(customData interface{}) *UpdateTaskDataBody {
+	u.CustomData = customData
+	return u
+}
+
+func (u *UpdateTaskDataBody) SetDescription(description string) *UpdateTaskDataBody {
+	u.Description = description
+	return u
+}
+
+func (u *UpdateTaskDataBody) SetEnabled(enabled bool) *UpdateTaskDataBody {
+	u.Enabled = enabled
+	return u
+}
+
+func (u *UpdateTaskDataBody) SetFeatured(featured bool) *UpdateTaskDataBody {
+	u.Featured = featured
+	return u
+}
+
+func (u *UpdateTaskDataBody) SetImage(image string) *UpdateTaskDataBody {
+	u.Image = image
+	return u
+}
+
+func (u *UpdateTaskDataBody) SetName(name string) *UpdateTaskDataBody {
+	u.Image = name
+	return u
+}
+
+func (u *UpdateTaskDataBody) SetOrder(order string) *UpdateTaskDataBody {
+	u.Order = order
+	return u
+}
+
+func (u *UpdateTaskDataBody) SetSurveyURL(surveyURL string) *UpdateTaskDataBody {
+	u.SurveyURL = surveyURL
+	return u
+}
+
+func (u *UpdateTaskDataBody) SetThumbnail(thumbnail string) *UpdateTaskDataBody {
+	u.Thumbnail = thumbnail
+	return u
+}
+
+func (u *UpdateTaskDataBody) SetType(typeFiled string) *UpdateTaskDataBody {
+	u.Type = typeFiled
+	return u
+}

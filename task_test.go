@@ -9,3 +9,19 @@ func TestGetTasks(t *testing.T) {
 
 	ReturnAndError(t, tst, returnValue, err)
 }
+
+func TestGetTaskWithID(t *testing.T) {
+	tst := "TestGetTaskWithID"
+
+	returnValue, err := getClient().GetTaskWithID("")
+
+	ReturnAndError(t, tst, returnValue, err)
+}
+
+func TestUpdateTask(t *testing.T) {
+	tst := "TestUpdateTask"
+
+	returnValue, err := getClient().UpdateTask("", &UpdateTaskDataBody{})
+
+	ReturnAndError(t, tst, returnValue, err)
+}
