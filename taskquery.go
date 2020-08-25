@@ -83,3 +83,9 @@ func (c Client) SetTaskReorder(taskID string) error {
 	_, err := c.GenericPostQuery(linkTasks+"/"+taskID+"/reorder", nil)
 	return err
 }
+
+// DeleteTask
+// https://developers.slyk.io/slyk/reference/endpoints#delete-tasks-id
+func (c Client) DeleteTask(taskID string) error {
+	return c.GenericDeleteQuery(linkTasks+"/"+taskID, nil)
+}
