@@ -28,6 +28,7 @@ const (
 	linkQuestions      = apiSlyk + "/questions"
 	linkQuestionTypes  = apiSlyk + "/question-types"
 	linkTasks          = apiSlyk + "/tasks"
+	linkTaxRates       = apiSlyk + "/tax-rates"
 )
 
 const (

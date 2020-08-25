@@ -247,6 +247,12 @@ func merge(m interface{}) map[string]string {
 				mmap[k] = v
 			}
 		}
+	case []*getTaxRatesFilter:
+		for i := range getMap {
+			for k, v := range *getMap[i] {
+				mmap[k] = v
+			}
+		}
 	}
 	return mmap
 }
