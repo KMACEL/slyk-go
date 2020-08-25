@@ -33,3 +33,11 @@ func TestCreateTaxRate(t *testing.T) {
 
 	ReturnAndError(t, tst, returnValue, err)
 }
+
+func TestDeleteTaxRate(t *testing.T) {
+	tst := "TestDeleteTaxRate"
+
+	err := getClient().DeleteTaxRate("")
+
+	OnlyError(t, tst, err)
+}

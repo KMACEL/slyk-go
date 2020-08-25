@@ -69,3 +69,9 @@ func (c Client) CreateTaxRate(createTaxRateDataBody *CreateTaxRateDataBody) (*Ta
 
 	return &taxRate, nil
 }
+
+// DeleteTaxRate
+// https://developers.slyk.io/slyk/reference/endpoints#delete-tax-rates-id
+func (c Client) DeleteTaxRate(taxRateID string) error {
+	return c.GenericDeleteQuery(linkTaxRates+"/"+taxRateID, nil)
+}
