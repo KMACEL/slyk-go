@@ -17,3 +17,11 @@ func TestGetTaxRateWithID(t *testing.T) {
 
 	ReturnAndError(t, tst, returnValue, err)
 }
+
+func TestUpdateTaxRate(t *testing.T) {
+	tst := "TestUpdateTaxRate"
+
+	returnValue, err := getClient().UpdateTaxRate("19e0ff97-3588-410c-a225-efa5f9f26493", &UpdateTaxRateDataBody{})
+
+	ReturnAndError(t, tst, returnValue, err)
+}

@@ -18,3 +18,8 @@ type TaxRateData struct {
 	Rate      string    `json:"rate"`
 	UpdatedAt time.Time `json:"updatedAt"`
 }
+
+type UpdateTaxRateDataBody struct {
+	Name string `json:"name,omitempty"`
+	Rate string `json:"rate,omitempty"`
+}

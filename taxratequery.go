@@ -35,3 +35,20 @@ func (c Client) GetTaxRateWithID(taxRateID string) (*TaxRate, error) {
 
 	return &taxRate, nil
 }
+
+// UpdateTaxRate is
+// https://developers.slyk.io/slyk/reference/endpoints#patch-tax-rates-id
+func (c Client) UpdateTaxRate(taxRateID string, updateTaxRateDataBody *UpdateTaxRateDataBody) (*TaxRate, error) {
+	getBody, err := c.GenericPatchQuery(linkTaxRates+"/"+taxRateID, updateTaxRateDataBody)
+	if err != nil {
+		return nil, err
+	}
+
+	var taxRate TaxRate
+	errUnmarshal := json.Unmarshal(getBody, &taxRate)
+	if errUnmarshal != nil {
+		return nil, errUnmarshal
+	}
+
+	return &taxRate, nil
+}
