@@ -53,7 +53,7 @@ func (g *getCategoriesFilter) SetIDWithNIN(id ...string) *getCategoriesFilter {
 }
 
 func (g *getCategoriesFilter) SetOrder(order string) *getCategoriesFilter {
-	(*g)["filter[order]"] = order
+	(*g)["filter[order]"] = "lte:" + order
 	return g
 }
 
@@ -63,7 +63,7 @@ func (g *getCategoriesFilter) SetOrderWithGTE(order string) *getCategoriesFilter
 }
 
 func (g *getCategoriesFilter) SetOrderWithLTE(order string) *getCategoriesFilter {
-	(*g)["filter[getassetFilter]"] = "lte:" + order
+	(*g)["filter[order]"] = "lte:" + order
 	return g
 }
 

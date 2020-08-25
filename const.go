@@ -27,6 +27,7 @@ const (
 	linkProducts       = apiSlyk + "/products"
 	linkQuestions      = apiSlyk + "/questions"
 	linkQuestionTypes  = apiSlyk + "/question-types"
+	linkTasks          = apiSlyk + "/tasks"
 )
 
 const (
