@@ -38,8 +38,8 @@ func (c Client) GetTaskWithID(tasksID string) (*Task, error) {
 
 // UpdateTask is
 // https://developers.slyk.io/slyk/reference/endpoints#patch-tasks-id
-func (c Client) UpdateTask(tasksID string, updateTaskDataBody *UpdateTaskDataBody) (*Task, error) {
-	getBody, err := c.GenericPatchQuery(linkTasks+"/"+tasksID, updateTaskDataBody)
+func (c Client) UpdateTask(taskID string, updateTaskDataBody *UpdateTaskDataBody) (*Task, error) {
+	getBody, err := c.GenericPatchQuery(linkTasks+"/"+taskID, updateTaskDataBody)
 	if err != nil {
 		return nil, err
 	}
@@ -68,4 +68,11 @@ func (c Client) CreateTask(createTaskDataBody *CreateTaskDataBody) (*Task, error
 	}
 
 	return &task, nil
+}
+
+// SetTaskComplete
+// https://developers.slyk.io/slyk/reference/endpoints#post-tasks-id-complete
+func (c Client) SetTaskComplete(taskID string) error {
+	_, err := c.GenericPostQuery(linkTasks+"/"+taskID+"/complete", nil)
+	return err
 }

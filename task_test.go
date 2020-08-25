@@ -38,3 +38,11 @@ func TestCreateTask(t *testing.T) {
 
 	ReturnAndError(t, tst, returnValue, err)
 }
+
+func TestSetTaskComplete(t *testing.T) {
+	tst := "TestSetTaskComplete"
+
+	err := getClient().SetTaskComplete("")
+
+	OnlyError(t, tst, err)
+}
