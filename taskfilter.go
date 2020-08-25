@@ -247,3 +247,77 @@ func (u *UpdateTaskDataBody) SetType(typeFiled string) *UpdateTaskDataBody {
 	u.Type = typeFiled
 	return u
 }
+
+/*
+ ██████╗██████╗ ███████╗ █████╗ ████████╗███████╗        ████████╗ █████╗ ███████╗██╗  ██╗        ██████╗  █████╗ ████████╗ █████╗         ███████╗ ██████╗ ██████╗         ██████╗  ██████╗ ██████╗ ██╗   ██╗
+██╔════╝██╔══██╗██╔════╝██╔══██╗╚══██╔══╝██╔════╝        ╚══██╔══╝██╔══██╗██╔════╝██║ ██╔╝        ██╔══██╗██╔══██╗╚══██╔══╝██╔══██╗        ██╔════╝██╔═══██╗██╔══██╗        ██╔══██╗██╔═══██╗██╔══██╗╚██╗ ██╔╝
+██║     ██████╔╝█████╗  ███████║   ██║   █████╗             ██║   ███████║███████╗█████╔╝         ██║  ██║███████║   ██║   ███████║        █████╗  ██║   ██║██████╔╝        ██████╔╝██║   ██║██║  ██║ ╚████╔╝
+██║     ██╔══██╗██╔══╝  ██╔══██║   ██║   ██╔══╝             ██║   ██╔══██║╚════██║██╔═██╗         ██║  ██║██╔══██║   ██║   ██╔══██║        ██╔══╝  ██║   ██║██╔══██╗        ██╔══██╗██║   ██║██║  ██║  ╚██╔╝
+╚██████╗██║  ██║███████╗██║  ██║   ██║   ███████╗           ██║   ██║  ██║███████║██║  ██╗        ██████╔╝██║  ██║   ██║   ██║  ██║        ██║     ╚██████╔╝██║  ██║        ██████╔╝╚██████╔╝██████╔╝   ██║
+ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝           ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝        ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝        ╚═╝      ╚═════╝ ╚═╝  ╚═╝        ╚═════╝  ╚═════╝ ╚═════╝    ╚═╝
+*/
+
+// CreateTaskDataForBody is
+func CreateTaskDataForBody() *CreateTaskDataBody {
+	return &CreateTaskDataBody{}
+}
+
+func (u *CreateTaskDataBody) SetAmount(amount string) *CreateTaskDataBody {
+	u.Amount = amount
+	return u
+}
+
+func (u *CreateTaskDataBody) SetButtonLabel(buttonLabel string) *CreateTaskDataBody {
+	u.ButtonLabel = buttonLabel
+	return u
+}
+
+func (u *CreateTaskDataBody) SetCustomData(customData interface{}) *CreateTaskDataBody {
+	u.CustomData = customData
+	return u
+}
+
+func (u *CreateTaskDataBody) SetDescription(description string) *CreateTaskDataBody {
+	u.Description = description
+	return u
+}
+
+func (u *CreateTaskDataBody) SetEnabled(enabled bool) *CreateTaskDataBody {
+	u.Enabled = enabled
+	return u
+}
+
+func (u *CreateTaskDataBody) SetFeatured(featured bool) *CreateTaskDataBody {
+	u.Featured = featured
+	return u
+}
+
+func (u *CreateTaskDataBody) SetImage(image string) *CreateTaskDataBody {
+	u.Image = image
+	return u
+}
+
+func (u *CreateTaskDataBody) SetName(name string) *CreateTaskDataBody {
+	u.Image = name
+	return u
+}
+
+func (u *CreateTaskDataBody) SetOrder(order string) *CreateTaskDataBody {
+	u.Order = order
+	return u
+}
+
+func (u *CreateTaskDataBody) SetSurveyURL(surveyURL string) *CreateTaskDataBody {
+	u.SurveyURL = surveyURL
+	return u
+}
+
+func (u *CreateTaskDataBody) SetThumbnail(thumbnail string) *CreateTaskDataBody {
+	u.Thumbnail = thumbnail
+	return u
+}
+
+func (u *CreateTaskDataBody) SetType(typeFiled string) *CreateTaskDataBody {
+	u.Type = typeFiled
+	return u
+}

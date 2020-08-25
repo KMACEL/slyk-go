@@ -44,3 +44,18 @@ type UpdateTaskDataBody struct {
 	Thumbnail   string      `json:"thumbnail,omitempty"`
 	Type        string      `json:"type,omitempty"`
 }
+
+type CreateTaskDataBody struct {
+	Amount      string      `json:"amount"`
+	ButtonLabel string      `json:"buttonLabel,omitempty"`
+	CustomData  interface{} `json:"customData,omitempty"`
+	Description string      `json:"description"`
+	Enabled     bool        `json:"enabled,omitempty"`
+	Featured    bool        `json:"featured,omitempty"`
+	Image       string      `json:"image,omitempty"`
+	Name        string      `json:"name"`
+	Order       string      `json:"order,omitempty"`
+	SurveyURL   string      `json:"surveyUrl,omitempty"`
+	Thumbnail   string      `json:"thumbnail,omitempty"`
+	Type        string      `json:"type"`
+}

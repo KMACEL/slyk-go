@@ -25,3 +25,16 @@ func TestUpdateTask(t *testing.T) {
 
 	ReturnAndError(t, tst, returnValue, err)
 }
+
+func TestCreateTask(t *testing.T) {
+	tst := "TestCreateTask"
+
+	returnValue, err := getClient().CreateTask(&CreateTaskDataBody{
+		Amount:      "1",
+		Description: "TestTask",
+		Name:        "Task",
+		Type:        "system",
+	})
+
+	ReturnAndError(t, tst, returnValue, err)
+}
