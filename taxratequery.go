@@ -18,3 +18,20 @@ func (c Client) GetTaxRates(filter ...*getTaxRatesFilter) (*TaxRates, error) {
 
 	return &taxRates, nil
 }
+
+// GetTaxRateWithID is
+//https://developers.slyk.io/slyk/reference/endpoints#get-tax-rates-id
+func (c Client) GetTaxRateWithID(taxRateID string) (*TaxRate, error) {
+	getBody, err := c.GenericGetQuery(linkTaxRates+"/"+taxRateID, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	var taxRate TaxRate
+	errUnmarshal := json.Unmarshal(getBody, &taxRate)
+	if errUnmarshal != nil {
+		return nil, errUnmarshal
+	}
+
+	return &taxRate, nil
+}

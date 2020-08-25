@@ -7,6 +7,10 @@ type TaxRates struct {
 	Total int           `json:"total"`
 }
 
+type TaxRate struct {
+	Data TaxRateData `json:"data"`
+}
+
 type TaxRateData struct {
 	CreatedAt time.Time `json:"createdAt"`
 	ID        string    `json:"id"`
