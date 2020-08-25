@@ -25,3 +25,11 @@ func TestUpdateTaxRate(t *testing.T) {
 
 	ReturnAndError(t, tst, returnValue, err)
 }
+
+func TestCreateTaxRate(t *testing.T) {
+	tst := "TestCreateTaxRate"
+
+	returnValue, err := getClient().CreateTaxRate(&CreateTaxRateDataBody{})
+
+	ReturnAndError(t, tst, returnValue, err)
+}

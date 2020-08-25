@@ -52,3 +52,20 @@ func (c Client) UpdateTaxRate(taxRateID string, updateTaxRateDataBody *UpdateTax
 
 	return &taxRate, nil
 }
+
+// CreateTaxRate is
+// https://developers.slyk.io/slyk/reference/endpoints#post-tax-rates
+func (c Client) CreateTaxRate(createTaxRateDataBody *CreateTaxRateDataBody) (*TaxRate, error) {
+	getBody, err := c.GenericPostQuery(linkTaxRates, createTaxRateDataBody)
+	if err != nil {
+		return nil, err
+	}
+
+	var taxRate TaxRate
+	errUnmarshal := json.Unmarshal(getBody, &taxRate)
+	if errUnmarshal != nil {
+		return nil, errUnmarshal
+	}
+
+	return &taxRate, nil
+}
