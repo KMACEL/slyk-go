@@ -76,3 +76,10 @@ func (c Client) SetTaskComplete(taskID string) error {
 	_, err := c.GenericPostQuery(linkTasks+"/"+taskID+"/complete", nil)
 	return err
 }
+
+// SetTaskReorder is
+// https://developers.slyk.io/slyk/reference/endpoints#post-tasks-id-reorder
+func (c Client) SetTaskReorder(taskID string) error {
+	_, err := c.GenericPostQuery(linkTasks+"/"+taskID+"/reorder", nil)
+	return err
+}

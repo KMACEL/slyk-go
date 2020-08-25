@@ -46,3 +46,11 @@ func TestSetTaskComplete(t *testing.T) {
 
 	OnlyError(t, tst, err)
 }
+
+func TestSetTaskReorder(t *testing.T) {
+	tst := "TestSetTaskReorder"
+
+	err := getClient().SetTaskReorder("")
+
+	OnlyError(t, tst, err)
+}
