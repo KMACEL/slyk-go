@@ -41,7 +41,7 @@ func (c Client) GetTransactionsWithID(transactionID string) (*Transaction, error
 // CreateTransactionApproveWithID is
 // Its only possible to approve transactions that are pending.
 // https://developers.slyk.io/slyk/reference/endpoints#post-transactions-id-approve
-func (c Client) SetTransactionApproveWithID(transactionID string) (*Transaction, error) {
+func (c Client) SetTransactionApprove(transactionID string) (*Transaction, error) {
 	getBody, err := c.GenericPostQuery(linkTransactions+"/"+transactionID+"/approve", nil)
 	if err != nil {
 		return nil, err
@@ -58,7 +58,7 @@ func (c Client) SetTransactionApproveWithID(transactionID string) (*Transaction,
 
 // CreateTransactionConfirmWithID is
 // https://developers.slyk.io/slyk/reference/endpoints#post-transactions-id-confirm
-func (c Client) SetTransactionConfirmWithID(transactionID string) (*Transaction, error) {
+func (c Client) SetTransactionConfirm(transactionID string) (*Transaction, error) {
 	getBody, err := c.GenericPostQuery(linkTransactions+"/"+transactionID+"/confirm", nil)
 	if err != nil {
 		return nil, err
@@ -75,7 +75,7 @@ func (c Client) SetTransactionConfirmWithID(transactionID string) (*Transaction,
 
 // SetTransactionFailWithID is
 // https://developers.slyk.io/slyk/reference/endpoints#post-transactions-id-fail
-func (c Client) SetTransactionFailWithID(transactionID string, transactionFailDataBody *TransactionFailDataBody) (*Transaction, error) {
+func (c Client) SetTransactionFail(transactionID string, transactionFailDataBody *TransactionFailDataBody) (*Transaction, error) {
 	getBody, err := c.GenericPostQuery(linkTransactions+"/"+transactionID+"/fail", transactionFailDataBody)
 	if err != nil {
 		return nil, err
@@ -92,7 +92,7 @@ func (c Client) SetTransactionFailWithID(transactionID string, transactionFailDa
 
 // SetTransactionRejectWithID is
 // https://developers.slyk.io/slyk/reference/endpoints#post-transactions-id-reject
-func (c Client) SetTransactionRejectWithID(transactionID string, transactionRejectDataBody *TransactionRejectDataBody) (*Transaction, error) {
+func (c Client) SetTransactionReject(transactionID string, transactionRejectDataBody *TransactionRejectDataBody) (*Transaction, error) {
 	getBody, err := c.GenericPostQuery(linkTransactions+"/"+transactionID+"/reject", transactionRejectDataBody)
 	if err != nil {
 		return nil, err

@@ -37,7 +37,11 @@ func TestUpdateQuestion(t *testing.T) {
 func TestCreateQuestion(t *testing.T) {
 	tst := "TestCreateQuestion"
 
-	returnValue, err := getClient().CreateQuestion(&CreateQuestionDataBody{})
+	returnValue, err := getClient().CreateQuestion(&CreateQuestionDataBody{
+		ProductTypeCode: "physical",
+		Title:           "Test",
+		TypeCode:        "text",
+	})
 
 	ReturnAndError(t, tst, returnValue, err)
 }
@@ -45,7 +49,7 @@ func TestCreateQuestion(t *testing.T) {
 func TestDeleteQuestion(t *testing.T) {
 	tst := "TestDeleteQuestion"
 
-	err := getClient().DeleteQuestion("")
+	err := getClient().DeleteQuestion("216b3ece-80f5-4d8c-a8ae-3edddb0eaae4")
 
 	OnlyError(t, tst, err)
 }

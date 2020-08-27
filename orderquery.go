@@ -70,6 +70,23 @@ func (c Client) GetOrderLinesWithIDAndLineID(orderID string, lineID string) (*Or
 	return &orderLine, nil
 }
 
+// UpdateOrder is
+// https://developers.slyk.io/slyk/reference/endpoints#patch-orders-id
+func (c Client) UpdateOrder(orderID string, updateOrderDataBody *UpdateOrderDataBody) (*Order, error) {
+	getBody, err := c.GenericPatchQuery(linkOrders+"/"+orderID, updateOrderDataBody)
+	if err != nil {
+		return nil, err
+	}
+
+	var order Order
+	errUnmarshal := json.Unmarshal(getBody, &order)
+	if errUnmarshal != nil {
+		return nil, errUnmarshal
+	}
+
+	return &order, nil
+}
+
 // CreateOrder is
 // https://developers.slyk.io/slyk/reference/endpoints#post-orders
 func (c Client) CreateOrder(createOrderDataBody *CreateOrderDataBody) (*Order, error) {

@@ -45,7 +45,7 @@ func TestCreateProducts(t *testing.T) {
 func TestAddProductQuestionWithID(t *testing.T) {
 	tst := "TestAddProductQuestionWithID"
 
-	returnValue, err := getClient().AddProductQuestionWithID("bfbd599a-294b-4e52-989f-ec8d6b281950", &AddProductQuestionDataBody{
+	returnValue, err := getClient().AddProductQuestion("bfbd599a-294b-4e52-989f-ec8d6b281950", &AddProductQuestionDataBody{
 		QuestionID: "",
 	})
 

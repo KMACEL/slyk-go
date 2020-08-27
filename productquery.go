@@ -72,7 +72,7 @@ func (c Client) CreateProduct(createProductsDataBody *CreateProductDataBody) (*P
 
 // AddProductQuestionsWithID is
 // https://developers.slyk.io/slyk/reference/endpoints#post-products-id-questions
-func (c Client) AddProductQuestionWithID(productID string, addProductQuestionDataBody *AddProductQuestionDataBody) (*AddProductQuestionResponseBody, error) {
+func (c Client) AddProductQuestion(productID string, addProductQuestionDataBody *AddProductQuestionDataBody) (*AddProductQuestionResponseBody, error) {
 	getBody, err := c.GenericPostQuery(linkProducts+"/"+productID+"/questions", addProductQuestionDataBody)
 	if err != nil {
 		return nil, err

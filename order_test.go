@@ -26,6 +26,16 @@ func TestGetOrderLinesWithID(t *testing.T) {
 	ReturnAndError(t, tst, returnValue, err)
 }
 
+func TestUpdateOrder(t *testing.T) {
+	tst := "TestUpdateOrder"
+	//todo producton sonra bakılacak
+	returnValue, err := getClient().UpdateOrder("", &UpdateOrderDataBody{
+		TrackingID: "",
+	})
+
+	ReturnAndError(t, tst, returnValue, err)
+}
+
 func TestCreateOrder(t *testing.T) {
 	tst := "TestCreateOrder"
 	//todo producton sonra bakılacak

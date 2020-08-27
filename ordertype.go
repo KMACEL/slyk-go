@@ -129,6 +129,10 @@ type OrderLineData struct {
 	UpdatedAt time.Time `json:"updatedAt"`
 }
 
+type UpdateOrderDataBody struct {
+	TrackingID string `json:"trackingId"`
+}
+
 type CreateOrderDataBody struct {
 	ChosenPaymentMethod string         `json:"chosenPaymentMethod,omitempty"`
 	CustomData          interface{}    `json:"customData,omitempty"`

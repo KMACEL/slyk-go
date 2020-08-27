@@ -13,7 +13,7 @@ func TestGetTasks(t *testing.T) {
 func TestGetTaskWithID(t *testing.T) {
 	tst := "TestGetTaskWithID"
 
-	returnValue, err := getClient().GetTaskWithID("")
+	returnValue, err := getClient().GetTaskWithID("54a5c628-4ab7-435f-8550-39b670da563f")
 
 	ReturnAndError(t, tst, returnValue, err)
 }
@@ -30,10 +30,11 @@ func TestCreateTask(t *testing.T) {
 	tst := "TestCreateTask"
 
 	returnValue, err := getClient().CreateTask(&CreateTaskDataBody{
-		Amount:      "1",
+		Amount:      "1.0",
+		ButtonLabel: "TT",
 		Description: "TestTask",
 		Name:        "Task",
-		Type:        "system",
+		Type:        "manual",
 	})
 
 	ReturnAndError(t, tst, returnValue, err)

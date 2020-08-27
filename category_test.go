@@ -21,7 +21,7 @@ func TestGetCategoryWithID(t *testing.T) {
 func TestUpdateCategoryWithID(t *testing.T) {
 	tst := "TestUpdateCategoryWithID"
 
-	returnValue, err := getClient().UpdateCategoryWithID("27d3d24a-257b-4a88-a8eb-bb8b6121f317", &UpdateCategoryDataBody{
+	returnValue, err := getClient().UpdateCategory("27d3d24a-257b-4a88-a8eb-bb8b6121f317", &UpdateCategoryDataBody{
 		CustomData: map[string]interface{}{"Acel": "test"},
 	})
 

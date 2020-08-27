@@ -73,6 +73,14 @@
 	1. [Get Addresses](#get-addresses)
 	2. [Get Address With ID](#get-address-with-id)
 	3. [Create Address](#create-address)
+10. [Category](#category)
+	1. [Get Categories](#get-categories)
+	1. [Get Category With ID](#get-category-with-id)
+	1. [Update Category](#update-category)
+	1. [Create Category](#create-category)
+	1. [Category Reorder](#category-reorder)
+	1. [Delete Category](#delete-category)
+
 
 ------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------
@@ -887,7 +895,7 @@ response,err := client.GetTransactionsWithID({{TRANSACTIN_ID}} )
 It is used to approve the transaction in pending.
 
 ```go
-response,err := client.SetTransactionApproveWithID({{TRANSACTIN_ID}} )
+response,err := client.SetTransactionApprove({{TRANSACTIN_ID}} )
 ```
 
 ### Set Transaction Confirm With ID
@@ -895,7 +903,7 @@ response,err := client.SetTransactionApproveWithID({{TRANSACTIN_ID}} )
 It is used to confirm the transaction in pending.
 
 ```go
-response,err := client.SetTransactionConfirmWithID({{TRANSACTIN_ID}} )
+response,err := client.SetTransactionConfirm({{TRANSACTIN_ID}} )
 ```
 
 ### Set Transaction Fail With ID
@@ -903,7 +911,7 @@ response,err := client.SetTransactionConfirmWithID({{TRANSACTIN_ID}} )
 It is used to fail the transaction in pending.
 
 ```go
-response,err := client.SetTransactionFailWithID({{TRANSACTIN_ID}},*TransactionFailDataBody)
+response,err := client.SetTransactionFail({{TRANSACTIN_ID}},*TransactionFailDataBody)
 ```
 
 #### Struct
@@ -933,7 +941,7 @@ SetReason(reason string)
 It is used to Reject the transaction in pending.
 
 ```go
-response,err := client.SetTransactionRejectWithID({{TRANSACTIN_ID}}, *TransactionRejectDataBody)
+response,err := client.SetTransactionReject({{TRANSACTIN_ID}}, *TransactionRejectDataBody)
 ```
 
 #### Struct
@@ -1205,7 +1213,7 @@ Note : System assets cannot be updated.
 Function;
 
 ```go
-response,err := client.UpdateAssetsWithCode({{ASSET_CODE}}, *UpdateAssetDataBody) 
+response,err := client.UpdateAssets({{ASSET_CODE}}, *UpdateAssetDataBody) 
 ```
 
 #### Struct
@@ -1715,3 +1723,166 @@ SetCustomData(customData interface{})
 SetProvider(provider string) 
 SetWalletID(walletID string) 
 ```
+
+------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
+
+## Category
+
+### Get Categories
+
+Brings up the categories list.
+
+```go
+response,err := client.GetCategories({{OPTIONAL_FILTER}})
+```
+
+#### Filter List
+
+For Create;
+
+```go
+slyk.GetCategoriesFilter()
+```
+
+Filters That Can Be Added;
+
+```go
+SetGenericQueryParameter(key string, value interface{}) 
+SetAvailableProducts(availableProducts interface{}) 
+SetDescription(description string) 
+SetID(id string) 
+SetIDWithIN(id ...string) 
+SetIDWithNIN(id ...string) 
+SetOrder(order string) 
+SetOrderWithGTE(order string) 
+SetOrderWithLTE(order string) 
+SetTitle(title string) 
+SetVisibleProducts(visibleProducts interface{}) 
+SetSortWithCreatedAt() 
+SetSortWithCreatedAtReverse() 
+SetSortWithOrder() 
+SetSortWithOrderReverse() 
+SetSortWithTitle() 
+SetSortWithTitleReverse() 
+SetPageSize(size int) 
+SetPageNumber(number int) 
+```
+
+### Get Category With ID
+
+```go
+response,err := client.GetCategoryWithID({{CATEGORY_ID}})
+```
+
+### Update Category
+
+Function;
+
+```go
+response,err := client.UpdateCategory({{CATEGORY_ID}},*UpdateCategoryDataBody)
+```
+#### Struct
+
+```go
+type UpdateCategoryDataBody struct {
+	Description string      `json:"description,omitempty"`
+	Image       string      `json:"image,omitempty"`
+	Title       string      `json:"title,omitempty"`
+	CustomData  interface{} `json:"customData"`
+	Order       string      `json:"order,omitempty"`
+}
+```
+
+
+#### Body Function
+
+For Create;
+
+```go
+slyk.UpdateCategoryDataForBody()
+```
+
+Append List;
+
+```go
+SetDescription(description string)
+SetImage(image string) 
+SetTitle(title string) 
+SetCustomData(customData string) 
+SetOrder(order string) }
+```
+
+### Create Category
+
+Function;
+
+```go
+response,err := client.CreateCategory(*CreateCategoryDataBody)
+```
+
+#### Struct
+
+```go
+type CreateCategoryDataBody struct {
+	Description string      `json:"description,omitempty"`
+	Image       string      `json:"image,omitempty"`
+	Title       string      `json:"title"`
+	CustomData  interface{} `json:"customData"`
+	Order       string      `json:"order,omitempty"`
+}
+```
+
+
+#### Body Function
+
+For Create;
+
+```go
+slyk.CreateCategoryDataForBody()
+```
+
+Append List;
+
+```go
+SetDescription(description string)
+SetImage(image string) 
+SetTitle(title string) 
+SetCustomData(customData string) 
+SetOrder(order string) }
+```
+
+### Category Reorder
+
+```go
+response,err := client.CategoryReorder({{CATEGORY_ID}},*CategoryReorderDataBody)
+```
+
+#### Struct
+
+```go
+type CategoryReorderDataBody struct {
+	SubsequentID string `json:"subsequentId,omitempty"`
+}
+```
+
+#### Body Function
+
+For Create;
+
+```go
+slyk.CategoryReorderDataForBody()
+```
+
+Append List;
+
+```go
+SetSubsequentID(subsequentID string)
+```
+
+### Delete Category
+
+```go
+err := client.DeleteCategory({{CATEGORY_ID}})
+```
+

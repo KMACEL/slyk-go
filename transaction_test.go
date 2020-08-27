@@ -30,7 +30,7 @@ func TestGetTransactionsWithID(t *testing.T) {
 func TestCreateTransactionApproveWithID(t *testing.T) {
 	tst := "TestCreateTransactionApproveWithID"
 
-	returnValue, err := getClient().SetTransactionApproveWithID("e47afd0c-043d-4830-bcfa-18741f9991b1")
+	returnValue, err := getClient().SetTransactionApprove("e47afd0c-043d-4830-bcfa-18741f9991b1")
 
 	ReturnAndError(t, tst, returnValue, err)
 }
@@ -38,7 +38,7 @@ func TestCreateTransactionApproveWithID(t *testing.T) {
 func TestTransactionConfirmWithID(t *testing.T) {
 	tst := "TestTransactionConfirmWithID"
 
-	returnValue, err := getClient().SetTransactionConfirmWithID("e3ca4397-7d4a-498a-b474-2ef58ae313f8")
+	returnValue, err := getClient().SetTransactionConfirm("e3ca4397-7d4a-498a-b474-2ef58ae313f8")
 
 	ReturnAndError(t, tst, returnValue, err)
 }
@@ -46,7 +46,7 @@ func TestTransactionConfirmWithID(t *testing.T) {
 func TestSetTransactionFailWithID(t *testing.T) {
 	tst := "TestSetTransactionFailWithID"
 
-	returnValue, err := getClient().SetTransactionFailWithID("ed7c86bd-6105-4dcb-8791-9f6627887bc9", &TransactionFailDataBody{Reason: "Problem"})
+	returnValue, err := getClient().SetTransactionFail("ed7c86bd-6105-4dcb-8791-9f6627887bc9", &TransactionFailDataBody{Reason: "Problem"})
 
 	ReturnAndError(t, tst, returnValue, err)
 }
@@ -54,7 +54,7 @@ func TestSetTransactionFailWithID(t *testing.T) {
 func TestSetTransactionRejectWithID(t *testing.T) {
 	tst := "TestSetTransactionRejectWithID"
 
-	returnValue, err := getClient().SetTransactionRejectWithID("9bd25790-5437-42d3-bab6-da97ed96dcf6", &TransactionRejectDataBody{Reason: "Problem"})
+	returnValue, err := getClient().SetTransactionReject("9bd25790-5437-42d3-bab6-da97ed96dcf6", &TransactionRejectDataBody{Reason: "Problem"})
 
 	ReturnAndError(t, tst, returnValue, err)
 }

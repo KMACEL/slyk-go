@@ -38,40 +38,6 @@ func (c Client) GetWalletWithID(walletID string) (*Wallet, error) {
 	return &wallet, nil
 }
 
-// GetWalletActivity is
-// https://developers.slyk.io/slyk/reference/endpoints#get-wallets-id-activity
-func (c Client) GetWalletActivityWithID(walletID string, filter ...*getWalletActivityWithIDFilter) (*WalletActivities, error) {
-	getBody, err := c.GenericGetQuery(linkWallets+"/"+walletID+activity, merge(filter))
-	if err != nil {
-		return nil, err
-	}
-
-	var walletActivities WalletActivities
-	errUnmarshal := json.Unmarshal(getBody, &walletActivities)
-	if errUnmarshal != nil {
-		return nil, errUnmarshal
-	}
-
-	return &walletActivities, nil
-}
-
-// GetWaalletBalance is
-// https://developers.slyk.io/slyk/reference/endpoints#get-wallets-id-balance
-func (c Client) GetWalletBalanceWithID(walletID string, filter ...*getWalletBalanceWithIDFilter) (*WalletBalance, error) {
-	getBody, err := c.GenericGetQuery(linkWallets+"/"+walletID+balance, merge(filter))
-	if err != nil {
-		return nil, err
-	}
-
-	var walletBalance WalletBalance
-	errUnmarshal := json.Unmarshal(getBody, &walletBalance)
-	if errUnmarshal != nil {
-		return nil, errUnmarshal
-	}
-
-	return &walletBalance, nil
-}
-
 // GetWalletMovements is
 // https://developers.slyk.io/slyk/reference/endpoints#get-wallets-id-movements
 func (c Client) GetWalletMovements(walletID string, filter ...*getWalletMovementsFilter) (*WalletMovements, error) {
@@ -123,10 +89,44 @@ func (c Client) GetWalletActivity(filter ...*getWalletActivityFilter) (*WalletAc
 	return &walletActivities, nil
 }
 
+// GetWalletActivity is
+// https://developers.slyk.io/slyk/reference/endpoints#get-wallets-id-activity
+func (c Client) GetWalletActivityWithID(walletID string, filter ...*getWalletActivityWithIDFilter) (*WalletActivities, error) {
+	getBody, err := c.GenericGetQuery(linkWallets+"/"+walletID+activity, merge(filter))
+	if err != nil {
+		return nil, err
+	}
+
+	var walletActivities WalletActivities
+	errUnmarshal := json.Unmarshal(getBody, &walletActivities)
+	if errUnmarshal != nil {
+		return nil, errUnmarshal
+	}
+
+	return &walletActivities, nil
+}
+
 // GetWalletBalance is
 // https://developers.slyk.io/slyk/reference/endpoints#get-wallets-balance
 func (c Client) GetWalletBalance(filter ...*getWalletBalanceFilter) (*WalletBalance, error) {
 	getBody, err := c.GenericGetQuery(linkWallets+balance, merge(filter))
+	if err != nil {
+		return nil, err
+	}
+
+	var walletBalance WalletBalance
+	errUnmarshal := json.Unmarshal(getBody, &walletBalance)
+	if errUnmarshal != nil {
+		return nil, errUnmarshal
+	}
+
+	return &walletBalance, nil
+}
+
+// GetWaalletBalance is
+// https://developers.slyk.io/slyk/reference/endpoints#get-wallets-id-balance
+func (c Client) GetWalletBalanceWithID(walletID string, filter ...*getWalletBalanceWithIDFilter) (*WalletBalance, error) {
+	getBody, err := c.GenericGetQuery(linkWallets+"/"+walletID+balance, merge(filter))
 	if err != nil {
 		return nil, err
 	}

@@ -38,7 +38,7 @@ func (c Client) GetCategoryWithID(cateoryID string) (*Category, error) {
 
 // UpdateCategoryWithID is
 // https://developers.slyk.io/slyk/reference/endpoints#patch-categories-id is
-func (c Client) UpdateCategoryWithID(cateoryID string, updateCategoryDataBody *UpdateCategoryDataBody) (*Category, error) {
+func (c Client) UpdateCategory(cateoryID string, updateCategoryDataBody *UpdateCategoryDataBody) (*Category, error) {
 	getBody, err := c.GenericPatchQuery(linkCategories+"/"+cateoryID, updateCategoryDataBody)
 	if err != nil {
 		return nil, err

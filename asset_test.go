@@ -26,7 +26,7 @@ func TestGetAssetsWithCode(t *testing.T) {
 func TestUpdateAssetsWithCode(t *testing.T) {
 	tst := "TestUpdateAssetsWithCode"
 
-	returnValue, err := getClient().UpdateAssetsWithCode("123456", UpdateAssetDataForBody().SetName("US Dollar"))
+	returnValue, err := getClient().UpdateAssets("123456", UpdateAssetDataForBody().SetName("US Dollar"))
 
 	ReturnAndError(t, tst, returnValue, err)
 }

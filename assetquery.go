@@ -40,7 +40,7 @@ func (c Client) GetAssetsWithCode(assetCode string) (*Asset, error) {
 
 // UpdateAssetsWithCode
 // https://developers.slyk.io/slyk/reference/endpoints#patch-assets-code
-func (c Client) UpdateAssetsWithCode(assetCode string, updateAssetDataBody *UpdateAssetDataBody) (*Asset, error) {
+func (c Client) UpdateAssets(assetCode string, updateAssetDataBody *UpdateAssetDataBody) (*Asset, error) {
 	getBody, err := c.GenericPatchQuery(linkAssets+"/"+assetCode, updateAssetDataBody)
 	if err != nil {
 		return nil, err

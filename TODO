@@ -1,11 +1,12 @@
 # TODO List
 
-1. Address: To be tested after Coinbase integration.
-2. Invite : GetInviteWithCodeForValidate function control (responde null)
-3. Paymet Method : GetPaymentMethods filter dont working
-4. Rate : GetRates filter dont working
-5. Transaction : CreateTransactionPay destination_wallet_is_locked
-6. Transaction : SetTransactionFailWithID Reason dont working
-7. Wallet : UpdateWallet Returns locked to true, but not false.
-
-* Product get not working
+* Address: To be tested after Coinbase integration.
+* Invite : GetInviteWithCodeForValidate function control (responde null)
+* Paymet Method : GetPaymentMethods filter dont working
+* Rate : GetRates filter dont working
+* Transaction : CreateTransactionPay destination_wallet_is_locked
+* Transaction : SetTransactionFailWithID Reason dont working
+* Wallet : UpdateWallet Returns locked to true, but not false.
+* Product get not working so Other APis could not be test
+* Order could not be done. because, wants to product id
+* Create Task dont working so Other APis could not be test
