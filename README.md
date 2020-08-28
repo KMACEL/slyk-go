@@ -118,6 +118,12 @@
 	5. [Set Task Complete](#set-task-complete)
 	6. [Set Task Reorder](#set-task-reorder)
 	7. [Delete Task](#delete-task)
+13. [Tax Rate](#tax-rate)
+	1. [Get Tax Rates](#get-tax-rates)
+	2. [Get Tax Rate With ID](#get-tax-rate-with-id)
+	3. [Update Tax Rate](#update-tax-rate)
+	4. [Create Tax Rate](#create-tax-rate)
+	5. [Delete Tax Rate](#delete-tax-rate)
 ------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------
 
@@ -2938,4 +2944,120 @@ err := client.SetTaskReorder({{TASK_ID}})
 
 ```go
 err := client.DeleteTask({{TASK_ID}})
+```
+
+------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
+
+## Tax Rate
+
+### Get Tax Rates
+
+Brings up the tax rates list.
+
+```go
+response,err := client.GetTaxRates({{OPTIONAL_FILTER}})
+```
+
+#### Filter List
+
+For Create;
+
+```go
+slyk.GetTaxRatesFilter()
+```
+
+Filters That Can Be Added;
+
+```go
+SetGenericQueryParameter(key string, value interface{}) 
+SetID(id string) 
+SetIDWithIN(id ...string) 
+SetIDWithNIN(id ...string) 
+SetName(name string) 
+SetSortWithCreatedAt() 
+SetSortWithCreatedAtReverse() 
+SetSortWithName() 
+SetSortWithNameReverse() 
+SetSortWithRate() 
+SetSortWithRateReverse() 
+SetPageSize(size int) 
+SetPageNumber(number int) 
+```
+
+### Get Tax Rate With ID
+
+```go
+response,err := client.GetTaxRateWithID({{TAX_RATE_ID}})
+```
+
+### Update Tax Rate
+
+Function;
+
+```go
+response,err := client.UpdateTaxRate({{TAX_RATE_ID}},*UpdateTaxRateDataBody)
+```
+#### Struct
+
+```go
+type UpdateTaxRateDataBody struct {
+	Name string `json:"name,omitempty"`
+	Rate string `json:"rate,omitempty"`
+}
+```
+
+
+#### Body Function
+
+For Create;
+
+```go
+slyk.UpdateTaxRateDataForBody()
+```
+
+Append List;
+
+```go
+SetName(name string)
+SetRate(rate string)
+```
+
+### Create Tax Rate
+
+Function;
+
+```go
+response,err := client.CreateTaxRate(*CreateTaxRateDataBody)
+```
+
+#### Struct
+
+```go
+type CreateTaxRateDataBody struct {
+	Name string `json:"name"`
+	Rate string `json:"rate"`
+}
+```
+
+
+#### Body Function
+
+For Create;
+
+```go
+slyk.CreateTaxRateDataForBody()
+```
+
+Append List;
+
+```go
+SetName(name string)
+SetRate(rate string)
+```
+
+### Delete Tax Rate
+
+```go
+err := client.DeleteTaxRate({{TAX_RATE_ID}})
 ```
