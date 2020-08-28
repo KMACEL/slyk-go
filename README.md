@@ -93,6 +93,16 @@
 	10. [Order Pay](#order-pay)
 	11. [Order Line Fulfill](#order-line-fulfill)
 	12. [Order Line UN Fulfill](#order-line-un-fulfill)
+11. [Product](#product)
+	1. [Get Products](#get-products)
+	2. [Get Product With ID](#get-product-with-id)
+	3. [Update Product](#update-product)
+	4. [Create Product](#create-product)
+	5. [Add Product Question](#add-product-question)
+	6. [Product Reorder](#product-reorder)
+	7. [Product Question Reorder](#product-question-reorder)
+	8. [Delete Product](#delete-product)
+	9. [Delete Product Question](#delete-product-question)
 
 
 ------------------------------------------------------------------------------------------------------------
@@ -2258,4 +2268,304 @@ Append List;
 
 ```go
 SetQuantity(quantity int)
+```
+
+------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
+
+## Product
+
+### Get Products
+
+Brings up the products list.
+
+```go
+response,err := client.GetProducts({{OPTIONAL_FILTER}})
+```
+
+#### Filter List
+
+For Create;
+
+```go
+slyk.GetProductsFilter()
+```
+
+Filters That Can Be Added;
+
+```go
+SetGenericQueryParameter(key string, value interface{}) 
+SetAvailable(available string) 
+SetCategoryID(categoryID string) 
+SetCategoryIDWithIN(categoryID ...string) 
+SetCategoryIDWithNIN(categoryID ...string) 
+SetDescription(description string) 
+SetFeatured(featured bool) 
+SetID(id string) 
+SetIDWithIN(id ...string) 
+SetIDWithNIN(id ...string) 
+SetName(name string) 
+SetOrderWithGTE(order string) 
+SetOrdertWithLTE(order string) 
+SetRequiresIdentity(requiresIdentity string) 
+SetTypeCode(typeCode string) 
+SetTypeCodeWithIN(typeCode ...string) 
+SetTypeCodeWithNIN(typeCode ...string) 
+SetVisible(visible bool) 
+SetSortWithCreatedAt() 
+SetSortWithCreatedAtReverse() 
+SetSortWithOrder() 
+SetSortWithOrderReverse() 
+SetSortWithFeatured() 
+SetSortWithFeaturedReverse() 
+SetPageSize(size int) 
+SetPageNumber(number int) 
+```
+
+### Get Product With ID
+
+```go
+response,err := client.GetProductWithID({{PRODUCT_ID}})
+```
+
+### Update Product
+
+Function;
+
+```go
+response,err := client.UpdateProduct({{PRODUCT_ID}},*UpdateProductDataBody)
+```
+#### Struct
+
+```go
+type UpdateProductDataBody struct {
+	AllowChoosingQuantity bool        `json:"allowChoosingQuantity,omitempty"`
+	AssetCode             string      `json:"assetCode,omitempty"`
+	Available             bool        `json:"available,omitempty"`
+	Bonus                 string      `json:"bonus,omitempty"`
+	ButtonLabel           string      `json:"buttonLabel,omitempty"`
+	CategoryID            string      `json:"categoryId,omitempty"`
+	CustomData            interface{} `json:"customData,omitempty"`
+	Description           string      `json:"description,omitempty"`
+	Featured              bool        `json:"featured,omitempty"`
+	Image                 string      `json:"image,omitempty"`
+	ListLabel             string      `json:"listLabel,omitempty"`
+	Name                  string      `json:"name,omitempty"`
+	Order                 string      `json:"order,omitempty"`
+	Price                 string      `json:"price,omitempty"`
+	RequiresIdentity      bool        `json:"requiresIdentity,omitempty"`
+	TaxRateID             string      `json:"taxRateId,omitempty"`
+	Thumbnail             string      `json:"thumbnail,omitempty"`
+	URL                   string      `json:"url,omitempty"`
+	Visible               bool        `json:"visible,omitempty"`
+}
+```
+
+
+#### Body Function
+
+For Create;
+
+```go
+slyk.UpdateProductDataForBody()
+```
+
+Append List;
+
+```go
+SetAllowChoosingQuantity(allowChoosingQuantity bool) 
+SetAssetCode(assetCode string) 
+SetAvailable(available bool) 
+SetBonus(bonus string) 
+SetButtonLabel(buttonLabel string) 
+SetCategoryID(categoryID string) 
+SetCustomData(customData interface{}) 
+SetDescription(description string) 
+SetFeatured(featured bool) 
+SetImage(image string) 
+SetListLabel(listLabel string) 
+SetName(name string) 
+SetOrder(order string) 
+SetPrice(price string) 
+SetRequiresIdentity(requiresIdentity bool) 
+SetTaxRateID(taxRateID string) 
+SetThumbnail(thumbnail string) 
+SetURL(url string) 
+SetVisible(visible bool) 
+```
+
+### Create Product
+
+Function;
+
+```go
+response,err := client.CreateProduct(*CreateProductDataBody)
+```
+
+#### Struct
+
+```go
+type CreateProductDataBody struct {
+	AllowChoosingQuantity bool        `json:"allowChoosingQuantity,omitempty"`
+	AssetCode             string      `json:"assetCode,omitempty"`
+	Available             bool        `json:"available,omitempty"`
+	Bonus                 string      `json:"bonus,omitempty"`
+	ButtonLabel           string      `json:"buttonLabel,omitempty"`
+	CategoryID            string      `json:"categoryId"`
+	CustomData            interface{} `json:"customData,omitempty"`
+	Description           string      `json:"description,omitempty"`
+	Featured              bool        `json:"featured,omitempty"`
+	Image                 string      `json:"image,omitempty"`
+	ListLabel             string      `json:"listLabel,omitempty"`
+	Name                  string      `json:"name"`
+	Order                 string      `json:"order,omitempty"`
+	Price                 string      `json:"price"`
+	RequiresIdentity      bool        `json:"requiresIdentity,omitempty"`
+	TaxRateID             string      `json:"taxRateId,omitempty"`
+	Thumbnail             string      `json:"thumbnail,omitempty"`
+	URL                   string      `json:"url,omitempty"`
+	Visible               bool        `json:"visible,omitempty"`
+}
+```
+
+
+#### Body Function
+
+For Create;
+
+```go
+slyk.CreateProductDataForBody()
+```
+
+Append List;
+
+```go
+SetAllowChoosingQuantity(allowChoosingQuantity bool) 
+SetAssetCode(assetCode string) 
+SetAvailable(available bool) 
+SetBonus(bonus string) 
+SetButtonLabel(buttonLabel string) 
+SetCategoryID(categoryID string) 
+SetCustomData(customData interface{}) 
+SetDescription(description string) 
+SetFeatured(featured bool) 
+SetImage(image string) 
+SetListLabel(listLabel string) 
+SetName(name string) 
+SetOrder(order string) 
+SetPrice(price string) 
+SetRequiresIdentity(requiresIdentity bool) 
+SetTaxRateID(taxRateID string) 
+SetThumbnail(thumbnail string) 
+SetURL(url string) 
+SetVisible(visible bool) 
+```
+
+### Add Product Question
+
+Function;
+
+```go
+response,err := client.AddProductQuestion({{PRODUCT_ID}},*AddProductQuestionDataBody)
+```
+
+#### Struct
+
+```go
+type AddProductQuestionDataBody struct {
+	QuestionID string `json:"questionId"`
+}
+```
+
+
+#### Body Function
+
+For Create;
+
+```go
+slyk.AddProductQuestionDataForBody()
+```
+
+Append List;
+
+```go
+SetQuestionID(questionID string)
+```
+
+### Product Reorder
+
+Function;
+
+```go
+err := client.ProductReorder({{PRODUCT_ID}},*ProductReorderDataBody)
+```
+
+#### Struct
+
+```go
+type ProductReorderDataBody struct {
+	SubsequentID string `json:"subsequentId"`
+}
+```
+
+
+#### Body Function
+
+For Create;
+
+```go
+slyk.ProductReorderDataForBody()
+```
+
+Append List;
+
+```go
+SetSubsequentID(questionID string)
+```
+
+### Product Question Reorder
+
+Function;
+
+```go
+err := client.ProductQuestionReorder({{PRODUCT_ID}},{{QUESTION_ID}},*ProductQuestionReorderDataBody)
+```
+
+#### Struct
+
+```go
+type ProductQuestionReorderDataBody struct {
+	SubsequentID string `json:"subsequentId"`
+}
+```
+
+
+#### Body Function
+
+For Create;
+
+```go
+slyk.ProductQuestionReorderDataForBody()
+```
+
+Append List;
+
+```go
+SetSubsequentID(questionID string)
+```
+
+### Delete Product
+
+Function;
+
+```go
+err := client.DeleteProduct({{PRODUCT_ID}})
+```
+
+### Delete Product Question
+
+Function;
+
+```go
+err := client.DeleteProductQuestion({{PRODUCT_ID}},{{QUESTION_ID}})
 ```
