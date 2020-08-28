@@ -53,7 +53,7 @@
 	4. [Create Asset](#create-asset)
 6. [Movement](#movement)
 	1. [Get Movements](#get-movements)
-	2. [Get Movement With ID](#get-movement-with-id)
+	3. [Get Movement With ID](#get-movement-with-id)
 7. [Payment Method](#payment-method)
 	1. [Get Payment Methods](#get-payment-methods)
 	2. [Get Payment Method With Slug](#get-payment-method-with-slug)
@@ -75,11 +75,24 @@
 	3. [Create Address](#create-address)
 10. [Category](#category)
 	1. [Get Categories](#get-categories)
-	1. [Get Category With ID](#get-category-with-id)
-	1. [Update Category](#update-category)
-	1. [Create Category](#create-category)
-	1. [Category Reorder](#category-reorder)
-	1. [Delete Category](#delete-category)
+	2. [Get Category With ID](#get-category-with-id)
+	3. [Update Category](#update-category)
+	4. [Create Category](#create-category)
+	5. [Category Reorder](#category-reorder)
+	6. [Delete Category](#delete-category)
+10. [Order](#order)
+	1. [Get Orders](#get-orders)
+	2. [Get Order With ID](#get-order-with-id)
+	3. [Get Order Lines With ID](#get-order-lines-with-id)
+	4. [Get Order Lines With ID And Line ID](#get-order-lines-with-id-and-line-id)
+	5. [Update Order](#update-order)
+	6. [Create Order](#create-order)
+	7. [Order Cancel](#order-cancel)
+	8. [Order Fulfill](#order-fulfill)
+	9. [Order UN Fulfill](#order-un-fulfill)
+	10. [Order Pay](#order-pay)
+	11. [Order Line Fulfill](#order-line-fulfill)
+	12. [Order Line UN Fulfill](#order-line-un-fulfill)
 
 
 ------------------------------------------------------------------------------------------------------------
@@ -1810,7 +1823,7 @@ SetDescription(description string)
 SetImage(image string) 
 SetTitle(title string) 
 SetCustomData(customData string) 
-SetOrder(order string) }
+SetOrder(order string) 
 ```
 
 ### Create Category
@@ -1849,7 +1862,7 @@ SetDescription(description string)
 SetImage(image string) 
 SetTitle(title string) 
 SetCustomData(customData string) 
-SetOrder(order string) }
+SetOrder(order string) 
 ```
 
 ### Category Reorder
@@ -1886,3 +1899,363 @@ SetSubsequentID(subsequentID string)
 err := client.DeleteCategory({{CATEGORY_ID}})
 ```
 
+------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
+
+## Order
+
+### Get Orders
+
+Brings up the order list.
+
+```go
+response,err := client.GetOrders({{OPTIONAL_FILTER}})
+```
+
+#### Filter List
+
+For Create;
+
+```go
+slyk.GetOrdersFilter()
+```
+
+Filters That Can Be Added;
+
+```go
+SetGenericQueryParameter(key string, value interface{}) 
+SetAmount(amount string) 
+SetAmountWithGTE(amount string) 
+SetAmountWithLTE(amount string) 
+SetAssetCode(assetCode string) 
+SetAssetCodeWithIN(assetCode ...string) 
+SetAssetCodeWithNIN(assetCode ...string) 
+SetBonus(bonus string) 
+SetBonusWithGTE(bonus string) 
+SetBonusWithLTE(bonus string) 
+SetFulfilledAt(fulfilledAt string) 
+SetFulfilledAtWithGTE(fulfilledAt string) 
+SetFulfilledAtWithLTE(fulfilledAt string) 
+SetHideDraftsWithLTE(hideDrafts interface{}) 
+SetOrderStatus(orderStatus string) 
+SetOrderStatuseWithIN(orderStatus ...string) 
+SetOrderStatusWithNIN(orderStatus ...string) 
+SetPaidAmount(paidAmount string) 
+SetPaidAmountWithGTE(paidAmount string) 
+SetPaidAmountWithLTE(paidAmount string) 
+SetPaidAt(paidAt string) 
+SetPaidAtWithGTE(paidAt string) 
+SetPaidAtWithLTE(paidAt string) 
+SetPaymentStatus(paymentStatus string) 
+SetPaymentStatusWithIN(paymentStatus ...string) 
+SetPaymentStatusWithNIN(paymentStatus ...string) 
+SetReference(reference string) 
+SetReferenceWithIN(reference ...string) 
+SetReferenceNIN(reference ...string) 
+SetTrackingID(trackingID string) 
+SetTrackingIDWithIN(trackingID ...string) 
+SetTrackingIDWithNIN(trackingID ...string) 
+SetUserID(userID string) 
+SetUserIDWithIN(userID ...string) 
+SetUserIDWithNIN(userID ...string) 
+SetSortWithCreatedAt() 
+SetSortWithCreatedAtReverse() 
+SetSortWithCanceledAt() 
+SetSortWithCanceledAtReverse() 
+SetSortWithFulfilledAt() 
+SetSortWithFulfilledAtReverse() 
+SetSortWithPaidAt() 
+SetSortWithPaidAtReverse() 
+SetPageSize(size int) 
+SetPageNumber(number int) 
+```
+
+### Get Order With ID
+
+```go
+response,err := client.GetOrderWithID({{ORDER_ID}})
+```
+
+### Get Order Lines With ID
+
+Brings up the order list.
+
+```go
+response,err := client.GetOrderLinesWithID({{ORDER_ID}},{{OPTIONAL_FILTER}})
+```
+
+#### Filter List
+
+For Create;
+
+```go
+slyk.GetOrderLinesWithIDFilter()
+```
+
+Filters That Can Be Added;
+
+```go
+SetGenericQueryParameter(key string, value interface{}) 
+SetAssetCode(assetCode string) 
+SetAssetCodeWithIN(assetCode ...string) 
+SetAssetCodeWithNIN(assetCode ...string) 
+SetFulfilledAt(fulfilledAt string) 
+SetFulfilledAtWithGTE(fulfilledAt string) 
+SetFulfilledAtWithLTE(fulfilledAt string) 
+SetFulfilledQuantity(fulfilledQuantity string) 
+SetFulfilledQuantityWithGTE(fulfilledQuantity string) 
+SetFulfilledQuantityWithLTE(fulfilledQuantity string) 
+SetQuantity(quantity string) 
+SetQuantityWithGTE(quantity string) 
+SetQuantityWithLTE(quantity string) 
+SetStatus(status string) 
+SetStatusWithIN(status ...string) 
+SetStatusWithNIN(status ...string) 
+SetUnitPrice(unitPrice string) 
+SetUnitPriceWithGTE(unitPrice string) 
+SetUnitPriceWithLTE(unitPrice string) 
+SetSortWithCreatedAt() 
+SetSortWithCreatedAtReverse() 
+SetSortWithFulfilledAt() 
+SetSortWithFulfilledAtReverse() 
+SetPageSize(size int) 
+SetPageNumber(number int) 
+```
+
+
+### Get Order Lines With ID And Line ID
+
+```go
+response,err := client.GetOrderWithID({{ORDER_ID}},{{LONE_ID}})
+```
+
+
+### Update Order
+
+Function;
+
+```go
+response,err := client.UpdateOrder({{ORDER_ID}},*UpdateOrderDataBody)
+```
+#### Struct
+
+```go
+type UpdateOrderDataBody struct {
+	TrackingID string `json:"trackingId"`
+}
+```
+
+
+#### Body Function
+
+For Create;
+
+```go
+slyk.UpdateOrderDataForBody()
+```
+
+Append List;
+
+```go
+SetTrackingID(trackingID string)
+```
+
+### Create Order
+
+Function;
+
+```go
+response,err := client.CreateOrder(*CreateOrderDataBody)
+```
+
+#### Struct
+
+```go
+type CreateOrderDataBody struct {
+	ChosenPaymentMethod string         `json:"chosenPaymentMethod,omitempty"`
+	CustomData          interface{}    `json:"customData,omitempty"`
+	DeliveryMethod      string         `json:"deliveryMethod,omitempty"`
+	DryRun              bool           `json:"dryRun,omitempty"`
+	Lines               []LineForOrder `json:"lines"`
+	ShippingAddressID   string         `json:"shippingAddressId,omitempty"`
+	UseBonus            bool           `json:"useBonus,omitempty"`
+	UserID              string         `json:"userId"`
+	UserNotes           string         `json:"userNotes,omitempty"`
+	WalletID            string         `json:"walletId,omitempty"`
+}
+```
+
+
+#### Body Function
+
+For Create;
+
+```go
+slyk.CreateOrderDataForBody()
+```
+
+Append List;
+
+```go
+SetChosenPaymentMethod(chosenPaymentMethod string) 
+SetCustomData(customData interface{}) 
+SetDeliveryMethod(deliveryMethod string) 
+SetDryRun(dryRun bool) 
+SetLines(lines []LineForOrder) 
+AppendLine(line LineForOrder) 
+SetShippingAddressID(shippingAddressID string) 
+SetUseBonus(useBonus bool) 
+SetUserID(userID string) 
+SetUserNotes(userNotes string) 
+SetWalletID(walletID string) }
+```
+
+### Order Cancel
+
+```go
+err := client.OrderCancel({{ORDER_ID}},*OrderCancelDataBody)
+```
+
+#### Struct
+
+```go
+type OrderCancelDataBody struct {
+	Reason       string `json:"reason,omitempty"`
+	RefundAmount string `json:"refundAmount,omitempty"`
+}
+```
+
+#### Body Function
+
+For Create;
+
+```go
+slyk.OrderCancelDataForBody()
+```
+
+Append List;
+
+```go
+SetReason(reason string)
+SetRefundAmount(refundAmount string)
+```
+
+### Order Fulfill
+
+```go
+response,err := client.OrderFulfill({{ORDER_ID}},*OrderFulfillDataBody)
+```
+
+#### Struct
+
+```go
+type OrderFulfillDataBody struct {
+	TrackingID string `json:"trackingId"`
+}
+```
+
+#### Body Function
+
+For Create;
+
+```go
+slyk.OrderFulfillDataForBody()
+```
+
+Append List;
+
+```go
+SetTrackingID(trackingID string)
+```
+
+### Order UN Fulfill
+
+```go
+response,err := client.OrderUNFulfill({{ORDER_ID}})
+```
+
+### Order Pay
+
+```go
+err := client.OrderPay({{ORDER_ID}},*OrderPayDataBody)
+```
+
+#### Struct
+
+```go
+type OrderPayDataBody struct {
+	Amount   string `json:"amount,omitempty"`
+	WalletID string `json:"walletId,omitempty"`
+}
+```
+
+#### Body Function
+
+For Create;
+
+```go
+slyk.OrderPayDataForBody()
+```
+
+Append List;
+
+```go
+SetAmount(amount string)
+SetWalletID(walletID string)
+```
+
+### Order Line Fulfill
+
+```go
+err := client.OrderLineFulfill({{ORDER_ID}},*OrderLineFulfillDataBody)
+```
+
+#### Struct
+
+```go
+type OrderLineFulfillDataBody struct {
+	Quantity int `json:"quantity"`
+}
+```
+
+#### Body Function
+
+For Create;
+
+```go
+slyk.OrderLineFulfillDataForBody()
+```
+
+Append List;
+
+```go
+SetQuantity(quantity int)
+```
+
+### Order Line UN Fulfill
+
+```go
+err := client.OrderLineUNFulfill({{ORDER_ID}},*OrderLineUNFulfillDataBody)
+```
+
+#### Struct
+
+```go
+type OrderLineUNFulfillDataForBody struct {
+	Quantity int `json:"quantity"`
+}
+```
+
+#### Body Function
+
+For Create;
+
+```go
+slyk.OrderLineUNFulfillDataForBody()
+```
+
+Append List;
+
+```go
+SetQuantity(quantity int)
+```
