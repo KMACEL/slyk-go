@@ -110,7 +110,14 @@
 	4. [Update Question](#update-question)
 	5. [Create Question](#create-question)
 	6. [Delete Question](#delete-question)
-	
+13. [Task](#task)
+	1. [Get Tasks](#get-tasks)
+	2. [Get Task With ID](#get-task-with-id)
+	3. [Update Task](#update-task)
+	4. [Create Task](#create-task)
+	5. [Set Task Complete](#set-task-complete)
+	6. [Set Task Reorder](#set-task-reorder)
+	7. [Delete Task](#delete-task)
 ------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------
 
@@ -2745,4 +2752,190 @@ SetTypeCode(typeCode string)
 
 ```go
 err := client.DeleteQuestion({{QUESTION_ID}})
+```
+
+------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
+
+## Task
+
+### Get Tasks
+
+Brings up the tasks list.
+
+```go
+response,err := client.GetTasks({{OPTIONAL_FILTER}})
+```
+
+#### Filter List
+
+For Create;
+
+```go
+slyk.GetTasksFilter()
+```
+
+Filters That Can Be Added;
+
+```go
+SetGenericQueryParameter(key string, value interface{}) 
+SetEnabled(enabled bool) 
+SetFeatured(featured bool) 
+SetID(id string) 
+SetIDWithIN(id ...string) 
+SetIDWithNIN(id ...string) 
+SetName(name string) 
+SetNameWithIN(name ...string) 
+SetNameWithNIN(name ...string) 
+SetOrderWithGTE(order string) 
+SetOrdertWithLTE(order string) 
+SetType(getType string) 
+SetTypeWithIN(getType ...string) 
+SetTypeWithNIN(getType ...string) 
+SetSortWithAmount() 
+SetSortWithAmountReverse() 
+SetSortWithCreatedAt() 
+SetSortWithCreatedAtReverse() 
+SetSortWithEnabled() 
+SetSortWithEnabledReverse() 
+SetSortWithFeatured() 
+SetSortWithFeaturedReverse() 
+SetSortWithName() 
+SetSortWithNameReverse() 
+SetSortWithOrder() 
+SetSortWithOrderReverse() 
+SetSortWithType() 
+SetSortWithTypeReverse() 
+SetPageSize(size int) 
+SetPageNumber(number int) 
+```
+
+### Get Task With ID
+
+```go
+response,err := client.GetTaskWithID({{TASK_ID}})
+```
+
+### Update Task
+
+Function;
+
+```go
+response,err := client.UpdateTask({{TASK_ID}},*UpdateTaskDataBody)
+```
+#### Struct
+
+```go
+type UpdateTaskDataBody struct {
+	Amount      string      `json:"amount,omitempty"`
+	ButtonLabel string      `json:"buttonLabel,omitempty"`
+	CustomData  interface{} `json:"customData,omitempty"`
+	Description string      `json:"description,omitempty"`
+	Enabled     bool        `json:"enabled,omitempty"`
+	Featured    bool        `json:"featured,omitempty"`
+	Image       string      `json:"image,omitempty"`
+	Name        string      `json:"name,omitempty"`
+	Order       string      `json:"order,omitempty"`
+	SurveyURL   string      `json:"surveyUrl,omitempty"`
+	Thumbnail   string      `json:"thumbnail,omitempty"`
+	Type        string      `json:"type,omitempty"`
+}
+```
+
+
+#### Body Function
+
+For Create;
+
+```go
+slyk.UpdateTaskDataForBody()
+```
+
+Append List;
+
+```go
+SetAmount(amount string) 
+SetButtonLabel(buttonLabel string) 
+SetCustomData(customData interface{}) 
+SetDescription(description string) 
+SetEnabled(enabled bool) 
+SetFeatured(featured bool) 
+SetImage(image string) 
+SetName(name string) 
+SetOrder(order string) 
+SetSurveyURL(surveyURL string) 
+SetThumbnail(thumbnail string) 
+SetType(typeFiled string) 
+```
+
+### Create Task
+
+Function;
+
+```go
+response,err := client.CreateTask(*CreateTaskDataBody)
+```
+
+#### Struct
+
+```go
+type CreateTaskDataBody struct {
+	Amount      string      `json:"amount"`
+	ButtonLabel string      `json:"buttonLabel,omitempty"`
+	CustomData  interface{} `json:"customData,omitempty"`
+	Description string      `json:"description"`
+	Enabled     bool        `json:"enabled,omitempty"`
+	Featured    bool        `json:"featured,omitempty"`
+	Image       string      `json:"image,omitempty"`
+	Name        string      `json:"name"`
+	Order       string      `json:"order,omitempty"`
+	SurveyURL   string      `json:"surveyUrl,omitempty"`
+	Thumbnail   string      `json:"thumbnail,omitempty"`
+	Type        string      `json:"type"`
+}
+
+```
+
+
+#### Body Function
+
+For Create;
+
+```go
+slyk.CreateTaskDataForBody()
+```
+
+Append List;
+
+```go
+SetAmount(amount string) 
+SetButtonLabel(buttonLabel string) 
+SetCustomData(customData interface{}) 
+SetDescription(description string) 
+SetEnabled(enabled bool) 
+SetFeatured(featured bool) 
+SetImage(image string) 
+SetName(name string) 
+SetOrder(order string) 
+SetSurveyURL(surveyURL string) 
+SetThumbnail(thumbnail string) 
+SetType(typeFiled string) 
+```
+
+### Set Task Complete
+
+```go
+err := client.SetTaskComplete({{TASK_ID}})
+```
+
+### Set Task Reorder
+
+```go
+err := client.SetTaskReorder({{TASK_ID}})
+```
+
+### Delete Task
+
+```go
+err := client.DeleteTask({{TASK_ID}})
 ```
