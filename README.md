@@ -103,8 +103,14 @@
 	7. [Product Question Reorder](#product-question-reorder)
 	8. [Delete Product](#delete-product)
 	9. [Delete Product Question](#delete-product-question)
-
-
+12. [Question](#question)
+	1. [Get Questions](#get-questions)
+	2. [Get Question With ID](#get-question-with-id)
+	3. [Get Questions Types](#get-questions-types)
+	4. [Update Question](#update-question)
+	5. [Create Question](#create-question)
+	6. [Delete Question](#delete-question)
+	
 ------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------
 
@@ -2568,4 +2574,175 @@ Function;
 
 ```go
 err := client.DeleteProductQuestion({{PRODUCT_ID}},{{QUESTION_ID}})
+```
+
+------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
+
+## Question
+
+### Get Questions
+
+Brings up the questions list.
+
+```go
+response,err := client.GetQuestions({{OPTIONAL_FILTER}})
+```
+
+#### Filter List
+
+For Create;
+
+```go
+slyk.GetQuestionsFilter()
+```
+
+Filters That Can Be Added;
+
+```go
+SetGenericQueryParameter(key string, value interface{}) 
+SetID(id string) 
+SetIDWithIN(id ...string) 
+SetIDWithNIN(id ...string) 
+SetProductTypeCode(productTypeCode string) 
+SetTitle(title string) 
+SetTypeCode(typeCode string) 
+SetTypeCodeWithIN(typeCode ...string) 
+SetTypeCodeWithNIN(typeCode ...string) 
+SetSortWithCreatedAt() 
+SetSortWithCreatedAtReverse() 
+SetSortWithTypeCode() 
+SetSortWithTypeCodeReverse() 
+SetSortWithTitle() 
+SetSortWithTitleReverse() 
+SetPageSize(size int) 
+SetPageNumber(number int) 
+```
+
+### Get Question With ID
+
+```go
+response,err := client.GetQuestionWithID({{QUESTION_ID}})
+```
+
+### Get Questions Types
+
+Brings up the questions types list.
+
+```go
+response,err := client.GetQuestionsTypes({{OPTIONAL_FILTER}})
+```
+
+#### Filter List
+
+For Create;
+
+```go
+slyk.GetQuestionsTypesFilter()
+```
+
+Filters That Can Be Added;
+
+```go
+SetGenericQueryParameter(key string, value interface{}) 
+SetCode(code string) 
+SetCodeWithIN(code ...string) 
+SetCodeWithNIN(code ...string) 
+SetSortWithCreatedAt() 
+SetSortWithCreatedAtReverse() 
+SetSortWithCode() 
+SetSortWithCodeReverse() 
+SetPageSize(size int) 
+SetPageNumber(number int) 
+```
+
+### Update Question
+
+Function;
+
+```go
+response,err := client.UpdateQuestion({{QUESTION_ID}},*UpdateQuestionDataBody)
+```
+#### Struct
+
+```go
+type UpdateQuestionDataBody struct {
+	Configurations  interface{} `json:"configurations,omitempty"`
+	CustomData      interface{} `json:"customData,omitempty"`
+	Description     string      `json:"description,omitempty"`
+	ProductTypeCode string      `json:"productTypeCode,omitempty"`
+	Required        bool        `json:"required,omitempty"`
+	Title           string      `json:"title,omitempty"`
+	TypeCode        string      `json:"typeCode,omitempty"`
+}
+```
+
+
+#### Body Function
+
+For Create;
+
+```go
+slyk.UpdateQuestionDataForBody()
+```
+
+Append List;
+
+```go
+SetConfigurations(configurations interface{}) 
+SetCustomData(customData interface{}) 
+SetDescription(description string) 
+SetProductTypeCode(productTypeCode string) 
+SetRequired(required bool) 
+SetTitle(title string) 
+SetTypeCode(typeCode string) 
+```
+
+### Create Question
+
+Function;
+
+```go
+response,err := client.CreateQuestion(*CreateQuestionDataBody)
+```
+
+#### Struct
+
+```go
+type CreateQuestionDataBody struct {
+	Configurations  interface{} `json:"configurations,omitempty"`
+	CustomData      interface{} `json:"customData,omitempty"`
+	Description     string      `json:"description,omitempty"`
+	ProductTypeCode string      `json:"productTypeCode"`
+	Required        bool        `json:"required,omitempty"`
+	Title           string      `json:"title"`
+	TypeCode        string      `json:"typeCode"`
+}
+```
+
+
+#### Body Function
+
+For Create;
+
+```go
+slyk.CreateQuestionDataForBody()
+```
+
+Append List;
+
+```go
+SetConfigurations(configurations interface{}) 
+SetCustomData(customData interface{}) 
+SetDescription(description string) 
+SetProductTypeCode(productTypeCode string) 
+SetRequired(required bool) 
+SetTitle(title string) 
+SetTypeCode(typeCode string) 
+```
+
+### Delete Question
+
+```go
+err := client.DeleteQuestion({{QUESTION_ID}})
 ```
