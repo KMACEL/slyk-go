@@ -2,7 +2,6 @@ package slyk
 
 import (
 	"encoding/json"
-	"fmt"
 	"unsafe"
 
 	"github.com/go-resty/resty/v2"
@@ -28,14 +27,13 @@ func (c Client) GenericGetQuery(link string, queryParams map[string]string) ([]b
 		SetHeader(headerApiKey, c.apiKey).
 		Get(link)
 
-	fmt.Println(Byte2String(resp.Body()))
 	if err != nil {
 		return nil, err
 	}
 
 	if resp.IsError() {
 		return nil, GenericError{
-			Message:    resp.Body(),
+			Message:    Byte2String(resp.Body()),
 			StatusCode: resp.StatusCode(),
 		}
 	}
@@ -55,7 +53,7 @@ func (c Client) GenericPatchQuery(link string, body interface{}) ([]byte, error)
 
 	if resp.IsError() {
 		return nil, GenericError{
-			Message:    resp.Body(),
+			Message:    Byte2String(resp.Body()),
 			StatusCode: resp.StatusCode(),
 		}
 	}
