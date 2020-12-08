@@ -62,14 +62,13 @@ func TestSetTransactionRejectWithID(t *testing.T) {
 func TestCreateTransactionDeposit(t *testing.T) {
 	tst := "TestAddTranTestCreateTransactionDepositsactionDeposit"
 
-	returnValue, err := getClient().CreateTransactionDeposit("327f8888-5f88-4edf-a4b9-7c2066e6e0d9",
-		&CreateTransactionDepositDataBody{
-			Amount:              "0.1",
-			AssetCode:           "usd",
-			Code:                "internal",
-			Data:                map[string]interface{}{"description": "payment"},
-			DestinationWalletID: "c553b251-9bf5-42a4-99ef-238ad03fa656",
-		})
+	returnValue, err := getClient().CreateTransactionDeposit(&CreateTransactionDepositDataBody{
+		Amount:              "0.1",
+		AssetCode:           "usd",
+		Code:                TransactionCodeInternal,
+		Data:                map[string]interface{}{"description": "payment"},
+		DestinationWalletID: "c553b251-9bf5-42a4-99ef-238ad03fa656",
+	})
 
 	ReturnAndError(t, tst, returnValue, err)
 }

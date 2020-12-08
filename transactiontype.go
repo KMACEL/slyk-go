@@ -2,6 +2,12 @@ package slyk
 
 import "time"
 
+const (
+	TransactionCodeInternal = "internal"
+	TransactionCodeCrypto   = "crypto"
+	TransactionCodeBank     = "bank"
+)
+
 type Transactions struct {
 	Data  []TransactionData `json:"data"`
 	Total int               `json:"total"`
