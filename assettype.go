@@ -32,7 +32,7 @@ type UpdateAssetDataBody struct {
 	Name          string      `json:"name,omitempty"`
 	Contract      struct{}    `json:"contract,omitempty"`
 	CustomData    interface{} `json:"customData,omitempty"`
-	Enabled       bool        `json:"enabled,omitempty"`
+	Enabled       bool        `json:"enabled"`
 	Logo          string      `json:"logo,omitempty"`
 	Symbol        string      `json:"symbol,omitempty"`
 }
@@ -42,7 +42,7 @@ type CreateAssetDataBody struct {
 	Contract      struct{}    `json:"contract,omitempty"`
 	CustomData    interface{} `json:"customData,omitempty"`
 	DecimalPlaces int         `json:"decimalPlaces"`
-	Enabled       bool        `json:"enabled,omitempty"`
+	Enabled       bool        `json:"enabled"`
 	Name          string      `json:"name"`
 	Symbol        string      `json:"symbol,omitempty"`
 	Type          string      `json:"type"`

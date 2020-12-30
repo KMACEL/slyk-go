@@ -55,7 +55,7 @@ type CreateTransactionDepositDataBody struct {
 	Description         string      `json:"description,omitempty"`
 	DestinationAddress  string      `json:"destinationAddress,omitempty"`
 	DestinationWalletID string      `json:"destinationWalletId"`
-	Commit              bool        `json:"commit,omitempty"`
+	Commit              bool        `json:"commit"`
 	ExternalReference   string      `json:"externalReference,omitempty"`
 }
 
@@ -71,7 +71,7 @@ type CreateTransactionTransferDataBody struct {
 	Amount              string      `json:"amount"`
 	AssetCode           string      `json:"assetCode"`
 	Code                string      `json:"code"`
-	Commit              bool        `json:"commit,omitempty"`
+	Commit              bool        `json:"commit"`
 	CustomData          interface{} `json:"customData,omitempty"`
 	Description         string      `json:"description,omitempty"`
 	DestinationAddress  string      `json:"destinationAddress,omitempty"`
@@ -85,7 +85,7 @@ type CreateTransactionWithdrawalDataBody struct {
 	Amount            string      `json:"amount"`
 	AssetCode         string      `json:"assetCode"`
 	Code              string      `json:"code"`
-	Commit            bool        `json:"commit,omitempty"`
+	Commit            bool        `json:"commit"`
 	CustomData        interface{} `json:"customData,omitempty"`
 	Data              interface{} `json:"data,omitempty"`
 	Description       string      `json:"description,omitempty"`

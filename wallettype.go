@@ -172,14 +172,14 @@ type WalletTransactionData struct {
 }
 
 type UpdateWalletDataBody struct {
-	Locked     bool        `json:"locked,omitempty"`
+	Locked     bool        `json:"locked"`
 	OwnerID    string      `json:"ownerId,omitempty"`
 	CustomData interface{} `json:"customData,omitempty"`
 }
 
 type CreateWalletDataBody struct {
 	Name       string      `json:"name,omitempty"`
-	Locked     bool        `json:"locked,omitempty"`
+	Locked     bool        `json:"locked"`
 	OwnerID    string      `json:"ownerId,omitempty"`
 	CustomData interface{} `json:"customData,omitempty"`
 }

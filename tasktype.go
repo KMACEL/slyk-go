@@ -35,8 +35,8 @@ type UpdateTaskDataBody struct {
 	ButtonLabel string      `json:"buttonLabel,omitempty"`
 	CustomData  interface{} `json:"customData,omitempty"`
 	Description string      `json:"description,omitempty"`
-	Enabled     bool        `json:"enabled,omitempty"`
-	Featured    bool        `json:"featured,omitempty"`
+	Enabled     bool        `json:"enabled"`
+	Featured    bool        `json:"featured"`
 	Image       string      `json:"image,omitempty"`
 	Name        string      `json:"name,omitempty"`
 	Order       string      `json:"order,omitempty"`
@@ -50,8 +50,8 @@ type CreateTaskDataBody struct {
 	ButtonLabel string      `json:"buttonLabel,omitempty"`
 	CustomData  interface{} `json:"customData,omitempty"`
 	Description string      `json:"description"`
-	Enabled     bool        `json:"enabled,omitempty"`
-	Featured    bool        `json:"featured,omitempty"`
+	Enabled     bool        `json:"enabled"`
+	Featured    bool        `json:"featured"`
 	Image       string      `json:"image,omitempty"`
 	Name        string      `json:"name"`
 	Order       string      `json:"order,omitempty"`

@@ -43,9 +43,9 @@ type CreateUserDataBody struct {
 	Locale          string      `json:"locale,omitempty"`
 	Name            string      `json:"name,omitempty"`
 	Password        string      `json:"password,"`
-	Approved        bool        `json:"approved,omitempty"`
-	Blocked         bool        `json:"blocked,omitempty"`
+	Approved        bool        `json:"approved"`
+	Blocked         bool        `json:"blocked"`
 	CustomData      interface{} `json:"customData,omitempty"`
 	PrimaryWalletID string      `json:"primaryWalletId,omitempty"`
-	Verified        bool        `json:"verified,omitempty"`
+	Verified        bool        `json:"verified"`
 }

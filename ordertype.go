@@ -137,10 +137,10 @@ type CreateOrderDataBody struct {
 	ChosenPaymentMethod string         `json:"chosenPaymentMethod,omitempty"`
 	CustomData          interface{}    `json:"customData,omitempty"`
 	DeliveryMethod      string         `json:"deliveryMethod,omitempty"`
-	DryRun              bool           `json:"dryRun,omitempty"`
+	DryRun              bool           `json:"dryRun"`
 	Lines               []LineForOrder `json:"lines"`
 	ShippingAddressID   string         `json:"shippingAddressId,omitempty"`
-	UseBonus            bool           `json:"useBonus,omitempty"`
+	UseBonus            bool           `json:"useBonus"`
 	UserID              string         `json:"userId"`
 	UserNotes           string         `json:"userNotes,omitempty"`
 	WalletID            string         `json:"walletId,omitempty"`
