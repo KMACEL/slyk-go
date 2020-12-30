@@ -4,7 +4,6 @@
 * Invite : GetInviteWithCodeForValidate function control (responde null)
 * Paymet Method : GetPaymentMethods filter dont working
 * Rate : GetRates filter dont working
-* Transaction : CreateTransactionPay destination_wallet_is_locked
 * Transaction : SetTransactionFailWithID Reason dont working
 * Product get not working so Other APis could not be test
 * Order could not be done. because, wants to product id
